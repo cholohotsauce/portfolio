@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Arcadio “Archie” Vega: chef for 15 years, part of a Michelin Bib Gourmand team, now an iOS developer.">
+<meta property="og:title" content="Archie Vega, Chef to iOS">
+<meta property="og:description" content="I traded the pass for Xcode.">
+<meta name="theme-color" content="#f6f4f1">
+<title>Archie Vega, Chef to iOS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one long Apple-style scroll. Warm kitchen-colored light blooms sit behind frosted glass panels. */
+:root{
+  --bg:#f6f4f1;
+  --ink:#16140f;
+  --ink-2:#5c5750;
+  --glass:rgba(255,255,255,.55);
+  --glass-strong:rgba(255,255,255,.72);
+  --glass-edge:rgba(255,255,255,.85);
+  --glass-shadow:rgba(60,40,20,.12);
+  --hair:rgba(22,20,15,.10);
+  --accent:#e2491d;          /* tomato */
+  --link:#0a66d6;
+  --saffron:#ffb340; --tomato:#ff5a36; --basil:#3fbf7f; --sky:#4aa3ff;
+  --bloom-a:.55;
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --serif:"Instrument Serif","New York",Georgia,serif;
+  --mono:"JetBrains Mono","SF Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0c0b0a; --ink:#f5f2ee; --ink-2:#a8a199;
+  --glass:rgba(40,36,32,.45); --glass-strong:rgba(48,44,40,.62); --glass-edge:rgba(255,255,255,.14);
+  --glass-shadow:rgba(0,0,0,.45); --hair:rgba(255,255,255,.10);
+  --accent:#ff7a4d; --link:#5aa9ff; --bloom-a:.42; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#0c0b0a; --ink:#f5f2ee; --ink-2:#a8a199;
+  --glass:rgba(40,36,32,.45); --glass-strong:rgba(48,44,40,.62); --glass-edge:rgba(255,255,255,.14);
+  --glass-shadow:rgba(0,0,0,.45); --hair:rgba(255,255,255,.10);
+  --accent:#ff7a4d; --link:#5aa9ff; --bloom-a:.42; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:8px}
+
+/* light blooms */
+.blooms{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.blooms i{position:absolute;border-radius:50%;filter:blur(70px);opacity:var(--bloom-a);animation:drift 26s ease-in-out infinite alternate}
+.blooms i:nth-child(1){width:46vmax;height:46vmax;background:var(--saffron);left:-12vmax;top:-10vmax}
+.blooms i:nth-child(2){width:38vmax;height:38vmax;background:var(--tomato);right:-10vmax;top:8vmax;animation-delay:-8s}
+.blooms i:nth-child(3){width:34vmax;height:34vmax;background:var(--basil);left:10vmax;bottom:-14vmax;animation-delay:-14s}
+.blooms i:nth-child(4){width:30vmax;height:30vmax;background:var(--sky);right:4vmax;bottom:-6vmax;animation-delay:-4s}
+@keyframes drift{to{transform:translate(4vmax,3vmax) scale(1.08)}}
+@media (prefers-reduced-motion:reduce){.blooms i{animation:none}*{transition:none!important}}
+
+.glass{
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(28px) saturate(180%);backdrop-filter:blur(28px) saturate(180%);
+  border:1px solid var(--glass-edge);
+  box-shadow:inset 0 1px 0 var(--glass-edge),0 20px 50px -20px var(--glass-shadow);
+}
+
+.wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding-inline:20px}
+
+/* nav */
+nav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);z-index:10;display:flex;justify-content:center;padding-top:12px}
+.navpill{display:flex;align-items:center;gap:6px;padding:6px;border-radius:999px;max-width:100%}
+.navpill .me{font-weight:600;padding:6px 14px;letter-spacing:-.01em;color:var(--ink)}
+.navpill a.l{color:var(--ink-2);font-size:14px;padding:6px 12px;border-radius:999px}
+.navpill a.l:hover{background:var(--glass-strong);text-decoration:none;color:var(--ink)}
+@media (max-width:440px){.navpill a.l.hide-sm{display:none}}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:center;padding-block:88px 72px}
+.hero > *{min-width:0}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1{font-size:clamp(44px,7vw,84px);line-height:1;letter-spacing:-.035em;font-weight:700;margin:14px 0 20px;text-wrap:balance}
+h1 em,h2 em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+.lede{font-size:clamp(18px,2.1vw,21px);color:var(--ink-2);max-width:34ch;margin:0 0 28px;text-wrap:pretty}
+.swap{transition:opacity .35s ease,transform .35s ease}
+.swap.out{opacity:0;transform:translateY(6px)}
+
+.seg{display:inline-flex;padding:4px;border-radius:999px;gap:2px;position:relative}
+.seg button{all:unset;cursor:pointer;font-size:14px;font-weight:600;padding:9px 18px;border-radius:999px;color:var(--ink-2);position:relative;z-index:1;transition:color .25s}
+.seg button[aria-pressed="true"]{color:var(--ink)}
+.seg .thumb{position:absolute;top:4px;bottom:4px;left:4px;border-radius:999px;background:var(--glass-strong);box-shadow:0 2px 10px var(--glass-shadow),inset 0 1px 0 var(--glass-edge);transition:transform .35s cubic-bezier(.3,1.4,.5,1),width .35s}
+.seg button:focus-visible{outline:2px solid var(--link)}
+.hint{font-size:13px;color:var(--ink-2);margin-top:12px}
+
+/* order ticket */
+.ticket{border-radius:28px;padding:26px 26px 22px;font-family:var(--mono);font-size:14px;transform:rotate(1.5deg)}
+.ticket header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 12px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);padding-bottom:14px;border-bottom:1px dashed var(--hair)}
+.ticket header span{white-space:nowrap}
+.ticket ul{list-style:none;padding:0;margin:16px 0;display:grid;gap:8px}
+.ticket li{display:flex;gap:10px}
+.ticket li b{font-weight:500;min-width:2.4ch;color:var(--accent)}
+.ticket li.mod{padding-left:3.2ch;color:var(--ink-2)}
+.ticket footer{display:flex;justify-content:space-between;align-items:center;border-top:1px dashed var(--hair);padding-top:14px;font-size:12px;color:var(--ink-2)}
+.fire{font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.06em;color:#fff;background:var(--accent);padding:6px 12px;border-radius:999px}
+
+/* sections */
+section{padding-block:72px}
+.sec-head{max-width:640px;margin-bottom:36px}
+h2{font-size:clamp(32px,4.6vw,52px);line-height:1.04;letter-spacing:-.03em;font-weight:700;margin:10px 0 14px;text-wrap:balance}
+.sec-head p{color:var(--ink-2);font-size:19px;margin:0;text-wrap:pretty}
+
+/* story timeline */
+.story{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.story article{border-radius:24px;padding:26px;min-width:0}
+.story .when{font-family:var(--mono);font-size:12px;color:var(--ink-2);letter-spacing:.04em}
+.story h3{font-size:22px;letter-spacing:-.02em;margin:8px 0 8px}
+.story p{margin:0;color:var(--ink-2);font-size:16px}
+.bibs{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.bibs span{font-family:var(--mono);font-size:12px;font-variant-numeric:tabular-nums;padding:4px 9px;border-radius:999px;color:var(--accent);border:1px solid var(--hair);background:var(--glass-strong)}
+
+/* translation table */
+.xlate{border-radius:28px;overflow:hidden}
+.xrow{display:grid;grid-template-columns:1fr 28px 1fr;gap:16px;align-items:baseline;padding:20px 28px;border-top:1px solid var(--hair)}
+.xrow:first-child{border-top:0}
+.xrow.head{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);padding-block:16px}
+.xrow .k{font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.2}
+.xrow .k small{display:block;font-family:var(--sans);font-style:normal;font-size:14px;color:var(--ink-2);margin-top:4px}
+.xrow .arrow{color:var(--accent);font-size:18px;text-align:center}
+.xrow .d{font-weight:600;font-size:18px;letter-spacing:-.01em}
+.xrow .d small{display:block;font-weight:400;font-size:14px;color:var(--ink-2);margin-top:4px}
+.xrow > *{min-width:0}
+
+/* projects */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{border-radius:28px;padding:24px;display:flex;flex-direction:column;gap:14px;min-width:0;transition:transform .3s cubic-bezier(.3,1.3,.5,1)}
+.card:hover{transform:translateY(-4px)}
+.card .top{display:flex;align-items:center;gap:14px}
+.icon{width:56px;height:56px;flex:none;border-radius:14px;display:grid;place-items:center;font-size:26px;font-weight:700;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 6px 16px -6px rgba(0,0,0,.35)}
+.card h3{margin:0;font-size:20px;letter-spacing:-.02em}
+.card .repo{font-family:var(--mono);font-size:12px;color:var(--ink-2)}
+.card p{margin:0;color:var(--ink-2);font-size:16px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.tags span{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--glass-strong);border:1px solid var(--hair)}
+.card.soon{border-style:dashed}
+.ph{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.04em}
+
+/* recipe code */
+.recipe{display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:center}
+.recipe > *{min-width:0}
+pre{margin:0;border-radius:24px;padding:24px;overflow-x:auto;font-family:var(--mono);font-size:14px;line-height:1.65}
+.kw{color:#c2368f}.ty{color:var(--link)}.st{color:var(--accent)}.cm{color:var(--ink-2)}
+:root[data-theme="dark"] .kw{color:#ff7ab8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .kw{color:#ff7ab8}}
+
+/* contact */
+.contact{border-radius:36px;padding:56px 40px;text-align:center}
+.contact h2{margin-inline:auto;max-width:16ch}
+.contact p{color:var(--ink-2);max-width:46ch;margin:0 auto 28px}
+.btns{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.btn{font-weight:600;font-size:16px;padding:13px 22px;border-radius:999px;border:1px solid var(--glass-edge);background:var(--glass-strong);color:var(--ink)}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:transparent}
+.btn:hover{text-decoration:none;transform:translateY(-1px)}
+.addr{font-family:var(--mono);font-size:14px;color:var(--ink-2);margin-top:18px;user-select:all}
+
+.foot{padding-block:40px 56px;text-align:center;font-size:13px;color:var(--ink-2)}
+
+/* chef mode */
+.blooms i{transition:background-color 1.2s ease}
+body.chef .blooms i:nth-child(3){background:var(--tomato)}
+body.chef .blooms i:nth-child(4){background:var(--saffron)}
+[data-chef]{transition:opacity .3s ease}
+.fading [data-chef]{opacity:0}
+.navpill .seg{padding:3px;margin-left:4px}
+.navpill .seg button{font-size:12px;padding:6px 10px}
+.navpill .seg .thumb{top:3px;bottom:3px;left:3px}
+@media (max-width:560px){.navpill .l{display:none}}
+body.chef .xrow .k{order:3}
+body.chef .xrow .d{order:1}
+body.chef .xrow .arrow{order:2}
+.card .course{font-family:var(--mono);font-size:12px;color:var(--ink-2)}
+.recipe-card{border-radius:24px;padding:28px}
+.recipe-card h4{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.recipe-card ul,.recipe-card ol{margin:0 0 22px;padding-left:1.2em;display:grid;gap:6px}
+.recipe-card ol{margin-bottom:0}
+.recipe-card li::marker{color:var(--accent);font-family:var(--mono)}
+.recipe-card .yield{font-family:var(--mono);font-size:12px;color:var(--ink-2);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px dashed var(--hair);padding-bottom:12px;margin-bottom:18px}
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr;padding-block:56px 40px;gap:36px}
+  .ticket{transform:none}
+  .story,.grid,.recipe{grid-template-columns:1fr}
+  section{padding-block:52px}
+  .xrow{grid-template-columns:1fr;gap:4px;padding:18px 20px}
+  .xrow .arrow{display:none}
+  .xrow.head{display:none}
+  .contact{padding:40px 22px}
+}
+
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+<div class="blooms" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+<div class="wrap">
+  <nav>
+    <div class="navpill glass">
+      <span class="me" data-chef="Chef Archie">Archie Vega</span>
+      <a class="l" href="#story" data-chef="Amuse">Story</a>
+      <a class="l" href="#work" data-chef="Mains">Work</a>
+      <a class="l" href="#recipe" data-chef="Special">Recipe</a>
+      <a class="l" href="#contact" data-chef="Reserve">Contact</a>
+      <div class="seg glass" role="group" aria-label="Choose a voice">
+        <span class="thumb"></span>
+        <button id="nav-dev" aria-pressed="true" data-mode="dev">Dev</button>
+        <button id="nav-chef" aria-pressed="false" data-mode="chef">Chef</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <div class="eyebrow" data-chef="Back of house · 15 years and counting">Chef for 15 years · iOS developer next</div>
+      <h1 data-chef="Yes, Chef. &lt;em&gt;Same energy.&lt;/em&gt;">I traded the pass for <em>Xcode.</em></h1>
+      <p class="lede" data-chef="Mise en place is architecture with knives. Tasting every sauce is unit testing. Sunday brunch is a production incident. I have been training for this for fifteen years.">Fifteen years in professional kitchens, five straight years of Michelin Bib Gourmand with my team, and more 16-hour Saturdays than I can count. Now I build apps with the same care I used to put on a plate.</p>
+      <div class="seg glass" role="group" aria-label="Choose a voice">
+        <span class="thumb"></span>
+        <button id="mode-dev" aria-pressed="true" data-mode="dev">Developer</button>
+        <button id="mode-chef" aria-pressed="false" data-mode="chef">Chef</button>
+      </div>
+      <div class="hint" data-chef="Same person. More garlic. The whole page changes, so scroll down.">Same person. Two vocabularies. Flip it and scroll.</div>
+    </div>
+
+    <div class="ticket glass" aria-label="Kitchen order ticket">
+      <header><span>Order 015</span><span data-chef="Table: Hiring manager">Table: You</span><span>00:49</span></header>
+      <ul id="ticket"></ul>
+      <footer><span data-chef="Allergies: microwaves">Allergies: sloppy UI</span><span class="fire">FIRE</span></footer>
+    </div>
+  </header>
+
+  <section id="story">
+    <div class="sec-head">
+      <div class="eyebrow" data-chef="Amuse-bouche">The story</div>
+      <h2 data-chef="From the line to &lt;em&gt;the main branch.&lt;/em&gt;">Same obsession. <em>New kitchen.</em></h2>
+      <p data-chef="Every night was a deploy. Every plate was a pull request, and Chef either approved it or sent it back.">Most career changers start from zero. I start from fifteen years of shipping under pressure, every night, to the toughest critics there are: hungry people.</p>
+    </div>
+    <div class="story">
+      <article class="glass">
+        <div class="when" data-chef="15 years · The line">15 years · The kitchen</div>
+        <h3 data-chef="Burns on both arms">Fifteen years on the line</h3>
+        <p data-chef="And a Michelin Bib Gourmand on the wall every year since the guide came to Canada in 2022. Shared with the best brigade I know.">I ran stations, then kitchens. Our team earned a Michelin Bib Gourmand in 2022, the guide's first year in Canada, and has kept it every year since.</p>
+        <div class="bibs" aria-label="Michelin Bib Gourmand, won as a team"><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span>2026</span></div>
+      </article>
+      <article class="glass">
+        <div class="when" data-chef="The turn · Staff meal">The turn · First app</div>
+        <h3 data-chef="I started cooking with Swift">I fell for the craft</h3>
+        <p data-chef="The only Swift I will ever need. Sorry, Taylor.">Apple products always felt like good cooking to me: simple on the surface, obsessive underneath. So I started building with Swift.</p>
+      </article>
+      <article class="glass">
+        <div class="when" data-chef="Now · Prep list">Now · Shipping</div>
+        <h3 data-chef="Looking for a new kitchen">Building toward iOS</h3>
+        <p data-chef="Ideally one with a MacBook instead of a salamander, and fewer people yelling “Hands!”">I build small, real apps, many of them for the restaurant people I know best. Next stop is a team that ships to the App Store.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="kitchen">
+    <div class="sec-head">
+      <div class="eyebrow" data-chef="Translation guide">Transferable skills</div>
+      <h2 data-chef="Dev team, &lt;em&gt;meet the kitchen.&lt;/em&gt;">The kitchen was <em>a bootcamp.</em></h2>
+      <p data-chef="Your engineers already work like a brigade. They just use fewer knives.">Recruiters ask what a chef brings to a dev team. Here is the translation.</p>
+    </div>
+    <div class="xlate glass">
+      <div class="xrow head"><span data-chef="On your team">In the kitchen</span><span></span><span data-chef="In the kitchen">On your team</span></div>
+      <div class="xrow"><div class="k">Mise en place<small>Everything in its place before service</small></div><div class="arrow">→</div><div class="d">Planning and architecture<small>Set up the project before the rush</small></div></div>
+      <div class="xrow"><div class="k">Taste every sauce<small>Never send what you have not checked</small></div><div class="arrow">→</div><div class="d">Testing<small>Verify before it reaches the user</small></div></div>
+      <div class="xrow"><div class="k">Saturday, 9 p.m., full house<small>The rush, every week</small></div><div class="arrow">→</div><div class="d">Shipping under pressure<small>Launch day does not scare me</small></div></div>
+      <div class="xrow"><div class="k">“Yes, Chef.”<small>Take the note, fix the plate</small></div><div class="arrow">→</div><div class="d">Code review<small>Feedback is how the dish gets better</small></div></div>
+      <div class="xrow"><div class="k">The brigade<small>Twelve people, one plate</small></div><div class="arrow">→</div><div class="d">Teamwork<small>Clear calls, no egos at the pass</small></div></div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="sec-head">
+      <div class="eyebrow" data-chef="The menu">Selected work</div>
+      <h2 data-chef="Tonight’s &lt;em&gt;tasting menu.&lt;/em&gt;">Off the <em>pass.</em></h2>
+      <p data-chef="Four courses, all made from scratch. No reservation needed.">Things I have built. Each one solves a problem I actually had.</p>
+    </div>
+    <div class="grid">
+      <article class="card glass">
+        <div class="top"><div class="icon" style="background:linear-gradient(145deg,#ffb340,#ff5a36)">A</div><div><h3>Ace Bartender</h3><div class="repo" data-chef="Course 1 · Aperitif">cholohotsauce/ace-bartender-app</div></div></div>
+        <p data-chef="Pairs well with a Friday night bar rush. Specs, builds and garnishes, served shaken.">A pocket guide for bartenders: specs, builds and garnishes, fast enough to use mid-shift.</p>
+        <div class="tags"><span>App</span><span>Hospitality</span></div>
+      </article>
+      <article class="card glass">
+        <div class="top"><div class="icon" style="background:linear-gradient(145deg,#3fbf7f,#138a5a)">$</div><div><h3>Cashout Calculator</h3><div class="repo" data-chef="Course 2 · Palate cleanser">cholohotsauce/cashout-calculator</div></div></div>
+        <p data-chef="Splits the tips fairly at the end of the night, so nobody fights over the last dollar.">End-of-night tip-out math for restaurant crews. No more napkin arithmetic at 1 a.m.</p>
+        <div class="tags"><span>Web</span><span>Restaurant tools</span></div>
+      </article>
+      <article class="card glass">
+        <div class="top"><div class="icon" style="background:linear-gradient(145deg,#4aa3ff,#2a5bd7)">G</div><div><h3>GeoWho</h3><div class="repo" data-chef="Course 3 · Something for the brain">cholohotsauce/geowho</div></div></div>
+        <p data-chef="Guess the place, then go again. Like seconds, but for geography.">A geography guessing game. Short rounds, quick feedback, one more try.</p>
+        <div class="tags"><span>Game</span><span>Web</span></div>
+      </article>
+      <article class="card glass">
+        <div class="top"><div class="icon" style="background:linear-gradient(145deg,#8a7dff,#3c2f9e)">✦</div><div><h3>The Miracle Ghost</h3><div class="repo" data-chef="Course 4 · Private catering">cholohotsauce/the-miracle-ghost-web</div></div></div>
+        <p data-chef="A catering job for AES, a Miami graffiti artist. Full website and Shopify store, made to order.">Client work for AES, a Miami graffiti artist. I designed and built the artist's website and set up the Shopify store.</p>
+        <div class="tags"><span>Client</span><span>Web</span><span>Shopify</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="recipe">
+    <div class="recipe">
+      <div class="sec-head" style="margin:0">
+        <div class="eyebrow" data-chef="Chef’s special">Now in development</div>
+        <h2>The house <em>special.</em></h2>
+        <p data-chef="A recipe for one iOS developer. Serves one hiring team. Best served soon.">A SwiftUI app built native for iPhone, so you can see real iOS work, not just the intent. It is on the fire now.</p>
+      </div>
+      <div class="only-dev">
+<pre class="glass"><code><span class="kw">struct</span> <span class="ty">Archie</span>: <span class="ty">Developer</span> {
+  <span class="kw">let</span> yearsInKitchens = <span class="st">15</span>
+  <span class="kw">let</span> bibGourmands = [<span class="st">2022</span>, <span class="st">2023</span>, <span class="st">2024</span>, <span class="st">2025</span>, <span class="st">2026</span>] <span class="cm">// as a team</span>
+  <span class="kw">let</span> stack = [<span class="ty">Swift</span>, <span class="ty">SwiftUI</span>, <span class="ty">Xcode</span>]
+  <span class="kw">var</span> jokesPerStandup = <span class="ty">Int</span>.max
+
+  <span class="kw">func</span> cook() -&gt; <span class="ty">App</span> {
+    miseEnPlace()          <span class="cm">// plan it</span>
+    <span class="kw">return</span> build()
+      .taste(every: .step) <span class="cm">// test it</span>
+      .plate(like: .apple) <span class="cm">// polish it</span>
+      .ship()              <span class="cm">// Service!</span>
+  }
+}</code></pre>
+      </div>
+      <div class="only-chef recipe-card glass" hidden>
+        <div class="yield"><span>Yield: 1 iOS developer</span><span>Prep: 15 years</span><span>Serves: your team</span></div>
+        <h4>Ingredients</h4>
+        <ul>
+          <li>15 years of kitchen discipline</li>
+          <li>5 Bib Gourmands, shared with the brigade</li>
+          <li>1 MacBook, well seasoned</li>
+          <li>Swift and SwiftUI, to taste</li>
+          <li>Jokes, a generous handful</li>
+        </ul>
+        <h4>Method</h4>
+        <ol>
+          <li>Mise en place: plan the app before you write a line.</li>
+          <li>Build it. Taste at every step.</li>
+          <li>Plate it the way Apple would.</li>
+          <li>Call “Service!” and ship.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact glass">
+      <div class="eyebrow" data-chef="Now hiring? Chef is available.">Reservations open</div>
+      <h2 data-chef="Table for one &lt;em&gt;developer?&lt;/em&gt;">Let’s cook up <em>something good.</em></h2>
+      <p data-chef="Walk-ins welcome. Book me for an interview and I will bring the same energy I brought to every full Saturday service.">I am looking for my first iOS role. If your team wants someone who cares about the details and keeps the room laughing, I would love to talk.</p>
+      <div class="btns">
+        <a class="btn primary" href="https://github.com/cholohotsauce">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/arcadio-vega">LinkedIn</a>
+      </div>
+      <div class="addr">arcadiovega1@gmail.com</div>
+    </div>
+  </section>
+
+  <div class="foot" data-chef="Chef Archie · Kitchen closes when the build passes.">Arcadio “Archie” Vega · Designed with the care of a tasting menu. Built with fewer burns.</div>
+</div>
+
+<script>
+(function(){
+  var tickets={
+    dev:[['1×','Junior iOS Developer'],['','extra attention to detail'],['','calm under pressure'],['','hold the ego'],['2×','SwiftUI apps, on the fire'],['1×','Bad joke, on the house']],
+    chef:[['1×','Chef, 15 years on the line'],['','5× Bib Gourmand, with the brigade'],['','knife skills, unused in Swift'],['','still says “behind!” in the office'],['1×','Career change, plated'],['1×','Bad joke, on the house']]
+  };
+  var ticket=document.getElementById('ticket');
+  var swaps=[].slice.call(document.querySelectorAll('[data-chef]'));
+  swaps.forEach(function(e){e.dataset.dev=e.innerHTML});
+  var segs=[].slice.call(document.querySelectorAll('.seg'));
+  var mode='dev';
+  function place(seg){
+    var b=seg.querySelector('button[data-mode="'+mode+'"]'),t=seg.querySelector('.thumb'),pad=parseFloat(getComputedStyle(seg).paddingLeft)||0;
+    t.style.width=b.offsetWidth+'px';t.style.transform='translateX('+(b.offsetLeft-pad)+'px)';
+  }
+  function render(){
+    swaps.forEach(function(e){e.innerHTML=mode==='chef'?e.dataset.chef:e.dataset.dev});
+    ticket.innerHTML=tickets[mode].map(function(r){return r[0]?'<li><b>'+r[0]+'</b><span>'+r[1]+'</span></li>':'<li class="mod">'+r[1]+'</li>'}).join('');
+    document.querySelectorAll('.only-dev').forEach(function(e){e.hidden=mode!=='dev'});
+    document.querySelectorAll('.only-chef').forEach(function(e){e.hidden=mode!=='chef'});
+    document.body.classList.toggle('chef',mode==='chef');
+  }
+  function set(m){
+    if(m===mode)return;mode=m;
+    segs.forEach(function(s){s.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.mode===mode)});place(s)});
+    var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce){render();return}
+    document.body.classList.add('fading');
+    setTimeout(function(){render();document.body.classList.remove('fading')},300);
+  }
+  segs.forEach(function(s){s.addEventListener('click',function(ev){var b=ev.target.closest('button');if(b)set(b.dataset.mode)})});
+  render();
+  function placeAll(){segs.forEach(place)}
+  placeAll();
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(placeAll);
+  window.addEventListener('resize',placeAll);
+})();
+</script>
+
+</body>
+</html>
