@@ -3,201 +3,258 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Arcadio “Archie” Vega: chef for 15 years, part of a Michelin Bib Gourmand team, now an iOS developer.">
-<meta property="og:title" content="Archie Vega, Chef to iOS">
-<meta property="og:description" content="I traded the pass for Xcode.">
-<meta name="theme-color" content="#f6f4f1">
 <title>Archie Vega, Chef to iOS</title>
+<meta name="description" content="Arcadio “Archie” Vega: chef for 15 years, part of a Michelin Bib Gourmand team, now an iOS developer. This portfolio is an iPhone.">
+<meta property="og:title" content="Archie Vega, Chef to iOS">
+<meta property="og:description" content="Chef for 15 years. Now I build for iPhone. Unlock the phone to see my work.">
+<meta name="theme-color" content="#e9e6e1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: one long Apple-style scroll. Warm kitchen-colored light blooms sit behind frosted glass panels. */
+/* Layout: the portfolio is an iPhone. Desktop shows the device beside a short intro; on a phone the iOS UI fills the screen. */
 :root{
-  --bg:#f6f4f1;
-  --ink:#16140f;
-  --ink-2:#5c5750;
-  --glass:rgba(255,255,255,.55);
-  --glass-strong:rgba(255,255,255,.72);
-  --glass-edge:rgba(255,255,255,.85);
-  --glass-shadow:rgba(60,40,20,.12);
-  --hair:rgba(22,20,15,.10);
-  --accent:#e2491d;          /* tomato */
-  --link:#0a66d6;
-  --saffron:#ffb340; --tomato:#ff5a36; --basil:#3fbf7f; --sky:#4aa3ff;
-  --bloom-a:.55;
-  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;
-  --serif:"Instrument Serif","New York",Georgia,serif;
-  --mono:"JetBrains Mono","SF Mono",ui-monospace,Menlo,monospace;
+  --page:#e9e6e1; --page-ink:#1b1916; --page-ink-2:#6a645c;
+  --sf:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Inter","Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,monospace;
+  /* iOS system colors, light */
+  --ios-bg:#f2f2f7; --ios-cell:#ffffff; --ios-label:#000000; --ios-label-2:rgba(60,60,67,.6); --ios-sep:rgba(60,60,67,.29);
+  --ios-blue:#007aff; --ios-green:#34c759; --ios-orange:#ff9500; --ios-red:#ff3b30; --ios-fill:rgba(120,120,128,.16); --ios-bar:rgba(249,249,249,.82);
+  --notes-yellow:#e5a50a;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0c0b0a; --ink:#f5f2ee; --ink-2:#a8a199;
-  --glass:rgba(40,36,32,.45); --glass-strong:rgba(48,44,40,.62); --glass-edge:rgba(255,255,255,.14);
-  --glass-shadow:rgba(0,0,0,.45); --hair:rgba(255,255,255,.10);
-  --accent:#ff7a4d; --link:#5aa9ff; --bloom-a:.42; color-scheme:dark;
-}}
-:root[data-theme="dark"]{
-  --bg:#0c0b0a; --ink:#f5f2ee; --ink-2:#a8a199;
-  --glass:rgba(40,36,32,.45); --glass-strong:rgba(48,44,40,.62); --glass-edge:rgba(255,255,255,.14);
-  --glass-shadow:rgba(0,0,0,.45); --hair:rgba(255,255,255,.10);
-  --accent:#ff7a4d; --link:#5aa9ff; --bloom-a:.42; color-scheme:dark;
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--page:#121110; --page-ink:#f2efea; --page-ink-2:#9d968d; color-scheme:dark}}
+:root[data-theme="dark"]{--page:#121110; --page-ink:#f2efea; --page-ink-2:#9d968d; color-scheme:dark}
+.phone.ios-dark{
+  --ios-bg:#000000; --ios-cell:#1c1c1e; --ios-label:#ffffff; --ios-label-2:rgba(235,235,245,.6); --ios-sep:rgba(84,84,88,.65);
+  --ios-blue:#0a84ff; --ios-green:#30d158; --ios-orange:#ff9f0a; --ios-red:#ff453a; --ios-fill:rgba(120,120,128,.32); --ios-bar:rgba(22,22,24,.82);
+  --notes-yellow:#ffd60a;
 }
-*{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{color:var(--link);text-decoration:none}
-a:hover{text-decoration:underline}
-:focus-visible{outline:2px solid var(--link);outline-offset:3px;border-radius:8px}
-
-/* light blooms */
-.blooms{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.blooms i{position:absolute;border-radius:50%;filter:blur(70px);opacity:var(--bloom-a);animation:drift 26s ease-in-out infinite alternate}
-.blooms i:nth-child(1){width:46vmax;height:46vmax;background:var(--saffron);left:-12vmax;top:-10vmax}
-.blooms i:nth-child(2){width:38vmax;height:38vmax;background:var(--tomato);right:-10vmax;top:8vmax;animation-delay:-8s}
-.blooms i:nth-child(3){width:34vmax;height:34vmax;background:var(--basil);left:10vmax;bottom:-14vmax;animation-delay:-14s}
-.blooms i:nth-child(4){width:30vmax;height:30vmax;background:var(--sky);right:4vmax;bottom:-6vmax;animation-delay:-4s}
-@keyframes drift{to{transform:translate(4vmax,3vmax) scale(1.08)}}
-@media (prefers-reduced-motion:reduce){.blooms i{animation:none}*{transition:none!important}}
-
-.glass{
-  background:var(--glass);
-  -webkit-backdrop-filter:blur(28px) saturate(180%);backdrop-filter:blur(28px) saturate(180%);
-  border:1px solid var(--glass-edge);
-  box-shadow:inset 0 1px 0 var(--glass-edge),0 20px 50px -20px var(--glass-shadow);
-}
-
-.wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding-inline:20px}
-
-/* nav */
-nav{position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px);z-index:10;display:flex;justify-content:center;padding-top:12px}
-.navpill{display:flex;align-items:center;gap:6px;padding:6px;border-radius:999px;max-width:100%}
-.navpill .me{font-weight:600;padding:6px 14px;letter-spacing:-.01em;color:var(--ink)}
-.navpill a.l{color:var(--ink-2);font-size:14px;padding:6px 12px;border-radius:999px}
-.navpill a.l:hover{background:var(--glass-strong);text-decoration:none;color:var(--ink)}
-@media (max-width:440px){.navpill a.l.hide-sm{display:none}}
-
-/* hero */
-.hero{display:grid;grid-template-columns:1.25fr .9fr;gap:48px;align-items:center;padding-block:88px 72px}
-.hero > *{min-width:0}
-.eyebrow{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
-h1{font-size:clamp(44px,7vw,84px);line-height:1;letter-spacing:-.035em;font-weight:700;margin:14px 0 20px;text-wrap:balance}
-h1 em,h2 em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
-.lede{font-size:clamp(18px,2.1vw,21px);color:var(--ink-2);max-width:34ch;margin:0 0 28px;text-wrap:pretty}
-.swap{transition:opacity .35s ease,transform .35s ease}
-.swap.out{opacity:0;transform:translateY(6px)}
-
-.seg{display:inline-flex;padding:4px;border-radius:999px;gap:2px;position:relative}
-.seg button{all:unset;cursor:pointer;font-size:14px;font-weight:600;padding:9px 18px;border-radius:999px;color:var(--ink-2);position:relative;z-index:1;transition:color .25s}
-.seg button[aria-pressed="true"]{color:var(--ink)}
-.seg .thumb{position:absolute;top:4px;bottom:4px;left:4px;border-radius:999px;background:var(--glass-strong);box-shadow:0 2px 10px var(--glass-shadow),inset 0 1px 0 var(--glass-edge);transition:transform .35s cubic-bezier(.3,1.4,.5,1),width .35s}
-.seg button:focus-visible{outline:2px solid var(--link)}
-.hint{font-size:13px;color:var(--ink-2);margin-top:12px}
-
-/* order ticket */
-.ticket{border-radius:28px;padding:26px 26px 22px;font-family:var(--mono);font-size:14px;transform:rotate(1.5deg)}
-.ticket header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 12px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);padding-bottom:14px;border-bottom:1px dashed var(--hair)}
-.ticket header span{white-space:nowrap}
-.ticket ul{list-style:none;padding:0;margin:16px 0;display:grid;gap:8px}
-.ticket li{display:flex;gap:10px}
-.ticket li b{font-weight:500;min-width:2.4ch;color:var(--accent)}
-.ticket li.mod{padding-left:3.2ch;color:var(--ink-2)}
-.ticket footer{display:flex;justify-content:space-between;align-items:center;border-top:1px dashed var(--hair);padding-top:14px;font-size:12px;color:var(--ink-2)}
-.fire{font-family:var(--sans);font-weight:700;font-size:12px;letter-spacing:.06em;color:#fff;background:var(--accent);padding:6px 12px;border-radius:999px}
-
-/* sections */
-section{padding-block:72px}
-.sec-head{max-width:640px;margin-bottom:36px}
-h2{font-size:clamp(32px,4.6vw,52px);line-height:1.04;letter-spacing:-.03em;font-weight:700;margin:10px 0 14px;text-wrap:balance}
-.sec-head p{color:var(--ink-2);font-size:19px;margin:0;text-wrap:pretty}
-
-/* story timeline */
-.story{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.story article{border-radius:24px;padding:26px;min-width:0}
-.story .when{font-family:var(--mono);font-size:12px;color:var(--ink-2);letter-spacing:.04em}
-.story h3{font-size:22px;letter-spacing:-.02em;margin:8px 0 8px}
-.story p{margin:0;color:var(--ink-2);font-size:16px}
-.bibs{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
-.bibs span{font-family:var(--mono);font-size:12px;font-variant-numeric:tabular-nums;padding:4px 9px;border-radius:999px;color:var(--accent);border:1px solid var(--hair);background:var(--glass-strong)}
-
-/* translation table */
-.xlate{border-radius:28px;overflow:hidden}
-.xrow{display:grid;grid-template-columns:1fr 28px 1fr;gap:16px;align-items:baseline;padding:20px 28px;border-top:1px solid var(--hair)}
-.xrow:first-child{border-top:0}
-.xrow.head{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);padding-block:16px}
-.xrow .k{font-family:var(--serif);font-style:italic;font-size:24px;line-height:1.2}
-.xrow .k small{display:block;font-family:var(--sans);font-style:normal;font-size:14px;color:var(--ink-2);margin-top:4px}
-.xrow .arrow{color:var(--accent);font-size:18px;text-align:center}
-.xrow .d{font-weight:600;font-size:18px;letter-spacing:-.01em}
-.xrow .d small{display:block;font-weight:400;font-size:14px;color:var(--ink-2);margin-top:4px}
-.xrow > *{min-width:0}
-
-/* projects */
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.card{border-radius:28px;padding:24px;display:flex;flex-direction:column;gap:14px;min-width:0;transition:transform .3s cubic-bezier(.3,1.3,.5,1)}
-.card:hover{transform:translateY(-4px)}
-.card .top{display:flex;align-items:center;gap:14px}
-.icon{width:56px;height:56px;flex:none;border-radius:14px;display:grid;place-items:center;font-size:26px;font-weight:700;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 6px 16px -6px rgba(0,0,0,.35)}
-.card h3{margin:0;font-size:20px;letter-spacing:-.02em}
-.card .repo{font-family:var(--mono);font-size:12px;color:var(--ink-2)}
-.card p{margin:0;color:var(--ink-2);font-size:16px}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
-.tags span{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--glass-strong);border:1px solid var(--hair)}
-.card.soon{border-style:dashed}
-.ph{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.04em}
-
-/* recipe code */
-.recipe{display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:center}
-.recipe > *{min-width:0}
-pre{margin:0;border-radius:24px;padding:24px;overflow-x:auto;font-family:var(--mono);font-size:14px;line-height:1.65}
-.kw{color:#c2368f}.ty{color:var(--link)}.st{color:var(--accent)}.cm{color:var(--ink-2)}
-:root[data-theme="dark"] .kw{color:#ff7ab8}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .kw{color:#ff7ab8}}
-
-/* contact */
-.contact{border-radius:36px;padding:56px 40px;text-align:center}
-.contact h2{margin-inline:auto;max-width:16ch}
-.contact p{color:var(--ink-2);max-width:46ch;margin:0 auto 28px}
-.btns{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
-.btn{font-weight:600;font-size:16px;padding:13px 22px;border-radius:999px;border:1px solid var(--glass-edge);background:var(--glass-strong);color:var(--ink)}
-.btn.primary{background:var(--ink);color:var(--bg);border-color:transparent}
-.btn:hover{text-decoration:none;transform:translateY(-1px)}
-.addr{font-family:var(--mono);font-size:14px;color:var(--ink-2);margin-top:18px;user-select:all}
-
-.foot{padding-block:40px 56px;text-align:center;font-size:13px;color:var(--ink-2)}
-
-/* chef mode */
-.blooms i{transition:background-color 1.2s ease}
-body.chef .blooms i:nth-child(3){background:var(--tomato)}
-body.chef .blooms i:nth-child(4){background:var(--saffron)}
-[data-chef]{transition:opacity .3s ease}
-.fading [data-chef]{opacity:0}
-.navpill .seg{padding:3px;margin-left:4px}
-.navpill .seg button{font-size:12px;padding:6px 10px}
-.navpill .seg .thumb{top:3px;bottom:3px;left:3px}
-@media (max-width:560px){.navpill .l{display:none}}
-body.chef .xrow .k{order:3}
-body.chef .xrow .d{order:1}
-body.chef .xrow .arrow{order:2}
-.card .course{font-family:var(--mono);font-size:12px;color:var(--ink-2)}
-.recipe-card{border-radius:24px;padding:28px}
-.recipe-card h4{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
-.recipe-card ul,.recipe-card ol{margin:0 0 22px;padding-left:1.2em;display:grid;gap:6px}
-.recipe-card ol{margin-bottom:0}
-.recipe-card li::marker{color:var(--accent);font-family:var(--mono)}
-.recipe-card .yield{font-family:var(--mono);font-size:12px;color:var(--ink-2);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px dashed var(--hair);padding-bottom:12px;margin-bottom:18px}
-@media (max-width:820px){
-  .hero{grid-template-columns:1fr;padding-block:56px 40px;gap:36px}
-  .ticket{transform:none}
-  .story,.grid,.recipe{grid-template-columns:1fr}
-  section{padding-block:52px}
-  .xrow{grid-template-columns:1fr;gap:4px;padding:18px 20px}
-  .xrow .arrow{display:none}
-  .xrow.head{display:none}
-  .contact{padding:40px 22px}
-}
-
-html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-body{margin:0}
-img{max-width:100%}
 [hidden]{display:none!important}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{background:var(--page);color:var(--page-ink);font-family:var(--sf);-webkit-font-smoothing:antialiased;overflow:hidden}
+button{font:inherit;color:inherit}
+a{color:inherit}
+
+/* ---------- page around the device ---------- */
+.stage{height:100%;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:56px;max-width:1080px;margin:0 auto;padding-block:24px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+.intro{min-width:0;max-width:420px;justify-self:end}
+.intro .kicker{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--page-ink-2)}
+.intro h1{font-size:clamp(36px,4.4vw,56px);line-height:1.02;letter-spacing:-.035em;font-weight:700;margin:10px 0 16px;text-wrap:balance}
+.intro p{font-size:18px;line-height:1.5;color:var(--page-ink-2);margin:0 0 14px}
+.intro .keys{font-size:14px;color:var(--page-ink-2);display:grid;gap:6px;margin-top:22px}
+.intro kbd{font-family:var(--sf);font-size:12px;font-weight:600;border:1px solid currentColor;border-radius:6px;padding:1px 6px;opacity:.8}
+.holder{position:relative}
+
+/* ---------- device ---------- */
+.device{position:relative;width:421px;height:880px;border-radius:68px;padding:14px;
+  background:linear-gradient(145deg,#9a948c,#3b3935 30%,#6e6a64 55%,#2a2826 80%,#8d877f);
+  box-shadow:0 0 0 1.5px #1a1918 inset,0 50px 90px -40px rgba(0,0,0,.55),0 20px 40px -20px rgba(0,0,0,.35);transform-origin:top left}
+.device::before{content:"";position:absolute;inset:6px;border-radius:62px;background:#050505}
+.btn-side{position:absolute;width:4px;border-radius:2px;background:linear-gradient(90deg,#3b3935,#8d877f)}
+.btn-side.a{left:-3px;top:150px;height:30px}.btn-side.b{left:-3px;top:205px;height:58px}.btn-side.c{left:-3px;top:275px;height:58px}.btn-side.d{right:-3px;top:230px;height:92px}
+.phone{position:relative;width:393px;height:852px;border-radius:55px;overflow:hidden;isolation:isolate;background:#000;font-family:var(--sf);color:#fff;user-select:none;-webkit-user-select:none}
+.island{position:absolute;top:11px;left:50%;width:124px;height:36px;margin-left:-62px;border-radius:20px;background:#000;z-index:60;transition:width .45s cubic-bezier(.3,1.3,.5,1),margin .45s cubic-bezier(.3,1.3,.5,1)}
+
+/* status bar */
+.status{position:absolute;top:0;left:0;right:0;height:54px;padding:18px 32px 0 48px;display:flex;justify-content:space-between;align-items:flex-start;z-index:55;font-size:17px;font-weight:600;letter-spacing:-.02em;color:#fff;pointer-events:none;transition:color .3s}
+.phone.app-open:not(.ios-dark) .status{color:#000}
+.status .right{display:flex;gap:6px;align-items:center;padding-top:2px}
+.status svg{display:block;fill:currentColor}
+
+/* wallpaper */
+.wall{position:absolute;inset:0;z-index:0;overflow:hidden;background:#1d1310;transition:filter .5s}
+.wall i{position:absolute;border-radius:50%;filter:blur(46px);transition:background-color 1s}
+.wall i:nth-child(1){width:520px;height:520px;left:-180px;top:-140px;background:#ff9f2e}
+.wall i:nth-child(2){width:460px;height:460px;right:-200px;top:180px;background:#ff4f2e}
+.wall i:nth-child(3){width:420px;height:420px;left:-120px;bottom:-120px;background:#3a7bff}
+.wall i:nth-child(4){width:300px;height:300px;right:-60px;bottom:40px;background:#8b5cf6;opacity:.8}
+.phone.chef .wall i:nth-child(3){background:#2fb67a}
+.phone.chef .wall i:nth-child(4){background:#ffcf33}
+.phone.app-open .wall{filter:brightness(.6)}
+
+/* lock screen */
+.lock{position:absolute;inset:0;z-index:40;display:flex;flex-direction:column;align-items:center;padding:70px 14px 0;transition:transform .55s cubic-bezier(.3,.9,.3,1),opacity .4s;cursor:pointer}
+.lock.gone{transform:translateY(-100%);opacity:0;pointer-events:none}
+.lock .date{font-size:21px;font-weight:600;opacity:.9;margin-top:4px}
+.lock .time{font-size:112px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-top:-2px;font-variant-numeric:tabular-nums;background:linear-gradient(180deg,#fff,rgba(255,255,255,.75));-webkit-background-clip:text;background-clip:text;color:transparent}
+.notifs{margin-top:auto;width:100%;display:grid;gap:8px;margin-bottom:22px}
+.notif{display:grid;grid-template-columns:38px 1fr;gap:10px;align-items:start;padding:12px 14px;border-radius:24px;background:rgba(255,255,255,.22);-webkit-backdrop-filter:blur(30px) saturate(160%);backdrop-filter:blur(30px) saturate(160%);text-align:left;font-size:15px;line-height:1.3;animation:drop .6s cubic-bezier(.3,1.3,.5,1) both}
+.notif:nth-child(2){animation-delay:.25s}.notif:nth-child(3){animation-delay:.5s}
+@keyframes drop{from{transform:translateY(-14px);opacity:0}}
+.notif .ic{width:38px;height:38px;border-radius:9px;display:grid;place-items:center}
+.notif .ic svg{width:22px;height:22px}
+.notif b{display:flex;justify-content:space-between;font-weight:600}
+.notif b span{font-weight:400;opacity:.7;font-size:13px}
+.lock-bottom{display:flex;justify-content:space-between;width:100%;padding:0 34px;margin-bottom:22px}
+.lock-bottom span{width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.18);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);display:grid;place-items:center}
+.lock-bottom svg{width:22px;height:22px;fill:#fff}
+.swipe-hint{font-size:15px;font-weight:500;opacity:.85;margin-bottom:12px;animation:hint 2.4s ease-in-out infinite}
+@keyframes hint{50%{transform:translateY(-4px);opacity:.55}}
+
+/* home screen */
+.home{position:absolute;inset:0;z-index:10;padding:64px 22px 0;display:flex;flex-direction:column;transition:transform .45s cubic-bezier(.3,.9,.3,1),filter .45s,opacity .45s}
+.phone.locked .home{transform:scale(1.12);opacity:0}
+.phone.app-open .home{transform:scale(.92);filter:blur(4px)}
+.grid{display:grid;grid-template-columns:repeat(4,64px);justify-content:space-between;row-gap:26px;margin-top:6px}
+.icon{all:unset;cursor:pointer;display:grid;justify-items:center;gap:6px;width:64px;font-size:12px;font-weight:500;letter-spacing:-.01em;text-align:center;line-height:1.1;text-shadow:0 1px 3px rgba(0,0,0,.25);white-space:nowrap}
+.icon .sq{width:64px;height:64px;border-radius:15px;display:grid;place-items:center;position:relative;overflow:hidden;box-shadow:0 6px 14px -8px rgba(0,0,0,.55);transition:transform .18s}
+.icon .sq::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 0 0 .5px rgba(255,255,255,.25);background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,0) 45%)}
+.icon .sq svg{width:36px;height:36px}
+.icon:active .sq{transform:scale(.9)}
+.icon:focus-visible .sq{outline:3px solid #fff;outline-offset:3px}
+.badge{position:absolute;top:-6px;right:-6px;min-width:22px;height:22px;border-radius:11px;background:var(--ios-red);color:#fff;font-size:13px;font-weight:600;display:grid;place-items:center;padding:0 6px;z-index:2;text-shadow:none}
+.icon .wrap{position:relative}
+
+.widget{all:unset;box-sizing:border-box;text-align:left;border-radius:22px;padding:14px 16px;background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(28px) saturate(170%);backdrop-filter:blur(28px) saturate(170%);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 0 0 .5px rgba(255,255,255,.25);cursor:pointer;display:flex;flex-direction:column}
+.widget:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.w-med{grid-column:1/-1;height:158px;justify-content:space-between}
+.w-med .who{display:flex;gap:12px;align-items:center}
+.avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(145deg,#ffb340,#ff5a36);display:grid;place-items:center;font-weight:700;font-size:18px;color:#fff;flex:none}
+.w-med .name{font-size:17px;font-weight:700;letter-spacing:-.02em}
+.w-med .role{font-size:13px;opacity:.85}
+.w-med .line{font-size:14px;line-height:1.3;opacity:.95}
+.progress{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;opacity:.95}
+.progress{justify-content:space-between}
+.progress .pill{font-size:11px;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.3)}
+.w-small{grid-column:span 2;grid-row:span 2;height:158px;justify-content:space-between}
+.w-small .lbl{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;opacity:.9}
+.w-small .big{font-size:40px;font-weight:700;letter-spacing:-.03em;line-height:1}
+.w-small .yrs{display:flex;gap:2px}
+.w-small .yrs span{font-size:9.5px;font-weight:700;padding:3px 4px;border-radius:6px;background:rgba(255,255,255,.28)}
+.w-small .sub{font-size:12px;opacity:.85;line-height:1.25}
+.mini4{grid-column:span 2;grid-row:span 2;display:grid;grid-template-columns:repeat(2,64px);justify-content:space-between;row-gap:26px}
+
+.dots{display:flex;justify-content:center;gap:8px;margin:auto 0 12px}
+.dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45)}
+.dots i:first-child{background:#fff}
+.dock{margin:0 -10px 12px;padding:16px 18px;border-radius:36px;display:flex;justify-content:space-between;background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(30px) saturate(170%);backdrop-filter:blur(30px) saturate(170%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 0 0 .5px rgba(255,255,255,.25)}
+.dock .icon{font-size:0;gap:0}
+.home-ind{position:absolute;left:50%;bottom:8px;width:140px;height:5px;margin-left:-70px;border-radius:3px;background:#fff;z-index:58;transition:background .3s}
+.phone.app-open:not(.ios-dark) .home-ind{background:#000}
+.home-zone{all:unset;position:absolute;left:0;right:0;bottom:0;height:34px;z-index:59;cursor:pointer;display:none;touch-action:none}
+.phone.app-open .home-zone{display:block}
+.home-zone:focus-visible + .home-ind{outline:2px solid var(--ios-blue);outline-offset:3px}
+
+/* ---------- apps ---------- */
+.app{position:absolute;inset:0;z-index:30;background:var(--ios-bg);color:var(--ios-label);border-radius:55px;overflow:hidden;transform-origin:50% 50%;transition:transform .5s cubic-bezier(.25,1,.35,1),border-radius .5s,opacity .25s;display:flex;flex-direction:column;user-select:text;-webkit-user-select:text}
+.app[hidden]{display:none!important}
+.app.closed{opacity:0;border-radius:15px}
+.scroll{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:54px 0 40px;scrollbar-width:none}
+.scroll::-webkit-scrollbar{display:none}
+.navbar{padding:6px 16px 0;display:flex;justify-content:space-between;align-items:center;height:44px;font-size:17px;color:var(--ios-blue)}
+.navbar button{all:unset;cursor:pointer;display:flex;align-items:center;gap:2px}
+.navbar svg{width:12px;height:20px;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.large{font-size:34px;font-weight:700;letter-spacing:-.02em;padding:2px 16px 10px;margin:0}
+.section-h{font-size:13px;color:var(--ios-label-2);text-transform:uppercase;padding:18px 32px 7px;letter-spacing:-.01em}
+.section-f{font-size:13px;color:var(--ios-label-2);padding:7px 32px 0;line-height:1.35}
+.group{margin:0 16px;border-radius:12px;background:var(--ios-cell);overflow:hidden}
+.cell{display:flex;align-items:center;gap:12px;min-height:44px;padding:0 16px;font-size:17px;position:relative}
+.cell + .cell::before{content:"";position:absolute;top:0;right:0;left:16px;height:.5px;background:var(--ios-sep)}
+.cell.has-ic + .cell.has-ic::before{left:58px}
+.cell .ci{width:30px;height:30px;border-radius:7px;display:grid;place-items:center;flex:none}
+.cell .ci svg{width:19px;height:19px}
+.cell .txt{flex:1;min-width:0;padding:11px 0}
+.cell .val{color:var(--ios-label-2);text-align:right}
+.chev{width:8px;height:14px;stroke:var(--ios-label-2);opacity:.6;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;flex:none}
+a.cell{text-decoration:none;color:inherit}
+.cell.link{color:var(--ios-blue)}
+
+/* switch */
+.switch{all:unset;cursor:pointer;width:51px;height:31px;border-radius:16px;background:var(--ios-fill);position:relative;flex:none;transition:background .25s}
+.switch::after{content:"";position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 3px 8px rgba(0,0,0,.15),0 1px 1px rgba(0,0,0,.16);transition:transform .3s cubic-bezier(.3,1.4,.5,1)}
+.switch[aria-checked="true"]{background:var(--ios-green)}
+.switch[aria-checked="true"]::after{transform:translateX(20px)}
+.switch:focus-visible{outline:2px solid var(--ios-blue);outline-offset:2px}
+
+/* settings profile */
+.profile{display:flex;gap:14px;align-items:center;padding:12px 16px}
+.profile .avatar{width:60px;height:60px;font-size:22px}
+.profile b{font-size:22px;font-weight:600;letter-spacing:-.01em;display:block}
+.profile span{font-size:14px;color:var(--ios-label-2)}
+
+/* app store style project page */
+.store-top{display:grid;grid-template-columns:118px 1fr;gap:16px;padding:8px 16px 0}
+.store-top .sq{width:118px;height:118px;border-radius:26px;display:grid;place-items:center;box-shadow:0 0 0 .5px var(--ios-sep)}
+.store-top .sq svg{width:64px;height:64px}
+.store-top h2{font-size:22px;font-weight:700;letter-spacing:-.02em;margin:4px 0 2px;line-height:1.15}
+.store-top .subt{font-size:15px;color:var(--ios-label-2);line-height:1.3}
+.store-top .acts{display:flex;align-items:center;gap:12px;margin-top:12px}
+.get{display:inline-block;background:var(--ios-blue);color:#fff;font-weight:700;font-size:15px;padding:6px 20px;border-radius:999px;text-decoration:none}
+.state{font-size:11px;color:var(--ios-label-2);line-height:1.2}
+.info{display:grid;grid-template-columns:repeat(3,1fr);margin:20px 16px 0;padding:10px 0;border-top:.5px solid var(--ios-sep);border-bottom:.5px solid var(--ios-sep);text-align:center}
+.info div{padding:0 6px;min-width:0}
+.info div + div{border-left:.5px solid var(--ios-sep)}
+.info small{display:block;font-size:11px;font-weight:600;text-transform:uppercase;color:var(--ios-label-2);letter-spacing:.02em}
+.info b{display:block;font-size:19px;font-weight:700;color:var(--ios-label-2);margin:3px 0 1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.info span{font-size:11px;color:var(--ios-label-2)}
+.h2{font-size:22px;font-weight:700;letter-spacing:-.02em;padding:22px 16px 10px;margin:0}
+.shots{display:flex;gap:10px;overflow-x:auto;padding:0 16px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.shots::-webkit-scrollbar{display:none}
+.shot{flex:none;width:186px;aspect-ratio:9/19.5;border-radius:22px;scroll-snap-align:start;display:grid;place-items:center;text-align:center;font-size:13px;font-weight:600;color:var(--ios-label-2);background:var(--ios-fill);border:.5px solid var(--ios-sep);padding:16px}
+.prose{padding:0 16px;font-size:15px;line-height:1.45;margin:0}
+.whatsnew{display:flex;justify-content:space-between;padding:0 16px 6px;font-size:15px;color:var(--ios-label-2)}
+
+/* notes */
+.notes .navbar{color:var(--notes-yellow)}
+.notes .stamp{text-align:center;font-size:13px;color:var(--ios-label-2);padding:4px 0 10px}
+.note{padding:0 20px;font-size:17px;line-height:1.45}
+.note h2{font-size:28px;font-weight:700;letter-spacing:-.02em;margin:0 0 10px;line-height:1.15}
+.note h3{font-size:20px;font-weight:600;margin:20px 0 6px}
+.note ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.note li{display:grid;grid-template-columns:22px 1fr;gap:8px}
+.note li::before{content:"";width:20px;height:20px;border-radius:50%;background:var(--notes-yellow);margin-top:2px;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='10'/%3E%3C/svg%3E");}
+.note li b{display:block}
+.note li span{color:var(--ios-label-2);font-size:15px}
+.note p{margin:0 0 12px}
+
+/* recipe app */
+.code{margin:6px 16px 0;padding:16px;border-radius:14px;background:var(--ios-cell);font-family:var(--mono);font-size:12.5px;line-height:1.65;overflow-x:auto;white-space:pre}
+.kw{color:#ad3da4}.ty{color:#0b4f79}.st{color:#c41a16}.cm{color:#5d6c79}
+.phone.ios-dark .kw{color:#ff7ab2}.phone.ios-dark .ty{color:#5dd8ff}.phone.ios-dark .st{color:#ff8170}.phone.ios-dark .cm{color:#7f8c98}
+
+/* contact card */
+.card-top{display:grid;justify-items:center;gap:6px;padding:10px 16px 18px;text-align:center}
+.card-top .avatar{width:96px;height:96px;font-size:36px}
+.card-top b{font-size:28px;font-weight:600;letter-spacing:-.02em}
+.card-top span{font-size:15px;color:var(--ios-label-2)}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 16px}
+.quick a,.quick button{all:unset;cursor:pointer;display:grid;justify-items:center;gap:4px;padding:10px 0;border-radius:12px;background:var(--ios-cell);color:var(--ios-blue);font-size:12px;font-weight:500}
+.quick svg{width:22px;height:22px;fill:currentColor}
+
+/* mail */
+.mail .navbar{justify-content:space-between}
+.mail .send{all:unset;cursor:pointer;width:32px;height:32px;border-radius:50%;background:var(--ios-blue);display:grid;place-items:center}
+.mail .send svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2.6}
+.mail h1{font-size:28px;font-weight:700;padding:4px 16px 8px;margin:0}
+.mrow{display:flex;gap:8px;padding:11px 16px;border-bottom:.5px solid var(--ios-sep);font-size:16px;align-items:center}
+.mrow span{color:var(--ios-label-2)}
+.mrow code{font-family:var(--sf);user-select:all;-webkit-user-select:all}
+.mbody{padding:14px 16px;font-size:16px;line-height:1.5;color:var(--ios-label)}
+.copy{all:unset;cursor:pointer;margin-left:auto;font-size:14px;color:var(--ios-blue);font-weight:500}
+.toast{position:absolute;left:50%;top:60px;transform:translate(-50%,-20px);opacity:0;background:var(--ios-cell);color:var(--ios-label);font-size:14px;font-weight:600;padding:10px 16px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.2);transition:.3s;z-index:70;pointer-events:none}
+.toast.show{transform:translate(-50%,0);opacity:1}
+
+/* glyph colors on icons */
+.g-white{fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- responsive: on a real phone, the UI is the screen ---------- */
+@media (max-width:560px){
+  body{background:#000}
+  .stage{display:block;padding:0;height:100%;max-width:none}
+  .intro{display:none}
+  .holder{width:100%;height:100%}
+  .device{width:100%!important;height:100%!important;border-radius:0;padding:0;background:none;box-shadow:none;transform:none!important}
+  .device::before,.btn-side,.island{display:none}
+  .phone{width:100%;height:100%;border-radius:0}
+  .app{border-radius:0}
+  .status{display:none}
+  .lock{padding-top:max(28px,env(safe-area-inset-top,0px))}
+  .home{padding:max(24px,env(safe-area-inset-top,0px)) 22px 0}
+  .scroll{padding-top:max(12px,env(safe-area-inset-top,0px))}
+  .grid{grid-template-columns:repeat(4,minmax(0,64px))}
+}
+@media (max-width:360px){.grid{grid-template-columns:repeat(4,56px)}.icon,.icon .sq{width:56px}.icon .sq{height:56px}.mini4{grid-template-columns:repeat(2,56px)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -206,212 +263,277 @@ img{max-width:100%}
 </head>
 <body>
 
-<div class="blooms" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<div class="stage">
+  <div class="intro">
+    <div class="kicker">Arcadio “Archie” Vega</div>
+    <h1>Chef for 15 years. Now I build for iPhone.</h1>
+    <p>This whole portfolio is an iPhone. Unlock it, open the apps, and flip the Chef Mode switch in Settings.</p>
+    <p>I’m looking for my first iOS developer role.</p>
+    <div class="keys"><span>Click to unlock and open apps.</span><span>Swipe up or press <kbd>Esc</kbd> to go home.</span></div>
+  </div>
 
-<div class="wrap">
-  <nav>
-    <div class="navpill glass">
-      <span class="me" data-chef="Chef Archie">Archie Vega</span>
-      <a class="l" href="#story" data-chef="Amuse">Story</a>
-      <a class="l" href="#work" data-chef="Mains">Work</a>
-      <a class="l" href="#recipe" data-chef="Special">Recipe</a>
-      <a class="l" href="#contact" data-chef="Reserve">Contact</a>
-      <div class="seg glass" role="group" aria-label="Choose a voice">
-        <span class="thumb"></span>
-        <button id="nav-dev" aria-pressed="true" data-mode="dev">Dev</button>
-        <button id="nav-chef" aria-pressed="false" data-mode="chef">Chef</button>
+  <div class="holder" id="holder">
+    <div class="device" id="device">
+      <i class="btn-side a"></i><i class="btn-side b"></i><i class="btn-side c"></i><i class="btn-side d"></i>
+      <div class="phone locked" id="phone">
+        <div class="wall" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="island" id="island"></div>
+
+        <div class="status" aria-hidden="true">
+          <span>9:41</span>
+          <span class="right">
+            <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+            <svg width="16" height="12" viewBox="0 0 16 12"><path d="M8 2.3c2.3 0 4.4.9 6 2.4l1.1-1.2A10.2 10.2 0 0 0 8 .6 10.2 10.2 0 0 0 .9 3.5L2 4.7a8.5 8.5 0 0 1 6-2.4zm0 3.4c1.4 0 2.6.5 3.6 1.4l1.1-1.2A7 7 0 0 0 8 4a7 7 0 0 0-4.7 1.9l1.1 1.2c1-.9 2.2-1.4 3.6-1.4zm0 3.4c.5 0 1 .2 1.3.5L8 11.2 6.7 9.6c.3-.3.8-.5 1.3-.5z"/></svg>
+            <svg width="27" height="13" viewBox="0 0 27 13"><rect x=".5" y=".5" width="23" height="12" rx="3.8" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2.5"/><path d="M25 4.5v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2z" opacity=".45"/></svg>
+          </span>
+        </div>
+
+        <!-- LOCK SCREEN -->
+        <div class="lock" id="lock" role="button" tabindex="0" aria-label="Unlock">
+          <div class="date" id="date">Friday, October 17</div>
+          <div class="time">9:41</div>
+          <div class="notifs">
+            <div class="notif"><div class="ic" style="background:linear-gradient(145deg,#ffb340,#ff5a36)"><svg viewBox="0 0 24 24" class="g-white"><path d="M5 4h14l-7 8z"/><path d="M12 12v7M8 19h8"/></svg></div><div><b>Kitchen <span>now</span></b><span data-dev="Order up: 1 junior iOS developer. Extra attention to detail, hold the ego." data-chef="Order up: 1 chef, 15 years on the line. Still says “behind!” in the office."></span></div></div>
+            <div class="notif"><div class="ic" style="background:linear-gradient(145deg,#5ac8fa,#0a84ff)"><svg viewBox="0 0 24 24" class="g-white"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><div><b>Archie Vega <span>2m ago</span></b>Looking for my first iOS role. Unlock to see my work.</div></div>
+          </div>
+          <div class="swipe-hint">Swipe up or tap to open</div>
+          <div class="lock-bottom" aria-hidden="true">
+            <span><svg viewBox="0 0 24 24"><path d="M9 2h6l-1 6h3l-8 14 2-10H7z"/></svg></span>
+            <span><svg viewBox="0 0 24 24"><path d="M9 4l1.5-2h3L15 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm3 4a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/></svg></span>
+          </div>
+        </div>
+
+        <!-- HOME SCREEN -->
+        <div class="home" id="home">
+          <div class="grid">
+            <button class="widget w-med" data-open="contact" aria-label="Open Archie's contact card">
+              <div class="who"><div class="avatar">AV</div><div><div class="name">Archie Vega</div><div class="role" data-dev="Junior iOS Developer" data-chef="Chef · 15 years on the line"></div></div></div>
+              <div class="line" data-dev="Chef for 15 years. Now building iPhone apps in Swift and SwiftUI." data-chef="Traded the pass for Xcode. Same energy, fewer burns."></div>
+              <div class="progress"><span>Ace Bartender for iPhone</span><span class="pill">In progress</span></div>
+            </button>
+
+            <button class="icon" data-open="ace"><span class="sq" style="background:linear-gradient(160deg,#ffb340,#ff5a36)"><svg viewBox="0 0 24 24" class="g-white"><path d="M5 4h14l-7 8z"/><path d="M12 12v7M8 19h8"/><path d="M15 6.5l3-3"/></svg></span>Ace Bartender</button>
+            <button class="icon" data-open="cash"><span class="sq" style="background:linear-gradient(160deg,#4cd97b,#16a34a)"><svg viewBox="0 0 24 24" class="g-white"><ellipse cx="12" cy="6.5" rx="7" ry="2.8"/><path d="M5 6.5v5c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8v-5M5 11.5v5c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8v-5"/></svg></span>Cashout</button>
+            <button class="icon" data-open="geo"><span class="sq" style="background:linear-gradient(160deg,#5ac8fa,#1d4ed8)"><svg viewBox="0 0 24 24" class="g-white"><circle cx="12" cy="12" r="8.5"/><ellipse cx="12" cy="12" rx="3.6" ry="8.5"/><path d="M3.5 12h17M5 7.5h14M5 16.5h14"/></svg></span>GeoWho</button>
+            <button class="icon" data-open="ghost"><span class="sq" style="background:linear-gradient(160deg,#a78bfa,#4c1d95)"><svg viewBox="0 0 24 24" class="g-white"><path d="M6 20V10a6 6 0 0 1 12 0v10l-2-1.5-2 1.5-2-1.5-2 1.5-2-1.5z"/><circle cx="10" cy="10.5" r=".8" fill="#fff"/><circle cx="14" cy="10.5" r=".8" fill="#fff"/></svg></span>Miracle Ghost</button>
+
+            <button class="widget w-small" data-open="notes" aria-label="Open the note about the team's Bib Gourmand">
+              <div class="lbl" data-dev="Bib Gourmand" data-chef="On the wall"></div>
+              <div class="big">5×</div>
+              <div class="yrs"><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span></div>
+              <div class="sub" data-dev="Michelin Bib Gourmand, won with my restaurant team" data-chef="Shared with the best brigade I know"></div>
+            </button>
+            <div class="mini4">
+              <button class="icon" data-open="notes"><span class="wrap"><span class="sq" style="background:linear-gradient(180deg,#fff 0 30%,#fffdf5 30%)"><svg viewBox="0 0 24 24"><rect x="0" y="0" width="24" height="7" fill="#f7c948"/><path d="M5 12h14M5 16h14M5 20h9" stroke="#c7c7cc" stroke-width="1.4"/></svg></span></span>Notes</button>
+              <button class="icon" data-open="recipe"><span class="sq" style="background:linear-gradient(160deg,#2b2b2e,#0d0d0f)"><svg viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 5l-3 14"/></svg></span>Recipe</button>
+              <button class="icon" data-open="contact"><span class="sq" style="background:linear-gradient(160deg,#d1d1d6,#8e8e93)"><svg viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="9" r="4"/><path d="M4 21c.8-4 4-6 8-6s7.2 2 8 6z"/></svg></span>Contacts</button>
+              <button class="icon" data-open="settings"><span class="wrap"><span class="sq" style="background:linear-gradient(160deg,#a1a1a6,#636366)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M21.5 12h-3M5.5 12h-3M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1M18.7 18.7l-2.1-2.1M7.4 7.4L5.3 5.3"/><circle cx="12" cy="12" r="6.5"/></svg></span><span class="badge">1</span></span>Settings</button>
+            </div>
+          </div>
+
+          <div class="dots" aria-hidden="true"><i></i></div>
+          <div class="dock">
+            <button class="icon" data-open="mail" aria-label="Mail"><span class="sq" style="background:linear-gradient(160deg,#5ac8fa,#0a7aff)"><svg viewBox="0 0 24 24" class="g-white"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span>Mail</button>
+            <button class="icon" data-open="contact" aria-label="Phone"><span class="sq" style="background:linear-gradient(160deg,#5ee27a,#1fb14a)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M6.6 3.5l2.6-.4 1.6 4-2 1.5a11 11 0 0 0 6.6 6.6l1.5-2 4 1.6-.4 2.6c-.2 1-1 1.6-2 1.6A16 16 0 0 1 5 5.5c0-1 .6-1.8 1.6-2z"/></svg></span>Phone</button>
+            <a class="icon" href="https://github.com/cholohotsauce" target="_blank" rel="noopener" aria-label="GitHub (opens in a new tab)"><span class="sq" style="background:linear-gradient(160deg,#3a3a3c,#111)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 7.5L4 12l4.5 4.5M15.5 7.5L20 12l-4.5 4.5"/></svg></span>GitHub</a>
+            <a class="icon" href="https://www.linkedin.com/in/arcadio-vega" target="_blank" rel="noopener" aria-label="LinkedIn (opens in a new tab)"><span class="sq" style="background:linear-gradient(160deg,#3b8ff6,#0a5fc2)"><svg viewBox="0 0 24 24"><text x="12" y="17" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-weight="700" font-size="14" fill="#fff">in</text></svg></span>LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- APP CONTAINER -->
+        <div class="app closed" id="app" hidden role="dialog" aria-modal="true" aria-labelledby="app-title"></div>
+
+        <button class="home-zone" id="homezone" aria-label="Go to the home screen"></button>
+        <div class="home-ind" aria-hidden="true"></div>
+        <div class="toast" id="toast" role="status"></div>
       </div>
     </div>
-  </nav>
-
-  <header class="hero">
-    <div>
-      <div class="eyebrow" data-chef="Back of house · 15 years and counting">Chef for 15 years · iOS developer next</div>
-      <h1 data-chef="Yes, Chef. &lt;em&gt;Same energy.&lt;/em&gt;">I traded the pass for <em>Xcode.</em></h1>
-      <p class="lede" data-chef="Mise en place is architecture with knives. Tasting every sauce is unit testing. Sunday brunch is a production incident. I have been training for this for fifteen years.">Fifteen years in professional kitchens, five straight years of Michelin Bib Gourmand with my team, and more 16-hour Saturdays than I can count. Now I build apps with the same care I used to put on a plate.</p>
-      <div class="seg glass" role="group" aria-label="Choose a voice">
-        <span class="thumb"></span>
-        <button id="mode-dev" aria-pressed="true" data-mode="dev">Developer</button>
-        <button id="mode-chef" aria-pressed="false" data-mode="chef">Chef</button>
-      </div>
-      <div class="hint" data-chef="Same person. More garlic. The whole page changes, so scroll down.">Same person. Two vocabularies. Flip it and scroll.</div>
-    </div>
-
-    <div class="ticket glass" aria-label="Kitchen order ticket">
-      <header><span>Order 015</span><span data-chef="Table: Hiring manager">Table: You</span><span>00:49</span></header>
-      <ul id="ticket"></ul>
-      <footer><span data-chef="Allergies: microwaves">Allergies: sloppy UI</span><span class="fire">FIRE</span></footer>
-    </div>
-  </header>
-
-  <section id="story">
-    <div class="sec-head">
-      <div class="eyebrow" data-chef="Amuse-bouche">The story</div>
-      <h2 data-chef="From the line to &lt;em&gt;the main branch.&lt;/em&gt;">Same obsession. <em>New kitchen.</em></h2>
-      <p data-chef="Every night was a deploy. Every plate was a pull request, and Chef either approved it or sent it back.">Most career changers start from zero. I start from fifteen years of shipping under pressure, every night, to the toughest critics there are: hungry people.</p>
-    </div>
-    <div class="story">
-      <article class="glass">
-        <div class="when" data-chef="15 years · The line">15 years · The kitchen</div>
-        <h3 data-chef="Burns on both arms">Fifteen years on the line</h3>
-        <p data-chef="And a Michelin Bib Gourmand on the wall every year since the guide came to Canada in 2022. Shared with the best brigade I know.">I ran stations, then kitchens. Our team earned a Michelin Bib Gourmand in 2022, the guide's first year in Canada, and has kept it every year since.</p>
-        <div class="bibs" aria-label="Michelin Bib Gourmand, won as a team"><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span>2026</span></div>
-      </article>
-      <article class="glass">
-        <div class="when" data-chef="The turn · Staff meal">The turn · First app</div>
-        <h3 data-chef="I started cooking with Swift">I fell for the craft</h3>
-        <p data-chef="The only Swift I will ever need. Sorry, Taylor.">Apple products always felt like good cooking to me: simple on the surface, obsessive underneath. So I started building with Swift.</p>
-      </article>
-      <article class="glass">
-        <div class="when" data-chef="Now · Prep list">Now · Shipping</div>
-        <h3 data-chef="Looking for a new kitchen">Building toward iOS</h3>
-        <p data-chef="Ideally one with a MacBook instead of a salamander, and fewer people yelling “Hands!”">I build small, real apps, many of them for the restaurant people I know best. Next stop is a team that ships to the App Store.</p>
-      </article>
-    </div>
-  </section>
-
-  <section id="kitchen">
-    <div class="sec-head">
-      <div class="eyebrow" data-chef="Translation guide">Transferable skills</div>
-      <h2 data-chef="Dev team, &lt;em&gt;meet the kitchen.&lt;/em&gt;">The kitchen was <em>a bootcamp.</em></h2>
-      <p data-chef="Your engineers already work like a brigade. They just use fewer knives.">Recruiters ask what a chef brings to a dev team. Here is the translation.</p>
-    </div>
-    <div class="xlate glass">
-      <div class="xrow head"><span data-chef="On your team">In the kitchen</span><span></span><span data-chef="In the kitchen">On your team</span></div>
-      <div class="xrow"><div class="k">Mise en place<small>Everything in its place before service</small></div><div class="arrow">→</div><div class="d">Planning and architecture<small>Set up the project before the rush</small></div></div>
-      <div class="xrow"><div class="k">Taste every sauce<small>Never send what you have not checked</small></div><div class="arrow">→</div><div class="d">Testing<small>Verify before it reaches the user</small></div></div>
-      <div class="xrow"><div class="k">Saturday, 9 p.m., full house<small>The rush, every week</small></div><div class="arrow">→</div><div class="d">Shipping under pressure<small>Launch day does not scare me</small></div></div>
-      <div class="xrow"><div class="k">“Yes, Chef.”<small>Take the note, fix the plate</small></div><div class="arrow">→</div><div class="d">Code review<small>Feedback is how the dish gets better</small></div></div>
-      <div class="xrow"><div class="k">The brigade<small>Twelve people, one plate</small></div><div class="arrow">→</div><div class="d">Teamwork<small>Clear calls, no egos at the pass</small></div></div>
-    </div>
-  </section>
-
-  <section id="work">
-    <div class="sec-head">
-      <div class="eyebrow" data-chef="The menu">Selected work</div>
-      <h2 data-chef="Tonight’s &lt;em&gt;tasting menu.&lt;/em&gt;">Off the <em>pass.</em></h2>
-      <p data-chef="Four courses, all made from scratch. No reservation needed.">Things I have built. Each one solves a problem I actually had.</p>
-    </div>
-    <div class="grid">
-      <article class="card glass">
-        <div class="top"><div class="icon" style="background:linear-gradient(145deg,#ffb340,#ff5a36)">A</div><div><h3>Ace Bartender</h3><div class="repo" data-chef="Course 1 · Aperitif">cholohotsauce/ace-bartender-app</div></div></div>
-        <p data-chef="Pairs well with a Friday night bar rush. Specs, builds and garnishes, served shaken.">A pocket guide for bartenders: specs, builds and garnishes, fast enough to use mid-shift.</p>
-        <div class="tags"><span>App</span><span>Hospitality</span></div>
-      </article>
-      <article class="card glass">
-        <div class="top"><div class="icon" style="background:linear-gradient(145deg,#3fbf7f,#138a5a)">$</div><div><h3>Cashout Calculator</h3><div class="repo" data-chef="Course 2 · Palate cleanser">cholohotsauce/cashout-calculator</div></div></div>
-        <p data-chef="Splits the tips fairly at the end of the night, so nobody fights over the last dollar.">End-of-night tip-out math for restaurant crews. No more napkin arithmetic at 1 a.m.</p>
-        <div class="tags"><span>Web</span><span>Restaurant tools</span></div>
-      </article>
-      <article class="card glass">
-        <div class="top"><div class="icon" style="background:linear-gradient(145deg,#4aa3ff,#2a5bd7)">G</div><div><h3>GeoWho</h3><div class="repo" data-chef="Course 3 · Something for the brain">cholohotsauce/geowho</div></div></div>
-        <p data-chef="Guess the place, then go again. Like seconds, but for geography.">A geography guessing game. Short rounds, quick feedback, one more try.</p>
-        <div class="tags"><span>Game</span><span>Web</span></div>
-      </article>
-      <article class="card glass">
-        <div class="top"><div class="icon" style="background:linear-gradient(145deg,#8a7dff,#3c2f9e)">✦</div><div><h3>The Miracle Ghost</h3><div class="repo" data-chef="Course 4 · Private catering">cholohotsauce/the-miracle-ghost-web</div></div></div>
-        <p data-chef="A catering job for AES, a Miami graffiti artist. Full website and Shopify store, made to order.">Client work for AES, a Miami graffiti artist. I designed and built the artist's website and set up the Shopify store.</p>
-        <div class="tags"><span>Client</span><span>Web</span><span>Shopify</span></div>
-      </article>
-    </div>
-  </section>
-
-  <section id="recipe">
-    <div class="recipe">
-      <div class="sec-head" style="margin:0">
-        <div class="eyebrow" data-chef="Chef’s special">Now in development</div>
-        <h2>The house <em>special.</em></h2>
-        <p data-chef="A recipe for one iOS developer. Serves one hiring team. Best served soon.">A SwiftUI app built native for iPhone, so you can see real iOS work, not just the intent. It is on the fire now.</p>
-      </div>
-      <div class="only-dev">
-<pre class="glass"><code><span class="kw">struct</span> <span class="ty">Archie</span>: <span class="ty">Developer</span> {
-  <span class="kw">let</span> yearsInKitchens = <span class="st">15</span>
-  <span class="kw">let</span> bibGourmands = [<span class="st">2022</span>, <span class="st">2023</span>, <span class="st">2024</span>, <span class="st">2025</span>, <span class="st">2026</span>] <span class="cm">// as a team</span>
-  <span class="kw">let</span> stack = [<span class="ty">Swift</span>, <span class="ty">SwiftUI</span>, <span class="ty">Xcode</span>]
-  <span class="kw">var</span> jokesPerStandup = <span class="ty">Int</span>.max
-
-  <span class="kw">func</span> cook() -&gt; <span class="ty">App</span> {
-    miseEnPlace()          <span class="cm">// plan it</span>
-    <span class="kw">return</span> build()
-      .taste(every: .step) <span class="cm">// test it</span>
-      .plate(like: .apple) <span class="cm">// polish it</span>
-      .ship()              <span class="cm">// Service!</span>
-  }
-}</code></pre>
-      </div>
-      <div class="only-chef recipe-card glass" hidden>
-        <div class="yield"><span>Yield: 1 iOS developer</span><span>Prep: 15 years</span><span>Serves: your team</span></div>
-        <h4>Ingredients</h4>
-        <ul>
-          <li>15 years of kitchen discipline</li>
-          <li>5 Bib Gourmands, shared with the brigade</li>
-          <li>1 MacBook, well seasoned</li>
-          <li>Swift and SwiftUI, to taste</li>
-          <li>Jokes, a generous handful</li>
-        </ul>
-        <h4>Method</h4>
-        <ol>
-          <li>Mise en place: plan the app before you write a line.</li>
-          <li>Build it. Taste at every step.</li>
-          <li>Plate it the way Apple would.</li>
-          <li>Call “Service!” and ship.</li>
-        </ol>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="contact glass">
-      <div class="eyebrow" data-chef="Now hiring? Chef is available.">Reservations open</div>
-      <h2 data-chef="Table for one &lt;em&gt;developer?&lt;/em&gt;">Let’s cook up <em>something good.</em></h2>
-      <p data-chef="Walk-ins welcome. Book me for an interview and I will bring the same energy I brought to every full Saturday service.">I am looking for my first iOS role. If your team wants someone who cares about the details and keeps the room laughing, I would love to talk.</p>
-      <div class="btns">
-        <a class="btn primary" href="https://github.com/cholohotsauce">GitHub</a>
-        <a class="btn" href="https://www.linkedin.com/in/arcadio-vega">LinkedIn</a>
-      </div>
-      <div class="addr">arcadiovega1@gmail.com</div>
-    </div>
-  </section>
-
-  <div class="foot" data-chef="Chef Archie · Kitchen closes when the build passes.">Arcadio “Archie” Vega · Designed with the care of a tasting menu. Built with fewer burns.</div>
+  </div>
 </div>
 
 <script>
 (function(){
-  var tickets={
-    dev:[['1×','Junior iOS Developer'],['','extra attention to detail'],['','calm under pressure'],['','hold the ego'],['2×','SwiftUI apps, on the fire'],['1×','Bad joke, on the house']],
-    chef:[['1×','Chef, 15 years on the line'],['','5× Bib Gourmand, with the brigade'],['','knife skills, unused in Swift'],['','still says “behind!” in the office'],['1×','Career change, plated'],['1×','Bad joke, on the house']]
+  var phone=document.getElementById('phone'),lock=document.getElementById('lock'),app=document.getElementById('app'),island=document.getElementById('island');
+  var state={chef:false,dark:false,open:null,origin:null};
+
+  /* initial appearance follows the viewer's theme */
+  try{
+    var root=document.documentElement,t=root.getAttribute('data-theme');
+    state.dark=t?t==='dark':!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches);
+  }catch(e){}
+  phone.classList.toggle('ios-dark',state.dark);
+
+  var d=new Date();
+  document.getElementById('date').textContent=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+
+  function voice(){
+    document.querySelectorAll('[data-dev]').forEach(function(e){e.textContent=state.chef?e.dataset.chef:e.dataset.dev});
+    phone.classList.toggle('chef',state.chef);
+  }
+  voice();
+
+  /* unlock */
+  var startY=null;
+  function unlock(){lock.classList.add('gone');phone.classList.remove('locked');island.style.width='';}
+  lock.addEventListener('click',unlock);
+  lock.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();unlock()}});
+  lock.addEventListener('pointerdown',function(e){startY=e.clientY});
+  lock.addEventListener('pointerup',function(e){if(startY!==null&&startY-e.clientY>30)unlock();startY=null});
+
+  /* icons */
+  var chevL='<svg viewBox="0 0 12 20"><path d="M10 2L2 10l8 8"/></svg>';
+  var chevR='<svg class="chev" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6"/></svg>';
+  function glyph(k){return document.querySelector('[data-open="'+k+'"] .sq').outerHTML}
+
+  var projects={
+    ace:{name:'Ace Bartender',sub:'Specs, builds and garnishes, fast',repo:'https://github.com/cholohotsauce/ace-bartender-app',
+      info:[['Platform','Web','iPhone next'],['Made for','Bartenders','mid-shift'],['Next','SwiftUI','in progress']],
+      news:'Native SwiftUI version in progress. This page gets real screenshots when it ships.',
+      dev:'A pocket guide for bartenders. Specs, builds and garnishes, fast enough to use in the middle of a Friday rush. It started as a web app. Now I am rebuilding it natively in SwiftUI.',
+      chef:'Pairs well with a Friday night bar rush. Specs, builds and garnishes, served shaken. The web version is on the menu now. The iPhone version is still on the stove.'},
+    cash:{name:'Cashout Calculator',sub:'Tip-out math for restaurant crews',repo:'https://github.com/cholohotsauce/cashout-calculator',
+      info:[['Platform','Web','browser'],['Made for','Servers','and cooks'],['Saves','1 a.m.','napkin math']],
+      news:'Web app. A native version is on the list after Ace Bartender.',
+      dev:'End-of-night tip-out math for restaurant crews. Enter the sales and the hours, and everyone sees a fair split. No more napkin arithmetic at 1 a.m.',
+      chef:'Splits the tips fairly at the end of the night, so nobody fights over the last dollar.'},
+    geo:{name:'GeoWho',sub:'A geography guessing game',repo:'https://github.com/cholohotsauce/geowho',
+      info:[['Platform','Web','browser'],['Genre','Game','geography'],['Rounds','Short','one more try']],
+      news:'Improvements in progress.',
+      dev:'A geography guessing game. Short rounds, quick feedback, and always one more try.',
+      chef:'Guess the place, then go again. Like seconds, but for geography.'},
+    ghost:{name:'The Miracle Ghost',sub:'Website and Shopify store for AES',repo:'https://github.com/cholohotsauce/the-miracle-ghost-web',
+      info:[['Type','Client','paid work'],['Client','AES','Miami artist'],['Built','Site','+ Shopify']],
+      news:'Shipped for a real client.',
+      dev:'Paid client work for AES, a Miami graffiti artist. I designed and built the artist’s website and set up the Shopify store.',
+      chef:'A private catering job for AES, a Miami graffiti artist. Full website and Shopify store, made to order.'}
   };
-  var ticket=document.getElementById('ticket');
-  var swaps=[].slice.call(document.querySelectorAll('[data-chef]'));
-  swaps.forEach(function(e){e.dataset.dev=e.innerHTML});
-  var segs=[].slice.call(document.querySelectorAll('.seg'));
-  var mode='dev';
-  function place(seg){
-    var b=seg.querySelector('button[data-mode="'+mode+'"]'),t=seg.querySelector('.thumb'),pad=parseFloat(getComputedStyle(seg).paddingLeft)||0;
-    t.style.width=b.offsetWidth+'px';t.style.transform='translateX('+(b.offsetLeft-pad)+'px)';
+
+  function projectView(k){
+    var p=projects[k];
+    var shots='';for(var i=1;i<=3;i++)shots+='<div class="shot">Screenshot '+i+'<br>coming with the iPhone version</div>';
+    return '<div class="scroll"><div class="navbar"><button data-home>'+chevL+'<span>Home</span></button><span></span></div>'+
+      '<div class="store-top">'+glyph(k)+'<div><h2 id="app-title">'+p.name+'</h2><div class="subt">'+p.sub+'</div>'+
+      '<div class="acts"><a class="get" href="'+p.repo+'" target="_blank" rel="noopener">CODE</a><span class="state">Opens<br>GitHub</span></div></div></div>'+
+      '<div class="info">'+p.info.map(function(r){return '<div><small>'+r[0]+'</small><b>'+r[1]+'</b><span>'+r[2]+'</span></div>'}).join('')+'</div>'+
+      '<h3 class="h2">What’s New</h3><div class="whatsnew"><span>Status</span><span>2026</span></div><p class="prose">'+p.news+'</p>'+
+      '<h3 class="h2">Preview</h3><div class="shots">'+shots+'</div>'+
+      '<h3 class="h2">About</h3><p class="prose" data-dev="'+p.dev+'" data-chef="'+p.chef+'"></p></div>';
   }
-  function render(){
-    swaps.forEach(function(e){e.innerHTML=mode==='chef'?e.dataset.chef:e.dataset.dev});
-    ticket.innerHTML=tickets[mode].map(function(r){return r[0]?'<li><b>'+r[0]+'</b><span>'+r[1]+'</span></li>':'<li class="mod">'+r[1]+'</li>'}).join('');
-    document.querySelectorAll('.only-dev').forEach(function(e){e.hidden=mode!=='dev'});
-    document.querySelectorAll('.only-chef').forEach(function(e){e.hidden=mode!=='chef'});
-    document.body.classList.toggle('chef',mode==='chef');
+
+  var views={
+    notes:function(){return '<div class="scroll notes"><div class="navbar"><button data-home>'+chevL+'<span>Notes</span></button><span></span></div>'+
+      '<div class="stamp">October 17, 2026 at 9:41 AM</div><div class="note">'+
+      '<h2 id="app-title" data-dev="Why a chef makes a good iOS developer" data-chef="Dev team, meet the kitchen"></h2>'+
+      '<p data-dev="I spent 15 years in professional kitchens. My restaurant team has held a Michelin Bib Gourmand every year since 2022, the guide’s first year in Canada." data-chef="Fifteen years on the line, and a Bib Gourmand on the wall every year since the guide came to Canada in 2022. Shared with the best brigade I know."></p>'+
+      '<h3>The translation</h3><ul>'+
+      '<li><div><b>Mise en place → Planning</b><span>Set up the project before the rush.</span></div></li>'+
+      '<li><div><b>Taste every sauce → Testing</b><span>Never ship what I haven’t checked.</span></div></li>'+
+      '<li><div><b>Saturday, 9 p.m. → Shipping under pressure</b><span>Launch day doesn’t scare me.</span></div></li>'+
+      '<li><div><b>“Yes, Chef.” → Code review</b><span>Take the note, fix the plate.</span></div></li>'+
+      '<li><div><b>The brigade → Teamwork</b><span>Clear calls, no egos at the pass.</span></div></li>'+
+      '</ul></div></div>'},
+
+    recipe:function(){return '<div class="scroll"><div class="navbar"><button data-home>'+chevL+'<span>Home</span></button><span></span></div>'+
+      '<h1 class="large" id="app-title">Recipe</h1><div class="section-h">Archie.swift</div>'+
+      '<div class="code"><span class="kw">struct</span> <span class="ty">Archie</span>: <span class="ty">Developer</span> {\n  <span class="kw">let</span> yearsInKitchens = <span class="st">15</span>\n  <span class="kw">let</span> bibGourmands = [<span class="st">2022</span>, <span class="st">2023</span>, <span class="st">2024</span>,\n                      <span class="st">2025</span>, <span class="st">2026</span>] <span class="cm">// as a team</span>\n  <span class="kw">let</span> stack = [<span class="ty">Swift</span>, <span class="ty">SwiftUI</span>, <span class="ty">Xcode</span>]\n  <span class="kw">var</span> jokesPerStandup = <span class="ty">Int</span>.max\n\n  <span class="kw">func</span> cook() -&gt; <span class="ty">App</span> {\n    miseEnPlace()          <span class="cm">// plan it</span>\n    <span class="kw">return</span> build()\n      .taste(every: .step) <span class="cm">// test it</span>\n      .plate(like: .apple) <span class="cm">// polish it</span>\n      .ship()              <span class="cm">// Service!</span>\n  }\n}</div>'+
+      '<div class="section-h">Yield</div><div class="group"><div class="cell"><span class="txt">Serves</span><span class="val">Your team</span></div><div class="cell"><span class="txt">Prep time</span><span class="val">15 years</span></div><div class="cell"><span class="txt">Jokes</span><span class="val">A generous handful</span></div></div></div>'},
+
+    contact:function(){return '<div class="scroll"><div class="navbar"><button data-home>'+chevL+'<span>Contacts</span></button><span></span></div>'+
+      '<div class="card-top"><div class="avatar">AV</div><b id="app-title">Archie Vega</b><span data-dev="Junior iOS Developer · Former Chef" data-chef="Chef · 15 years · now in Xcode"></span></div>'+
+      '<div class="quick"><button data-open="mail"><svg viewBox="0 0 24 24"><path d="M3 6h18v12H3z" opacity=".2"/><path d="M3 6l9 7 9-7v1.5l-9 7-9-7z"/></svg>mail</button>'+
+      '<a href="https://github.com/cholohotsauce" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M8.5 7.5L4 12l4.5 4.5 1.4-1.4L6.8 12l3.1-3.1zM15.5 7.5l-1.4 1.4 3.1 3.1-3.1 3.1 1.4 1.4L20 12z"/></svg>github</a>'+
+      '<a href="https://www.linkedin.com/in/arcadio-vega" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M5 9h3v10H5zM6.5 4a1.7 1.7 0 1 1 0 3.4 1.7 1.7 0 0 1 0-3.4zM10 9h3v1.4c.5-.9 1.6-1.6 3-1.6 3 0 3.5 2 3.5 4.5V19h-3v-5c0-1.2 0-2.6-1.6-2.6S13 12.7 13 14v5h-3z"/></svg>linkedin</a></div>'+
+      '<div class="section-h"></div><div class="group">'+
+      '<div class="cell"><div class="txt"><div style="font-size:14px;color:var(--ios-label-2)">email</div><div style="color:var(--ios-blue);user-select:all;-webkit-user-select:all">arcadiovega1@gmail.com</div></div></div>'+
+      '<a class="cell" href="https://github.com/cholohotsauce" target="_blank" rel="noopener"><div class="txt"><div style="font-size:14px;color:var(--ios-label-2)">github</div><div style="color:var(--ios-blue)">cholohotsauce</div></div></a>'+
+      '<a class="cell" href="https://www.linkedin.com/in/arcadio-vega" target="_blank" rel="noopener"><div class="txt"><div style="font-size:14px;color:var(--ios-label-2)">linkedin</div><div style="color:var(--ios-blue)">arcadio-vega</div></div></a></div>'+
+      '<div class="section-h">Notes</div><div class="group"><div class="cell"><div class="txt" data-dev="Looking for my first iOS role. Cares about the details and keeps the room laughing." data-chef="Walk-ins welcome. Will bring full-Saturday-service energy to your standup."></div></div></div></div>'},
+
+    mail:function(){return '<div class="scroll mail"><div class="navbar"><button data-home><span>Cancel</span></button>'+
+      '<a class="send" href="mailto:arcadiovega1@gmail.com?subject=Let%E2%80%99s%20talk%20about%20an%20iOS%20role" aria-label="Send"><svg viewBox="0 0 16 16"><path d="M8 13V3M3.5 7.5L8 3l4.5 4.5"/></svg></a></div>'+
+      '<h1 id="app-title">New Message</h1>'+
+      '<div class="mrow"><span>To:</span><code id="addr">arcadiovega1@gmail.com</code><button class="copy" id="copy">Copy</button></div>'+
+      '<div class="mrow"><span>Subject:</span>Let’s talk about an iOS role</div>'+
+      '<div class="mbody" data-dev="Hi Archie, we saw your portfolio and would love to chat about a junior iOS role on our team." data-chef="Chef, a table for one developer just opened up. Are you free for an interview?"></div>'+
+      '<div class="section-f">Tap the send arrow to open your mail app, or copy the address.</div></div>'},
+
+    settings:function(){return '<div class="scroll"><h1 class="large" id="app-title" style="padding-top:44px">Settings</h1>'+
+      '<div class="group" style="margin-top:6px"><button class="profile" data-open="contact" style="all:unset;cursor:pointer;display:flex;gap:14px;align-items:center;padding:12px 16px;width:100%;box-sizing:border-box"><div class="avatar">AV</div><div style="flex:1"><b style="font-size:22px;font-weight:600;display:block">Archie Vega</b><span style="font-size:14px;color:var(--ios-label-2)">iOS Developer, Former Chef</span></div>'+chevR+'</button></div>'+
+      '<div class="section-h"></div><div class="group">'+
+      '<div class="cell has-ic"><span class="ci" style="background:var(--ios-orange)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M7 3c-1.5 2.5-1.5 5 0 7.5V21h2V10.5c1.5-2.5 1.5-5 0-7.5zM15 3v18h2v-7h2V7c0-2.2-1.8-4-4-4z"/></svg></span><span class="txt" id="lbl-chef">Chef Mode</span><button class="switch" role="switch" id="sw-chef" aria-labelledby="lbl-chef" aria-checked="'+state.chef+'"></button></div>'+
+      '<div class="cell has-ic"><span class="ci" style="background:#5856d6"><svg viewBox="0 0 24 24" fill="#fff"><path d="M14 3a8 8 0 1 0 7 11.5A7 7 0 0 1 14 3z"/></svg></span><span class="txt" id="lbl-dark">Dark Mode</span><button class="switch" role="switch" id="sw-dark" aria-labelledby="lbl-dark" aria-checked="'+state.dark+'"></button></div></div>'+
+      '<div class="section-f">Chef Mode rewrites this whole iPhone in kitchen language. Same person, more garlic.</div>'+
+      '<div class="section-h">About</div><div class="group">'+
+      '<div class="cell"><span class="txt">Name</span><span class="val">Archie Vega</span></div>'+
+      '<div class="cell"><span class="txt">Model</span><span class="val">Chef → iOS Developer</span></div>'+
+      '<div class="cell"><span class="txt">Years in Kitchens</span><span class="val">15</span></div>'+
+      '<div class="cell"><span class="txt">Bib Gourmand (team)</span><span class="val">2022–2026</span></div>'+
+      '<div class="cell"><span class="txt">Stack</span><span class="val">Swift, SwiftUI, Xcode</span></div>'+
+      '<div class="cell"><span class="txt">Available for Hire</span><span class="val" style="color:var(--ios-green);font-weight:600">Yes</span></div></div>'+
+      '<div class="section-h"></div><div class="group">'+
+      '<button class="cell has-ic" data-open="mail" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:12px;min-height:44px;padding:0 16px;font-size:17px;width:100%;box-sizing:border-box"><span class="ci" style="background:var(--ios-blue)"><svg viewBox="0 0 24 24" class="g-white"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span><span class="txt">Contact Archie</span>'+chevR+'</button></div></div>'}
+  };
+
+  function render(k){return projects[k]?projectView(k):views[k]()}
+
+  function open(k,fromEl){
+    if(phone.classList.contains('locked'))unlock();
+    var wasOpen=!app.hidden;
+    app.innerHTML=render(k);state.open=k;voice();wire();
+    if(wasOpen){app.querySelector('.scroll').scrollTop=0;return}
+    var pr=phone.getBoundingClientRect(),r=(fromEl&&fromEl.getBoundingClientRect())||{left:pr.left+pr.width/2,top:pr.top+pr.height/2,width:0,height:0};
+    var sx=(r.left+r.width/2-pr.left)/pr.width*100,sy=(r.top+r.height/2-pr.top)/pr.height*100;
+    app.style.transformOrigin=sx+'% '+sy+'%';
+    app.style.transition='none';app.style.transform='scale(.16)';app.hidden=false;app.classList.add('closed');
+    app.offsetWidth;app.style.transition='';
+    requestAnimationFrame(function(){app.classList.remove('closed');app.style.transform='scale(1)';phone.classList.add('app-open')});
+    var first=app.querySelector('[data-home],button,a');if(first)first.focus({preventScroll:true});
+    state.origin=fromEl;
   }
-  function set(m){
-    if(m===mode)return;mode=m;
-    segs.forEach(function(s){s.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.mode===mode)});place(s)});
-    var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(reduce){render();return}
-    document.body.classList.add('fading');
-    setTimeout(function(){render();document.body.classList.remove('fading')},300);
+  function goHome(){
+    if(app.hidden)return;
+    phone.classList.remove('app-open');app.classList.add('closed');app.style.transform='scale(.16)';
+    setTimeout(function(){app.hidden=true;app.innerHTML='';if(state.origin&&state.origin.focus)state.origin.focus({preventScroll:true})},420);
+    state.open=null;
   }
-  segs.forEach(function(s){s.addEventListener('click',function(ev){var b=ev.target.closest('button');if(b)set(b.dataset.mode)})});
-  render();
-  function placeAll(){segs.forEach(place)}
-  placeAll();
-  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(placeAll);
-  window.addEventListener('resize',placeAll);
+  function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},1600)}
+
+  function wire(){
+    app.querySelectorAll('[data-home]').forEach(function(b){b.addEventListener('click',goHome)});
+    app.querySelectorAll('[data-open]').forEach(function(b){b.addEventListener('click',function(){open(b.dataset.open)})});
+    var sc=document.getElementById('sw-chef');
+    if(sc)sc.addEventListener('click',function(){state.chef=!state.chef;sc.setAttribute('aria-checked',state.chef);voice()});
+    var sd=document.getElementById('sw-dark');
+    if(sd)sd.addEventListener('click',function(){state.dark=!state.dark;sd.setAttribute('aria-checked',state.dark);phone.classList.toggle('ios-dark',state.dark)});
+    var cp=document.getElementById('copy');
+    if(cp)cp.addEventListener('click',function(){
+      var addr='arcadiovega1@gmail.com';
+      function fallback(){var s=window.getSelection(),r=document.createRange();r.selectNodeContents(document.getElementById('addr'));s.removeAllRanges();s.addRange(r);toast('Address selected')}
+      try{navigator.clipboard.writeText(addr).then(function(){toast('Copied')},fallback)}catch(e){fallback()}
+    });
+  }
+
+  document.querySelectorAll('#home [data-open]').forEach(function(b){b.addEventListener('click',function(){open(b.dataset.open,b.querySelector('.sq')||b)})});
+
+  /* home indicator: click or swipe up */
+  var hz=document.getElementById('homezone'),hy=null;
+  hz.addEventListener('click',goHome);
+  hz.addEventListener('pointerdown',function(e){hy=e.clientY});
+  hz.addEventListener('pointerup',function(e){if(hy!==null&&hy-e.clientY>20)goHome();hy=null});
+  /* swipe up from the bottom edge anywhere in an app (touch) */
+  var ty=null;
+  phone.addEventListener('touchstart',function(e){var t=e.touches[0],pr=phone.getBoundingClientRect();ty=(pr.bottom-t.clientY<40)?t.clientY:null},{passive:true});
+  phone.addEventListener('touchend',function(e){if(ty!==null&&ty-e.changedTouches[0].clientY>40){if(phone.classList.contains('locked'))unlock();else goHome()}ty=null},{passive:true});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')goHome()});
+
+  /* fit the device to the window on desktop */
+  var device=document.getElementById('device'),holder=document.getElementById('holder');
+  function fit(){
+    if(window.innerWidth<=560){holder.style.width='';holder.style.height='';device.style.transform='';return}
+    var s=Math.min(1,(window.innerHeight-48)/880);
+    device.style.transform='scale('+s+')';holder.style.width=(421*s)+'px';holder.style.height=(880*s)+'px';
+  }
+  fit();window.addEventListener('resize',fit);
 })();
 </script>
 
