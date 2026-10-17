@@ -190,7 +190,9 @@ a.cell{text-decoration:none;color:inherit}
 .h2{font-size:22px;font-weight:700;letter-spacing:-.02em;padding:22px 16px 10px;margin:0}
 .shots{display:flex;gap:10px;overflow-x:auto;padding:0 16px;scroll-snap-type:x mandatory;scrollbar-width:none}
 .shots::-webkit-scrollbar{display:none}
-.shot{flex:none;width:186px;aspect-ratio:9/19.5;border-radius:22px;scroll-snap-align:start;display:grid;place-items:center;text-align:center;font-size:13px;font-weight:600;color:var(--ios-label-2);background:var(--ios-fill);border:.5px solid var(--ios-sep);padding:16px}
+.shot{flex:none;width:186px;max-width:100%;height:auto;aspect-ratio:600/1300;object-fit:cover;object-position:top;border-radius:22px;scroll-snap-align:start;background:var(--ios-fill);border:.5px solid var(--ios-sep);display:block}
+a.state{color:var(--ios-blue);text-decoration:none}
+.get.off{background:var(--ios-fill);color:var(--ios-label-2)}
 .prose{padding:0 16px;font-size:15px;line-height:1.45;margin:0}
 .whatsnew{display:flex;justify-content:space-between;padding:0 16px 6px;font-size:15px;color:var(--ios-label-2)}
 
@@ -314,7 +316,7 @@ a.cell{text-decoration:none;color:inherit}
 
             <button class="icon" data-open="ace"><span class="sq" style="background:linear-gradient(160deg,#ffb340,#ff5a36)"><svg viewBox="0 0 24 24" class="g-white"><path d="M5 4h14l-7 8z"/><path d="M12 12v7M8 19h8"/><path d="M15 6.5l3-3"/></svg></span>Ace Bartender</button>
             <button class="icon" data-open="cash"><span class="sq" style="background:linear-gradient(160deg,#4cd97b,#16a34a)"><svg viewBox="0 0 24 24" class="g-white"><ellipse cx="12" cy="6.5" rx="7" ry="2.8"/><path d="M5 6.5v5c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8v-5M5 11.5v5c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8v-5"/></svg></span>Cashout</button>
-            <button class="icon" data-open="geo"><span class="sq" style="background:linear-gradient(160deg,#5ac8fa,#1d4ed8)"><svg viewBox="0 0 24 24" class="g-white"><circle cx="12" cy="12" r="8.5"/><ellipse cx="12" cy="12" rx="3.6" ry="8.5"/><path d="M3.5 12h17M5 7.5h14M5 16.5h14"/></svg></span>GeoWho</button>
+            <button class="icon" data-open="wolf"><span class="sq" style="background:linear-gradient(160deg,#2c3654,#121829)"><svg viewBox="0 0 24 24" fill="none" stroke="#f5c04d" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M4.5 3.5l4 5h7l4-5v9.5c0 4-3.4 6.8-7.5 8-4.1-1.2-7.5-4-7.5-8z"/><path d="M9 12.5l1.5.8M15 12.5l-1.5.8M10.5 17l1.5 1 1.5-1"/></svg></span>WhereWolf</button>
             <button class="icon" data-open="ghost"><span class="sq" style="background:linear-gradient(160deg,#a78bfa,#4c1d95)"><svg viewBox="0 0 24 24" class="g-white"><path d="M6 20V10a6 6 0 0 1 12 0v10l-2-1.5-2 1.5-2-1.5-2 1.5-2-1.5z"/><circle cx="10" cy="10.5" r=".8" fill="#fff"/><circle cx="14" cy="10.5" r=".8" fill="#fff"/></svg></span>Miracle Ghost</button>
 
             <button class="widget w-small" data-open="notes" aria-label="Open the note about the team's Bib Gourmand">
@@ -387,21 +389,25 @@ a.cell{text-decoration:none;color:inherit}
 
   var projects={
     ace:{name:'Ace Bartender',sub:'Specs, builds and garnishes, fast',repo:'https://github.com/cholohotsauce/ace-bartender-app',
+      shots:[['ace-1','All Drinks list grouped A to Z with spirit filters'],['ace-2','Aviation spec with ingredients and method'],['ace-3','Search results for mezcal']],
       info:[['Platform','Web','iPhone next'],['Made for','Bartenders','mid-shift'],['Next','SwiftUI','in progress']],
-      news:'Native SwiftUI version in progress. This page gets real screenshots when it ships.',
+      news:'The web version below is what bartenders use today. A native SwiftUI version is in progress.',
       dev:'A pocket guide for bartenders. Specs, builds and garnishes, fast enough to use in the middle of a Friday rush. It started as a web app. Now I am rebuilding it natively in SwiftUI.',
       chef:'Pairs well with a Friday night bar rush. Specs, builds and garnishes, served shaken. The web version is on the menu now. The iPhone version is still on the stove.'},
-    cash:{name:'Cashout Calculator',sub:'Tip-out math for restaurant crews',repo:'https://github.com/cholohotsauce/cashout-calculator',
+    cash:{name:'Cashout Calculator',sub:'Tip-out math for restaurant crews',repo:'https://github.com/cholohotsauce/cashout-calculator',live:'https://cholohotsauce.github.io/cashout-calculator/',
+      shots:[['cashout-1','Tip entry and front-of-house staff selection'],['cashout-2','Cash-out results with the staff breakdown']],
       info:[['Platform','Web','browser'],['Made for','Servers','and cooks'],['Saves','1 a.m.','napkin math']],
       news:'Web app. A native version is on the list after Ace Bartender.',
       dev:'End-of-night tip-out math for restaurant crews. Enter the sales and the hours, and everyone sees a fair split. No more napkin arithmetic at 1 a.m.',
       chef:'Splits the tips fairly at the end of the night, so nobody fights over the last dollar.'},
-    geo:{name:'GeoWho',sub:'A geography guessing game',repo:'https://github.com/cholohotsauce/geowho',
-      info:[['Platform','Web','browser'],['Genre','Game','geography'],['Rounds','Short','one more try']],
-      news:'Improvements in progress.',
-      dev:'A geography guessing game. Short rounds, quick feedback, and always one more try.',
-      chef:'Guess the place, then go again. Like seconds, but for geography.'},
+    wolf:{name:'WhereWolf',sub:'A Guess Who?-style deduction game',repo:'',
+      info:[['Platform','Web','installable app'],['Packs','5','266 cards'],['Modes','4','Daily, Duel and more']],
+      news:'Rebuilt from my old GeoWho game: a new engine, five content packs, Daily, Learn and Duel modes, and offline play once it is installed on your phone.',
+      dev:'A deduction game in the style of Guess Who? The wolf hides a secret card, and you narrow the board with yes/no questions until you can name it. Cards come from content packs (world capitals, countries, provinces and states, cuisines and flags), so a new topic is new data, not new code. Built with React, TypeScript, Vite, Tailwind CSS and Zustand, tested with Vitest.',
+      chef:'Like guessing the mystery ingredient in a blind tasting, but with capitals. Ask, rule out, then name it before the wolf does.',
+      shots:[['wherewolf-1','WhereWolf home screen with the Daily World Capitals card and five packs'],['wherewolf-2','A World Capitals game after one question, with 31 cards left on the map'],['wherewolf-3','The Ask the wolf sheet with yes/no questions']]},
     ghost:{name:'The Miracle Ghost',sub:'Website and Shopify store for AES',repo:'https://github.com/cholohotsauce/the-miracle-ghost-web',
+      shots:[['ghost-1','The 3D ghost on the home page'],['ghost-2','The contact and inquiries page']],
       info:[['Type','Client','paid work'],['Client','AES','Miami artist'],['Built','Site','+ Shopify']],
       news:'Shipped for a real client.',
       dev:'Paid client work for AES, a Miami graffiti artist. I designed and built the artist’s website and set up the Shopify store.',
@@ -410,10 +416,11 @@ a.cell{text-decoration:none;color:inherit}
 
   function projectView(k){
     var p=projects[k];
-    var shots='';for(var i=1;i<=3;i++)shots+='<div class="shot">Screenshot '+i+'<br>coming with the iPhone version</div>';
+    var shots=(p.shots||[]).map(function(x){return '<img class="shot" src="shots/'+x[0]+'.webp" alt="'+x[1]+'" width="600" height="1300" loading="lazy" decoding="async">'}).join('');
+    var act=!p.live&&!p.repo?'<span class="get off">PRIVATE</span><span class="state">Source code<br>is private</span>':p.live?'<a class="get" href="'+p.live+'" target="_blank" rel="noopener">OPEN</a><a class="state" href="'+p.repo+'" target="_blank" rel="noopener">View<br>code</a>':'<a class="get" href="'+p.repo+'" target="_blank" rel="noopener">CODE</a><span class="state">Opens<br>GitHub</span>';
     return '<div class="scroll"><div class="navbar"><button data-home>'+chevL+'<span>Home</span></button><span></span></div>'+
       '<div class="store-top">'+glyph(k)+'<div><h2 id="app-title">'+p.name+'</h2><div class="subt">'+p.sub+'</div>'+
-      '<div class="acts"><a class="get" href="'+p.repo+'" target="_blank" rel="noopener">CODE</a><span class="state">Opens<br>GitHub</span></div></div></div>'+
+      '<div class="acts">'+act+'</div></div></div>'+
       '<div class="info">'+p.info.map(function(r){return '<div><small>'+r[0]+'</small><b>'+r[1]+'</b><span>'+r[2]+'</span></div>'}).join('')+'</div>'+
       '<h3 class="h2">What’s New</h3><div class="whatsnew"><span>Status</span><span>2026</span></div><p class="prose">'+p.news+'</p>'+
       '<h3 class="h2">Preview</h3><div class="shots">'+shots+'</div>'+
