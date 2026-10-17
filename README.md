@@ -11,3 +11,4 @@ Live at [arcadiovega.com](https://arcadiovega.com).
 - Project pages, Notes, Recipe, Contacts, Mail and Settings render from the `projects` and `views` objects in the script at the bottom of `index.html`.
 - The Chef Mode switch in Settings rewrites the copy. Each element keeps its two versions in `data-dev` and `data-chef` attributes.
 - Ace Bartender and Cashout Calculator are web apps today. Do not label them iOS until the native versions ship.
+- Project screenshots live in `shots/` as 600px-wide WebP files and are listed in each project's `shots` array. WhereWolf replaced GeoWho in October 2026; its repo is private, so its page shows no code link.
