@@ -52,7 +52,8 @@ a{color:inherit}
 .device::before{content:"";position:absolute;inset:6px;border-radius:62px;background:#050505}
 .btn-side{position:absolute;width:4px;border-radius:2px;background:linear-gradient(90deg,#3b3935,#8d877f)}
 .btn-side.a{left:-3px;top:150px;height:30px}.btn-side.b{left:-3px;top:205px;height:58px}.btn-side.c{left:-3px;top:275px;height:58px}.btn-side.d{right:-3px;top:230px;height:92px}
-.phone{position:relative;width:393px;height:852px;border-radius:55px;overflow:hidden;isolation:isolate;background:#000;font-family:var(--sf);color:#fff;user-select:none;-webkit-user-select:none}
+/* clip-path, not only overflow:hidden, so Safari clips composited children (blur, backdrop-filter, transforms) to the rounded screen */
+.phone{position:relative;width:393px;height:852px;border-radius:55px;overflow:hidden;isolation:isolate;-webkit-clip-path:inset(0 round 55px);clip-path:inset(0 round 55px);background:#000;font-family:var(--sf);color:#fff;user-select:none;-webkit-user-select:none}
 .island{position:absolute;top:11px;left:50%;width:124px;height:36px;margin-left:-62px;border-radius:20px;background:#000;z-index:60;transition:width .45s cubic-bezier(.3,1.3,.5,1),margin .45s cubic-bezier(.3,1.3,.5,1)}
 
 /* status bar */
@@ -247,7 +248,7 @@ a.state{color:var(--ios-blue);text-decoration:none}
   .holder{width:100%;height:100%}
   .device{width:100%!important;height:100%!important;border-radius:0;padding:0;background:none;box-shadow:none;transform:none!important}
   .device::before,.btn-side,.island{display:none}
-  .phone{width:100%;height:100%;border-radius:0}
+  .phone{width:100%;height:100%;border-radius:0;-webkit-clip-path:none;clip-path:none}
   .app{border-radius:0}
   .status{display:none}
   .lock{padding-top:max(28px,env(safe-area-inset-top,0px))}
