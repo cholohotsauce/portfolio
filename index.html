@@ -384,6 +384,65 @@ body.torch .holder::before{opacity:1}
 .hit.sel,.hit:focus-visible{background:rgba(255,255,255,.14)}
 .spot-none{text-align:center;opacity:.65;font-size:15px;margin-top:40px}
 
+/* ---------- home pages: swipe sideways between them ---------- */
+.pages{display:flex;flex:0 1 auto;min-height:0;margin:0 -27px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.pages::-webkit-scrollbar{display:none}
+.pages.grabbing{scroll-snap-type:none;cursor:grabbing}
+.page{flex:0 0 100%;box-sizing:border-box;padding:0 27px 10px;scroll-snap-align:start;scroll-snap-stop:always;overflow-y:auto;scrollbar-width:none;overscroll-behavior-y:contain}
+.page::-webkit-scrollbar,.pages::-webkit-scrollbar{display:none}
+.page .grid{margin-top:6px}
+.search-pill .pdots{display:none;gap:7px;padding:3px 2px}
+.search-pill .pdots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45);transition:background .2s}
+.search-pill .pdots i.on{background:#fff}
+.search-pill.paging .pdots{display:flex}
+.search-pill.paging svg,.search-pill.paging .lbl-s{display:none}
+.w-hire{grid-column:1/-1;height:140px;justify-content:space-between}
+.w-hire .top{display:flex;justify-content:space-between;align-items:flex-start}
+.w-hire .k{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;opacity:.9;display:flex;align-items:center;gap:6px}
+.w-hire .k i{width:8px;height:8px;border-radius:50%;background:#30d158;box-shadow:0 0 0 3px rgba(48,209,88,.3)}
+.w-hire .t{font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-top:4px}
+.w-hire .acts{display:flex;gap:8px}
+.w-hire .acts span{flex:1;text-align:center;font-size:13px;font-weight:600;padding:8px 0;border-radius:12px;background:rgba(255,255,255,.28)}
+.w-gh{grid-column:1/-1;justify-content:flex-start;gap:12px;text-decoration:none;color:#fff}
+.w-gh .hd{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700}
+.w-gh .hd svg{width:20px;height:20px;border-radius:5px}
+.w-gh .hd span{margin-left:auto;font-weight:500;opacity:.75;font-size:12px}
+.w-gh ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.w-gh li{display:flex;justify-content:space-between;gap:10px;font-size:14px}
+.w-gh li b{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.w-gh li span{opacity:.75;white-space:nowrap;font-size:13px}
+.w-cal{grid-column:span 2;height:158px;background:rgba(255,255,255,.9);color:#1c1c1e;justify-content:space-between}
+.w-cal .dow{font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#ff3b30}
+.w-cal .dn{font-size:40px;font-weight:300;letter-spacing:-.03em;line-height:1}
+.w-cal .ev{border-left:3px solid #ff9500;padding-left:7px;font-size:12px;line-height:1.25}
+.w-cal .ev b{display:block;font-weight:600}
+.w-cal .ev span{color:#8e8e93}
+.phone.ios-dark .w-cal{background:rgba(28,28,30,.9);color:#fff}
+.w-stack{grid-column:span 2;height:158px;justify-content:space-between}
+.w-stack .lbl{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;opacity:.9}
+.w-stack ul{list-style:none;margin:0;padding:0;display:grid;gap:5px;font-size:14px;font-weight:600}
+.w-stack li{display:flex;align-items:center;gap:7px}
+.w-stack li i{width:8px;height:8px;border-radius:50%}
+
+/* ---------- long-press Quick Actions ---------- */
+.icon{-webkit-touch-callout:none}
+.qm{position:absolute;inset:0;z-index:53;background:rgba(0,0,0,.18);-webkit-backdrop-filter:blur(20px) saturate(150%);backdrop-filter:blur(20px) saturate(150%);opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s}
+.qm.open{opacity:1;visibility:visible;transition:opacity .25s}
+.qm .lift{position:absolute;width:60px;height:60px;transform:scale(1);transition:transform .35s cubic-bezier(.3,1.5,.5,1)}
+.qm.open .lift{transform:scale(1.08)}
+.qm .lift .sq{display:block;width:100%;height:100%;border-radius:22.5%;overflow:hidden;-webkit-mask:var(--squircle) center/100% 100% no-repeat;mask:var(--squircle) center/100% 100% no-repeat;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.qm .lift svg{width:100%;height:100%;display:block}
+.qm .menu{position:absolute;width:250px;border-radius:14px;overflow:hidden;background:rgba(245,245,247,.86);-webkit-backdrop-filter:blur(30px) saturate(180%);backdrop-filter:blur(30px) saturate(180%);color:#000;box-shadow:0 20px 50px rgba(0,0,0,.3);transform:scale(.6);opacity:0;transition:transform .35s cubic-bezier(.3,1.3,.5,1),opacity .2s}
+.qm.open .menu{transform:none;opacity:1}
+.phone.ios-dark .qm .menu{background:rgba(44,44,46,.86);color:#fff}
+.qm .menu button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:space-between;width:100%;min-height:44px;padding:0 16px;font-size:17px;position:relative}
+.qm .menu button + button::before{content:"";position:absolute;top:0;left:0;right:0;height:.5px;background:rgba(60,60,67,.3)}
+.qm .menu button.sep{border-top:8px solid rgba(60,60,67,.12)}
+.qm .menu button.sep::before{display:none}
+.qm .menu button:active,.qm .menu button:focus-visible{background:rgba(120,120,128,.2)}
+.qm .menu button.red{color:#ff3b30}
+.qm .menu svg{width:20px;height:20px;fill:currentColor;flex:none}
+
 /* ---------- responsive: on a real phone, the UI is the screen ---------- */
 @media (max-width:560px){
   body{background:#000}
@@ -392,6 +451,9 @@ body.torch .holder::before{opacity:1}
   .holder{width:100%;height:100%}
   .device{width:100%!important;height:100%!important;border-radius:0;padding:0;background:none;box-shadow:none;transform:none!important}
   .device::before,.btn-side,.island{display:none}
+  .phone.di-on:not(.locked):not(.app-open):not(.cc-open):not(.spot-open) .island{display:block;top:max(6px,env(safe-area-inset-top,0px));transform:scale(.84);transform-origin:50% 0}
+  .island.expanded{width:calc((100vw - 16px)/.84);margin-left:calc((100vw - 16px)/-1.68)}
+  .phone.di-on .home{padding-top:calc(max(24px,env(safe-area-inset-top,0px)) + 22px)}
   .phone{width:100%;height:100%;border-radius:0}
   .app{border-radius:0}
   .status{display:none}
@@ -500,6 +562,8 @@ body.torch .holder::before{opacity:1}
 
         <!-- HOME SCREEN -->
         <div class="home" id="home">
+          <div class="pages" id="pages">
+          <div class="page" aria-label="Home page 1">
           <div class="grid">
             <button class="widget w-med" data-open="contact" aria-label="Open Archie's contact card">
               <div class="who"><div class="avatar">AV</div><div><div class="name">Archie Vega</div><div class="role" data-dev="Junior iOS Developer" data-chef="Chef · 15 years on the line"></div></div></div>
@@ -525,8 +589,30 @@ body.torch .holder::before{opacity:1}
               <button class="icon" data-open="settings"><span class="wrap"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-settings"/></svg></span><span class="badge">1</span></span><span class="nm">Settings</span></button>
             </div>
           </div>
+          </div>
+          <div class="page" aria-label="Home page 2">
+          <div class="grid">
+            <button class="widget w-hire" data-open="mail" aria-label="Email Archie about a role">
+              <div class="top"><div><div class="k"><i></i><span data-dev="Open to work" data-chef="Taking reservations"></span></div><div class="t" data-dev="Hiring a junior iOS developer?" data-chef="Need a new cook on the line?"></div></div><div class="avatar" style="width:40px;height:40px;font-size:15px">AV</div></div>
+              <div class="acts"><span>Email</span><span>LinkedIn</span><span>GitHub</span></div>
+            </button>
+            <button class="widget w-cal" data-open="mail" aria-label="Calendar: available for interviews">
+              <div><div class="dow" id="cal-dow">Tuesday</div><div class="dn" id="cal-dn">20</div></div>
+              <div class="ev"><b data-dev="Available for interviews" data-chef="Open for interviews"></b><span>All day</span></div>
+            </button>
+            <button class="widget w-stack" data-open="recipe" aria-label="Archie's stack">
+              <div class="lbl" data-dev="Stack" data-chef="Knife roll"></div>
+              <ul><li><i style="background:#ff9f0a"></i>Swift</li><li><i style="background:#0a84ff"></i>SwiftUI</li><li><i style="background:#5ac8fa"></i>Xcode</li><li><i style="background:#5e5ce6"></i>React + TS</li></ul>
+            </button>
+            <a class="widget w-gh" id="w-gh" href="https://github.com/cholohotsauce" target="_blank" rel="noopener" aria-label="Recent GitHub activity (opens in a new tab)">
+              <div class="hd"><svg viewBox="0 0 100 100"><use href="#i-github"/></svg>Recently pushed<span>cholohotsauce</span></div>
+              <ul id="gh-list"><li><b>ace-bartender-app</b><span>GitHub</span></li><li><b>cashout-calculator</b><span>GitHub</span></li><li><b>the-miracle-ghost-web</b><span>GitHub</span></li></ul>
+            </a>
+          </div>
+          </div>
+          </div>
 
-          <button class="search-pill" id="search-pill" aria-label="Search"><svg viewBox="0 0 16 16"><circle cx="6.8" cy="6.8" r="4.8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.4 10.4L14 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Search</button>
+          <button class="search-pill" id="search-pill" aria-label="Search"><svg viewBox="0 0 16 16"><circle cx="6.8" cy="6.8" r="4.8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.4 10.4L14 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="lbl-s">Search</span><span class="pdots" aria-hidden="true"><i class="on"></i><i></i></span></button>
           <div class="dock">
             <button class="icon" data-open="mail" aria-label="Mail"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-mail"/></svg></span>Mail</button>
             <button class="icon" data-open="contact" aria-label="Phone"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-phone"/></svg></span>Phone</button>
@@ -568,6 +654,7 @@ body.torch .holder::before{opacity:1}
           <div class="spot-bar"><label class="spot-field"><svg viewBox="0 0 16 16"><circle cx="6.8" cy="6.8" r="4.8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.4 10.4L14 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input id="spot-q" type="search" placeholder="Search" autocomplete="off" spellcheck="false" aria-controls="spot-body"></label><button class="spot-cancel" id="spot-cancel">Cancel</button></div>
           <div class="spot-body" id="spot-body" aria-live="polite"></div>
         </div>
+        <div class="qm" id="qm" aria-hidden="true"><div class="lift" id="qm-lift"></div><div class="menu" id="qm-menu" role="menu"></div></div>
         <div class="dim" id="dim" aria-hidden="true"></div>
         <button class="home-zone" id="homezone" aria-label="Go to the home screen"></button>
         <div class="home-ind" aria-hidden="true"></div>
@@ -623,7 +710,7 @@ body.torch .holder::before{opacity:1}
     lock.classList.remove('dragging');phone.classList.remove('dragging');
     lock.style.transform='';lock.style.opacity='';home.style.transform='';home.style.opacity='';
     lock.querySelector('.subject').style.transform='';
-    lock.classList.add('gone');phone.classList.remove('locked');
+    lock.classList.add('gone');phone.classList.remove('locked');haptic();
     if(!unlocked){unlocked=true;setTimeout(liveActivity,1400)}
   }
   function unlock(){
@@ -693,16 +780,16 @@ body.torch .holder::before{opacity:1}
 
   /* shared state, so Settings, Control Center and the lock screen always agree */
   function setTorch(on){
-    state.torch=on;torch.setAttribute('aria-pressed',on);document.body.classList.toggle('torch',on);
+    state.torch=on;haptic();torch.setAttribute('aria-pressed',on);document.body.classList.toggle('torch',on);
     var c=document.getElementById('cc-torch');if(c)c.setAttribute('aria-pressed',on);
   }
   function setChef(on){
-    state.chef=on;voice();
+    state.chef=on;voice();haptic();
     var sc=document.getElementById('sw-chef');if(sc)sc.setAttribute('aria-checked',on);
     var c=document.getElementById('cc-chef');c.setAttribute('aria-pressed',on);document.getElementById('cc-chef-state').textContent=on?'On':'Off';
   }
   function setDark(on){
-    state.dark=on;phone.classList.toggle('ios-dark',on);
+    state.dark=on;haptic();phone.classList.toggle('ios-dark',on);
     var sd=document.getElementById('sw-dark');if(sd)sd.setAttribute('aria-checked',on);
     document.getElementById('cc-dark').setAttribute('aria-pressed',on);
   }
@@ -743,7 +830,7 @@ body.torch .holder::before{opacity:1}
   cc.addEventListener('pointerdown',function(e){ccUp=e.clientY});
   cc.addEventListener('pointerup',function(e){if(ccUp!==null&&(ccUp-e.clientY)/scale()>60)closeCC();ccUp=null});
 
-  function tg(id,fn){var b=document.getElementById(id);b.addEventListener('click',function(){var on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on);fn&&fn(on)})}
+  function tg(id,fn){var b=document.getElementById(id);b.addEventListener('click',function(){haptic();var on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on);fn&&fn(on)})}
   tg('cc-air',function(on){phone.classList.toggle('airplane',on);['cc-cell','cc-wifi','cc-bt'].forEach(function(id){document.getElementById(id).setAttribute('aria-pressed',!on)});toast(on?'Airplane Mode on. Still reachable by email.':'Airplane Mode off')});
   tg('cc-cell');tg('cc-wifi');tg('cc-bt');
   document.getElementById('cc-torch').addEventListener('click',function(){setTorch(!state.torch)});
@@ -772,8 +859,8 @@ body.torch .holder::before{opacity:1}
 
   /* ---------- Dynamic Island live activity ---------- */
   var diTimer=null;
-  function liveActivity(){if(window.innerWidth<=560)return;island.classList.add('compact');phone.classList.add('di-on');island.tabIndex=0}
-  function expandIsland(){island.classList.remove('compact');island.classList.add('expanded');clearTimeout(diTimer);diTimer=setTimeout(collapseIsland,6000)}
+  function liveActivity(){island.classList.add('compact');phone.classList.add('di-on');island.tabIndex=0}
+  function expandIsland(){haptic();island.classList.remove('compact');island.classList.add('expanded');clearTimeout(diTimer);diTimer=setTimeout(collapseIsland,6000)}
   function collapseIsland(){if(island.classList.contains('expanded')){island.classList.remove('expanded');island.classList.add('compact')}}
   island.addEventListener('click',function(e){
     e.stopPropagation();
@@ -850,12 +937,12 @@ body.torch .holder::before{opacity:1}
   function openSpot(){
     if(phone.classList.contains('locked'))return;
     closeCC();spotLast=document.activeElement;q.value='';renderSpot();
-    spot.classList.add('open');spot.setAttribute('aria-hidden','false');
+    spot.classList.add('open');spot.setAttribute('aria-hidden','false');phone.classList.add('spot-open');
     setTimeout(function(){q.focus({preventScroll:true})},reduce?0:60);
   }
   function closeSpot(){
     if(!spot.classList.contains('open'))return false;
-    spot.classList.remove('open');spot.setAttribute('aria-hidden','true');q.blur();
+    spot.classList.remove('open');spot.setAttribute('aria-hidden','true');phone.classList.remove('spot-open');q.blur();
     if(spotLast&&spotLast.focus&&document.contains(spotLast))spotLast.focus({preventScroll:true});
     return true;
   }
@@ -863,7 +950,7 @@ body.torch .holder::before{opacity:1}
   document.getElementById('spot-cancel').addEventListener('click',closeSpot);
   /* swipe down on the home screen also opens Spotlight, as on iOS */
   var sd0=null;
-  home.addEventListener('pointerdown',function(e){sd0=phone.classList.contains('app-open')?null:{y:e.clientY,x:e.clientX}});
+  home.addEventListener('pointerdown',function(e){sd0=phone.classList.contains('app-open')||e.target.closest('#cc-zone')?null:{y:e.clientY,x:e.clientX}});
   home.addEventListener('pointerup',function(e){if(sd0&&(e.clientY-sd0.y)/scale()>70&&Math.abs(e.clientX-sd0.x)<60)openSpot();sd0=null});
 
   /* icons */
@@ -1004,7 +1091,118 @@ body.torch .holder::before{opacity:1}
     });
   }
 
-  document.querySelectorAll('#home [data-open]').forEach(function(b){b.addEventListener('click',function(){open(b.dataset.open,b.querySelector('.sq')||b)})});
+  document.querySelectorAll('#home [data-open]').forEach(function(b){b.addEventListener('click',function(e){if(suppress){suppress=false;e.preventDefault();return}open(b.dataset.open,b.querySelector('.sq')||b)})});
+  document.querySelectorAll('#home a.icon,#home a.widget').forEach(function(a){a.addEventListener('click',function(e){if(suppress){suppress=false;e.preventDefault()}})});
+
+  /* ---------- home pages: swipe or drag sideways; the Search pill shows page dots while paging ---------- */
+  var pages=document.getElementById('pages'),pill=document.getElementById('search-pill'),dots=pill.querySelectorAll('.pdots i'),pageIdx=0,pillT=null,suppress=false;
+  pages.addEventListener('scroll',function(){
+    var i=Math.round(pages.scrollLeft/pages.clientWidth);
+    pill.classList.add('paging');clearTimeout(pillT);pillT=setTimeout(function(){pill.classList.remove('paging')},900);
+    dots.forEach(function(d,k){d.classList.toggle('on',k===i)});
+    if(i!==pageIdx){pageIdx=i;haptic()}
+  },{passive:true});
+  var pd=null;
+  pages.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse'||e.button!==0)return;pd={x:e.clientX,y:e.clientY,l:pages.scrollLeft,moved:false}});
+  window.addEventListener('pointermove',function(e){
+    if(!pd)return;var dx=e.clientX-pd.x;
+    if(!pd.moved&&Math.abs(dx)<6)return;
+    if(!pd.moved){if(Math.abs(e.clientY-pd.y)>Math.abs(dx)){pd=null;return}pd.moved=true;pages.classList.add('grabbing')}
+    pages.scrollLeft=pd.l-dx/scale();
+  });
+  window.addEventListener('pointerup',function(e){
+    if(!pd)return;var d=pd;pd=null;if(!d.moved)return;
+    suppress=true;setTimeout(function(){suppress=false},0);
+    var w=pages.clientWidth,dx=e.clientX-d.x,i=Math.round(d.l/w)+(dx<-40?1:dx>40?-1:0);
+    pages.scrollTo({left:Math.max(0,Math.min(dots.length-1,i))*w,behavior:reduce?'auto':'smooth'});
+    /* keep snapping off until the glide ends, or the browser snaps back mid-glide */
+    setTimeout(function(){pages.classList.remove('grabbing')},reduce?0:600);
+  });
+  pages.addEventListener('keydown',function(e){
+    if(e.key==='PageDown'||(e.key==='ArrowRight'&&e.altKey)){pages.scrollTo({left:pages.clientWidth,behavior:'smooth'})}
+    if(e.key==='PageUp'||(e.key==='ArrowLeft'&&e.altKey)){pages.scrollTo({left:0,behavior:'smooth'})}
+  });
+
+  /* calendar widget follows the live date */
+  function calTick(){var n=new Date();document.getElementById('cal-dow').textContent=n.toLocaleDateString('en-US',{weekday:'long'});document.getElementById('cal-dn').textContent=n.getDate()}
+  calTick();setInterval(calTick,60000);
+
+  /* GitHub widget: Archie's most recently pushed public repos, live from the GitHub API, with a static fallback */
+  function ago(t){var s=(Date.now()-new Date(t))/1000,u=[[31536000,'y'],[2592000,'mo'],[604800,'w'],[86400,'d'],[3600,'h'],[60,'m']];for(var i=0;i<u.length;i++)if(s>=u[i][0])return Math.floor(s/u[i][0])+u[i][1]+' ago';return 'just now'}
+  function esc(x){return String(x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  try{
+    fetch('https://api.github.com/users/cholohotsauce/repos?sort=pushed&per_page=12').then(function(r){return r.ok?r.json():null}).then(function(list){
+      /* skip forks and course lab repos (numeric student-ID names) */
+      list=(list||[]).filter(function(r){return !r.fork&&!/^\d/.test(r.name)});
+      if(!list.length)return;
+      document.getElementById('gh-list').innerHTML=list.slice(0,3).map(function(r){return '<li><b>'+esc(r.name)+'</b><span>'+ago(r.pushed_at)+'</span></li>'}).join('');
+    }).catch(function(){});
+  }catch(e){}
+
+  /* ---------- long-press an icon for Quick Actions (right-click on desktop) ---------- */
+  var qm=document.getElementById('qm'),qmLift=document.getElementById('qm-lift'),qmMenu=document.getElementById('qm-menu'),qmLast=null;
+  var I_CODE='M8.5 7.5L4 12l4.5 4.5 1.4-1.4L6.8 12l3.1-3.1zM15.5 7.5l-1.4 1.4 3.1 3.1-3.1 3.1 1.4 1.4L20 12z',I_INFO='M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2zm0-8h-2V7h2z',I_OPEN='M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14zM5 5h6v2H5v12h12v-6h2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z',I_SHARE='M12 2l4 4-1.4 1.4L13 5.8V15h-2V5.8L9.4 7.4 8 6zM5 10h3v2H6v8h12v-8h-2v-2h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1z',I_MAIL='M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2.4V17h16V7.4l-8 5.6z',I_COPY='M8 3h11a2 2 0 0 1 2 2v11h-2V5H8zM5 7h10a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm0 2v11h10V9z',I_MINUS='M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm5 11H7v-2h10z',I_TOGGLE='M7 7h10a5 5 0 0 1 0 10H7A5 5 0 0 1 7 7zm10 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z';
+  function act(label,icon,fn,cls){return {label:label,icon:icon,fn:fn,cls:cls}}
+  function link(u){return function(){window.open(u,'_blank','noopener')}}
+  function actionsFor(k){
+    var p=projects[k],a=[];
+    if(p){
+      if(p.live)a.push(act('Open Web App',I_OPEN,link(p.live)));
+      if(p.repo)a.push(act('View Code',I_CODE,link(p.repo)));
+      a.push(act('App Details',I_INFO,function(){open(k)}));
+    }else if(k==='contact'){a.push(act('Email Archie',I_MAIL,function(){open('mail')}),act('Copy Email',I_COPY,function(){copyText('arcadiovega1@gmail.com')}),act('Contact Card',I_INFO,function(){open('contact')}))}
+    else if(k==='settings'){a.push(act('Chef Mode: '+(state.chef?'On':'Off'),I_TOGGLE,function(){setChef(!state.chef)}),act('Dark Mode: '+(state.dark?'On':'Off'),I_TOGGLE,function(){setDark(!state.dark)}))}
+    else if(k==='mail'){a.push(act('New Message',I_MAIL,function(){open('mail')}),act('Copy Email',I_COPY,function(){copyText('arcadiovega1@gmail.com')}))}
+    else if(k==='notes'){a.push(act('Open Note',I_INFO,function(){open('notes')}))}
+    else if(k==='recipe'){a.push(act('Open Archie.swift',I_CODE,function(){open('recipe')}))}
+    else if(k==='gh'){a.push(act('Open Profile',I_OPEN,link('https://github.com/cholohotsauce')))}
+    else if(k==='li'){a.push(act('Open Profile',I_OPEN,link('https://www.linkedin.com/in/arcadio-vega')))}
+    a.push(act('Share Portfolio',I_SHARE,sharePage,'sep'));
+    a.push(act('Remove App',I_MINUS,function(){toast('Nice try. Archie’s apps stay.')},'red'));
+    return a;
+  }
+  function copyText(t){try{navigator.clipboard.writeText(t).then(function(){toast('Copied')},function(){toast(t)})}catch(e){toast(t)}}
+  function sharePage(){var u='https://arcadiovega.com';if(navigator.share){navigator.share({title:'Archie Vega',text:'Chef for 15 years. Now I build for iPhone.',url:u}).catch(function(){})}else copyText(u)}
+  var qmAt=0;
+  function openQM(icon){
+    var k=icon.dataset.open||(icon.href&&icon.href.indexOf('github')>=0?'gh':icon.href&&icon.href.indexOf('linkedin')>=0?'li':null);
+    if(!k)return;
+    haptic();qmLast=icon;
+    var sq=icon.querySelector('.sq'),pr=phone.getBoundingClientRect(),r=sq.getBoundingClientRect(),sc=scale();
+    var x=(r.left-pr.left)/sc,y=(r.top-pr.top)/sc,w=r.width/sc,H=phone.offsetHeight,W=phone.offsetWidth;
+    qmLift.innerHTML='<span class="sq">'+sq.innerHTML+'</span>';qmLift.style.left=x+'px';qmLift.style.top=y+'px';qmLift.style.width=qmLift.style.height=w+'px';
+    var items=actionsFor(k);
+    qmMenu.innerHTML=items.map(function(it,i){return '<button role="menuitem" data-i="'+i+'" class="'+(it.cls||'')+'"><span>'+it.label+'</span><svg viewBox="0 0 24 24"><path d="'+it.icon+'"/></svg></button>'}).join('');
+    qmMenu._items=items;
+    var mh=items.length*44+16,mw=250,left=Math.max(12,Math.min(W-mw-12,x+w/2-mw/2<x?x:x+w-mw)),below=y+w+10+mh<H-30;
+    left=x+w/2<W/2?Math.max(12,x):Math.min(W-mw-12,x+w-mw);
+    qmMenu.style.left=left+'px';
+    if(below){qmMenu.style.top=(y+w+12)+'px';qmMenu.style.bottom='';qmMenu.style.transformOrigin=(x+w/2-left)+'px 0'}
+    else{qmMenu.style.top='';qmMenu.style.bottom=(H-y+12)+'px';qmMenu.style.transformOrigin=(x+w/2-left)+'px 100%'}
+    qm.classList.add('open');qm.setAttribute('aria-hidden','false');qmAt=Date.now();
+    var f=qmMenu.querySelector('button');if(f)f.focus({preventScroll:true});
+  }
+  function closeQM(){if(!qm.classList.contains('open'))return false;qm.classList.remove('open');qm.setAttribute('aria-hidden','true');if(qmLast&&qmLast.focus)qmLast.focus({preventScroll:true});return true}
+  qm.addEventListener('click',function(e){
+    /* the finger lifting after a long-press sends a click; it must not close the menu it just opened */
+    if(Date.now()-qmAt<450)return;
+    var b=e.target.closest('button[data-i]');
+    if(b){var it=qmMenu._items[+b.dataset.i];closeQM();it.fn();return}
+    if(e.target===qm||e.target.closest('.lift'))closeQM();
+  });
+  qmMenu.addEventListener('keydown',function(e){
+    var bs=[].slice.call(qmMenu.querySelectorAll('button')),i=bs.indexOf(document.activeElement);
+    if(e.key==='ArrowDown'){bs[(i+1)%bs.length].focus();e.preventDefault()}
+    if(e.key==='ArrowUp'){bs[(i-1+bs.length)%bs.length].focus();e.preventDefault()}
+  });
+  document.querySelectorAll('#home .icon').forEach(function(ic){
+    var t=null,start=null;
+    ic.addEventListener('pointerdown',function(e){if(e.button&&e.button!==0)return;start={x:e.clientX,y:e.clientY};t=setTimeout(function(){t=null;suppress=true;openQM(ic)},500)});
+    ic.addEventListener('pointermove',function(e){if(t&&start&&Math.hypot(e.clientX-start.x,e.clientY-start.y)>8){clearTimeout(t);t=null}});
+    ['pointerup','pointercancel','pointerleave'].forEach(function(ev){ic.addEventListener(ev,function(){if(t){clearTimeout(t);t=null}})});
+    ic.addEventListener('contextmenu',function(e){e.preventDefault();if(t){clearTimeout(t);t=null}if(!qm.classList.contains('open')){suppress=true;openQM(ic)}});
+    ic.addEventListener('keydown',function(e){if((e.shiftKey&&e.key==='F10')||e.key==='ContextMenu'){e.preventDefault();openQM(ic)}});
+  });
 
   /* home indicator: click or swipe up */
   var hz=document.getElementById('homezone'),hy=null;
@@ -1015,7 +1213,7 @@ body.torch .holder::before{opacity:1}
   var ty=null;
   phone.addEventListener('touchstart',function(e){var t=e.touches[0],pr=phone.getBoundingClientRect();ty=(pr.bottom-t.clientY<40)?t.clientY:null},{passive:true});
   phone.addEventListener('touchend',function(e){if(ty!==null&&ty-e.changedTouches[0].clientY>40){if(closeCC()||closeSpot())return;if(phone.classList.contains('locked'))unlock();else goHome()}ty=null},{passive:true});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(closeCC()||closeSpot())return;collapseIsland();goHome()}});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(closeQM()||closeCC()||closeSpot())return;collapseIsland();goHome()}});
 
   /* fit the device to the window on desktop */
   var device=document.getElementById('device'),holder=document.getElementById('holder');
