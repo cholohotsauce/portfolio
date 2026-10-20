@@ -20,6 +20,9 @@
   --ios-bg:#f2f2f7; --ios-cell:#ffffff; --ios-label:#000000; --ios-label-2:rgba(60,60,67,.6); --ios-sep:rgba(60,60,67,.29);
   --ios-blue:#007aff; --ios-green:#34c759; --ios-orange:#ff9500; --ios-red:#ff3b30; --ios-fill:rgba(120,120,128,.16); --ios-bar:rgba(249,249,249,.82);
   --notes-yellow:#e5a50a;
+  /* iOS icon shape: a continuous-corner superellipse (n=5), not a plain rounded rectangle */
+  --squircle:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M100 50L99.97 65.36L99.89 70.26L99.75 73.81L99.56 76.68L99.31 79.12L99.01 81.26L98.64 83.17L98.22 84.89L97.74 86.46L97.2 87.89L96.6 89.21L95.94 90.43L95.2 91.54L94.4 92.58L93.53 93.53L92.58 94.4L91.54 95.2L90.43 95.94L89.21 96.6L87.89 97.2L86.46 97.74L84.89 98.22L83.17 98.64L81.26 99.01L79.12 99.31L76.68 99.56L73.81 99.75L70.26 99.89L65.36 99.97L50 100L34.64 99.97L29.74 99.89L26.19 99.75L23.32 99.56L20.88 99.31L18.74 99.01L16.83 98.64L15.11 98.22L13.54 97.74L12.11 97.2L10.79 96.6L9.57 95.94L8.46 95.2L7.42 94.4L6.47 93.53L5.6 92.58L4.8 91.54L4.06 90.43L3.4 89.21L2.8 87.89L2.26 86.46L1.78 84.89L1.36 83.17L0.99 81.26L0.69 79.12L0.44 76.68L0.25 73.81L0.11 70.26L0.03 65.36L0 50L0.03 34.64L0.11 29.74L0.25 26.19L0.44 23.32L0.69 20.88L0.99 18.74L1.36 16.83L1.78 15.11L2.26 13.54L2.8 12.11L3.4 10.79L4.06 9.57L4.8 8.46L5.6 7.42L6.47 6.47L7.42 5.6L8.46 4.8L9.57 4.06L10.79 3.4L12.11 2.8L13.54 2.26L15.11 1.78L16.83 1.36L18.74 0.99L20.88 0.69L23.32 0.44L26.19 0.25L29.74 0.11L34.64 0.03L50 0L65.36 0.03L70.26 0.11L73.81 0.25L76.68 0.44L79.12 0.69L81.26 0.99L83.17 1.36L84.89 1.78L86.46 2.26L87.89 2.8L89.21 3.4L90.43 4.06L91.54 4.8L92.58 5.6L93.53 6.47L94.4 7.42L95.2 8.46L95.94 9.57L96.6 10.79L97.2 12.11L97.74 13.54L98.22 15.11L98.64 16.83L99.01 18.74L99.31 20.88L99.56 23.32L99.75 26.19L99.89 29.74L99.97 34.64Z'/%3E%3C/svg%3E");
+  --icon-rim:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='r' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23fff' stop-opacity='.7'/%3E%3Cstop offset='.35' stop-color='%23fff' stop-opacity='.08'/%3E%3Cstop offset='.7' stop-color='%23fff' stop-opacity='.04'/%3E%3Cstop offset='1' stop-color='%23fff' stop-opacity='.35'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M100 50L99.97 65.36L99.89 70.26L99.75 73.81L99.56 76.68L99.31 79.12L99.01 81.26L98.64 83.17L98.22 84.89L97.74 86.46L97.2 87.89L96.6 89.21L95.94 90.43L95.2 91.54L94.4 92.58L93.53 93.53L92.58 94.4L91.54 95.2L90.43 95.94L89.21 96.6L87.89 97.2L86.46 97.74L84.89 98.22L83.17 98.64L81.26 99.01L79.12 99.31L76.68 99.56L73.81 99.75L70.26 99.89L65.36 99.97L50 100L34.64 99.97L29.74 99.89L26.19 99.75L23.32 99.56L20.88 99.31L18.74 99.01L16.83 98.64L15.11 98.22L13.54 97.74L12.11 97.2L10.79 96.6L9.57 95.94L8.46 95.2L7.42 94.4L6.47 93.53L5.6 92.58L4.8 91.54L4.06 90.43L3.4 89.21L2.8 87.89L2.26 86.46L1.78 84.89L1.36 83.17L0.99 81.26L0.69 79.12L0.44 76.68L0.25 73.81L0.11 70.26L0.03 65.36L0 50L0.03 34.64L0.11 29.74L0.25 26.19L0.44 23.32L0.69 20.88L0.99 18.74L1.36 16.83L1.78 15.11L2.26 13.54L2.8 12.11L3.4 10.79L4.06 9.57L4.8 8.46L5.6 7.42L6.47 6.47L7.42 5.6L8.46 4.8L9.57 4.06L10.79 3.4L12.11 2.8L13.54 2.26L15.11 1.78L16.83 1.36L18.74 0.99L20.88 0.69L23.32 0.44L26.19 0.25L29.74 0.11L34.64 0.03L50 0L65.36 0.03L70.26 0.11L73.81 0.25L76.68 0.44L79.12 0.69L81.26 0.99L83.17 1.36L84.89 1.78L86.46 2.26L87.89 2.8L89.21 3.4L90.43 4.06L91.54 4.8L92.58 5.6L93.53 6.47L94.4 7.42L95.2 8.46L95.94 9.57L96.6 10.79L97.2 12.11L97.74 13.54L98.22 15.11L98.64 16.83L99.01 18.74L99.31 20.88L99.56 23.32L99.75 26.19L99.89 29.74L99.97 34.64Z' fill='none' stroke='url(%23r)' stroke-width='3'/%3E%3C/svg%3E");
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--page:#121110; --page-ink:#f2efea; --page-ink-2:#9d968d; color-scheme:dark}}
 :root[data-theme="dark"]{--page:#121110; --page-ink:#f2efea; --page-ink-2:#9d968d; color-scheme:dark}
@@ -58,6 +61,8 @@ a{color:inherit}
 /* status bar */
 .status{position:absolute;top:0;left:0;right:0;height:54px;padding:18px 32px 0 48px;display:flex;justify-content:space-between;align-items:flex-start;z-index:55;font-size:17px;font-weight:600;letter-spacing:-.02em;color:#fff;pointer-events:none;transition:color .3s}
 .phone.app-open:not(.ios-dark) .status{color:#000}
+.status .clock{transition:opacity .3s}
+.phone.locked .status .clock{opacity:0}
 .status .right{display:flex;gap:6px;align-items:center;padding-top:2px}
 .status svg{display:block;fill:currentColor}
 
@@ -73,36 +78,50 @@ a{color:inherit}
 .phone.app-open .wall{filter:brightness(.6)}
 
 /* lock screen */
-.lock{position:absolute;inset:0;z-index:40;display:flex;flex-direction:column;align-items:center;padding:70px 14px 0;transition:transform .55s cubic-bezier(.3,.9,.3,1),opacity .4s;cursor:pointer}
+.lock{position:absolute;inset:0;z-index:40;display:flex;flex-direction:column;align-items:center;padding:84px 14px 0;transition:transform .55s cubic-bezier(.3,.9,.3,1),opacity .4s;cursor:pointer}
 .lock.gone{transform:translateY(-100%);opacity:0;pointer-events:none}
+.padlock{position:absolute;top:56px;left:50%;width:16px;height:21px;margin-left:-8px;overflow:visible}
+.padlock .shackle{transform-box:fill-box;transform-origin:0 100%;transition:transform .28s cubic-bezier(.3,1.4,.5,1)}
+.lock.unlocking .padlock .shackle{transform:translateY(-3px) rotate(-28deg)}
 .lock .date{font-size:21px;font-weight:600;opacity:.9;margin-top:4px}
 .lock .time{font-size:112px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-top:-2px;font-variant-numeric:tabular-nums;background:linear-gradient(180deg,#fff,rgba(255,255,255,.75));-webkit-background-clip:text;background-clip:text;color:transparent}
 .notifs{margin-top:auto;width:100%;display:grid;gap:8px;margin-bottom:22px}
 .notif{display:grid;grid-template-columns:38px 1fr;gap:10px;align-items:start;padding:12px 14px;border-radius:24px;background:rgba(255,255,255,.22);-webkit-backdrop-filter:blur(30px) saturate(160%);backdrop-filter:blur(30px) saturate(160%);text-align:left;font-size:15px;line-height:1.3;animation:drop .6s cubic-bezier(.3,1.3,.5,1) both}
 .notif:nth-child(2){animation-delay:.25s}.notif:nth-child(3){animation-delay:.5s}
 @keyframes drop{from{transform:translateY(-14px);opacity:0}}
-.notif .ic{width:38px;height:38px;border-radius:9px;display:grid;place-items:center}
-.notif .ic svg{width:22px;height:22px}
+.notif .ic{width:38px;height:38px;border-radius:22.5%;overflow:hidden}
+.notif .ic svg{width:100%;height:100%;display:block}
 .notif b{display:flex;justify-content:space-between;font-weight:600}
 .notif b span{font-weight:400;opacity:.7;font-size:13px}
-.lock-bottom{display:flex;justify-content:space-between;width:100%;padding:0 34px;margin-bottom:22px}
-.lock-bottom span{width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.18);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);display:grid;place-items:center}
-.lock-bottom svg{width:22px;height:22px;fill:#fff}
-.swipe-hint{font-size:15px;font-weight:500;opacity:.85;margin-bottom:12px;animation:hint 2.4s ease-in-out infinite}
+.lock-bottom{display:flex;justify-content:space-between;align-items:center;width:100%;padding:0 32px;margin-bottom:30px}
+/* quick actions: press and hold, like iOS. They grow while pressed and turn white when on. */
+.qa{all:unset;cursor:pointer;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;flex:none;background:rgba(255,255,255,.16);-webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 0 0 .5px rgba(255,255,255,.22);transition:transform .35s cubic-bezier(.3,1.5,.5,1),background .2s;touch-action:manipulation;-webkit-touch-callout:none}
+.qa svg{width:24px;height:24px;fill:#fff;transition:fill .2s}
+.qa.pressing{transform:scale(1.22);transition-duration:.45s}
+.qa.nudge{animation:nudge .3s}
+@keyframes nudge{40%{transform:scale(1.1)}}
+.qa[aria-pressed="true"]{background:#fff}
+.qa[aria-pressed="true"] svg{fill:#1c1c1e}
+.qa:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.qa .on{display:none}.qa[aria-pressed="true"] .on{display:inline}.qa[aria-pressed="true"] .off{display:none}
+.swipe-hint{font-size:15px;font-weight:500;opacity:.85;animation:hint 2.4s ease-in-out infinite}
 @keyframes hint{50%{transform:translateY(-4px);opacity:.55}}
 
 /* home screen */
-.home{position:absolute;inset:0;z-index:10;padding:64px 22px 0;display:flex;flex-direction:column;transition:transform .45s cubic-bezier(.3,.9,.3,1),filter .45s,opacity .45s}
+.home{position:absolute;inset:0;z-index:10;padding:64px 27px 0;display:flex;flex-direction:column;transition:transform .45s cubic-bezier(.3,.9,.3,1),filter .45s,opacity .45s}
 .phone.locked .home{transform:scale(1.12);opacity:0}
 .phone.app-open .home{transform:scale(.92);filter:blur(4px)}
-.grid{display:grid;grid-template-columns:repeat(4,64px);justify-content:space-between;row-gap:26px;margin-top:6px}
-.icon{all:unset;cursor:pointer;display:grid;justify-items:center;gap:6px;width:64px;font-size:12px;font-weight:500;letter-spacing:-.01em;text-align:center;line-height:1.1;text-shadow:0 1px 3px rgba(0,0,0,.25);white-space:nowrap}
-.icon .sq{width:64px;height:64px;border-radius:15px;display:grid;place-items:center;position:relative;overflow:hidden;box-shadow:0 6px 14px -8px rgba(0,0,0,.55);transition:transform .18s}
-.icon .sq::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 0 0 .5px rgba(255,255,255,.25);background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,0) 45%)}
-.icon .sq svg{width:36px;height:36px}
-.icon:active .sq{transform:scale(.9)}
+.grid{display:grid;grid-template-columns:repeat(4,60px);justify-content:space-between;row-gap:24px;margin-top:6px}
+.icon{all:unset;cursor:pointer;display:grid;justify-items:center;gap:5px;width:60px;font-size:12px;font-weight:500;letter-spacing:-.01em;text-align:center;line-height:1.15;text-shadow:0 .5px 2px rgba(0,0,0,.3);white-space:nowrap}
+.icon .nm{display:block;width:78px;overflow:hidden;text-overflow:ellipsis}
+/* app icons: full-bleed artwork, clipped to the iOS squircle, with a thin specular rim */
+.icon .sq,.store-top .sq{display:block;position:relative;overflow:hidden;border-radius:22.5%;-webkit-mask:var(--squircle) center/100% 100% no-repeat;mask:var(--squircle) center/100% 100% no-repeat}
+.icon .sq{width:60px;height:60px;transition:transform .25s cubic-bezier(.3,1.3,.5,1),filter .25s}
+.icon .sq::after,.store-top .sq::after{content:"";position:absolute;inset:0;background:var(--icon-rim) center/100% 100% no-repeat;pointer-events:none}
+.icon .sq svg,.store-top .sq svg{display:block;width:100%;height:100%}
+.icon:active .sq{transform:scale(.92);filter:brightness(.82)}
 .icon:focus-visible .sq{outline:3px solid #fff;outline-offset:3px}
-.badge{position:absolute;top:-6px;right:-6px;min-width:22px;height:22px;border-radius:11px;background:var(--ios-red);color:#fff;font-size:13px;font-weight:600;display:grid;place-items:center;padding:0 6px;z-index:2;text-shadow:none}
+.badge{position:absolute;top:-7px;right:-7px;min-width:23px;height:23px;border-radius:12px;background:var(--ios-red);color:#fff;font-size:13px;font-weight:600;display:grid;place-items:center;padding:0 6px;z-index:2;text-shadow:none}
 .icon .wrap{position:relative}
 
 .widget{all:unset;box-sizing:border-box;text-align:left;border-radius:22px;padding:14px 16px;background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(28px) saturate(170%);backdrop-filter:blur(28px) saturate(170%);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 0 0 .5px rgba(255,255,255,.25);cursor:pointer;display:flex;flex-direction:column}
@@ -122,12 +141,12 @@ a{color:inherit}
 .w-small .yrs{display:flex;gap:2px}
 .w-small .yrs span{font-size:9.5px;font-weight:700;padding:3px 4px;border-radius:6px;background:rgba(255,255,255,.28)}
 .w-small .sub{font-size:12px;opacity:.85;line-height:1.25}
-.mini4{grid-column:span 2;grid-row:span 2;display:grid;grid-template-columns:repeat(2,64px);justify-content:space-between;row-gap:26px}
+.mini4{grid-column:span 2;grid-row:span 2;display:grid;grid-template-columns:repeat(2,60px);justify-content:space-between;row-gap:24px}
 
-.dots{display:flex;justify-content:center;gap:8px;margin:auto 0 12px}
-.dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45)}
-.dots i:first-child{background:#fff}
-.dock{margin:0 -10px 12px;padding:16px 18px;border-radius:36px;display:flex;justify-content:space-between;background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(30px) saturate(170%);backdrop-filter:blur(30px) saturate(170%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 0 0 .5px rgba(255,255,255,.25)}
+/* iOS 16+ shows a Search pill above the dock instead of page dots */
+.search-pill{display:flex;align-items:center;gap:5px;margin:auto auto 14px;padding:6px 12px 6px 10px;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:-.01em;background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(24px) saturate(170%);backdrop-filter:blur(24px) saturate(170%);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 0 0 .5px rgba(255,255,255,.22)}
+.search-pill svg{width:12px;height:12px}
+.dock{margin:0 -15px 12px;padding:16px 18px;border-radius:36px;display:flex;justify-content:space-between;background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(30px) saturate(170%);backdrop-filter:blur(30px) saturate(170%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 0 0 .5px rgba(255,255,255,.25)}
 .dock .icon{font-size:0;gap:0}
 .home-ind{position:absolute;left:50%;bottom:8px;width:140px;height:5px;margin-left:-70px;border-radius:3px;background:#fff;z-index:58;transition:background .3s}
 .phone.app-open:not(.ios-dark) .home-ind{background:#000}
@@ -151,7 +170,7 @@ a{color:inherit}
 .cell{display:flex;align-items:center;gap:12px;min-height:44px;padding:0 16px;font-size:17px;position:relative}
 .cell + .cell::before{content:"";position:absolute;top:0;right:0;left:16px;height:.5px;background:var(--ios-sep)}
 .cell.has-ic + .cell.has-ic::before{left:58px}
-.cell .ci{width:30px;height:30px;border-radius:7px;display:grid;place-items:center;flex:none}
+.cell .ci{width:30px;height:30px;border-radius:22.5%;display:grid;place-items:center;flex:none;-webkit-mask:var(--squircle) center/100% 100% no-repeat;mask:var(--squircle) center/100% 100% no-repeat}
 .cell .ci svg{width:19px;height:19px}
 .cell .txt{flex:1;min-width:0;padding:11px 0}
 .cell .val{color:var(--ios-label-2);text-align:right}
@@ -174,8 +193,7 @@ a.cell{text-decoration:none;color:inherit}
 
 /* app store style project page */
 .store-top{display:grid;grid-template-columns:118px 1fr;gap:16px;padding:8px 16px 0}
-.store-top .sq{width:118px;height:118px;border-radius:26px;display:grid;place-items:center;box-shadow:0 0 0 .5px var(--ios-sep)}
-.store-top .sq svg{width:64px;height:64px}
+.store-top .sq{width:118px;height:118px}
 .store-top h2{font-size:22px;font-weight:700;letter-spacing:-.02em;margin:4px 0 2px;line-height:1.15}
 .store-top .subt{font-size:15px;color:var(--ios-label-2);line-height:1.3}
 .store-top .acts{display:flex;align-items:center;gap:12px;margin-top:12px}
@@ -235,6 +253,12 @@ a.state{color:var(--ios-blue);text-decoration:none}
 .copy{all:unset;cursor:pointer;margin-left:auto;font-size:14px;color:var(--ios-blue);font-weight:500}
 .toast{position:absolute;left:50%;top:60px;transform:translate(-50%,-20px);opacity:0;background:var(--ios-cell);color:var(--ios-label);font-size:14px;font-weight:600;padding:10px 16px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.2);transition:.3s;z-index:70;pointer-events:none}
 .toast.show{transform:translate(-50%,0);opacity:1}
+.shutter{position:absolute;inset:0;z-index:65;background:#fff;opacity:0;pointer-events:none}
+.shutter.go{animation:shutter .45s ease-out}
+@keyframes shutter{10%{opacity:.9}}
+/* flashlight on: a warm glow spills onto the page behind the device */
+.holder::before{content:"";position:absolute;left:50%;top:50%;width:160%;height:120%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(255,238,190,.75),rgba(255,238,190,0));opacity:0;transition:opacity .35s;pointer-events:none;z-index:-1}
+body.torch .holder::before{opacity:1}
 
 /* glyph colors on icons */
 .g-white{fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
@@ -251,11 +275,11 @@ a.state{color:var(--ios-blue);text-decoration:none}
   .app{border-radius:0}
   .status{display:none}
   .lock{padding-top:max(28px,env(safe-area-inset-top,0px))}
-  .home{padding:max(24px,env(safe-area-inset-top,0px)) 22px 0}
+  .home{padding:max(24px,env(safe-area-inset-top,0px)) 27px 0}
   .scroll{padding-top:max(12px,env(safe-area-inset-top,0px))}
-  .grid{grid-template-columns:repeat(4,minmax(0,64px))}
+  .grid{grid-template-columns:repeat(4,minmax(0,60px))}
 }
-@media (max-width:360px){.grid{grid-template-columns:repeat(4,56px)}.icon,.icon .sq{width:56px}.icon .sq{height:56px}.mini4{grid-template-columns:repeat(2,56px)}}
+@media (max-width:360px){.home{padding-left:20px;padding-right:20px}.grid{grid-template-columns:repeat(4,56px)}.icon,.icon .sq{width:56px}.icon .sq{height:56px}.icon .nm{width:70px}.mini4{grid-template-columns:repeat(2,56px)}.w-small .lbl{font-size:11px;white-space:nowrap}.w-small .sub{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.dock{margin:0 -8px 12px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
@@ -264,6 +288,43 @@ a.state{color:var(--ios-blue);text-decoration:none}
 <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 <body>
+
+<!-- App icon artwork. These are look-alikes drawn for this site; Apple's own icon files and SF Symbols are not licensed for use on the web. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="g-mail" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1fb4ff"/><stop offset="1" stop-color="#1467f5"/></linearGradient>
+    <linearGradient id="g-phone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6ff58a"/><stop offset="1" stop-color="#0bbd41"/></linearGradient>
+    <linearGradient id="g-notes-top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fde26b"/><stop offset="1" stop-color="#f8c437"/></linearGradient>
+    <linearGradient id="g-notes" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#f1f1f3"/></linearGradient>
+    <linearGradient id="g-contacts" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f6f8"/><stop offset="1" stop-color="#d6d6db"/></linearGradient>
+    <linearGradient id="g-person" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9a9b0"/><stop offset="1" stop-color="#7c7c84"/></linearGradient>
+    <linearGradient id="g-settings" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9c9ce"/><stop offset="1" stop-color="#8a8a90"/></linearGradient>
+    <linearGradient id="g-gear" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a5a60"/><stop offset="1" stop-color="#2c2c30"/></linearGradient>
+    <linearGradient id="g-gear-face" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d4d4d8"/><stop offset="1" stop-color="#9c9ca2"/></linearGradient>
+    <linearGradient id="g-dark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3a3e"/><stop offset="1" stop-color="#0c0c0e"/></linearGradient>
+    <linearGradient id="g-linkedin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1679d6"/><stop offset="1" stop-color="#0a5bb0"/></linearGradient>
+    <linearGradient id="g-ace" x1=".2" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#ffbe4d"/><stop offset="1" stop-color="#ff5233"/></linearGradient>
+    <linearGradient id="g-drink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6dc"/><stop offset="1" stop-color="#ffd9a0"/></linearGradient>
+    <linearGradient id="g-cash" x1=".2" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#5ee38a"/><stop offset="1" stop-color="#119a45"/></linearGradient>
+    <linearGradient id="g-wolf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34406a"/><stop offset="1" stop-color="#10152a"/></linearGradient>
+    <linearGradient id="g-moon" x1=".2" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#ffe8a3"/><stop offset="1" stop-color="#f2ac35"/></linearGradient>
+    <linearGradient id="g-ghost" x1=".2" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#b79cff"/><stop offset="1" stop-color="#4a1d96"/></linearGradient>
+    <linearGradient id="g-ghost-body" x1="0" y1="0" x2="1" y2="0"><stop offset=".55" stop-color="#ffffff"/><stop offset="1" stop-color="#e2d9ff"/></linearGradient>
+    <linearGradient id="g-code" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb340"/><stop offset="1" stop-color="#ff5a36"/></linearGradient>
+  </defs>
+  <symbol id="i-mail" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-mail)"/><rect x="17" y="30" width="66" height="42" rx="5" fill="#fff"/><path d="M19 33l31 21.5L81 33M19 69.5l23-17.5M81 69.5l-23-17.5" fill="none" stroke="#b9d3f2" stroke-width="2.4" stroke-linejoin="round"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-phone)"/><path transform="translate(21 21) scale(2.4)" fill="#fff" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></symbol>
+  <symbol id="i-notes" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-notes)"/><rect width="100" height="29" fill="url(#g-notes-top)"/><path d="M9 36H92" stroke="#c4c4c9" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="0 5.2"/><path d="M11 53h78M11 69h78M11 85h78" stroke="#d9d9de" stroke-width="2"/></symbol>
+  <symbol id="i-contacts" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-contacts)"/><circle cx="50" cy="39" r="16" fill="url(#g-person)"/><path d="M19 88c2.5-18 15-27.5 31-27.5S78.5 70 81 88z" fill="url(#g-person)"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-settings)"/><path fill="url(#g-gear)" d="M86.44 47.85L89.98 48.78L89.98 51.22L86.44 52.15L86.26 54.21L86.26 54.21L89.59 55.74L89.16 58.15L85.51 58.44L84.97 60.44L84.97 60.44L87.99 62.53L87.15 64.82L83.5 64.48L82.63 66.36L82.63 66.36L85.24 68.93L84.01 71.05L80.48 70.08L79.29 71.77L79.29 71.77L81.41 74.76L79.84 76.64L76.53 75.07L75.07 76.53L75.07 76.53L76.64 79.84L74.76 81.41L71.77 79.29L70.08 80.48L70.08 80.48L71.05 84.01L68.93 85.24L66.36 82.63L64.48 83.5L64.48 83.5L64.82 87.15L62.53 87.99L60.44 84.97L58.44 85.51L58.44 85.51L58.15 89.16L55.74 89.59L54.21 86.26L52.15 86.44L52.15 86.44L51.22 89.98L48.78 89.98L47.85 86.44L45.79 86.26L45.79 86.26L44.26 89.59L41.85 89.16L41.56 85.51L39.56 84.97L39.56 84.97L37.47 87.99L35.18 87.15L35.52 83.5L33.64 82.63L33.64 82.63L31.07 85.24L28.95 84.01L29.92 80.48L28.23 79.29L28.23 79.29L25.24 81.41L23.36 79.84L24.93 76.53L23.47 75.07L23.47 75.07L20.16 76.64L18.59 74.76L20.71 71.77L19.52 70.08L19.52 70.08L15.99 71.05L14.76 68.93L17.37 66.36L16.5 64.48L16.5 64.48L12.85 64.82L12.01 62.53L15.03 60.44L14.49 58.44L14.49 58.44L10.84 58.15L10.41 55.74L13.74 54.21L13.56 52.15L13.56 52.15L10.02 51.22L10.02 48.78L13.56 47.85L13.74 45.79L13.74 45.79L10.41 44.26L10.84 41.85L14.49 41.56L15.03 39.56L15.03 39.56L12.01 37.47L12.85 35.18L16.5 35.52L17.37 33.64L17.37 33.64L14.76 31.07L15.99 28.95L19.52 29.92L20.71 28.23L20.71 28.23L18.59 25.24L20.16 23.36L23.47 24.93L24.93 23.47L24.93 23.47L23.36 20.16L25.24 18.59L28.23 20.71L29.92 19.52L29.92 19.52L28.95 15.99L31.07 14.76L33.64 17.37L35.52 16.5L35.52 16.5L35.18 12.85L37.47 12.01L39.56 15.03L41.56 14.49L41.56 14.49L41.85 10.84L44.26 10.41L45.79 13.74L47.85 13.56L47.85 13.56L48.78 10.02L51.22 10.02L52.15 13.56L54.21 13.74L54.21 13.74L55.74 10.41L58.15 10.84L58.44 14.49L60.44 15.03L60.44 15.03L62.53 12.01L64.82 12.85L64.48 16.5L66.36 17.37L66.36 17.37L68.93 14.76L71.05 15.99L70.08 19.52L71.77 20.71L71.77 20.71L74.76 18.59L76.64 20.16L75.07 23.47L76.53 24.93L76.53 24.93L79.84 23.36L81.41 25.24L79.29 28.23L80.48 29.92L80.48 29.92L84.01 28.95L85.24 31.07L82.63 33.64L83.5 35.52L83.5 35.52L87.15 35.18L87.99 37.47L84.97 39.56L85.51 41.56L85.51 41.56L89.16 41.85L89.59 44.26L86.26 45.79L86.44 47.85Z"/><circle cx="50" cy="50" r="33" fill="url(#g-gear-face)"/><circle cx="50" cy="50" r="29.5" fill="none" stroke="#3c3c41" stroke-width="2.2"/><path d="M50 21v13M50 66v13M21 50h13M66 50h13M29.5 29.5l9.2 9.2M61.3 61.3l9.2 9.2M70.5 29.5l-9.2 9.2M38.7 61.3l-9.2 9.2" stroke="#3c3c41" stroke-width="3.4"/><path fill="url(#g-gear)" d="M68.15 46.43L71.89 47.79L71.89 52.21L68.15 53.57L67.51 55.98L67.51 55.98L70.06 59.03L67.85 62.86L63.93 62.17L62.17 63.93L62.17 63.93L62.86 67.85L59.03 70.06L55.98 67.51L53.57 68.15L53.57 68.15L52.21 71.89L47.79 71.89L46.43 68.15L44.02 67.51L44.02 67.51L40.97 70.06L37.14 67.85L37.83 63.93L36.07 62.17L36.07 62.17L32.15 62.86L29.94 59.03L32.49 55.98L31.85 53.57L31.85 53.57L28.11 52.21L28.11 47.79L31.85 46.43L32.49 44.02L32.49 44.02L29.94 40.97L32.15 37.14L36.07 37.83L37.83 36.07L37.83 36.07L37.14 32.15L40.97 29.94L44.02 32.49L46.43 31.85L46.43 31.85L47.79 28.11L52.21 28.11L53.57 31.85L55.98 32.49L55.98 32.49L59.03 29.94L62.86 32.15L62.17 36.07L63.93 37.83L63.93 37.83L67.85 37.14L70.06 40.97L67.51 44.02L68.15 46.43Z"/><circle cx="50" cy="50" r="8.5" fill="url(#g-gear-face)"/><circle cx="50" cy="50" r="3.5" fill="#3c3c41"/></symbol>
+  <symbol id="i-github" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-dark)"/><path transform="translate(20 20) scale(2.5)" fill="#fff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-linkedin)"/><g fill="#fff" transform="translate(50 52) scale(.86) translate(-50 -52)"><rect x="22" y="42" width="12" height="35" rx="1.5"/><circle cx="28" cy="29" r="7"/><path d="M42 42h11.5v5.2C56 43.4 60 41 65.5 41 74.5 41 78 46.5 78 56v21H66.5V59c0-4.8-1.6-7.6-5.6-7.6-4.3 0-7.4 3-7.4 8V77H42z"/></g></symbol>
+  <symbol id="i-ace" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-ace)"/><path d="M60 15L45 42" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><path d="M22 27h56L50 57z" fill="#fff"/><path d="M29.5 32.5h41L50 52.5z" fill="url(#g-drink)"/><circle cx="48.5" cy="38" r="6.5" fill="#7cb342"/><circle cx="50" cy="36.5" r="2.4" fill="#e53935"/><rect x="47.6" y="56" width="4.8" height="20" fill="#fff"/><ellipse cx="50" cy="78" rx="15" ry="4" fill="#fff"/></symbol>
+  <symbol id="i-cash" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-cash)"/><rect x="15" y="27" width="70" height="42" rx="6" fill="#fff" opacity=".45" transform="rotate(-11 50 48)"/><rect x="15" y="33" width="70" height="42" rx="6" fill="#fff"/><rect x="21" y="39" width="58" height="30" rx="3" fill="none" stroke="#bfe9cd" stroke-width="2"/><circle cx="50" cy="54" r="11" fill="#e7f8ec"/><text x="50" y="61.5" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-weight="800" font-size="21" fill="#119a45">$</text></symbol>
+  <symbol id="i-wolf" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-wolf)"/><g fill="#fff"><circle cx="17" cy="20" r="1.3" opacity=".8"/><circle cx="84" cy="15" r="1.1" opacity=".7"/><circle cx="80" cy="34" r=".9" opacity=".6"/><circle cx="12" cy="44" r=".9" opacity=".6"/></g><circle cx="50" cy="45" r="28" fill="url(#g-moon)"/><path d="M26 92l5-41-2-25 13.5 14Q50 37 57.5 40L71 26l-2 25 5 41z" fill="#0f1427"/><g fill="#f5c04d"><ellipse cx="42.5" cy="57" rx="3.6" ry="1.7" transform="rotate(18 42.5 57)"/><ellipse cx="57.5" cy="57" rx="3.6" ry="1.7" transform="rotate(-18 57.5 57)"/></g></symbol>
+  <symbol id="i-ghost" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-ghost)"/><ellipse cx="50" cy="86" rx="20" ry="3.5" fill="#2a0f5c" opacity=".35"/><path d="M26 79V46a24 24 0 0 1 48 0v33l-6-5-6 5-6-5-6 5-6-5-6 5-6-5z" fill="url(#g-ghost-body)"/><g fill="#2e1065"><ellipse cx="42" cy="46" rx="4" ry="5.5"/><ellipse cx="58" cy="46" rx="4" ry="5.5"/><ellipse cx="50" cy="59" rx="3" ry="4" opacity=".8"/></g></symbol>
+  <symbol id="i-recipe" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-dark)"/><path d="M36 33L20 50l16 17M64 33l16 17-16 17M56 26L44 74" fill="none" stroke="url(#g-code)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
 
 <div class="stage">
   <div class="intro">
@@ -282,7 +343,7 @@ a.state{color:var(--ios-blue);text-decoration:none}
         <div class="island" id="island"></div>
 
         <div class="status" aria-hidden="true">
-          <span>9:41</span>
+          <span class="clock">9:41</span>
           <span class="right">
             <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
             <svg width="16" height="12" viewBox="0 0 16 12"><path d="M8 2.3c2.3 0 4.4.9 6 2.4l1.1-1.2A10.2 10.2 0 0 0 8 .6 10.2 10.2 0 0 0 .9 3.5L2 4.7a8.5 8.5 0 0 1 6-2.4zm0 3.4c1.4 0 2.6.5 3.6 1.4l1.1-1.2A7 7 0 0 0 8 4a7 7 0 0 0-4.7 1.9l1.1 1.2c1-.9 2.2-1.4 3.6-1.4zm0 3.4c.5 0 1 .2 1.3.5L8 11.2 6.7 9.6c.3-.3.8-.5 1.3-.5z"/></svg>
@@ -292,16 +353,17 @@ a.state{color:var(--ios-blue);text-decoration:none}
 
         <!-- LOCK SCREEN -->
         <div class="lock" id="lock" role="button" tabindex="0" aria-label="Unlock">
+          <svg class="padlock" viewBox="0 0 16 21" aria-hidden="true"><path class="shackle" d="M3.5 10V6.5a4.5 4.5 0 0 1 9 0V10" fill="none" stroke="#fff" stroke-width="2.2"/><rect x="0" y="9" width="16" height="12" rx="3" fill="#fff"/></svg>
           <div class="date" id="date">Friday, October 17</div>
           <div class="time">9:41</div>
           <div class="notifs">
-            <div class="notif"><div class="ic" style="background:linear-gradient(145deg,#ffb340,#ff5a36)"><svg viewBox="0 0 24 24" class="g-white"><path d="M5 4h14l-7 8z"/><path d="M12 12v7M8 19h8"/></svg></div><div><b>Kitchen <span>now</span></b><span data-dev="Order up: 1 junior iOS developer. Extra attention to detail, hold the ego." data-chef="Order up: 1 chef, 15 years on the line. Still says “behind!” in the office."></span></div></div>
-            <div class="notif"><div class="ic" style="background:linear-gradient(145deg,#5ac8fa,#0a84ff)"><svg viewBox="0 0 24 24" class="g-white"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><div><b>Archie Vega <span>2m ago</span></b>Looking for my first iOS role. Unlock to see my work.</div></div>
+            <div class="notif"><div class="ic"><svg viewBox="0 0 100 100"><use href="#i-ace"/></svg></div><div><b>Kitchen <span>now</span></b><span data-dev="Order up: 1 junior iOS developer. Extra attention to detail, hold the ego." data-chef="Order up: 1 chef, 15 years on the line. Still says “behind!” in the office."></span></div></div>
+            <div class="notif"><div class="ic"><svg viewBox="0 0 100 100"><use href="#i-mail"/></svg></div><div><b>Archie Vega <span>2m ago</span></b>Looking for my first iOS role. Unlock to see my work.</div></div>
           </div>
-          <div class="swipe-hint">Swipe up or tap to open</div>
-          <div class="lock-bottom" aria-hidden="true">
-            <span><svg viewBox="0 0 24 24"><path d="M9 2h6l-1 6h3l-8 14 2-10H7z"/></svg></span>
-            <span><svg viewBox="0 0 24 24"><path d="M9 4l1.5-2h3L15 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm3 4a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/></svg></span>
+          <div class="lock-bottom">
+            <button class="qa" id="qa-torch" aria-label="Flashlight" aria-pressed="false" title="Press and hold"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="off" fill-rule="evenodd" d="M7.6 1.5h8.8c.7 0 1.2.5 1.2 1.2v2.4c0 .6-.2 1.1-.6 1.6L15 9v12c0 .8-.7 1.5-1.5 1.5h-3C9.7 22.5 9 21.8 9 21V9L7 6.7c-.4-.5-.6-1-.6-1.6V2.7c0-.7.5-1.2 1.2-1.2zM8 4.6h8M12 12a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/><path class="on" fill-rule="evenodd" d="M7.6 1.5h8.8c.7 0 1.2.5 1.2 1.2v2.4c0 .6-.2 1.1-.6 1.6L15 9v12c0 .8-.7 1.5-1.5 1.5h-3C9.7 22.5 9 21.8 9 21V9L7 6.7c-.4-.5-.6-1-.6-1.6V2.7c0-.7.5-1.2 1.2-1.2zM11 11.2h2v4.6h-2z"/></svg></button>
+            <div class="swipe-hint">Swipe up to open</div>
+            <button class="qa" id="qa-camera" aria-label="Camera" title="Press and hold"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M9.2 3.5h5.6c.6 0 1.1.3 1.4.8l1 1.7H20a2.5 2.5 0 0 1 2.5 2.5v9.5A2.5 2.5 0 0 1 20 20.5H4A2.5 2.5 0 0 1 1.5 18V8.5A2.5 2.5 0 0 1 4 6h2.8l1-1.7c.3-.5.8-.8 1.4-.8zM12 8.6a4.6 4.6 0 1 0 0 9.2 4.6 4.6 0 0 0 0-9.2zm0 2a2.6 2.6 0 1 1 0 5.2 2.6 2.6 0 0 1 0-5.2z"/></svg></button>
           </div>
         </div>
 
@@ -314,10 +376,10 @@ a.state{color:var(--ios-blue);text-decoration:none}
               <div class="progress"><span>Ace Bartender for iPhone</span><span class="pill">In progress</span></div>
             </button>
 
-            <button class="icon" data-open="ace"><span class="sq" style="background:linear-gradient(160deg,#ffb340,#ff5a36)"><svg viewBox="0 0 24 24" class="g-white"><path d="M5 4h14l-7 8z"/><path d="M12 12v7M8 19h8"/><path d="M15 6.5l3-3"/></svg></span>Ace Bartender</button>
-            <button class="icon" data-open="cash"><span class="sq" style="background:linear-gradient(160deg,#4cd97b,#16a34a)"><svg viewBox="0 0 24 24" class="g-white"><ellipse cx="12" cy="6.5" rx="7" ry="2.8"/><path d="M5 6.5v5c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8v-5M5 11.5v5c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8v-5"/></svg></span>Cashout</button>
-            <button class="icon" data-open="wolf"><span class="sq" style="background:linear-gradient(160deg,#2c3654,#121829)"><svg viewBox="0 0 24 24" fill="none" stroke="#f5c04d" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"><path d="M4.5 3.5l4 5h7l4-5v9.5c0 4-3.4 6.8-7.5 8-4.1-1.2-7.5-4-7.5-8z"/><path d="M9 12.5l1.5.8M15 12.5l-1.5.8M10.5 17l1.5 1 1.5-1"/></svg></span>WhereWolf</button>
-            <button class="icon" data-open="ghost"><span class="sq" style="background:linear-gradient(160deg,#a78bfa,#4c1d95)"><svg viewBox="0 0 24 24" class="g-white"><path d="M6 20V10a6 6 0 0 1 12 0v10l-2-1.5-2 1.5-2-1.5-2 1.5-2-1.5z"/><circle cx="10" cy="10.5" r=".8" fill="#fff"/><circle cx="14" cy="10.5" r=".8" fill="#fff"/></svg></span>Miracle Ghost</button>
+            <button class="icon" data-open="ace"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-ace"/></svg></span><span class="nm">Ace Bartender</span></button>
+            <button class="icon" data-open="cash"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-cash"/></svg></span><span class="nm">Cashout</span></button>
+            <button class="icon" data-open="wolf"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-wolf"/></svg></span><span class="nm">WhereWolf</span></button>
+            <button class="icon" data-open="ghost"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-ghost"/></svg></span><span class="nm">Miracle Ghost</span></button>
 
             <button class="widget w-small" data-open="notes" aria-label="Open the note about the team's Bib Gourmand">
               <div class="lbl" data-dev="Bib Gourmand" data-chef="On the wall"></div>
@@ -326,19 +388,19 @@ a.state{color:var(--ios-blue);text-decoration:none}
               <div class="sub" data-dev="Michelin Bib Gourmand, won with my restaurant team" data-chef="Shared with the best brigade I know"></div>
             </button>
             <div class="mini4">
-              <button class="icon" data-open="notes"><span class="wrap"><span class="sq" style="background:linear-gradient(180deg,#fff 0 30%,#fffdf5 30%)"><svg viewBox="0 0 24 24"><rect x="0" y="0" width="24" height="7" fill="#f7c948"/><path d="M5 12h14M5 16h14M5 20h9" stroke="#c7c7cc" stroke-width="1.4"/></svg></span></span>Notes</button>
-              <button class="icon" data-open="recipe"><span class="sq" style="background:linear-gradient(160deg,#2b2b2e,#0d0d0f)"><svg viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 5l-3 14"/></svg></span>Recipe</button>
-              <button class="icon" data-open="contact"><span class="sq" style="background:linear-gradient(160deg,#d1d1d6,#8e8e93)"><svg viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="9" r="4"/><path d="M4 21c.8-4 4-6 8-6s7.2 2 8 6z"/></svg></span>Contacts</button>
-              <button class="icon" data-open="settings"><span class="wrap"><span class="sq" style="background:linear-gradient(160deg,#a1a1a6,#636366)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M21.5 12h-3M5.5 12h-3M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1M18.7 18.7l-2.1-2.1M7.4 7.4L5.3 5.3"/><circle cx="12" cy="12" r="6.5"/></svg></span><span class="badge">1</span></span>Settings</button>
+              <button class="icon" data-open="notes"><span class="wrap"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-notes"/></svg></span></span><span class="nm">Notes</span></button>
+              <button class="icon" data-open="recipe"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-recipe"/></svg></span><span class="nm">Recipe</span></button>
+              <button class="icon" data-open="contact"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-contacts"/></svg></span><span class="nm">Contacts</span></button>
+              <button class="icon" data-open="settings"><span class="wrap"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-settings"/></svg></span><span class="badge">1</span></span><span class="nm">Settings</span></button>
             </div>
           </div>
 
-          <div class="dots" aria-hidden="true"><i></i></div>
+          <div class="search-pill" aria-hidden="true"><svg viewBox="0 0 16 16"><circle cx="6.8" cy="6.8" r="4.8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.4 10.4L14 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Search</div>
           <div class="dock">
-            <button class="icon" data-open="mail" aria-label="Mail"><span class="sq" style="background:linear-gradient(160deg,#5ac8fa,#0a7aff)"><svg viewBox="0 0 24 24" class="g-white"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span>Mail</button>
-            <button class="icon" data-open="contact" aria-label="Phone"><span class="sq" style="background:linear-gradient(160deg,#5ee27a,#1fb14a)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M6.6 3.5l2.6-.4 1.6 4-2 1.5a11 11 0 0 0 6.6 6.6l1.5-2 4 1.6-.4 2.6c-.2 1-1 1.6-2 1.6A16 16 0 0 1 5 5.5c0-1 .6-1.8 1.6-2z"/></svg></span>Phone</button>
-            <a class="icon" href="https://github.com/cholohotsauce" target="_blank" rel="noopener" aria-label="GitHub (opens in a new tab)"><span class="sq" style="background:linear-gradient(160deg,#3a3a3c,#111)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 7.5L4 12l4.5 4.5M15.5 7.5L20 12l-4.5 4.5"/></svg></span>GitHub</a>
-            <a class="icon" href="https://www.linkedin.com/in/arcadio-vega" target="_blank" rel="noopener" aria-label="LinkedIn (opens in a new tab)"><span class="sq" style="background:linear-gradient(160deg,#3b8ff6,#0a5fc2)"><svg viewBox="0 0 24 24"><text x="12" y="17" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-weight="700" font-size="14" fill="#fff">in</text></svg></span>LinkedIn</a>
+            <button class="icon" data-open="mail" aria-label="Mail"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-mail"/></svg></span>Mail</button>
+            <button class="icon" data-open="contact" aria-label="Phone"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-phone"/></svg></span>Phone</button>
+            <a class="icon" href="https://github.com/cholohotsauce" target="_blank" rel="noopener" aria-label="GitHub (opens in a new tab)"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-github"/></svg></span>GitHub</a>
+            <a class="icon" href="https://www.linkedin.com/in/arcadio-vega" target="_blank" rel="noopener" aria-label="LinkedIn (opens in a new tab)"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-linkedin"/></svg></span>LinkedIn</a>
           </div>
         </div>
 
@@ -347,6 +409,7 @@ a.state{color:var(--ios-blue);text-decoration:none}
 
         <button class="home-zone" id="homezone" aria-label="Go to the home screen"></button>
         <div class="home-ind" aria-hidden="true"></div>
+        <div class="shutter" id="shutter" aria-hidden="true"></div>
         <div class="toast" id="toast" role="status"></div>
       </div>
     </div>
@@ -375,12 +438,40 @@ a.state{color:var(--ios-blue);text-decoration:none}
   voice();
 
   /* unlock */
-  var startY=null;
-  function unlock(){lock.classList.add('gone');phone.classList.remove('locked');island.style.width='';}
+  var startY=null,reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* the padlock opens first, then the lock screen slides away, as on Face ID iPhones */
+  function unlock(){
+    if(lock.classList.contains('unlocking'))return;
+    lock.classList.add('unlocking');
+    setTimeout(function(){lock.classList.add('gone');phone.classList.remove('locked');island.style.width=''},reduce?0:260);
+  }
   lock.addEventListener('click',unlock);
   lock.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();unlock()}});
   lock.addEventListener('pointerdown',function(e){startY=e.clientY});
   lock.addEventListener('pointerup',function(e){if(startY!==null&&startY-e.clientY>30)unlock();startY=null});
+
+  /* haptic tick: vibrate where supported; on iOS 18+ Safari, toggling a hidden switch input gives a tap */
+  function haptic(){
+    try{if(navigator.vibrate&&navigator.vibrate(10))return}catch(e){}
+    try{var l=document.createElement('label'),i=document.createElement('input');i.type='checkbox';i.setAttribute('switch','');l.appendChild(i);l.style.display='none';document.body.appendChild(l);l.click();l.remove()}catch(e){}
+  }
+  /* lock screen quick actions: press and hold to activate, like iOS; a quick tap only nudges */
+  function hold(btn,fire){
+    var t=null,fired=false;
+    function stop(e){e.stopPropagation();clearTimeout(t);btn.classList.remove('pressing')}
+    btn.addEventListener('pointerdown',function(e){e.stopPropagation();fired=false;btn.classList.add('pressing');t=setTimeout(function(){fired=true;btn.classList.remove('pressing');haptic();fire()},reduce?0:420)});
+    btn.addEventListener('pointerup',stop);btn.addEventListener('pointerleave',stop);btn.addEventListener('pointercancel',stop);
+    btn.addEventListener('contextmenu',function(e){e.preventDefault()});
+    btn.addEventListener('keydown',function(e){e.stopPropagation()});
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      if(e.detail===0){fire();return}
+      if(!fired){btn.classList.remove('nudge');btn.offsetWidth;btn.classList.add('nudge')}
+    });
+  }
+  var torch=document.getElementById('qa-torch'),cam=document.getElementById('qa-camera'),shutter=document.getElementById('shutter');
+  hold(torch,function(){var on=torch.getAttribute('aria-pressed')!=='true';torch.setAttribute('aria-pressed',on);document.body.classList.toggle('torch',on)});
+  hold(cam,function(){shutter.classList.remove('go');shutter.offsetWidth;shutter.classList.add('go');toast('Say “Yes, Chef!”')});
 
   /* icons */
   var chevL='<svg viewBox="0 0 12 20"><path d="M10 2L2 10l8 8"/></svg>';
