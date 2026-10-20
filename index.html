@@ -144,7 +144,7 @@ a{color:inherit}
 .mini4{grid-column:span 2;grid-row:span 2;display:grid;grid-template-columns:repeat(2,60px);justify-content:space-between;row-gap:24px}
 
 /* iOS 16+ shows a Search pill above the dock instead of page dots */
-.search-pill{display:flex;align-items:center;gap:5px;margin:auto auto 14px;padding:6px 12px 6px 10px;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:-.01em;background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(24px) saturate(170%);backdrop-filter:blur(24px) saturate(170%);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 0 0 .5px rgba(255,255,255,.22)}
+.search-pill{all:unset;cursor:pointer;color:#fff;display:flex;align-items:center;gap:5px;margin:auto auto 14px;padding:6px 12px 6px 10px;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:-.01em;background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(24px) saturate(170%);backdrop-filter:blur(24px) saturate(170%);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 0 0 .5px rgba(255,255,255,.22)}
 .search-pill svg{width:12px;height:12px}
 .dock{margin:0 -15px 12px;padding:16px 18px;border-radius:36px;display:flex;justify-content:space-between;background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(30px) saturate(170%);backdrop-filter:blur(30px) saturate(170%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 0 0 .5px rgba(255,255,255,.25)}
 .dock .icon{font-size:0;gap:0}
@@ -263,6 +263,127 @@ body.torch .holder::before{opacity:1}
 /* glyph colors on icons */
 .g-white{fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
+/* ---------- depth effect: the subject stands in front of the clock ---------- */
+.subject{position:absolute;left:0;right:0;top:var(--subject-top,190px);bottom:0;pointer-events:none}
+.subject svg{display:block;width:100%;height:100%}
+.wall .subject{z-index:1}
+.lock .subject{z-index:0;transition:transform .55s cubic-bezier(.3,.9,.3,1)}
+.lock .date,.lock .time{position:relative;z-index:-1}
+.lock .notifs,.lock .lock-bottom,.lock .padlock{position:relative;z-index:1}
+.lock .padlock{position:absolute}
+.lock.gone .subject{transform:translateY(100%)}
+.lock.dragging,.lock.dragging .subject,.phone.dragging .home{transition:none!important}
+.lock{touch-action:none}
+.wall .subject{transition:opacity .5s}
+.phone:not(.locked) .wall .subject{opacity:0}
+
+/* ---------- Dynamic Island live activity ---------- */
+.island{overflow:hidden;color:#fff;cursor:default;transition:width .5s cubic-bezier(.3,1.25,.5,1),height .5s cubic-bezier(.3,1.25,.5,1),margin .5s cubic-bezier(.3,1.25,.5,1),border-radius .5s cubic-bezier(.3,1.25,.5,1)}
+.island.compact,.island.expanded{cursor:pointer}
+.island.compact{width:196px;margin-left:-98px}
+.island.expanded{width:371px;height:154px;margin-left:-185.5px;border-radius:44px}
+.di-lead,.di-trail{position:absolute;top:6px;width:24px;height:24px;opacity:0;transition:opacity .25s}
+.di-lead{left:8px}.di-trail{right:8px}
+.island.compact .di-lead,.island.compact .di-trail{opacity:1;transition-delay:.2s}
+.di-lead svg{width:24px;height:24px;border-radius:7px;display:block}
+.di-trail svg{width:24px;height:24px;display:block;animation:spin 1.6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.di-full{position:absolute;inset:0;padding:22px 24px 20px;display:grid;grid-template-columns:52px 1fr;column-gap:14px;align-content:start;opacity:0;transition:opacity .2s}
+.island.expanded .di-full{opacity:1;transition:opacity .3s .2s}
+.di-full .ic{width:52px;height:52px;border-radius:22.5%;overflow:hidden;-webkit-mask:var(--squircle) center/100% 100% no-repeat;mask:var(--squircle) center/100% 100% no-repeat}
+.di-full .ic svg{width:100%;height:100%;display:block}
+.di-full b{font-size:17px;font-weight:600;letter-spacing:-.02em;display:block;margin-top:4px}
+.di-full span{font-size:14px;color:rgba(255,255,255,.65)}
+.di-bar{grid-column:1/-1;height:6px;border-radius:3px;background:rgba(255,255,255,.18);margin-top:18px;overflow:hidden;position:relative}
+.di-bar i{position:absolute;top:0;bottom:0;width:40%;border-radius:3px;background:linear-gradient(90deg,#ffb340,#ff5a36);animation:indet 1.8s ease-in-out infinite}
+@keyframes indet{from{left:-40%}to{left:100%}}
+.di-foot{grid-column:1/-1;display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.65);margin-top:10px}
+.di-foot em{font-style:normal;color:#ff9f0a;font-weight:600}
+
+/* ---------- Control Center ---------- */
+.cc-zone{all:unset;position:absolute;top:0;right:0;width:150px;height:46px;z-index:61;cursor:pointer;touch-action:none}
+.cc-zone:focus-visible{outline:2px solid #fff;outline-offset:-4px;border-radius:12px}
+.cc{position:absolute;inset:0;z-index:54;padding:64px 24px 30px;background:rgba(10,10,14,.32);-webkit-backdrop-filter:blur(36px) saturate(170%);backdrop-filter:blur(36px) saturate(170%);opacity:0;visibility:hidden;transition:opacity .3s,visibility 0s .3s;color:#fff}
+.cc.open{opacity:1;visibility:visible;transition:opacity .3s}
+.cc-grid{display:grid;grid-template-columns:repeat(4,72px);grid-auto-rows:72px;gap:14px;justify-content:center;transform:scale(.88) translateY(-30px);transform-origin:80% 0;transition:transform .45s cubic-bezier(.3,1.25,.5,1)}
+.cc.open .cc-grid{transform:none}
+.cc.dragging,.cc.dragging .cc-grid{transition:none}
+.mod{border-radius:26px;background:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 0 0 .5px rgba(255,255,255,.12);position:relative}
+.mod.wide{grid-column:span 2}.mod.tall{grid-row:span 2}.mod.big{grid-column:span 2;grid-row:span 2}
+.conn{display:grid;grid-template-columns:repeat(2,1fr);place-items:center;padding:8px}
+.tg{all:unset;cursor:pointer;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.16);transition:background .2s,transform .2s}
+.tg:active{transform:scale(.92)}
+.tg svg{width:24px;height:24px;fill:#fff;transition:fill .2s}
+.tg:focus-visible,.cbtn:focus-visible,.slider:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.tg[aria-pressed="true"].orange{background:#ff9f0a}.tg[aria-pressed="true"].green{background:#30d158}.tg[aria-pressed="true"].blue{background:#0a84ff}
+.cbtn{all:unset;cursor:pointer;box-sizing:border-box;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.2);transition:background .2s,transform .2s}
+.cbtn:active{transform:scale(.92)}
+.cbtn svg{width:28px;height:28px;fill:#fff;transition:fill .2s}
+.cbtn[aria-pressed="true"]{background:#fff}.cbtn[aria-pressed="true"] svg{fill:#1c1c1e}
+.cbtn.wide{grid-column:span 2;border-radius:36px;display:flex;justify-content:flex-start;gap:10px;padding:0 16px;font-size:15px;font-weight:600;text-align:left;line-height:1.15}
+.cbtn.wide .gl{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.18);flex:none}
+.cbtn.wide .gl svg{width:22px;height:22px}
+.cbtn.wide small{display:block;font-size:12px;font-weight:500;opacity:.65}
+.cbtn.wide[aria-pressed="true"]{background:#fff;color:#1c1c1e}
+.cbtn.wide[aria-pressed="true"] .gl{background:#ff9f0a}.cbtn.wide[aria-pressed="true"] .gl svg{fill:#fff}
+.music{padding:14px 16px;display:flex;flex-direction:column;justify-content:space-between}
+.music .art{width:44px;height:44px;border-radius:9px;overflow:hidden;-webkit-mask:var(--squircle) center/100% 100% no-repeat;mask:var(--squircle) center/100% 100% no-repeat}
+.music .art svg{width:100%;height:100%;display:block}
+.music b{font-size:14px;font-weight:600;display:block;margin-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.music span{font-size:13px;opacity:.65;display:block}
+.music .ctl{display:flex;justify-content:space-between;align-items:center}
+.music .ctl button{all:unset;cursor:pointer;display:grid;place-items:center;width:30px;height:30px}
+.music .ctl svg{width:22px;height:22px;fill:#fff}
+.music .ctl .pp svg{width:26px;height:26px}
+.music .ctl .pause{display:none}.music.playing .ctl .pause{display:block}.music.playing .ctl .play{display:none}
+.music .eq{display:flex;gap:2px;align-items:flex-end;height:14px;position:absolute;top:16px;right:16px;opacity:.35}
+.music .eq i{width:3px;height:4px;border-radius:1px;background:#fff}
+.music.playing .eq{opacity:1}
+.music.playing .eq i{animation:eq .9s ease-in-out infinite alternate}
+.music.playing .eq i:nth-child(2){animation-delay:-.3s}.music.playing .eq i:nth-child(3){animation-delay:-.6s}
+@keyframes eq{to{height:14px}}
+.slider.tall{grid-row:span 2}
+.slider{all:unset;cursor:ns-resize;border-radius:26px;overflow:hidden;background:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.2);position:relative;touch-action:none}
+.slider .fill{position:absolute;left:0;right:0;bottom:0;background:#fff}
+.slider svg{position:absolute;left:50%;bottom:16px;width:26px;height:26px;margin-left:-13px;fill:#8e8e93;z-index:1}
+.cc-hint{text-align:center;font-size:13px;opacity:.6;margin-top:22px}
+.dim{position:absolute;inset:0;z-index:66;background:#000;opacity:0;pointer-events:none}
+.phone.cc-open .status{color:#fff}
+.phone.cc-open .home-ind{background:#fff}
+.phone.cc-open .home-zone{display:none}
+.phone.di-on .status .sig,.phone.di-on .status .wifi,.phone.di-on .status .air{display:none!important}
+.status .air{display:none}
+.phone.airplane .status .air{display:block}
+.phone.airplane .status .sig,.phone.airplane .status .wifi{display:none}
+
+/* ---------- Spotlight ---------- */
+.search-pill:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.spot{position:absolute;inset:0;z-index:50;padding:62px 16px 30px;display:flex;flex-direction:column;background:rgba(20,20,24,.38);-webkit-backdrop-filter:blur(40px) saturate(170%);backdrop-filter:blur(40px) saturate(170%);color:#fff;opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s}
+.spot.open{opacity:1;visibility:visible;transition:opacity .25s}
+.spot-bar{display:flex;align-items:center;gap:10px}
+.spot-field{flex:1;display:flex;align-items:center;gap:6px;height:38px;padding:0 10px;border-radius:12px;background:rgba(255,255,255,.18);transform:translateY(-8px);transition:transform .35s cubic-bezier(.3,1.3,.5,1)}
+.spot.open .spot-field{transform:none}
+.spot-field svg{width:16px;height:16px;flex:none;opacity:.7}
+.spot-field input{all:unset;flex:1;min-width:0;font-size:17px;color:#fff;caret-color:#0a84ff}
+.spot-field input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
+.spot-field input::placeholder{color:rgba(255,255,255,.6)}
+.spot-cancel{all:unset;cursor:pointer;font-size:17px;color:#fff}
+.spot-cancel:focus-visible{outline:2px solid #fff;outline-offset:2px;border-radius:4px}
+.spot-body{flex:1;overflow-y:auto;margin-top:14px;scrollbar-width:none}
+.spot-body::-webkit-scrollbar{display:none}
+.spot-h{font-size:13px;font-weight:600;opacity:.65;margin:12px 4px 8px;display:flex;justify-content:space-between}
+.spot-apps{display:grid;grid-template-columns:repeat(4,60px);justify-content:space-between;padding:0 10px}
+.spot-list{border-radius:16px;background:rgba(255,255,255,.12);overflow:hidden}
+.hit{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;padding:10px 14px;position:relative}
+.hit + .hit::before{content:"";position:absolute;top:0;left:62px;right:0;height:.5px;background:rgba(255,255,255,.2)}
+.hit .hi{width:36px;height:36px;flex:none;border-radius:22.5%;overflow:hidden;display:grid;place-items:center;-webkit-mask:var(--squircle) center/100% 100% no-repeat;mask:var(--squircle) center/100% 100% no-repeat}
+.hit .hi svg{width:100%;height:100%;display:block}
+.hit .hi.glyph svg{width:20px;height:20px;fill:#fff}
+.hit b{display:block;font-size:16px;font-weight:600;letter-spacing:-.01em}
+.hit span{display:block;font-size:13px;opacity:.65;line-height:1.3}
+.hit.sel,.hit:focus-visible{background:rgba(255,255,255,.14)}
+.spot-none{text-align:center;opacity:.65;font-size:15px;margin-top:40px}
+
 /* ---------- responsive: on a real phone, the UI is the screen ---------- */
 @media (max-width:560px){
   body{background:#000}
@@ -274,12 +395,16 @@ body.torch .holder::before{opacity:1}
   .phone{width:100%;height:100%;border-radius:0}
   .app{border-radius:0}
   .status{display:none}
-  .lock{padding-top:max(28px,env(safe-area-inset-top,0px))}
+  .lock{padding-top:max(58px,calc(env(safe-area-inset-top,0px) + 32px))}
+  .lock .padlock{top:max(26px,env(safe-area-inset-top,0px))}
   .home{padding:max(24px,env(safe-area-inset-top,0px)) 27px 0}
   .scroll{padding-top:max(12px,env(safe-area-inset-top,0px))}
+  .cc{padding-top:max(30px,env(safe-area-inset-top,0px))}
+  .spot{padding-top:max(20px,env(safe-area-inset-top,0px))}
+  .cc-zone{height:28px;width:120px}
   .grid{grid-template-columns:repeat(4,minmax(0,60px))}
 }
-@media (max-width:360px){.home{padding-left:20px;padding-right:20px}.grid{grid-template-columns:repeat(4,56px)}.icon,.icon .sq{width:56px}.icon .sq{height:56px}.icon .nm{width:70px}.mini4{grid-template-columns:repeat(2,56px)}.w-small .lbl{font-size:11px;white-space:nowrap}.w-small .sub{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.dock{margin:0 -8px 12px}}
+@media (max-width:360px){.cc-grid{grid-template-columns:repeat(4,64px);grid-auto-rows:64px;gap:10px}.tg{width:50px;height:50px}.spot-apps{grid-template-columns:repeat(4,56px);padding:0}.home{padding-left:20px;padding-right:20px}.grid{grid-template-columns:repeat(4,56px)}.icon,.icon .sq{width:56px}.icon .sq{height:56px}.icon .nm{width:70px}.mini4{grid-template-columns:repeat(2,56px)}.w-small .lbl{font-size:11px;white-space:nowrap}.w-small .sub{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.dock{margin:0 -8px 12px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
@@ -332,21 +457,26 @@ body.torch .holder::before{opacity:1}
     <h1>Chef for 15 years. Now I build for iPhone.</h1>
     <p>This whole portfolio is an iPhone. Unlock it, open the apps, and flip the Chef Mode switch in Settings.</p>
     <p>I’m looking for my first iOS developer role.</p>
-    <div class="keys"><span>Click to unlock and open apps.</span><span>Swipe up or press <kbd>Esc</kbd> to go home.</span></div>
+    <div class="keys"><span>Click to unlock and open apps.</span><span>Swipe up or press <kbd>Esc</kbd> to go home.</span><span>Swipe down from the top right for Control Center.</span></div>
   </div>
 
   <div class="holder" id="holder">
     <div class="device" id="device">
       <i class="btn-side a"></i><i class="btn-side b"></i><i class="btn-side c"></i><i class="btn-side d"></i>
       <div class="phone locked" id="phone">
-        <div class="wall" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-        <div class="island" id="island"></div>
+        <div class="wall" aria-hidden="true"><i></i><i></i><i></i><i></i><div class="subject" aria-hidden="true"><svg viewBox="0 0 393 900" preserveAspectRatio="xMidYMin slice"><defs><linearGradient id="g-subj" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a1813"/><stop offset=".45" stop-color="#160d0a"/><stop offset="1" stop-color="#0b0706"/></linearGradient><filter id="f-rim" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="0" stdDeviation="2.5" flood-color="#ffb46a" flood-opacity=".6"/></filter></defs><g fill="url(#g-subj)" filter="url(#f-rim)"><path transform="translate(0 10)" d="M150 92l6-40c-18-4-26-22-16-34 10-12 26-10 32-4 6-14 44-14 50 0 6-6 22-8 32 4 10 12 2 30-16 34l6 40z"/><path d="M197 92c27 0 43 20 43 48 0 28-10 48-24 58v24c40 12 96 26 126 54 24 22 34 54 38 104l12 520H2l12-520c4-50 14-82 38-104 30-28 86-42 126-54v-24c-14-10-24-30-24-58 0-28 16-48 43-48z"/></g><path d="M178 228l19 30 19-30M156 90h82" fill="none" stroke="#ffb46a" stroke-opacity=".3" stroke-width="2"/><g fill="#ffb46a" fill-opacity=".22"><circle cx="178" cy="320" r="3.5"/><circle cx="178" cy="370" r="3.5"/><circle cx="178" cy="420" r="3.5"/><circle cx="216" cy="320" r="3.5"/><circle cx="216" cy="370" r="3.5"/><circle cx="216" cy="420" r="3.5"/></g></svg></div></div>
+        <div class="island" id="island" role="button" tabindex="-1" aria-label="Live Activity: Ace Bartender for iPhone, in progress">
+          <span class="di-lead"><svg viewBox="0 0 100 100"><use href="#i-ace"/></svg></span>
+          <span class="di-trail"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="rgba(255,159,10,.3)" stroke-width="3"/><path d="M12 3a9 9 0 0 1 9 9" fill="none" stroke="#ff9f0a" stroke-width="3" stroke-linecap="round"/></svg></span>
+          <div class="di-full"><span class="ic"><svg viewBox="0 0 100 100"><use href="#i-ace"/></svg></span><div><b>Ace Bartender for iPhone</b><span data-dev="Native SwiftUI build in progress" data-chef="Still on the stove, low and slow"></span></div><div class="di-bar"><i></i></div><div class="di-foot"><span>Swift · SwiftUI · Xcode</span><em>Tap to open</em></div></div>
+        </div>
 
         <div class="status" aria-hidden="true">
           <span class="clock">9:41</span>
           <span class="right">
-            <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
-            <svg width="16" height="12" viewBox="0 0 16 12"><path d="M8 2.3c2.3 0 4.4.9 6 2.4l1.1-1.2A10.2 10.2 0 0 0 8 .6 10.2 10.2 0 0 0 .9 3.5L2 4.7a8.5 8.5 0 0 1 6-2.4zm0 3.4c1.4 0 2.6.5 3.6 1.4l1.1-1.2A7 7 0 0 0 8 4a7 7 0 0 0-4.7 1.9l1.1 1.2c1-.9 2.2-1.4 3.6-1.4zm0 3.4c.5 0 1 .2 1.3.5L8 11.2 6.7 9.6c.3-.3.8-.5 1.3-.5z"/></svg>
+            <svg class="air" width="17" height="14" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg>
+            <svg class="sig" width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+            <svg class="wifi" width="16" height="12" viewBox="0 0 16 12"><path d="M8 2.3c2.3 0 4.4.9 6 2.4l1.1-1.2A10.2 10.2 0 0 0 8 .6 10.2 10.2 0 0 0 .9 3.5L2 4.7a8.5 8.5 0 0 1 6-2.4zm0 3.4c1.4 0 2.6.5 3.6 1.4l1.1-1.2A7 7 0 0 0 8 4a7 7 0 0 0-4.7 1.9l1.1 1.2c1-.9 2.2-1.4 3.6-1.4zm0 3.4c.5 0 1 .2 1.3.5L8 11.2 6.7 9.6c.3-.3.8-.5 1.3-.5z"/></svg>
             <svg width="27" height="13" viewBox="0 0 27 13"><rect x=".5" y=".5" width="23" height="12" rx="3.8" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2.5"/><path d="M25 4.5v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2z" opacity=".45"/></svg>
           </span>
         </div>
@@ -356,6 +486,7 @@ body.torch .holder::before{opacity:1}
           <svg class="padlock" viewBox="0 0 16 21" aria-hidden="true"><path class="shackle" d="M3.5 10V6.5a4.5 4.5 0 0 1 9 0V10" fill="none" stroke="#fff" stroke-width="2.2"/><rect x="0" y="9" width="16" height="12" rx="3" fill="#fff"/></svg>
           <div class="date" id="date">Friday, October 17</div>
           <div class="time">9:41</div>
+          <div class="subject" aria-hidden="true"><svg viewBox="0 0 393 900" preserveAspectRatio="xMidYMin slice"><defs><linearGradient id="g-subj2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a1813"/><stop offset=".45" stop-color="#160d0a"/><stop offset="1" stop-color="#0b0706"/></linearGradient><filter id="f-rim2" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="0" stdDeviation="2.5" flood-color="#ffb46a" flood-opacity=".6"/></filter></defs><g fill="url(#g-subj2)" filter="url(#f-rim2)"><path transform="translate(0 10)" d="M150 92l6-40c-18-4-26-22-16-34 10-12 26-10 32-4 6-14 44-14 50 0 6-6 22-8 32 4 10 12 2 30-16 34l6 40z"/><path d="M197 92c27 0 43 20 43 48 0 28-10 48-24 58v24c40 12 96 26 126 54 24 22 34 54 38 104l12 520H2l12-520c4-50 14-82 38-104 30-28 86-42 126-54v-24c-14-10-24-30-24-58 0-28 16-48 43-48z"/></g><path d="M178 228l19 30 19-30M156 90h82" fill="none" stroke="#ffb46a" stroke-opacity=".3" stroke-width="2"/><g fill="#ffb46a" fill-opacity=".22"><circle cx="178" cy="320" r="3.5"/><circle cx="178" cy="370" r="3.5"/><circle cx="178" cy="420" r="3.5"/><circle cx="216" cy="320" r="3.5"/><circle cx="216" cy="370" r="3.5"/><circle cx="216" cy="420" r="3.5"/></g></svg></div>
           <div class="notifs">
             <div class="notif"><div class="ic"><svg viewBox="0 0 100 100"><use href="#i-ace"/></svg></div><div><b>Kitchen <span>now</span></b><span data-dev="Order up: 1 junior iOS developer. Extra attention to detail, hold the ego." data-chef="Order up: 1 chef, 15 years on the line. Still says “behind!” in the office."></span></div></div>
             <div class="notif"><div class="ic"><svg viewBox="0 0 100 100"><use href="#i-mail"/></svg></div><div><b>Archie Vega <span>2m ago</span></b>Looking for my first iOS role. Unlock to see my work.</div></div>
@@ -395,7 +526,7 @@ body.torch .holder::before{opacity:1}
             </div>
           </div>
 
-          <div class="search-pill" aria-hidden="true"><svg viewBox="0 0 16 16"><circle cx="6.8" cy="6.8" r="4.8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.4 10.4L14 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Search</div>
+          <button class="search-pill" id="search-pill" aria-label="Search"><svg viewBox="0 0 16 16"><circle cx="6.8" cy="6.8" r="4.8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.4 10.4L14 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Search</button>
           <div class="dock">
             <button class="icon" data-open="mail" aria-label="Mail"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-mail"/></svg></span>Mail</button>
             <button class="icon" data-open="contact" aria-label="Phone"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-phone"/></svg></span>Phone</button>
@@ -407,6 +538,37 @@ body.torch .holder::before{opacity:1}
         <!-- APP CONTAINER -->
         <div class="app closed" id="app" hidden role="dialog" aria-modal="true" aria-labelledby="app-title"></div>
 
+        <button class="cc-zone" id="cc-zone" aria-label="Open Control Center" aria-expanded="false"></button>
+        <div class="cc" id="cc" role="dialog" aria-label="Control Center" aria-hidden="true">
+          <div class="cc-grid">
+            <div class="mod big conn">
+              <button class="tg orange" id="cc-air" aria-pressed="false" aria-label="Airplane Mode"><svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg></button>
+              <button class="tg green" id="cc-cell" aria-pressed="true" aria-label="Cellular Data"><svg viewBox="0 0 24 24"><rect x="3" y="15" width="3.2" height="5" rx="1"/><rect x="8.3" y="11.5" width="3.2" height="8.5" rx="1"/><rect x="13.6" y="8" width="3.2" height="12" rx="1"/><rect x="18.9" y="4" width="3.2" height="16" rx="1"/></svg></button>
+              <button class="tg blue" id="cc-wifi" aria-pressed="true" aria-label="Wi-Fi"><svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.237 4.237 0 0 0-6 0zm-4-4l2 2a7.074 7.074 0 0 1 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg></button>
+              <button class="tg blue" id="cc-bt" aria-pressed="true" aria-label="Bluetooth"><svg viewBox="0 0 24 24"><path d="M17.7 7.7L12 2h-1v7.6L6.4 5 5 6.4 10.6 12 5 17.6 6.4 19l4.6-4.6V22h1l5.7-5.7-4.3-4.3zM13 5.8l1.9 1.9L13 9.6zm1.9 10.5L13 18.2v-3.8z"/></svg></button>
+            </div>
+            <div class="mod big music" id="cc-music">
+              <span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
+              <div><span class="art"><svg viewBox="0 0 100 100"><use href="#i-recipe"/></svg></span><b data-dev="Yes, Chef (Extended Mix)" data-chef="Behind! (Live at the Pass)"></b><span>The Line Cooks</span></div>
+              <div class="ctl"><button aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button><button class="pp" id="cc-play" aria-label="Play"><svg class="play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg></button><button aria-label="Next"><svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6zm10-12v12h2V6z"/></svg></button></div>
+            </div>
+            <button class="cbtn wide" id="cc-chef" aria-pressed="false"><span class="gl"><svg viewBox="0 0 24 24" fill="#fff"><path d="M7 14.2a4 4 0 0 1-.6-7.95A5.2 5.2 0 0 1 12 3a5.2 5.2 0 0 1 5.6 3.25A4 4 0 0 1 17 14.2V18H7zM7 19.5h10V21H7z"/></svg></span><span>Chef Mode<small id="cc-chef-state">Off</small></span></button>
+            <button class="cbtn" id="cc-dark" aria-pressed="false" aria-label="Dark Mode"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.39 5.39 0 0 1-4.4 2.26 5.4 5.4 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg></button>
+            <button class="cbtn" id="cc-lock" aria-label="Lock iPhone"><svg viewBox="0 0 24 24"><path d="M7 10V7.5a5 5 0 0 1 10 0V10h.5A1.5 1.5 0 0 1 19 11.5v8A1.5 1.5 0 0 1 17.5 21h-11A1.5 1.5 0 0 1 5 19.5v-8A1.5 1.5 0 0 1 6.5 10zm2 0h6V7.5a3 3 0 0 0-6 0z"/></svg></button>
+            <button class="slider tall" id="cc-bright" role="slider" aria-label="Brightness" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span class="fill" style="height:100%"></span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1" stroke="#8e8e93" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <button class="slider tall" id="cc-vol" role="slider" aria-label="Volume" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60"><span class="fill" style="height:60%"></span><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05A4.47 4.47 0 0 0 16.5 12zM14 3.23v2.06a7 7 0 0 1 0 13.42v2.06A9 9 0 0 0 14 3.23z"/></svg></button>
+            <button class="cbtn" id="cc-torch" aria-pressed="false" aria-label="Flashlight"><svg viewBox="0 0 24 24"><path fill-rule="evenodd" d="M7.6 1.5h8.8c.7 0 1.2.5 1.2 1.2v2.4c0 .6-.2 1.1-.6 1.6L15 9v12c0 .8-.7 1.5-1.5 1.5h-3C9.7 22.5 9 21.8 9 21V9L7 6.7c-.4-.5-.6-1-.6-1.6V2.7c0-.7.5-1.2 1.2-1.2zM8 4.6h8M12 12a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></button>
+            <button class="cbtn" id="cc-timer" aria-label="Timer"><svg viewBox="0 0 24 24"><path d="M9 1h6v2H9zm10 6.4l1.4-1.4-1.4-1.4-1.5 1.5A9 9 0 1 0 19 7.4zM12 21a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm1-12h-2v5.4l3.8 2.3 1-1.7-2.8-1.6z"/></svg></button>
+            <button class="cbtn" id="cc-calc" aria-label="Calculator: opens Cashout"><svg viewBox="0 0 24 24"><path d="M6.5 2h11A2.5 2.5 0 0 1 20 4.5v15a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2zM7 5v4h10V5zm0 7v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2z"/></svg></button>
+            <button class="cbtn" id="cc-cam" aria-label="Camera"><svg viewBox="0 0 24 24"><path fill-rule="evenodd" d="M9.2 3.5h5.6c.6 0 1.1.3 1.4.8l1 1.7H20a2.5 2.5 0 0 1 2.5 2.5v9.5A2.5 2.5 0 0 1 20 20.5H4A2.5 2.5 0 0 1 1.5 18V8.5A2.5 2.5 0 0 1 4 6h2.8l1-1.7c.3-.5.8-.8 1.4-.8zM12 8.6a4.6 4.6 0 1 0 0 9.2 4.6 4.6 0 0 0 0-9.2zm0 2a2.6 2.6 0 1 1 0 5.2 2.6 2.6 0 0 1 0-5.2z"/></svg></button>
+          </div>
+          <div class="cc-hint">Tap anywhere to close</div>
+        </div>
+        <div class="spot" id="spot" role="dialog" aria-label="Search" aria-hidden="true">
+          <div class="spot-bar"><label class="spot-field"><svg viewBox="0 0 16 16"><circle cx="6.8" cy="6.8" r="4.8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.4 10.4L14 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input id="spot-q" type="search" placeholder="Search" autocomplete="off" spellcheck="false" aria-controls="spot-body"></label><button class="spot-cancel" id="spot-cancel">Cancel</button></div>
+          <div class="spot-body" id="spot-body" aria-live="polite"></div>
+        </div>
+        <div class="dim" id="dim" aria-hidden="true"></div>
         <button class="home-zone" id="homezone" aria-label="Go to the home screen"></button>
         <div class="home-ind" aria-hidden="true"></div>
         <div class="shutter" id="shutter" aria-hidden="true"></div>
@@ -419,7 +581,7 @@ body.torch .holder::before{opacity:1}
 <script>
 (function(){
   var phone=document.getElementById('phone'),lock=document.getElementById('lock'),app=document.getElementById('app'),island=document.getElementById('island');
-  var state={chef:false,dark:false,open:null,origin:null};
+  var state={chef:false,dark:false,torch:false,open:null,origin:null};
 
   /* initial appearance follows the viewer's theme */
   try{
@@ -438,17 +600,63 @@ body.torch .holder::before{opacity:1}
   voice();
 
   /* unlock */
-  var startY=null,reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,home=document.getElementById('home');
+  /* device px per phone px: the device is scaled to fit on desktop */
+  function scale(){return phone.getBoundingClientRect().height/phone.offsetHeight||1}
+  /* depth effect: the subject's head sits over the lower half of the clock */
+  function placeSubject(){var t=lock.querySelector('.time');phone.style.setProperty('--subject-top',(t.offsetTop+t.offsetHeight*.5)+'px')}
+  placeSubject();window.addEventListener('resize',placeSubject);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(placeSubject);
+
   /* the padlock opens first, then the lock screen slides away, as on Face ID iPhones */
-  function unlock(){
-    if(lock.classList.contains('unlocking'))return;
-    lock.classList.add('unlocking');
-    setTimeout(function(){lock.classList.add('gone');phone.classList.remove('locked');island.style.width=''},reduce?0:260);
+  var unlocked=false;
+  function finishUnlock(){
+    lock.classList.remove('dragging');phone.classList.remove('dragging');
+    lock.style.transform='';lock.style.opacity='';home.style.transform='';home.style.opacity='';
+    lock.querySelector('.subject').style.transform='';
+    lock.classList.add('gone');phone.classList.remove('locked');
+    if(!unlocked){unlocked=true;setTimeout(liveActivity,1400)}
   }
-  lock.addEventListener('click',unlock);
-  lock.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();unlock()}});
-  lock.addEventListener('pointerdown',function(e){startY=e.clientY});
-  lock.addEventListener('pointerup',function(e){if(startY!==null&&startY-e.clientY>30)unlock();startY=null});
+  function unlock(){
+    if(lock.classList.contains('gone'))return;
+    if(lock.classList.contains('unlocking')){finishUnlock();return}
+    lock.classList.add('unlocking');
+    setTimeout(finishUnlock,reduce?0:260);
+  }
+  function relock(){
+    closeCC();closeSpot();if(!app.hidden)goHome();
+    lock.classList.remove('gone','unlocking');phone.classList.add('locked');
+  }
+  /* drag to unlock: the lock screen follows the finger and springs back if released early */
+  var drag=null;
+  lock.addEventListener('pointerdown',function(e){
+    if(lock.classList.contains('gone'))return;
+    drag={y:e.clientY,t:e.timeStamp,dy:0,moved:false};
+    try{lock.setPointerCapture(e.pointerId)}catch(err){}
+  });
+  lock.addEventListener('pointermove',function(e){
+    if(!drag)return;
+    var dy=Math.min(0,(e.clientY-drag.y)/scale());
+    if(!drag.moved&&dy>-6)return;
+    if(!drag.moved){drag.moved=true;lock.classList.add('unlocking','dragging');phone.classList.add('dragging')}
+    drag.dy=dy;drag.v=(e.clientY-drag.y)/Math.max(1,e.timeStamp-drag.t);
+    var h=phone.offsetHeight,p=Math.min(1,-dy/(h*.45));
+    lock.style.transform='translateY('+dy+'px)';lock.style.opacity=1-p*.6;
+    lock.querySelector('.subject').style.transform='translateY('+(-dy)+'px)';
+    home.style.opacity=p;home.style.transform='scale('+(1.12-.12*p)+')';
+  });
+  function endDrag(e){
+    if(!drag)return;
+    var d=drag;drag=null;
+    if(!d.moved)return;
+    lock.classList.remove('dragging');phone.classList.remove('dragging');
+    var fast=(e.clientY-d.y)/Math.max(1,e.timeStamp-d.t)<-0.5;
+    if(d.dy<-phone.offsetHeight*.22||(fast&&d.dy<-40)){lock._dragged=true;finishUnlock()}
+    else{lock._dragged=true;lock.style.transform='';lock.style.opacity='';lock.querySelector('.subject').style.transform='';home.style.transform='';home.style.opacity=''}
+  }
+  lock.addEventListener('pointerup',endDrag);lock.addEventListener('pointercancel',endDrag);
+  lock.addEventListener('click',function(){if(lock._dragged){lock._dragged=false;return}unlock()});
+  lock.addEventListener('keydown',function(e){if(e.target!==lock)return;if(e.key==='Enter'||e.key===' '){e.preventDefault();unlock()}});
 
   /* haptic tick: vibrate where supported; on iOS 18+ Safari, toggling a hidden switch input gives a tap */
   function haptic(){
@@ -470,8 +678,184 @@ body.torch .holder::before{opacity:1}
     });
   }
   var torch=document.getElementById('qa-torch'),cam=document.getElementById('qa-camera'),shutter=document.getElementById('shutter');
-  hold(torch,function(){var on=torch.getAttribute('aria-pressed')!=='true';torch.setAttribute('aria-pressed',on);document.body.classList.toggle('torch',on)});
-  hold(cam,function(){shutter.classList.remove('go');shutter.offsetWidth;shutter.classList.add('go');toast('Say “Yes, Chef!”')});
+  function shoot(){shutter.classList.remove('go');shutter.offsetWidth;shutter.classList.add('go');toast('Say “Yes, Chef!”')}
+  hold(torch,function(){setTorch(torch.getAttribute('aria-pressed')!=='true')});
+  hold(cam,shoot);
+
+  /* shared state, so Settings, Control Center and the lock screen always agree */
+  function setTorch(on){
+    state.torch=on;torch.setAttribute('aria-pressed',on);document.body.classList.toggle('torch',on);
+    var c=document.getElementById('cc-torch');if(c)c.setAttribute('aria-pressed',on);
+  }
+  function setChef(on){
+    state.chef=on;voice();
+    var sc=document.getElementById('sw-chef');if(sc)sc.setAttribute('aria-checked',on);
+    var c=document.getElementById('cc-chef');c.setAttribute('aria-pressed',on);document.getElementById('cc-chef-state').textContent=on?'On':'Off';
+  }
+  function setDark(on){
+    state.dark=on;phone.classList.toggle('ios-dark',on);
+    var sd=document.getElementById('sw-dark');if(sd)sd.setAttribute('aria-checked',on);
+    document.getElementById('cc-dark').setAttribute('aria-pressed',on);
+  }
+  document.getElementById('cc-dark').setAttribute('aria-pressed',state.dark);
+
+  /* ---------- Control Center: swipe down from the top right ---------- */
+  var cc=document.getElementById('cc'),ccZone=document.getElementById('cc-zone'),ccGrid=cc.querySelector('.cc-grid'),ccLast=null;
+  function openCC(){
+    if(phone.classList.contains('cc-open'))return;
+    closeSpot();ccLast=document.activeElement;
+    cc.classList.remove('dragging');cc.style.opacity='';ccGrid.style.transform='';
+    cc.classList.add('open');cc.setAttribute('aria-hidden','false');phone.classList.add('cc-open');ccZone.setAttribute('aria-expanded','true');
+    haptic();document.getElementById('cc-air').focus({preventScroll:true});
+  }
+  function closeCC(){
+    if(!phone.classList.contains('cc-open'))return false;
+    cc.classList.remove('open');cc.setAttribute('aria-hidden','true');phone.classList.remove('cc-open');ccZone.setAttribute('aria-expanded','false');
+    if(ccLast&&ccLast.focus&&document.contains(ccLast))ccLast.focus({preventScroll:true});
+    return true;
+  }
+  var ccDrag=null;
+  ccZone.addEventListener('pointerdown',function(e){ccDrag={y:e.clientY,moved:false};try{ccZone.setPointerCapture(e.pointerId)}catch(err){}});
+  ccZone.addEventListener('pointermove',function(e){
+    if(!ccDrag)return;var dy=(e.clientY-ccDrag.y)/scale();if(dy<4&&!ccDrag.moved)return;
+    ccDrag.moved=true;var p=Math.max(0,Math.min(1,dy/180));
+    cc.classList.add('dragging');cc.style.visibility='visible';cc.style.opacity=p;ccGrid.style.transform='scale('+(.88+.12*p)+') translateY('+(-30+30*p)+'px)';
+  });
+  function ccEnd(e){
+    if(!ccDrag)return;var d=ccDrag;ccDrag=null;
+    var dy=(e.clientY-d.y)/scale();cc.style.visibility='';
+    if(!d.moved||dy>50)openCC();else{cc.classList.remove('dragging');cc.style.opacity='';ccGrid.style.transform=''}
+  }
+  ccZone.addEventListener('pointerup',ccEnd);ccZone.addEventListener('pointercancel',ccEnd);
+  ccZone.addEventListener('click',function(e){if(e.detail===0)openCC()});
+  cc.addEventListener('click',function(e){if(e.target===cc||e.target===ccGrid||e.target.classList.contains('cc-hint'))closeCC()});
+  /* swipe up inside Control Center closes it */
+  var ccUp=null;
+  cc.addEventListener('pointerdown',function(e){ccUp=e.clientY});
+  cc.addEventListener('pointerup',function(e){if(ccUp!==null&&(ccUp-e.clientY)/scale()>60)closeCC();ccUp=null});
+
+  function tg(id,fn){var b=document.getElementById(id);b.addEventListener('click',function(){var on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on);fn&&fn(on)})}
+  tg('cc-air',function(on){phone.classList.toggle('airplane',on);['cc-cell','cc-wifi','cc-bt'].forEach(function(id){document.getElementById(id).setAttribute('aria-pressed',!on)});toast(on?'Airplane Mode on. Still reachable by email.':'Airplane Mode off')});
+  tg('cc-cell');tg('cc-wifi');tg('cc-bt');
+  document.getElementById('cc-torch').addEventListener('click',function(){setTorch(!state.torch)});
+  document.getElementById('cc-chef').addEventListener('click',function(){setChef(!state.chef)});
+  document.getElementById('cc-dark').addEventListener('click',function(){setDark(!state.dark)});
+  document.getElementById('cc-lock').addEventListener('click',function(){relock()});
+  document.getElementById('cc-cam').addEventListener('click',function(){closeCC();shoot()});
+  document.getElementById('cc-calc').addEventListener('click',function(){closeCC();open('cash')});
+  document.getElementById('cc-timer').addEventListener('click',function(){toast('Timer set: 15 years. Done. Plating now.')});
+  var music=document.getElementById('cc-music'),play=document.getElementById('cc-play');
+  play.addEventListener('click',function(){var on=!music.classList.contains('playing');music.classList.toggle('playing',on);play.setAttribute('aria-label',on?'Pause':'Play')});
+
+  /* sliders: drag up and down, or use the arrow keys */
+  var dim=document.getElementById('dim');
+  function slider(id,fn){
+    var el=document.getElementById(id),fill=el.querySelector('.fill'),active=false;
+    function set(v){v=Math.max(0,Math.min(100,Math.round(v)));fill.style.height=v+'%';el.setAttribute('aria-valuenow',v);fn&&fn(v)}
+    function at(e){var r=el.getBoundingClientRect();set((r.bottom-e.clientY)/r.height*100)}
+    el.addEventListener('pointerdown',function(e){active=true;try{el.setPointerCapture(e.pointerId)}catch(err){}at(e)});
+    el.addEventListener('pointermove',function(e){if(active)at(e)});
+    el.addEventListener('pointerup',function(){active=false});el.addEventListener('pointercancel',function(){active=false});
+    el.addEventListener('keydown',function(e){var v=+el.getAttribute('aria-valuenow');if(e.key==='ArrowUp'||e.key==='ArrowRight'){set(v+10);e.preventDefault()}if(e.key==='ArrowDown'||e.key==='ArrowLeft'){set(v-10);e.preventDefault()}});
+  }
+  slider('cc-bright',function(v){dim.style.opacity=((100-v)/100*.65).toFixed(3)});
+  slider('cc-vol');
+
+  /* ---------- Dynamic Island live activity ---------- */
+  var diTimer=null;
+  function liveActivity(){if(window.innerWidth<=560)return;island.classList.add('compact');phone.classList.add('di-on');island.tabIndex=0}
+  function expandIsland(){island.classList.remove('compact');island.classList.add('expanded');clearTimeout(diTimer);diTimer=setTimeout(collapseIsland,6000)}
+  function collapseIsland(){if(island.classList.contains('expanded')){island.classList.remove('expanded');island.classList.add('compact')}}
+  island.addEventListener('click',function(e){
+    e.stopPropagation();
+    if(island.classList.contains('compact'))expandIsland();
+    else if(island.classList.contains('expanded')){collapseIsland();closeCC();closeSpot();open('ace',island)}
+  });
+  island.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();island.click()}});
+  phone.addEventListener('click',function(e){if(!island.contains(e.target))collapseIsland()});
+
+  /* ---------- Spotlight ---------- */
+  var spot=document.getElementById('spot'),q=document.getElementById('spot-q'),sbody=document.getElementById('spot-body'),sel=0,spotLast=null;
+  function ico(k){return '<span class="hi"><svg viewBox="0 0 100 100"><use href="#i-'+k+'"/></svg></span>'}
+  function gly(bg,path){return '<span class="hi glyph" style="background:'+bg+'"><svg viewBox="0 0 24 24"><path d="'+path+'"/></svg></span>'}
+  var G_PERSON='M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm0 2c-4 0-8 2-8 5.5V21h16v-1.5C20 16 16 14 12 14z',G_STAR='M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7.1L12 17.3 5.8 21l1.6-7.1L2 9.2l7.1-.6z',G_HAMMER='M2 19.6L13.3 8.3l2.4 2.4L4.4 22zM14 3l7 7-2.1 2.1-1.4-1.4-1.4 1.4-4.2-4.2 1.4-1.4-1.4-1.4z';
+  var INDEX=[
+    {t:'Ace Bartender',s:'App · Specs, builds and garnishes',k:'ace bartender cocktail drinks swiftui web app bar',i:ico('ace'),go:{open:'ace'}},
+    {t:'Cashout Calculator',s:'App · Tip-out math for restaurant crews',k:'cashout calculator tips tip out money restaurant',i:ico('cash'),go:{open:'cash'}},
+    {t:'WhereWolf',s:'App · A Guess Who?-style deduction game',k:'wherewolf werewolf game geowho guess who react typescript vite tailwind zustand vitest',i:ico('wolf'),go:{open:'wolf'}},
+    {t:'The Miracle Ghost',s:'App · Website and Shopify store for AES',k:'miracle ghost aes shopify client website miami graffiti',i:ico('ghost'),go:{open:'ghost'}},
+    {t:'Notes',s:'Why a chef makes a good iOS developer',k:'notes chef kitchen story bib gourmand michelin mise en place',i:ico('notes'),go:{open:'notes'}},
+    {t:'Recipe',s:'Archie.swift',k:'recipe swift code struct archie',i:ico('recipe'),go:{open:'recipe'}},
+    {t:'Contacts',s:'Archie Vega',k:'contacts contact card phone archie vega',i:ico('contacts'),go:{open:'contact'}},
+    {t:'Settings',s:'Chef Mode, Dark Mode, About',k:'settings chef mode dark mode about',i:ico('settings'),go:{open:'settings'}},
+    {t:'Mail',s:'Email Archie',k:'mail email message hire contact reach out',i:ico('mail'),go:{open:'mail'}},
+    {t:'GitHub',s:'github.com/cholohotsauce',k:'github code repos source',i:ico('github'),go:{href:'https://github.com/cholohotsauce'}},
+    {t:'LinkedIn',s:'linkedin.com/in/arcadio-vega',k:'linkedin profile resume cv experience',i:ico('linkedin'),go:{href:'https://www.linkedin.com/in/arcadio-vega'}},
+    {t:'Archie Vega',s:'Junior iOS Developer · Former Chef',k:'archie arcadio vega about who developer ios hire available',i:gly('linear-gradient(145deg,#ffb340,#ff5a36)',G_PERSON),go:{open:'contact'}},
+    {t:'Available for hire',s:'Looking for a first iOS developer role',k:'hire hiring job role available open work junior',i:gly('#30d158',G_PERSON),go:{open:'mail'}},
+    {t:'Bib Gourmand, 2022 to 2026',s:'Michelin Bib Gourmand, won with my restaurant team',k:'michelin bib gourmand award restaurant team canada',i:gly('#ff3b30',G_STAR),go:{open:'notes'}},
+    {t:'15 years in kitchens',s:'Chef, line cook, team player',k:'chef kitchen cook years experience restaurant',i:gly('#ff9f0a',G_STAR),go:{open:'notes'}},
+    {t:'Swift, SwiftUI, Xcode',s:'iOS stack',k:'swift swiftui xcode ios iphone skills stack',i:gly('#0a84ff',G_HAMMER),go:{open:'recipe'}},
+    {t:'React, TypeScript, Vite',s:'Web stack, used in WhereWolf',k:'react typescript javascript vite tailwind zustand vitest web skills',i:gly('#5e5ce6',G_HAMMER),go:{open:'wolf'}}
+  ];
+  var SUGGEST=['ace','wolf','notes','contacts'];
+  function results(v){
+    v=v.trim().toLowerCase();if(!v)return null;
+    var words=v.split(/\s+/);
+    return INDEX.map(function(r){var hay=(r.t+' '+r.s+' '+r.k).toLowerCase(),sc=0;
+      for(var i=0;i<words.length;i++){var w=words[i];if(hay.indexOf(w)<0)return null;if(r.t.toLowerCase().indexOf(w)===0)sc+=3;else if((' '+r.t.toLowerCase()).indexOf(' '+w)>=0)sc+=2;else sc+=1}
+      return {r:r,sc:sc}}).filter(Boolean).sort(function(a,b){return b.sc-a.sc}).map(function(x){return x.r});
+  }
+  var shown=[];
+  function renderSpot(){
+    var list=results(q.value);
+    if(!list){
+      shown=[];
+      sbody.innerHTML='<div class="spot-h"><span>Siri Suggestions</span></div><div class="spot-apps">'+SUGGEST.map(function(k){var b=document.querySelector('#home [data-open] .sq use[href="#i-'+k+'"]').closest('[data-open]');return '<button class="icon" data-spot-open="'+b.dataset.open+'">'+b.innerHTML+'</button>'}).join('')+'</div>'+
+        '<div class="spot-h"><span>Try</span></div><div class="spot-list">'+['Swift','Michelin','hire','React'].map(function(w){return '<button class="hit" data-try="'+w+'">'+gly('rgba(255,255,255,.18)','M10 3a7 7 0 0 1 5.6 11.2l5.6 5.6-1.4 1.4-5.6-5.6A7 7 0 1 1 10 3zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10z')+'<div><b>'+w+'</b></div></button>'}).join('')+'</div>';
+    }else if(!list.length){shown=[];sbody.innerHTML='<div class="spot-none">No Results for “'+q.value.replace(/[<&"]/g,'')+'”</div>'}
+    else{
+      shown=list;sel=0;
+      sbody.innerHTML='<div class="spot-h"><span>Top Hit</span></div><div class="spot-list">'+hit(list[0],0)+'</div>'+(list.length>1?'<div class="spot-h"><span>Archie’s iPhone</span><span>'+(list.length-1)+'</span></div><div class="spot-list">'+list.slice(1).map(function(r,i){return hit(r,i+1)}).join('')+'</div>':'');
+    }
+    mark();
+  }
+  function hit(r,i){return '<button class="hit" data-i="'+i+'">'+r.i+'<div><b>'+r.t+'</b><span>'+r.s+'</span></div></button>'}
+  function mark(){sbody.querySelectorAll('.hit[data-i]').forEach(function(h){h.classList.toggle('sel',+h.dataset.i===sel)})}
+  function go(r){
+    if(!r)return;closeSpot();
+    if(r.go.href){window.open(r.go.href,'_blank','noopener')}else{open(r.go.open)}
+  }
+  sbody.addEventListener('click',function(e){
+    var h=e.target.closest('[data-i]'),t=e.target.closest('[data-try]'),a=e.target.closest('[data-spot-open]');
+    if(h)go(shown[+h.dataset.i]);
+    else if(t){q.value=t.dataset.try;renderSpot();q.focus()}
+    else if(a){closeSpot();open(a.dataset.spotOpen)}
+  });
+  q.addEventListener('input',renderSpot);
+  q.addEventListener('keydown',function(e){
+    if(e.key==='ArrowDown'&&shown.length){sel=Math.min(shown.length-1,sel+1);mark();e.preventDefault()}
+    if(e.key==='ArrowUp'&&shown.length){sel=Math.max(0,sel-1);mark();e.preventDefault()}
+    if(e.key==='Enter'){go(shown[sel]);e.preventDefault()}
+  });
+  function openSpot(){
+    if(phone.classList.contains('locked'))return;
+    closeCC();spotLast=document.activeElement;q.value='';renderSpot();
+    spot.classList.add('open');spot.setAttribute('aria-hidden','false');
+    setTimeout(function(){q.focus({preventScroll:true})},reduce?0:60);
+  }
+  function closeSpot(){
+    if(!spot.classList.contains('open'))return false;
+    spot.classList.remove('open');spot.setAttribute('aria-hidden','true');q.blur();
+    if(spotLast&&spotLast.focus&&document.contains(spotLast))spotLast.focus({preventScroll:true});
+    return true;
+  }
+  document.getElementById('search-pill').addEventListener('click',openSpot);
+  document.getElementById('spot-cancel').addEventListener('click',closeSpot);
+  /* swipe down on the home screen also opens Spotlight, as on iOS */
+  var sd0=null;
+  home.addEventListener('pointerdown',function(e){sd0=phone.classList.contains('app-open')?null:{y:e.clientY,x:e.clientX}});
+  home.addEventListener('pointerup',function(e){if(sd0&&(e.clientY-sd0.y)/scale()>70&&Math.abs(e.clientX-sd0.x)<60)openSpot();sd0=null});
 
   /* icons */
   var chevL='<svg viewBox="0 0 12 20"><path d="M10 2L2 10l8 8"/></svg>';
@@ -600,9 +984,9 @@ body.torch .holder::before{opacity:1}
     app.querySelectorAll('[data-home]').forEach(function(b){b.addEventListener('click',goHome)});
     app.querySelectorAll('[data-open]').forEach(function(b){b.addEventListener('click',function(){open(b.dataset.open)})});
     var sc=document.getElementById('sw-chef');
-    if(sc)sc.addEventListener('click',function(){state.chef=!state.chef;sc.setAttribute('aria-checked',state.chef);voice()});
+    if(sc)sc.addEventListener('click',function(){setChef(!state.chef)});
     var sd=document.getElementById('sw-dark');
-    if(sd)sd.addEventListener('click',function(){state.dark=!state.dark;sd.setAttribute('aria-checked',state.dark);phone.classList.toggle('ios-dark',state.dark)});
+    if(sd)sd.addEventListener('click',function(){setDark(!state.dark)});
     var cp=document.getElementById('copy');
     if(cp)cp.addEventListener('click',function(){
       var addr='arcadiovega1@gmail.com';
@@ -621,8 +1005,8 @@ body.torch .holder::before{opacity:1}
   /* swipe up from the bottom edge anywhere in an app (touch) */
   var ty=null;
   phone.addEventListener('touchstart',function(e){var t=e.touches[0],pr=phone.getBoundingClientRect();ty=(pr.bottom-t.clientY<40)?t.clientY:null},{passive:true});
-  phone.addEventListener('touchend',function(e){if(ty!==null&&ty-e.changedTouches[0].clientY>40){if(phone.classList.contains('locked'))unlock();else goHome()}ty=null},{passive:true});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')goHome()});
+  phone.addEventListener('touchend',function(e){if(ty!==null&&ty-e.changedTouches[0].clientY>40){if(closeCC()||closeSpot())return;if(phone.classList.contains('locked'))unlock();else goHome()}ty=null},{passive:true});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(closeCC()||closeSpot())return;collapseIsland();goHome()}});
 
   /* fit the device to the window on desktop */
   var device=document.getElementById('device'),holder=document.getElementById('holder');
