@@ -1,0 +1,1231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Archie Vega, Chef to iOS (iPhone edition)</title>
+<link rel="canonical" href="https://arcadiovega.com/">
+<meta name="description" content="Arcadio “Archie” Vega: chef for 15 years, part of a Michelin Bib Gourmand team, now an iOS developer. This portfolio is an iPhone.">
+<meta property="og:title" content="Archie Vega, Chef to iOS">
+<meta property="og:description" content="Chef for 15 years. Now I build for iPhone. Unlock the phone to see my work.">
+<meta name="theme-color" content="#e9e6e1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: the portfolio is an iPhone. Desktop shows the device beside a short intro; on a phone the iOS UI fills the screen. */
+:root{
+  --page:#e9e6e1; --page-ink:#1b1916; --page-ink-2:#6a645c;
+  --sf:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Inter","Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,monospace;
+  /* iOS system colors, light */
+  --ios-bg:#f2f2f7; --ios-cell:#ffffff; --ios-label:#000000; --ios-label-2:rgba(60,60,67,.6); --ios-sep:rgba(60,60,67,.29);
+  --ios-blue:#007aff; --ios-green:#34c759; --ios-orange:#ff9500; --ios-red:#ff3b30; --ios-fill:rgba(120,120,128,.16); --ios-bar:rgba(249,249,249,.82);
+  --notes-yellow:#e5a50a;
+  /* iOS icon shape: a continuous-corner superellipse (n=5), not a plain rounded rectangle */
+  --squircle:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpath d='M100 50L99.97 65.36L99.89 70.26L99.75 73.81L99.56 76.68L99.31 79.12L99.01 81.26L98.64 83.17L98.22 84.89L97.74 86.46L97.2 87.89L96.6 89.21L95.94 90.43L95.2 91.54L94.4 92.58L93.53 93.53L92.58 94.4L91.54 95.2L90.43 95.94L89.21 96.6L87.89 97.2L86.46 97.74L84.89 98.22L83.17 98.64L81.26 99.01L79.12 99.31L76.68 99.56L73.81 99.75L70.26 99.89L65.36 99.97L50 100L34.64 99.97L29.74 99.89L26.19 99.75L23.32 99.56L20.88 99.31L18.74 99.01L16.83 98.64L15.11 98.22L13.54 97.74L12.11 97.2L10.79 96.6L9.57 95.94L8.46 95.2L7.42 94.4L6.47 93.53L5.6 92.58L4.8 91.54L4.06 90.43L3.4 89.21L2.8 87.89L2.26 86.46L1.78 84.89L1.36 83.17L0.99 81.26L0.69 79.12L0.44 76.68L0.25 73.81L0.11 70.26L0.03 65.36L0 50L0.03 34.64L0.11 29.74L0.25 26.19L0.44 23.32L0.69 20.88L0.99 18.74L1.36 16.83L1.78 15.11L2.26 13.54L2.8 12.11L3.4 10.79L4.06 9.57L4.8 8.46L5.6 7.42L6.47 6.47L7.42 5.6L8.46 4.8L9.57 4.06L10.79 3.4L12.11 2.8L13.54 2.26L15.11 1.78L16.83 1.36L18.74 0.99L20.88 0.69L23.32 0.44L26.19 0.25L29.74 0.11L34.64 0.03L50 0L65.36 0.03L70.26 0.11L73.81 0.25L76.68 0.44L79.12 0.69L81.26 0.99L83.17 1.36L84.89 1.78L86.46 2.26L87.89 2.8L89.21 3.4L90.43 4.06L91.54 4.8L92.58 5.6L93.53 6.47L94.4 7.42L95.2 8.46L95.94 9.57L96.6 10.79L97.2 12.11L97.74 13.54L98.22 15.11L98.64 16.83L99.01 18.74L99.31 20.88L99.56 23.32L99.75 26.19L99.89 29.74L99.97 34.64Z'/%3E%3C/svg%3E");
+  --icon-rim:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='r' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23fff' stop-opacity='.7'/%3E%3Cstop offset='.35' stop-color='%23fff' stop-opacity='.08'/%3E%3Cstop offset='.7' stop-color='%23fff' stop-opacity='.04'/%3E%3Cstop offset='1' stop-color='%23fff' stop-opacity='.35'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M100 50L99.97 65.36L99.89 70.26L99.75 73.81L99.56 76.68L99.31 79.12L99.01 81.26L98.64 83.17L98.22 84.89L97.74 86.46L97.2 87.89L96.6 89.21L95.94 90.43L95.2 91.54L94.4 92.58L93.53 93.53L92.58 94.4L91.54 95.2L90.43 95.94L89.21 96.6L87.89 97.2L86.46 97.74L84.89 98.22L83.17 98.64L81.26 99.01L79.12 99.31L76.68 99.56L73.81 99.75L70.26 99.89L65.36 99.97L50 100L34.64 99.97L29.74 99.89L26.19 99.75L23.32 99.56L20.88 99.31L18.74 99.01L16.83 98.64L15.11 98.22L13.54 97.74L12.11 97.2L10.79 96.6L9.57 95.94L8.46 95.2L7.42 94.4L6.47 93.53L5.6 92.58L4.8 91.54L4.06 90.43L3.4 89.21L2.8 87.89L2.26 86.46L1.78 84.89L1.36 83.17L0.99 81.26L0.69 79.12L0.44 76.68L0.25 73.81L0.11 70.26L0.03 65.36L0 50L0.03 34.64L0.11 29.74L0.25 26.19L0.44 23.32L0.69 20.88L0.99 18.74L1.36 16.83L1.78 15.11L2.26 13.54L2.8 12.11L3.4 10.79L4.06 9.57L4.8 8.46L5.6 7.42L6.47 6.47L7.42 5.6L8.46 4.8L9.57 4.06L10.79 3.4L12.11 2.8L13.54 2.26L15.11 1.78L16.83 1.36L18.74 0.99L20.88 0.69L23.32 0.44L26.19 0.25L29.74 0.11L34.64 0.03L50 0L65.36 0.03L70.26 0.11L73.81 0.25L76.68 0.44L79.12 0.69L81.26 0.99L83.17 1.36L84.89 1.78L86.46 2.26L87.89 2.8L89.21 3.4L90.43 4.06L91.54 4.8L92.58 5.6L93.53 6.47L94.4 7.42L95.2 8.46L95.94 9.57L96.6 10.79L97.2 12.11L97.74 13.54L98.22 15.11L98.64 16.83L99.01 18.74L99.31 20.88L99.56 23.32L99.75 26.19L99.89 29.74L99.97 34.64Z' fill='none' stroke='url(%23r)' stroke-width='3'/%3E%3C/svg%3E");
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--page:#121110; --page-ink:#f2efea; --page-ink-2:#9d968d; color-scheme:dark}}
+:root[data-theme="dark"]{--page:#121110; --page-ink:#f2efea; --page-ink-2:#9d968d; color-scheme:dark}
+.phone.ios-dark{
+  --ios-bg:#000000; --ios-cell:#1c1c1e; --ios-label:#ffffff; --ios-label-2:rgba(235,235,245,.6); --ios-sep:rgba(84,84,88,.65);
+  --ios-blue:#0a84ff; --ios-green:#30d158; --ios-orange:#ff9f0a; --ios-red:#ff453a; --ios-fill:rgba(120,120,128,.32); --ios-bar:rgba(22,22,24,.82);
+  --notes-yellow:#ffd60a;
+}
+[hidden]{display:none!important}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{background:var(--page);color:var(--page-ink);font-family:var(--sf);-webkit-font-smoothing:antialiased;overflow:hidden}
+button{font:inherit;color:inherit}
+a{color:inherit}
+
+/* ---------- page around the device ---------- */
+.stage{height:100%;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:56px;max-width:1080px;margin:0 auto;padding-block:24px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+.intro{min-width:0;max-width:420px;justify-self:end}
+.intro .kicker{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--page-ink-2)}
+.intro h1{font-size:clamp(36px,4.4vw,56px);line-height:1.02;letter-spacing:-.035em;font-weight:700;margin:10px 0 16px;text-wrap:balance}
+.intro p{font-size:18px;line-height:1.5;color:var(--page-ink-2);margin:0 0 14px}
+.intro .keys{font-size:14px;color:var(--page-ink-2);display:grid;gap:6px;margin-top:22px}
+.intro kbd{font-family:var(--sf);font-size:12px;font-weight:600;border:1px solid currentColor;border-radius:6px;padding:1px 6px;opacity:.8}
+.holder{position:relative}
+
+/* ---------- device ---------- */
+.device{position:relative;width:421px;height:880px;border-radius:68px;padding:14px;
+  background:linear-gradient(145deg,#9a948c,#3b3935 30%,#6e6a64 55%,#2a2826 80%,#8d877f);
+  box-shadow:0 0 0 1.5px #1a1918 inset,0 50px 90px -40px rgba(0,0,0,.55),0 20px 40px -20px rgba(0,0,0,.35);transform-origin:top left}
+.device::before{content:"";position:absolute;inset:6px;border-radius:62px;background:#050505}
+.btn-side{position:absolute;width:4px;border-radius:2px;background:linear-gradient(90deg,#3b3935,#8d877f)}
+.btn-side.a{left:-3px;top:150px;height:30px}.btn-side.b{left:-3px;top:205px;height:58px}.btn-side.c{left:-3px;top:275px;height:58px}.btn-side.d{right:-3px;top:230px;height:92px}
+.phone{position:relative;width:393px;height:852px;border-radius:55px;overflow:hidden;isolation:isolate;background:#000;font-family:var(--sf);color:#fff;user-select:none;-webkit-user-select:none}
+.island{position:absolute;top:11px;left:50%;width:124px;height:36px;margin-left:-62px;border-radius:20px;background:#000;z-index:60;transition:width .45s cubic-bezier(.3,1.3,.5,1),margin .45s cubic-bezier(.3,1.3,.5,1)}
+
+/* status bar */
+.status{position:absolute;top:0;left:0;right:0;height:54px;padding:18px 32px 0 48px;display:flex;justify-content:space-between;align-items:flex-start;z-index:55;font-size:17px;font-weight:600;letter-spacing:-.02em;color:#fff;pointer-events:none;transition:color .3s}
+.phone.app-open:not(.ios-dark) .status{color:#000}
+.status .clock{transition:opacity .3s}
+.phone.locked .status .clock{opacity:0}
+.status .right{display:flex;gap:6px;align-items:center;padding-top:2px}
+.status svg{display:block;fill:currentColor}
+
+/* wallpaper */
+.wall{position:absolute;inset:0;z-index:0;overflow:hidden;background:#1d1310;transition:filter .5s}
+.wall i{position:absolute;border-radius:50%;filter:blur(46px);transition:background-color 1s}
+.wall i:nth-child(1){width:520px;height:520px;left:-180px;top:-140px;background:#ff9f2e}
+.wall i:nth-child(2){width:460px;height:460px;right:-200px;top:180px;background:#ff4f2e}
+.wall i:nth-child(3){width:420px;height:420px;left:-120px;bottom:-120px;background:#3a7bff}
+.wall i:nth-child(4){width:300px;height:300px;right:-60px;bottom:40px;background:#8b5cf6;opacity:.8}
+.phone.chef .wall i:nth-child(3){background:#2fb67a}
+.phone.chef .wall i:nth-child(4){background:#ffcf33}
+.phone.app-open .wall{filter:brightness(.6)}
+
+/* lock screen */
+.lock{position:absolute;inset:0;z-index:40;display:flex;flex-direction:column;align-items:center;padding:84px 14px 0;transition:transform .55s cubic-bezier(.3,.9,.3,1),opacity .4s;cursor:pointer}
+.lock.gone{transform:translateY(-100%);opacity:0;pointer-events:none}
+.padlock{position:absolute;top:56px;left:50%;width:16px;height:21px;margin-left:-8px;overflow:visible}
+.padlock .shackle{transform-box:fill-box;transform-origin:0 100%;transition:transform .28s cubic-bezier(.3,1.4,.5,1)}
+.lock.unlocking .padlock .shackle{transform:translateY(-3px) rotate(-28deg)}
+.lock .date{font-size:21px;font-weight:600;opacity:.9;margin-top:4px}
+.lock .time{font-size:112px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-top:-2px;font-variant-numeric:tabular-nums;background:linear-gradient(180deg,#fff,rgba(255,255,255,.75));-webkit-background-clip:text;background-clip:text;color:transparent}
+.notifs{margin-top:auto;width:100%;display:grid;gap:8px;margin-bottom:22px}
+.notif{display:grid;grid-template-columns:38px 1fr;gap:10px;align-items:start;padding:12px 14px;border-radius:24px;background:rgba(255,255,255,.22);-webkit-backdrop-filter:blur(30px) saturate(160%);backdrop-filter:blur(30px) saturate(160%);text-align:left;font-size:15px;line-height:1.3;animation:drop .6s cubic-bezier(.3,1.3,.5,1) both}
+.notif:nth-child(2){animation-delay:.25s}.notif:nth-child(3){animation-delay:.5s}
+@keyframes drop{from{transform:translateY(-14px);opacity:0}}
+.notif .ic{width:38px;height:38px;border-radius:22.5%;overflow:hidden}
+.notif .ic svg{width:100%;height:100%;display:block}
+.notif b{display:flex;justify-content:space-between;font-weight:600}
+.notif b span{font-weight:400;opacity:.7;font-size:13px}
+.lock-bottom{display:flex;justify-content:space-between;align-items:center;width:100%;padding:0 32px;margin-bottom:30px}
+/* quick actions: press and hold, like iOS. They grow while pressed and turn white when on. */
+.qa{all:unset;cursor:pointer;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;flex:none;background:rgba(255,255,255,.16);-webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 0 0 .5px rgba(255,255,255,.22);transition:transform .35s cubic-bezier(.3,1.5,.5,1),background .2s;touch-action:manipulation;-webkit-touch-callout:none}
+.qa svg{width:24px;height:24px;fill:#fff;transition:fill .2s}
+.qa.pressing{transform:scale(1.22);transition-duration:.45s}
+.qa.nudge{animation:nudge .3s}
+@keyframes nudge{40%{transform:scale(1.1)}}
+.qa[aria-pressed="true"]{background:#fff}
+.qa[aria-pressed="true"] svg{fill:#1c1c1e}
+.qa:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.qa .on{display:none}.qa[aria-pressed="true"] .on{display:inline}.qa[aria-pressed="true"] .off{display:none}
+.swipe-hint{font-size:15px;font-weight:500;opacity:.85;animation:hint 2.4s ease-in-out infinite}
+@keyframes hint{50%{transform:translateY(-4px);opacity:.55}}
+
+/* home screen */
+.home{position:absolute;inset:0;z-index:10;padding:64px 27px 0;display:flex;flex-direction:column;transition:transform .45s cubic-bezier(.3,.9,.3,1),filter .45s,opacity .45s}
+.phone.locked .home{transform:scale(1.12);opacity:0}
+.phone.app-open .home{transform:scale(.92);filter:blur(4px)}
+.grid{display:grid;grid-template-columns:repeat(4,60px);justify-content:space-between;row-gap:24px;margin-top:6px}
+.icon{all:unset;cursor:pointer;display:grid;justify-items:center;gap:5px;width:60px;font-size:12px;font-weight:500;letter-spacing:-.01em;text-align:center;line-height:1.15;text-shadow:0 .5px 2px rgba(0,0,0,.3);white-space:nowrap}
+.icon .nm{display:block;width:78px;overflow:hidden;text-overflow:ellipsis}
+/* app icons: full-bleed artwork, clipped to the iOS squircle, with a thin specular rim */
+.icon .sq,.store-top .sq{display:block;position:relative;overflow:hidden;border-radius:22.5%;-webkit-mask:var(--squircle) center/100% 100% no-repeat;mask:var(--squircle) center/100% 100% no-repeat}
+.icon .sq{width:60px;height:60px;transition:transform .25s cubic-bezier(.3,1.3,.5,1),filter .25s}
+.icon .sq::after,.store-top .sq::after{content:"";position:absolute;inset:0;background:var(--icon-rim) center/100% 100% no-repeat;pointer-events:none}
+.icon .sq svg,.store-top .sq svg{display:block;width:100%;height:100%}
+.icon:active .sq{transform:scale(.92);filter:brightness(.82)}
+.icon:focus-visible .sq{outline:3px solid #fff;outline-offset:3px}
+.badge{position:absolute;top:-7px;right:-7px;min-width:23px;height:23px;border-radius:12px;background:var(--ios-red);color:#fff;font-size:13px;font-weight:600;display:grid;place-items:center;padding:0 6px;z-index:2;text-shadow:none}
+.icon .wrap{position:relative}
+
+.widget{all:unset;box-sizing:border-box;text-align:left;border-radius:22px;padding:14px 16px;background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(28px) saturate(170%);backdrop-filter:blur(28px) saturate(170%);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),inset 0 0 0 .5px rgba(255,255,255,.25);cursor:pointer;display:flex;flex-direction:column}
+.widget:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.w-med{grid-column:1/-1;height:158px;justify-content:space-between}
+.w-med .who{display:flex;gap:12px;align-items:center}
+.avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(145deg,#ffb340,#ff5a36);display:grid;place-items:center;font-weight:700;font-size:18px;color:#fff;flex:none}
+.w-med .name{font-size:17px;font-weight:700;letter-spacing:-.02em}
+.w-med .role{font-size:13px;opacity:.85}
+.w-med .line{font-size:14px;line-height:1.3;opacity:.95}
+.progress{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;opacity:.95}
+.progress{justify-content:space-between}
+.progress .pill{font-size:11px;padding:3px 8px;border-radius:999px;background:rgba(255,255,255,.3)}
+.w-small{grid-column:span 2;grid-row:span 2;height:158px;justify-content:space-between}
+.w-small .lbl{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;opacity:.9}
+.w-small .big{font-size:40px;font-weight:700;letter-spacing:-.03em;line-height:1}
+.w-small .yrs{display:flex;gap:2px}
+.w-small .yrs span{font-size:9.5px;font-weight:700;padding:3px 4px;border-radius:6px;background:rgba(255,255,255,.28)}
+.w-small .sub{font-size:12px;opacity:.85;line-height:1.25}
+.mini4{grid-column:span 2;grid-row:span 2;display:grid;grid-template-columns:repeat(2,60px);justify-content:space-between;row-gap:24px}
+
+/* iOS 16+ shows a Search pill above the dock instead of page dots */
+.search-pill{all:unset;cursor:pointer;color:#fff;display:flex;align-items:center;gap:5px;margin:auto auto 14px;padding:6px 12px 6px 10px;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:-.01em;background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(24px) saturate(170%);backdrop-filter:blur(24px) saturate(170%);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 0 0 .5px rgba(255,255,255,.22)}
+.search-pill svg{width:12px;height:12px}
+.dock{margin:0 -15px 12px;padding:16px 18px;border-radius:36px;display:flex;justify-content:space-between;background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(30px) saturate(170%);backdrop-filter:blur(30px) saturate(170%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 0 0 .5px rgba(255,255,255,.25)}
+.dock .icon{font-size:0;gap:0}
+.home-ind{position:absolute;left:50%;bottom:8px;width:140px;height:5px;margin-left:-70px;border-radius:3px;background:#fff;z-index:58;transition:background .3s}
+.phone.app-open:not(.ios-dark) .home-ind{background:#000}
+.home-zone{all:unset;position:absolute;left:0;right:0;bottom:0;height:34px;z-index:59;cursor:pointer;display:none;touch-action:none}
+.phone.app-open .home-zone{display:block}
+.home-zone:focus-visible + .home-ind{outline:2px solid var(--ios-blue);outline-offset:3px}
+
+/* ---------- apps ---------- */
+.app{position:absolute;inset:0;z-index:30;background:var(--ios-bg);color:var(--ios-label);border-radius:55px;overflow:hidden;transform-origin:50% 50%;transition:transform .5s cubic-bezier(.25,1,.35,1),border-radius .5s,opacity .25s;display:flex;flex-direction:column;user-select:text;-webkit-user-select:text}
+.app[hidden]{display:none!important}
+.app.closed{opacity:0;border-radius:15px}
+.scroll{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:54px 0 40px;scrollbar-width:none}
+.scroll::-webkit-scrollbar{display:none}
+.navbar{padding:6px 16px 0;display:flex;justify-content:space-between;align-items:center;height:44px;font-size:17px;color:var(--ios-blue)}
+.navbar button{all:unset;cursor:pointer;display:flex;align-items:center;gap:2px}
+.navbar svg{width:12px;height:20px;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.large{font-size:34px;font-weight:700;letter-spacing:-.02em;padding:2px 16px 10px;margin:0}
+.section-h{font-size:13px;color:var(--ios-label-2);text-transform:uppercase;padding:18px 32px 7px;letter-spacing:-.01em}
+.section-f{font-size:13px;color:var(--ios-label-2);padding:7px 32px 0;line-height:1.35}
+.group{margin:0 16px;border-radius:12px;background:var(--ios-cell);overflow:hidden}
+.cell{display:flex;align-items:center;gap:12px;min-height:44px;padding:0 16px;font-size:17px;position:relative}
+.cell + .cell::before{content:"";position:absolute;top:0;right:0;left:16px;height:.5px;background:var(--ios-sep)}
+.cell.has-ic + .cell.has-ic::before{left:58px}
+.cell .ci{width:30px;height:30px;border-radius:22.5%;display:grid;place-items:center;flex:none;-webkit-mask:var(--squircle) center/100% 100% no-repeat;mask:var(--squircle) center/100% 100% no-repeat}
+.cell .ci svg{width:19px;height:19px}
+.cell .txt{flex:1;min-width:0;padding:11px 0}
+.cell .val{color:var(--ios-label-2);text-align:right}
+.chev{width:8px;height:14px;stroke:var(--ios-label-2);opacity:.6;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;flex:none}
+a.cell{text-decoration:none;color:inherit}
+.cell.link{color:var(--ios-blue)}
+
+/* switch */
+.switch{all:unset;cursor:pointer;width:51px;height:31px;border-radius:16px;background:var(--ios-fill);position:relative;flex:none;transition:background .25s}
+.switch::after{content:"";position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 3px 8px rgba(0,0,0,.15),0 1px 1px rgba(0,0,0,.16);transition:transform .3s cubic-bezier(.3,1.4,.5,1)}
+.switch[aria-checked="true"]{background:var(--ios-green)}
+.switch[aria-checked="true"]::after{transform:translateX(20px)}
+.switch:focus-visible{outline:2px solid var(--ios-blue);outline-offset:2px}
+
+/* settings profile */
+.profile{display:flex;gap:14px;align-items:center;padding:12px 16px}
+.profile .avatar{width:60px;height:60px;font-size:22px}
+.profile b{font-size:22px;font-weight:600;letter-spacing:-.01em;display:block}
+.profile span{font-size:14px;color:var(--ios-label-2)}
+
+/* app store style project page */
+.store-top{display:grid;grid-template-columns:118px 1fr;gap:16px;padding:8px 16px 0}
+.store-top .sq{width:118px;height:118px}
+.store-top h2{font-size:22px;font-weight:700;letter-spacing:-.02em;margin:4px 0 2px;line-height:1.15}
+.store-top .subt{font-size:15px;color:var(--ios-label-2);line-height:1.3}
+.store-top .acts{display:flex;align-items:center;gap:12px;margin-top:12px}
+.get{display:inline-block;background:var(--ios-blue);color:#fff;font-weight:700;font-size:15px;padding:6px 20px;border-radius:999px;text-decoration:none}
+.state{font-size:11px;color:var(--ios-label-2);line-height:1.2}
+.info{display:grid;grid-template-columns:repeat(3,1fr);margin:20px 16px 0;padding:10px 0;border-top:.5px solid var(--ios-sep);border-bottom:.5px solid var(--ios-sep);text-align:center}
+.info div{padding:0 6px;min-width:0}
+.info div + div{border-left:.5px solid var(--ios-sep)}
+.info small{display:block;font-size:11px;font-weight:600;text-transform:uppercase;color:var(--ios-label-2);letter-spacing:.02em}
+.info b{display:block;font-size:19px;font-weight:700;color:var(--ios-label-2);margin:3px 0 1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.info span{font-size:11px;color:var(--ios-label-2)}
+.h2{font-size:22px;font-weight:700;letter-spacing:-.02em;padding:22px 16px 10px;margin:0}
+.shots{display:flex;gap:10px;overflow-x:auto;padding:0 16px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.shots::-webkit-scrollbar{display:none}
+.shot{flex:none;width:186px;max-width:100%;height:auto;aspect-ratio:600/1300;object-fit:cover;object-position:top;border-radius:22px;scroll-snap-align:start;background:var(--ios-fill);border:.5px solid var(--ios-sep);display:block}
+a.state{color:var(--ios-blue);text-decoration:none}
+.get.off{background:var(--ios-fill);color:var(--ios-label-2)}
+.prose{padding:0 16px;font-size:15px;line-height:1.45;margin:0}
+.whatsnew{display:flex;justify-content:space-between;padding:0 16px 6px;font-size:15px;color:var(--ios-label-2)}
+
+/* notes */
+.notes .navbar{color:var(--notes-yellow)}
+.notes .stamp{text-align:center;font-size:13px;color:var(--ios-label-2);padding:4px 0 10px}
+.note{padding:0 20px;font-size:17px;line-height:1.45}
+.note h2{font-size:28px;font-weight:700;letter-spacing:-.02em;margin:0 0 10px;line-height:1.15}
+.note h3{font-size:20px;font-weight:600;margin:20px 0 6px}
+.note ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.note li{display:grid;grid-template-columns:22px 1fr;gap:8px}
+.note li::before{content:"";width:20px;height:20px;border-radius:50%;background:var(--notes-yellow);margin-top:2px;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='10'/%3E%3C/svg%3E");}
+.note li b{display:block}
+.note li span{color:var(--ios-label-2);font-size:15px}
+.note p{margin:0 0 12px}
+
+/* recipe app */
+.code{margin:6px 16px 0;padding:16px;border-radius:14px;background:var(--ios-cell);font-family:var(--mono);font-size:12.5px;line-height:1.65;overflow-x:auto;white-space:pre}
+.kw{color:#ad3da4}.ty{color:#0b4f79}.st{color:#c41a16}.cm{color:#5d6c79}
+.phone.ios-dark .kw{color:#ff7ab2}.phone.ios-dark .ty{color:#5dd8ff}.phone.ios-dark .st{color:#ff8170}.phone.ios-dark .cm{color:#7f8c98}
+
+/* contact card */
+.card-top{display:grid;justify-items:center;gap:6px;padding:10px 16px 18px;text-align:center}
+.card-top .avatar{width:96px;height:96px;font-size:36px}
+.card-top b{font-size:28px;font-weight:600;letter-spacing:-.02em}
+.card-top span{font-size:15px;color:var(--ios-label-2)}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 16px}
+.quick a,.quick button{all:unset;cursor:pointer;display:grid;justify-items:center;gap:4px;padding:10px 0;border-radius:12px;background:var(--ios-cell);color:var(--ios-blue);font-size:12px;font-weight:500}
+.quick svg{width:22px;height:22px;fill:currentColor}
+
+/* mail */
+.mail .navbar{justify-content:space-between}
+.mail .send{all:unset;cursor:pointer;width:32px;height:32px;border-radius:50%;background:var(--ios-blue);display:grid;place-items:center}
+.mail .send svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2.6}
+.mail h1{font-size:28px;font-weight:700;padding:4px 16px 8px;margin:0}
+.mrow{display:flex;gap:8px;padding:11px 16px;border-bottom:.5px solid var(--ios-sep);font-size:16px;align-items:center}
+.mrow span{color:var(--ios-label-2)}
+.mrow code{font-family:var(--sf);user-select:all;-webkit-user-select:all}
+.mbody{padding:14px 16px;font-size:16px;line-height:1.5;color:var(--ios-label)}
+.copy{all:unset;cursor:pointer;margin-left:auto;font-size:14px;color:var(--ios-blue);font-weight:500}
+.toast{position:absolute;left:50%;top:60px;transform:translate(-50%,-20px);opacity:0;background:var(--ios-cell);color:var(--ios-label);font-size:14px;font-weight:600;padding:10px 16px;border-radius:999px;box-shadow:0 10px 30px rgba(0,0,0,.2);transition:.3s;z-index:70;pointer-events:none}
+.toast.show{transform:translate(-50%,0);opacity:1}
+.shutter{position:absolute;inset:0;z-index:65;background:#fff;opacity:0;pointer-events:none}
+.shutter.go{animation:shutter .45s ease-out}
+@keyframes shutter{10%{opacity:.9}}
+/* flashlight on: a warm glow spills onto the page behind the device */
+.holder::before{content:"";position:absolute;left:50%;top:50%;width:160%;height:120%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(255,238,190,.75),rgba(255,238,190,0));opacity:0;transition:opacity .35s;pointer-events:none;z-index:-1}
+body.torch .holder::before{opacity:1}
+
+/* glyph colors on icons */
+.g-white{fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- depth effect: the subject stands in front of the clock ---------- */
+.subject{position:absolute;left:0;right:0;top:var(--subject-top,190px);bottom:0;pointer-events:none}
+.subject svg{display:block;width:100%;height:100%}
+.wall .subject{z-index:1}
+.lock .subject{z-index:0;transition:transform .55s cubic-bezier(.3,.9,.3,1)}
+.lock .date,.lock .time{position:relative;z-index:-1}
+.lock .notifs,.lock .lock-bottom,.lock .padlock{position:relative;z-index:1}
+.lock .padlock{position:absolute}
+.lock.gone .subject{transform:translateY(100%)}
+.lock.dragging,.lock.dragging .subject,.phone.dragging .home{transition:none!important}
+.lock{touch-action:none}
+.wall .subject{transition:opacity .5s}
+.phone:not(.locked) .wall .subject{opacity:0}
+
+/* ---------- Dynamic Island live activity ---------- */
+.island{overflow:hidden;color:#fff;cursor:default;transition:width .5s cubic-bezier(.3,1.25,.5,1),height .5s cubic-bezier(.3,1.25,.5,1),margin .5s cubic-bezier(.3,1.25,.5,1),border-radius .5s cubic-bezier(.3,1.25,.5,1)}
+.island.compact,.island.expanded{cursor:pointer}
+.island.compact{width:196px;margin-left:-98px}
+.island.expanded{width:371px;height:154px;margin-left:-185.5px;border-radius:44px}
+.di-lead,.di-trail{position:absolute;top:6px;width:24px;height:24px;opacity:0;transition:opacity .25s}
+.di-lead{left:8px}.di-trail{right:8px}
+.island.compact .di-lead,.island.compact .di-trail{opacity:1;transition-delay:.2s}
+.di-lead svg{width:24px;height:24px;border-radius:7px;display:block}
+.di-trail svg{width:24px;height:24px;display:block;animation:spin 1.6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.di-full{position:absolute;inset:0;padding:22px 24px 20px;display:grid;grid-template-columns:52px 1fr;column-gap:14px;align-content:start;opacity:0;transition:opacity .2s}
+.island.expanded .di-full{opacity:1;transition:opacity .3s .2s}
+.di-full .ic{width:52px;height:52px;border-radius:22.5%;overflow:hidden;-webkit-mask:var(--squircle) center/100% 100% no-repeat;mask:var(--squircle) center/100% 100% no-repeat}
+.di-full .ic svg{width:100%;height:100%;display:block}
+.di-full b{font-size:17px;font-weight:600;letter-spacing:-.02em;display:block;margin-top:4px}
+.di-full span{font-size:14px;color:rgba(255,255,255,.65)}
+.di-bar{grid-column:1/-1;height:6px;border-radius:3px;background:rgba(255,255,255,.18);margin-top:18px;overflow:hidden;position:relative}
+.di-bar i{position:absolute;top:0;bottom:0;width:40%;border-radius:3px;background:linear-gradient(90deg,#ffb340,#ff5a36);animation:indet 1.8s ease-in-out infinite}
+@keyframes indet{from{left:-40%}to{left:100%}}
+.di-foot{grid-column:1/-1;display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.65);margin-top:10px}
+.di-foot em{font-style:normal;color:#ff9f0a;font-weight:600}
+
+/* ---------- Control Center ---------- */
+.cc-zone{all:unset;position:absolute;top:0;right:0;width:150px;height:46px;z-index:61;cursor:pointer;touch-action:none}
+.cc-zone:focus-visible{outline:2px solid #fff;outline-offset:-4px;border-radius:12px}
+.cc{position:absolute;inset:0;z-index:54;padding:64px 24px 30px;background:rgba(10,10,14,.32);-webkit-backdrop-filter:blur(36px) saturate(170%);backdrop-filter:blur(36px) saturate(170%);opacity:0;visibility:hidden;transition:opacity .3s,visibility 0s .3s;color:#fff}
+.cc.open{opacity:1;visibility:visible;transition:opacity .3s}
+.cc-grid{display:grid;grid-template-columns:repeat(4,72px);grid-auto-rows:72px;gap:14px;justify-content:center;transform:scale(.88) translateY(-30px);transform-origin:80% 0;transition:transform .45s cubic-bezier(.3,1.25,.5,1)}
+.cc.open .cc-grid{transform:none}
+.cc.dragging,.cc.dragging .cc-grid{transition:none}
+.mod{border-radius:26px;background:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 0 0 .5px rgba(255,255,255,.12);position:relative}
+.mod.wide{grid-column:span 2}.mod.tall{grid-row:span 2}.mod.big{grid-column:span 2;grid-row:span 2}
+.conn{display:grid;grid-template-columns:repeat(2,1fr);place-items:center;padding:8px}
+.tg{all:unset;cursor:pointer;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.16);transition:background .2s,transform .2s}
+.tg:active{transform:scale(.92)}
+.tg svg{width:24px;height:24px;fill:#fff;transition:fill .2s}
+.tg:focus-visible,.cbtn:focus-visible,.slider:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.tg[aria-pressed="true"].orange{background:#ff9f0a}.tg[aria-pressed="true"].green{background:#30d158}.tg[aria-pressed="true"].blue{background:#0a84ff}
+.cbtn{all:unset;cursor:pointer;box-sizing:border-box;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.2);transition:background .2s,transform .2s}
+.cbtn:active{transform:scale(.92)}
+.cbtn svg{width:28px;height:28px;fill:#fff;transition:fill .2s}
+.cbtn[aria-pressed="true"]{background:#fff}.cbtn[aria-pressed="true"] svg{fill:#1c1c1e}
+.cbtn.wide{grid-column:span 2;border-radius:36px;display:flex;justify-content:flex-start;gap:10px;padding:0 16px;font-size:15px;font-weight:600;text-align:left;line-height:1.15}
+.cbtn.wide .gl{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.18);flex:none}
+.cbtn.wide .gl svg{width:22px;height:22px}
+.cbtn.wide small{display:block;font-size:12px;font-weight:500;opacity:.65}
+.cbtn.wide[aria-pressed="true"]{background:#fff;color:#1c1c1e}
+.cbtn.wide[aria-pressed="true"] .gl{background:#ff9f0a}.cbtn.wide[aria-pressed="true"] .gl svg{fill:#fff}
+.music{padding:14px 16px;display:flex;flex-direction:column;justify-content:space-between}
+.music .art{width:44px;height:44px;border-radius:9px;overflow:hidden;-webkit-mask:var(--squircle) center/100% 100% no-repeat;mask:var(--squircle) center/100% 100% no-repeat}
+.music .art svg{width:100%;height:100%;display:block}
+.music b{font-size:14px;font-weight:600;display:block;margin-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.music span{font-size:13px;opacity:.65;display:block}
+.music .ctl{display:flex;justify-content:space-between;align-items:center}
+.music .ctl button{all:unset;cursor:pointer;display:grid;place-items:center;width:30px;height:30px}
+.music .ctl svg{width:22px;height:22px;fill:#fff}
+.music .ctl .pp svg{width:26px;height:26px}
+.music .ctl .pause{display:none}.music.playing .ctl .pause{display:block}.music.playing .ctl .play{display:none}
+.music .eq{display:flex;gap:2px;align-items:flex-end;height:14px;position:absolute;top:16px;right:16px;opacity:.35}
+.music .eq i{width:3px;height:4px;border-radius:1px;background:#fff}
+.music.playing .eq{opacity:1}
+.music.playing .eq i{animation:eq .9s ease-in-out infinite alternate}
+.music.playing .eq i:nth-child(2){animation-delay:-.3s}.music.playing .eq i:nth-child(3){animation-delay:-.6s}
+@keyframes eq{to{height:14px}}
+.slider.tall{grid-row:span 2}
+.slider{all:unset;cursor:ns-resize;border-radius:26px;overflow:hidden;background:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.2);position:relative;touch-action:none}
+.slider .fill{position:absolute;left:0;right:0;bottom:0;background:#fff}
+.slider svg{position:absolute;left:50%;bottom:16px;width:26px;height:26px;margin-left:-13px;fill:#8e8e93;z-index:1}
+.cc-hint{text-align:center;font-size:13px;opacity:.6;margin-top:22px}
+.dim{position:absolute;inset:0;z-index:66;background:#000;opacity:0;pointer-events:none}
+.phone.cc-open .status{color:#fff}
+.phone.cc-open .home-ind{background:#fff}
+.phone.cc-open .home-zone{display:none}
+.phone.di-on .status .sig,.phone.di-on .status .wifi,.phone.di-on .status .air{display:none!important}
+.status .air{display:none}
+.phone.airplane .status .air{display:block}
+.phone.airplane .status .sig,.phone.airplane .status .wifi{display:none}
+
+/* ---------- Spotlight ---------- */
+.search-pill:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.spot{position:absolute;inset:0;z-index:50;padding:62px 16px 30px;display:flex;flex-direction:column;background:rgba(20,20,24,.38);-webkit-backdrop-filter:blur(40px) saturate(170%);backdrop-filter:blur(40px) saturate(170%);color:#fff;opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s}
+.spot.open{opacity:1;visibility:visible;transition:opacity .25s}
+.spot-bar{display:flex;align-items:center;gap:10px}
+.spot-field{flex:1;display:flex;align-items:center;gap:6px;height:38px;padding:0 10px;border-radius:12px;background:rgba(255,255,255,.18);transform:translateY(-8px);transition:transform .35s cubic-bezier(.3,1.3,.5,1)}
+.spot.open .spot-field{transform:none}
+.spot-field svg{width:16px;height:16px;flex:none;opacity:.7}
+.spot-field input{all:unset;flex:1;min-width:0;font-size:17px;color:#fff;caret-color:#0a84ff}
+.spot-field input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
+.spot-field input::placeholder{color:rgba(255,255,255,.6)}
+.spot-cancel{all:unset;cursor:pointer;font-size:17px;color:#fff}
+.spot-cancel:focus-visible{outline:2px solid #fff;outline-offset:2px;border-radius:4px}
+.spot-body{flex:1;overflow-y:auto;margin-top:14px;scrollbar-width:none}
+.spot-body::-webkit-scrollbar{display:none}
+.spot-h{font-size:13px;font-weight:600;opacity:.65;margin:12px 4px 8px;display:flex;justify-content:space-between}
+.spot-apps{display:grid;grid-template-columns:repeat(4,60px);justify-content:space-between;padding:0 10px}
+.spot-list{border-radius:16px;background:rgba(255,255,255,.12);overflow:hidden}
+.hit{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;padding:10px 14px;position:relative}
+.hit + .hit::before{content:"";position:absolute;top:0;left:62px;right:0;height:.5px;background:rgba(255,255,255,.2)}
+.hit .hi{width:36px;height:36px;flex:none;border-radius:22.5%;overflow:hidden;display:grid;place-items:center;-webkit-mask:var(--squircle) center/100% 100% no-repeat;mask:var(--squircle) center/100% 100% no-repeat}
+.hit .hi svg{width:100%;height:100%;display:block}
+.hit .hi.glyph svg{width:20px;height:20px;fill:#fff}
+.hit b{display:block;font-size:16px;font-weight:600;letter-spacing:-.01em}
+.hit span{display:block;font-size:13px;opacity:.65;line-height:1.3}
+.hit.sel,.hit:focus-visible{background:rgba(255,255,255,.14)}
+.spot-none{text-align:center;opacity:.65;font-size:15px;margin-top:40px}
+
+/* ---------- home pages: swipe sideways between them ---------- */
+.pages{display:flex;flex:0 1 auto;min-height:0;margin:0 -27px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.pages::-webkit-scrollbar{display:none}
+.pages.grabbing{scroll-snap-type:none;cursor:grabbing}
+.page{flex:0 0 100%;box-sizing:border-box;padding:0 27px 10px;scroll-snap-align:start;scroll-snap-stop:always;overflow-y:auto;scrollbar-width:none;overscroll-behavior-y:contain}
+.page::-webkit-scrollbar,.pages::-webkit-scrollbar{display:none}
+.page .grid{margin-top:6px}
+.search-pill .pdots{display:none;gap:7px;padding:3px 2px}
+.search-pill .pdots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45);transition:background .2s}
+.search-pill .pdots i.on{background:#fff}
+.search-pill.paging .pdots{display:flex}
+.search-pill.paging svg,.search-pill.paging .lbl-s{display:none}
+.w-hire{grid-column:1/-1;height:140px;justify-content:space-between}
+.w-hire .top{display:flex;justify-content:space-between;align-items:flex-start}
+.w-hire .k{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;opacity:.9;display:flex;align-items:center;gap:6px}
+.w-hire .k i{width:8px;height:8px;border-radius:50%;background:#30d158;box-shadow:0 0 0 3px rgba(48,209,88,.3)}
+.w-hire .t{font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-top:4px}
+.w-hire .acts{display:flex;gap:8px}
+.w-hire .acts span{flex:1;text-align:center;font-size:13px;font-weight:600;padding:8px 0;border-radius:12px;background:rgba(255,255,255,.28)}
+.w-gh{grid-column:1/-1;justify-content:flex-start;gap:12px;text-decoration:none;color:#fff}
+.w-gh .hd{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700}
+.w-gh .hd svg{width:20px;height:20px;border-radius:5px}
+.w-gh .hd span{margin-left:auto;font-weight:500;opacity:.75;font-size:12px}
+.w-gh ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.w-gh li{display:flex;justify-content:space-between;gap:10px;font-size:14px}
+.w-gh li b{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.w-gh li span{opacity:.75;white-space:nowrap;font-size:13px}
+.w-cal{grid-column:span 2;height:158px;background:rgba(255,255,255,.9);color:#1c1c1e;justify-content:space-between}
+.w-cal .dow{font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#ff3b30}
+.w-cal .dn{font-size:40px;font-weight:300;letter-spacing:-.03em;line-height:1}
+.w-cal .ev{border-left:3px solid #ff9500;padding-left:7px;font-size:12px;line-height:1.25}
+.w-cal .ev b{display:block;font-weight:600}
+.w-cal .ev span{color:#8e8e93}
+.phone.ios-dark .w-cal{background:rgba(28,28,30,.9);color:#fff}
+.w-stack{grid-column:span 2;height:158px;justify-content:space-between}
+.w-stack .lbl{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;opacity:.9}
+.w-stack ul{list-style:none;margin:0;padding:0;display:grid;gap:5px;font-size:14px;font-weight:600}
+.w-stack li{display:flex;align-items:center;gap:7px}
+.w-stack li i{width:8px;height:8px;border-radius:50%}
+
+/* ---------- long-press Quick Actions ---------- */
+.icon{-webkit-touch-callout:none}
+.qm{position:absolute;inset:0;z-index:53;background:rgba(0,0,0,.18);-webkit-backdrop-filter:blur(20px) saturate(150%);backdrop-filter:blur(20px) saturate(150%);opacity:0;visibility:hidden;transition:opacity .25s,visibility 0s .25s}
+.qm.open{opacity:1;visibility:visible;transition:opacity .25s}
+.qm .lift{position:absolute;width:60px;height:60px;transform:scale(1);transition:transform .35s cubic-bezier(.3,1.5,.5,1)}
+.qm.open .lift{transform:scale(1.08)}
+.qm .lift .sq{display:block;width:100%;height:100%;border-radius:22.5%;overflow:hidden;-webkit-mask:var(--squircle) center/100% 100% no-repeat;mask:var(--squircle) center/100% 100% no-repeat;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.qm .lift svg{width:100%;height:100%;display:block}
+.qm .menu{position:absolute;width:250px;border-radius:14px;overflow:hidden;background:rgba(245,245,247,.86);-webkit-backdrop-filter:blur(30px) saturate(180%);backdrop-filter:blur(30px) saturate(180%);color:#000;box-shadow:0 20px 50px rgba(0,0,0,.3);transform:scale(.6);opacity:0;transition:transform .35s cubic-bezier(.3,1.3,.5,1),opacity .2s}
+.qm.open .menu{transform:none;opacity:1}
+.phone.ios-dark .qm .menu{background:rgba(44,44,46,.86);color:#fff}
+.qm .menu button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:space-between;width:100%;min-height:44px;padding:0 16px;font-size:17px;position:relative}
+.qm .menu button + button::before{content:"";position:absolute;top:0;left:0;right:0;height:.5px;background:rgba(60,60,67,.3)}
+.qm .menu button.sep{border-top:8px solid rgba(60,60,67,.12)}
+.qm .menu button.sep::before{display:none}
+.qm .menu button:active,.qm .menu button:focus-visible{background:rgba(120,120,128,.2)}
+.qm .menu button.red{color:#ff3b30}
+.qm .menu svg{width:20px;height:20px;fill:currentColor;flex:none}
+
+/* ---------- responsive: on a real phone, the UI is the screen ---------- */
+@media (max-width:560px){
+  body{background:#000}
+  .stage{display:block;padding:0;height:100%;max-width:none}
+  .intro{display:none}
+  .holder{width:100%;height:100%}
+  .device{width:100%!important;height:100%!important;border-radius:0;padding:0;background:none;box-shadow:none;transform:none!important}
+  .device::before,.btn-side,.island{display:none}
+  .phone.di-on:not(.locked):not(.app-open):not(.cc-open):not(.spot-open) .island{display:block;top:max(6px,env(safe-area-inset-top,0px));transform:scale(.84);transform-origin:50% 0}
+  .island.expanded{width:calc((100vw - 16px)/.84);margin-left:calc((100vw - 16px)/-1.68)}
+  .phone.di-on .home{padding-top:calc(max(24px,env(safe-area-inset-top,0px)) + 22px)}
+  .phone{width:100%;height:100%;border-radius:0}
+  .app{border-radius:0}
+  .status{display:none}
+  .lock{padding-top:max(58px,calc(env(safe-area-inset-top,0px) + 32px))}
+  .lock .padlock{top:max(26px,env(safe-area-inset-top,0px))}
+  .home{padding:max(24px,env(safe-area-inset-top,0px)) 27px 0}
+  .scroll{padding-top:max(12px,env(safe-area-inset-top,0px))}
+  .cc{padding-top:max(30px,env(safe-area-inset-top,0px))}
+  .spot{padding-top:max(20px,env(safe-area-inset-top,0px))}
+  .cc-zone{height:28px;width:120px}
+  .grid{grid-template-columns:repeat(4,minmax(0,60px))}
+}
+@media (max-width:360px){.cc-grid{grid-template-columns:repeat(4,64px);grid-auto-rows:64px;gap:10px}.tg{width:50px;height:50px}.spot-apps{grid-template-columns:repeat(4,56px);padding:0}.home{padding-left:20px;padding-right:20px}.grid{grid-template-columns:repeat(4,56px)}.icon,.icon .sq{width:56px}.icon .sq{height:56px}.icon .nm{width:70px}.mini4{grid-template-columns:repeat(2,56px)}.w-small .lbl{font-size:11px;white-space:nowrap}.w-small .sub{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.dock{margin:0 -8px 12px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</head>
+<body>
+
+<!-- App icon artwork. These are look-alikes drawn for this site; Apple's own icon files and SF Symbols are not licensed for use on the web. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="g-mail" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1fb4ff"/><stop offset="1" stop-color="#1467f5"/></linearGradient>
+    <linearGradient id="g-phone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6ff58a"/><stop offset="1" stop-color="#0bbd41"/></linearGradient>
+    <linearGradient id="g-notes-top" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fde26b"/><stop offset="1" stop-color="#f8c437"/></linearGradient>
+    <linearGradient id="g-notes" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#f1f1f3"/></linearGradient>
+    <linearGradient id="g-contacts" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f6f8"/><stop offset="1" stop-color="#d6d6db"/></linearGradient>
+    <linearGradient id="g-person" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9a9b0"/><stop offset="1" stop-color="#7c7c84"/></linearGradient>
+    <linearGradient id="g-settings" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9c9ce"/><stop offset="1" stop-color="#8a8a90"/></linearGradient>
+    <linearGradient id="g-gear" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a5a60"/><stop offset="1" stop-color="#2c2c30"/></linearGradient>
+    <linearGradient id="g-gear-face" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d4d4d8"/><stop offset="1" stop-color="#9c9ca2"/></linearGradient>
+    <linearGradient id="g-dark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3a3e"/><stop offset="1" stop-color="#0c0c0e"/></linearGradient>
+    <linearGradient id="g-linkedin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1679d6"/><stop offset="1" stop-color="#0a5bb0"/></linearGradient>
+    <linearGradient id="g-ace" x1=".2" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#ffbe4d"/><stop offset="1" stop-color="#ff5233"/></linearGradient>
+    <linearGradient id="g-drink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6dc"/><stop offset="1" stop-color="#ffd9a0"/></linearGradient>
+    <linearGradient id="g-cash" x1=".2" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#5ee38a"/><stop offset="1" stop-color="#119a45"/></linearGradient>
+    <linearGradient id="g-wolf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34406a"/><stop offset="1" stop-color="#10152a"/></linearGradient>
+    <linearGradient id="g-moon" x1=".2" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#ffe8a3"/><stop offset="1" stop-color="#f2ac35"/></linearGradient>
+    <linearGradient id="g-ghost" x1=".2" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#b79cff"/><stop offset="1" stop-color="#4a1d96"/></linearGradient>
+    <linearGradient id="g-ghost-body" x1="0" y1="0" x2="1" y2="0"><stop offset=".55" stop-color="#ffffff"/><stop offset="1" stop-color="#e2d9ff"/></linearGradient>
+    <linearGradient id="g-code" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb340"/><stop offset="1" stop-color="#ff5a36"/></linearGradient>
+  </defs>
+  <symbol id="i-mail" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-mail)"/><rect x="17" y="30" width="66" height="42" rx="5" fill="#fff"/><path d="M19 33l31 21.5L81 33M19 69.5l23-17.5M81 69.5l-23-17.5" fill="none" stroke="#b9d3f2" stroke-width="2.4" stroke-linejoin="round"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-phone)"/><path transform="translate(21 21) scale(2.4)" fill="#fff" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></symbol>
+  <symbol id="i-notes" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-notes)"/><rect width="100" height="29" fill="url(#g-notes-top)"/><path d="M9 36H92" stroke="#c4c4c9" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="0 5.2"/><path d="M11 53h78M11 69h78M11 85h78" stroke="#d9d9de" stroke-width="2"/></symbol>
+  <symbol id="i-contacts" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-contacts)"/><circle cx="50" cy="39" r="16" fill="url(#g-person)"/><path d="M19 88c2.5-18 15-27.5 31-27.5S78.5 70 81 88z" fill="url(#g-person)"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-settings)"/><path fill="url(#g-gear)" d="M86.44 47.85L89.98 48.78L89.98 51.22L86.44 52.15L86.26 54.21L86.26 54.21L89.59 55.74L89.16 58.15L85.51 58.44L84.97 60.44L84.97 60.44L87.99 62.53L87.15 64.82L83.5 64.48L82.63 66.36L82.63 66.36L85.24 68.93L84.01 71.05L80.48 70.08L79.29 71.77L79.29 71.77L81.41 74.76L79.84 76.64L76.53 75.07L75.07 76.53L75.07 76.53L76.64 79.84L74.76 81.41L71.77 79.29L70.08 80.48L70.08 80.48L71.05 84.01L68.93 85.24L66.36 82.63L64.48 83.5L64.48 83.5L64.82 87.15L62.53 87.99L60.44 84.97L58.44 85.51L58.44 85.51L58.15 89.16L55.74 89.59L54.21 86.26L52.15 86.44L52.15 86.44L51.22 89.98L48.78 89.98L47.85 86.44L45.79 86.26L45.79 86.26L44.26 89.59L41.85 89.16L41.56 85.51L39.56 84.97L39.56 84.97L37.47 87.99L35.18 87.15L35.52 83.5L33.64 82.63L33.64 82.63L31.07 85.24L28.95 84.01L29.92 80.48L28.23 79.29L28.23 79.29L25.24 81.41L23.36 79.84L24.93 76.53L23.47 75.07L23.47 75.07L20.16 76.64L18.59 74.76L20.71 71.77L19.52 70.08L19.52 70.08L15.99 71.05L14.76 68.93L17.37 66.36L16.5 64.48L16.5 64.48L12.85 64.82L12.01 62.53L15.03 60.44L14.49 58.44L14.49 58.44L10.84 58.15L10.41 55.74L13.74 54.21L13.56 52.15L13.56 52.15L10.02 51.22L10.02 48.78L13.56 47.85L13.74 45.79L13.74 45.79L10.41 44.26L10.84 41.85L14.49 41.56L15.03 39.56L15.03 39.56L12.01 37.47L12.85 35.18L16.5 35.52L17.37 33.64L17.37 33.64L14.76 31.07L15.99 28.95L19.52 29.92L20.71 28.23L20.71 28.23L18.59 25.24L20.16 23.36L23.47 24.93L24.93 23.47L24.93 23.47L23.36 20.16L25.24 18.59L28.23 20.71L29.92 19.52L29.92 19.52L28.95 15.99L31.07 14.76L33.64 17.37L35.52 16.5L35.52 16.5L35.18 12.85L37.47 12.01L39.56 15.03L41.56 14.49L41.56 14.49L41.85 10.84L44.26 10.41L45.79 13.74L47.85 13.56L47.85 13.56L48.78 10.02L51.22 10.02L52.15 13.56L54.21 13.74L54.21 13.74L55.74 10.41L58.15 10.84L58.44 14.49L60.44 15.03L60.44 15.03L62.53 12.01L64.82 12.85L64.48 16.5L66.36 17.37L66.36 17.37L68.93 14.76L71.05 15.99L70.08 19.52L71.77 20.71L71.77 20.71L74.76 18.59L76.64 20.16L75.07 23.47L76.53 24.93L76.53 24.93L79.84 23.36L81.41 25.24L79.29 28.23L80.48 29.92L80.48 29.92L84.01 28.95L85.24 31.07L82.63 33.64L83.5 35.52L83.5 35.52L87.15 35.18L87.99 37.47L84.97 39.56L85.51 41.56L85.51 41.56L89.16 41.85L89.59 44.26L86.26 45.79L86.44 47.85Z"/><circle cx="50" cy="50" r="33" fill="url(#g-gear-face)"/><circle cx="50" cy="50" r="29.5" fill="none" stroke="#3c3c41" stroke-width="2.2"/><path d="M50 21v13M50 66v13M21 50h13M66 50h13M29.5 29.5l9.2 9.2M61.3 61.3l9.2 9.2M70.5 29.5l-9.2 9.2M38.7 61.3l-9.2 9.2" stroke="#3c3c41" stroke-width="3.4"/><path fill="url(#g-gear)" d="M68.15 46.43L71.89 47.79L71.89 52.21L68.15 53.57L67.51 55.98L67.51 55.98L70.06 59.03L67.85 62.86L63.93 62.17L62.17 63.93L62.17 63.93L62.86 67.85L59.03 70.06L55.98 67.51L53.57 68.15L53.57 68.15L52.21 71.89L47.79 71.89L46.43 68.15L44.02 67.51L44.02 67.51L40.97 70.06L37.14 67.85L37.83 63.93L36.07 62.17L36.07 62.17L32.15 62.86L29.94 59.03L32.49 55.98L31.85 53.57L31.85 53.57L28.11 52.21L28.11 47.79L31.85 46.43L32.49 44.02L32.49 44.02L29.94 40.97L32.15 37.14L36.07 37.83L37.83 36.07L37.83 36.07L37.14 32.15L40.97 29.94L44.02 32.49L46.43 31.85L46.43 31.85L47.79 28.11L52.21 28.11L53.57 31.85L55.98 32.49L55.98 32.49L59.03 29.94L62.86 32.15L62.17 36.07L63.93 37.83L63.93 37.83L67.85 37.14L70.06 40.97L67.51 44.02L68.15 46.43Z"/><circle cx="50" cy="50" r="8.5" fill="url(#g-gear-face)"/><circle cx="50" cy="50" r="3.5" fill="#3c3c41"/></symbol>
+  <symbol id="i-github" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-dark)"/><path transform="translate(20 20) scale(2.5)" fill="#fff" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-linkedin)"/><g fill="#fff" transform="translate(50 52) scale(.86) translate(-50 -52)"><rect x="22" y="42" width="12" height="35" rx="1.5"/><circle cx="28" cy="29" r="7"/><path d="M42 42h11.5v5.2C56 43.4 60 41 65.5 41 74.5 41 78 46.5 78 56v21H66.5V59c0-4.8-1.6-7.6-5.6-7.6-4.3 0-7.4 3-7.4 8V77H42z"/></g></symbol>
+  <symbol id="i-ace" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-ace)"/><path d="M60 15L45 42" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><path d="M22 27h56L50 57z" fill="#fff"/><path d="M29.5 32.5h41L50 52.5z" fill="url(#g-drink)"/><circle cx="48.5" cy="38" r="6.5" fill="#7cb342"/><circle cx="50" cy="36.5" r="2.4" fill="#e53935"/><rect x="47.6" y="56" width="4.8" height="20" fill="#fff"/><ellipse cx="50" cy="78" rx="15" ry="4" fill="#fff"/></symbol>
+  <symbol id="i-cash" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-cash)"/><rect x="15" y="27" width="70" height="42" rx="6" fill="#fff" opacity=".45" transform="rotate(-11 50 48)"/><rect x="15" y="33" width="70" height="42" rx="6" fill="#fff"/><rect x="21" y="39" width="58" height="30" rx="3" fill="none" stroke="#bfe9cd" stroke-width="2"/><circle cx="50" cy="54" r="11" fill="#e7f8ec"/><text x="50" y="61.5" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif" font-weight="800" font-size="21" fill="#119a45">$</text></symbol>
+  <symbol id="i-wolf" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-wolf)"/><g fill="#fff"><circle cx="17" cy="20" r="1.3" opacity=".8"/><circle cx="84" cy="15" r="1.1" opacity=".7"/><circle cx="80" cy="34" r=".9" opacity=".6"/><circle cx="12" cy="44" r=".9" opacity=".6"/></g><circle cx="50" cy="45" r="28" fill="url(#g-moon)"/><path d="M26 92l5-41-2-25 13.5 14Q50 37 57.5 40L71 26l-2 25 5 41z" fill="#0f1427"/><g fill="#f5c04d"><ellipse cx="42.5" cy="57" rx="3.6" ry="1.7" transform="rotate(18 42.5 57)"/><ellipse cx="57.5" cy="57" rx="3.6" ry="1.7" transform="rotate(-18 57.5 57)"/></g></symbol>
+  <symbol id="i-ghost" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-ghost)"/><ellipse cx="50" cy="86" rx="20" ry="3.5" fill="#2a0f5c" opacity=".35"/><path d="M26 79V46a24 24 0 0 1 48 0v33l-6-5-6 5-6-5-6 5-6-5-6 5-6-5z" fill="url(#g-ghost-body)"/><g fill="#2e1065"><ellipse cx="42" cy="46" rx="4" ry="5.5"/><ellipse cx="58" cy="46" rx="4" ry="5.5"/><ellipse cx="50" cy="59" rx="3" ry="4" opacity=".8"/></g></symbol>
+  <symbol id="i-recipe" viewBox="0 0 100 100"><rect width="100" height="100" fill="url(#g-dark)"/><path d="M36 33L20 50l16 17M64 33l16 17-16 17M56 26L44 74" fill="none" stroke="url(#g-code)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<div class="stage">
+  <div class="intro">
+    <div class="kicker">Arcadio “Archie” Vega</div>
+    <h1>Chef for 15 years. Now I build for iPhone.</h1>
+    <p>This whole portfolio is an iPhone. Unlock it, open the apps, and flip the Chef Mode switch in Settings.</p>
+    <p>I’m looking for my first iOS developer role.</p>
+    <div class="keys"><span>Click to unlock and open apps.</span><span>Swipe up or press <kbd>Esc</kbd> to go home.</span><span>Swipe down from the top right for Control Center.</span></div>
+  </div>
+
+  <div class="holder" id="holder">
+    <div class="device" id="device">
+      <i class="btn-side a"></i><i class="btn-side b"></i><i class="btn-side c"></i><i class="btn-side d"></i>
+      <div class="phone locked" id="phone">
+        <div class="wall" aria-hidden="true"><i></i><i></i><i></i><i></i><div class="subject" aria-hidden="true"><svg viewBox="0 0 393 900" preserveAspectRatio="xMidYMin slice"><defs><linearGradient id="g-subj" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a1813"/><stop offset=".45" stop-color="#160d0a"/><stop offset="1" stop-color="#0b0706"/></linearGradient><filter id="f-rim" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="0" stdDeviation="2.5" flood-color="#ffb46a" flood-opacity=".6"/></filter></defs><g fill="url(#g-subj)" filter="url(#f-rim)"><path transform="translate(0 10)" d="M150 92l6-40c-18-4-26-22-16-34 10-12 26-10 32-4 6-14 44-14 50 0 6-6 22-8 32 4 10 12 2 30-16 34l6 40z"/><path d="M197 92c27 0 43 20 43 48 0 28-10 48-24 58v24c40 12 96 26 126 54 24 22 34 54 38 104l12 520H2l12-520c4-50 14-82 38-104 30-28 86-42 126-54v-24c-14-10-24-30-24-58 0-28 16-48 43-48z"/></g><path d="M178 228l19 30 19-30M156 90h82" fill="none" stroke="#ffb46a" stroke-opacity=".3" stroke-width="2"/><g fill="#ffb46a" fill-opacity=".22"><circle cx="178" cy="320" r="3.5"/><circle cx="178" cy="370" r="3.5"/><circle cx="178" cy="420" r="3.5"/><circle cx="216" cy="320" r="3.5"/><circle cx="216" cy="370" r="3.5"/><circle cx="216" cy="420" r="3.5"/></g></svg></div></div>
+        <div class="island" id="island" role="button" tabindex="-1" aria-label="Live Activity: Ace Bartender for iPhone, in progress">
+          <span class="di-lead"><svg viewBox="0 0 100 100"><use href="#i-ace"/></svg></span>
+          <span class="di-trail"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="rgba(255,159,10,.3)" stroke-width="3"/><path d="M12 3a9 9 0 0 1 9 9" fill="none" stroke="#ff9f0a" stroke-width="3" stroke-linecap="round"/></svg></span>
+          <div class="di-full"><span class="ic"><svg viewBox="0 0 100 100"><use href="#i-ace"/></svg></span><div><b>Ace Bartender for iPhone</b><span data-dev="Native SwiftUI build in progress" data-chef="Still on the stove, low and slow"></span></div><div class="di-bar"><i></i></div><div class="di-foot"><span>Swift · SwiftUI · Xcode</span><em>Tap to open</em></div></div>
+        </div>
+
+        <div class="status" aria-hidden="true">
+          <span class="clock" data-clock>9:41</span>
+          <span class="right">
+            <svg class="air" width="17" height="14" viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg>
+            <svg class="sig" width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg>
+            <svg class="wifi" width="16" height="12" viewBox="0 0 16 12"><path d="M8 2.3c2.3 0 4.4.9 6 2.4l1.1-1.2A10.2 10.2 0 0 0 8 .6 10.2 10.2 0 0 0 .9 3.5L2 4.7a8.5 8.5 0 0 1 6-2.4zm0 3.4c1.4 0 2.6.5 3.6 1.4l1.1-1.2A7 7 0 0 0 8 4a7 7 0 0 0-4.7 1.9l1.1 1.2c1-.9 2.2-1.4 3.6-1.4zm0 3.4c.5 0 1 .2 1.3.5L8 11.2 6.7 9.6c.3-.3.8-.5 1.3-.5z"/></svg>
+            <svg width="27" height="13" viewBox="0 0 27 13"><rect x=".5" y=".5" width="23" height="12" rx="3.8" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="20" height="9" rx="2.5"/><path d="M25 4.5v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2z" opacity=".45"/></svg>
+          </span>
+        </div>
+
+        <!-- LOCK SCREEN -->
+        <div class="lock" id="lock" role="button" tabindex="0" aria-label="Unlock">
+          <svg class="padlock" viewBox="0 0 16 21" aria-hidden="true"><path class="shackle" d="M3.5 10V6.5a4.5 4.5 0 0 1 9 0V10" fill="none" stroke="#fff" stroke-width="2.2"/><rect x="0" y="9" width="16" height="12" rx="3" fill="#fff"/></svg>
+          <div class="date" id="date">Friday, October 17</div>
+          <div class="time" data-clock>9:41</div>
+          <div class="subject" aria-hidden="true"><svg viewBox="0 0 393 900" preserveAspectRatio="xMidYMin slice"><defs><linearGradient id="g-subj2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a1813"/><stop offset=".45" stop-color="#160d0a"/><stop offset="1" stop-color="#0b0706"/></linearGradient><filter id="f-rim2" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="0" stdDeviation="2.5" flood-color="#ffb46a" flood-opacity=".6"/></filter></defs><g fill="url(#g-subj2)" filter="url(#f-rim2)"><path transform="translate(0 10)" d="M150 92l6-40c-18-4-26-22-16-34 10-12 26-10 32-4 6-14 44-14 50 0 6-6 22-8 32 4 10 12 2 30-16 34l6 40z"/><path d="M197 92c27 0 43 20 43 48 0 28-10 48-24 58v24c40 12 96 26 126 54 24 22 34 54 38 104l12 520H2l12-520c4-50 14-82 38-104 30-28 86-42 126-54v-24c-14-10-24-30-24-58 0-28 16-48 43-48z"/></g><path d="M178 228l19 30 19-30M156 90h82" fill="none" stroke="#ffb46a" stroke-opacity=".3" stroke-width="2"/><g fill="#ffb46a" fill-opacity=".22"><circle cx="178" cy="320" r="3.5"/><circle cx="178" cy="370" r="3.5"/><circle cx="178" cy="420" r="3.5"/><circle cx="216" cy="320" r="3.5"/><circle cx="216" cy="370" r="3.5"/><circle cx="216" cy="420" r="3.5"/></g></svg></div>
+          <div class="notifs">
+            <div class="notif"><div class="ic"><svg viewBox="0 0 100 100"><use href="#i-ace"/></svg></div><div><b>Kitchen <span>now</span></b><span data-dev="Order up: 1 junior iOS developer. Extra attention to detail, hold the ego." data-chef="Order up: 1 chef, 15 years on the line. Still says “behind!” in the office."></span></div></div>
+            <div class="notif"><div class="ic"><svg viewBox="0 0 100 100"><use href="#i-mail"/></svg></div><div><b>Archie Vega <span>2m ago</span></b>Looking for my first iOS role. Unlock to see my work.</div></div>
+          </div>
+          <div class="lock-bottom">
+            <button class="qa" id="qa-torch" aria-label="Flashlight" aria-pressed="false" title="Press and hold"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="off" fill-rule="evenodd" d="M7.6 1.5h8.8c.7 0 1.2.5 1.2 1.2v2.4c0 .6-.2 1.1-.6 1.6L15 9v12c0 .8-.7 1.5-1.5 1.5h-3C9.7 22.5 9 21.8 9 21V9L7 6.7c-.4-.5-.6-1-.6-1.6V2.7c0-.7.5-1.2 1.2-1.2zM8 4.6h8M12 12a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/><path class="on" fill-rule="evenodd" d="M7.6 1.5h8.8c.7 0 1.2.5 1.2 1.2v2.4c0 .6-.2 1.1-.6 1.6L15 9v12c0 .8-.7 1.5-1.5 1.5h-3C9.7 22.5 9 21.8 9 21V9L7 6.7c-.4-.5-.6-1-.6-1.6V2.7c0-.7.5-1.2 1.2-1.2zM11 11.2h2v4.6h-2z"/></svg></button>
+            <div class="swipe-hint">Swipe up to open</div>
+            <button class="qa" id="qa-camera" aria-label="Camera" title="Press and hold"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M9.2 3.5h5.6c.6 0 1.1.3 1.4.8l1 1.7H20a2.5 2.5 0 0 1 2.5 2.5v9.5A2.5 2.5 0 0 1 20 20.5H4A2.5 2.5 0 0 1 1.5 18V8.5A2.5 2.5 0 0 1 4 6h2.8l1-1.7c.3-.5.8-.8 1.4-.8zM12 8.6a4.6 4.6 0 1 0 0 9.2 4.6 4.6 0 0 0 0-9.2zm0 2a2.6 2.6 0 1 1 0 5.2 2.6 2.6 0 0 1 0-5.2z"/></svg></button>
+          </div>
+        </div>
+
+        <!-- HOME SCREEN -->
+        <div class="home" id="home">
+          <div class="pages" id="pages">
+          <div class="page" aria-label="Home page 1">
+          <div class="grid">
+            <button class="widget w-med" data-open="contact" aria-label="Open Archie's contact card">
+              <div class="who"><div class="avatar">AV</div><div><div class="name">Archie Vega</div><div class="role" data-dev="Junior iOS Developer" data-chef="Chef · 15 years on the line"></div></div></div>
+              <div class="line" data-dev="Chef for 15 years. Now building iPhone apps in Swift and SwiftUI." data-chef="Traded the pass for Xcode. Same energy, fewer burns."></div>
+              <div class="progress"><span>Ace Bartender for iPhone</span><span class="pill">In progress</span></div>
+            </button>
+
+            <button class="icon" data-open="ace"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-ace"/></svg></span><span class="nm">Ace Bartender</span></button>
+            <button class="icon" data-open="cash"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-cash"/></svg></span><span class="nm">Cashout</span></button>
+            <button class="icon" data-open="wolf"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-wolf"/></svg></span><span class="nm">WhereWolf</span></button>
+            <button class="icon" data-open="ghost"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-ghost"/></svg></span><span class="nm">Miracle Ghost</span></button>
+
+            <button class="widget w-small" data-open="notes" aria-label="Open the note about the team's Bib Gourmand">
+              <div class="lbl" data-dev="Bib Gourmand" data-chef="On the wall"></div>
+              <div class="big">5×</div>
+              <div class="yrs"><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span></div>
+              <div class="sub" data-dev="Michelin Bib Gourmand, won with my restaurant team" data-chef="Shared with the best brigade I know"></div>
+            </button>
+            <div class="mini4">
+              <button class="icon" data-open="notes"><span class="wrap"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-notes"/></svg></span></span><span class="nm">Notes</span></button>
+              <button class="icon" data-open="recipe"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-recipe"/></svg></span><span class="nm">Recipe</span></button>
+              <button class="icon" data-open="contact"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-contacts"/></svg></span><span class="nm">Contacts</span></button>
+              <button class="icon" data-open="settings"><span class="wrap"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-settings"/></svg></span><span class="badge">1</span></span><span class="nm">Settings</span></button>
+            </div>
+          </div>
+          </div>
+          <div class="page" aria-label="Home page 2">
+          <div class="grid">
+            <button class="widget w-hire" data-open="mail" aria-label="Email Archie about a role">
+              <div class="top"><div><div class="k"><i></i><span data-dev="Open to work" data-chef="Taking reservations"></span></div><div class="t" data-dev="Hiring a junior iOS developer?" data-chef="Need a new cook on the line?"></div></div><div class="avatar" style="width:40px;height:40px;font-size:15px">AV</div></div>
+              <div class="acts"><span>Email</span><span>LinkedIn</span><span>GitHub</span></div>
+            </button>
+            <button class="widget w-cal" data-open="mail" aria-label="Calendar: available for interviews">
+              <div><div class="dow" id="cal-dow">Tuesday</div><div class="dn" id="cal-dn">20</div></div>
+              <div class="ev"><b data-dev="Available for interviews" data-chef="Open for interviews"></b><span>All day</span></div>
+            </button>
+            <button class="widget w-stack" data-open="recipe" aria-label="Archie's stack">
+              <div class="lbl" data-dev="Stack" data-chef="Knife roll"></div>
+              <ul><li><i style="background:#ff9f0a"></i>Swift</li><li><i style="background:#0a84ff"></i>SwiftUI</li><li><i style="background:#5ac8fa"></i>Xcode</li><li><i style="background:#5e5ce6"></i>React + TS</li></ul>
+            </button>
+            <a class="widget w-gh" id="w-gh" href="https://github.com/cholohotsauce" target="_blank" rel="noopener" aria-label="Recent GitHub activity (opens in a new tab)">
+              <div class="hd"><svg viewBox="0 0 100 100"><use href="#i-github"/></svg>Recently pushed<span>cholohotsauce</span></div>
+              <ul id="gh-list"><li><b>ace-bartender-app</b><span>GitHub</span></li><li><b>cashout-calculator</b><span>GitHub</span></li><li><b>the-miracle-ghost-web</b><span>GitHub</span></li></ul>
+            </a>
+          </div>
+          </div>
+          </div>
+
+          <button class="search-pill" id="search-pill" aria-label="Search"><svg viewBox="0 0 16 16"><circle cx="6.8" cy="6.8" r="4.8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.4 10.4L14 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="lbl-s">Search</span><span class="pdots" aria-hidden="true"><i class="on"></i><i></i></span></button>
+          <div class="dock">
+            <button class="icon" data-open="mail" aria-label="Mail"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-mail"/></svg></span>Mail</button>
+            <button class="icon" data-open="contact" aria-label="Phone"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-phone"/></svg></span>Phone</button>
+            <a class="icon" href="https://github.com/cholohotsauce" target="_blank" rel="noopener" aria-label="GitHub (opens in a new tab)"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-github"/></svg></span>GitHub</a>
+            <a class="icon" href="https://www.linkedin.com/in/arcadio-vega" target="_blank" rel="noopener" aria-label="LinkedIn (opens in a new tab)"><span class="sq"><svg viewBox="0 0 100 100"><use href="#i-linkedin"/></svg></span>LinkedIn</a>
+          </div>
+        </div>
+
+        <!-- APP CONTAINER -->
+        <div class="app closed" id="app" hidden role="dialog" aria-modal="true" aria-labelledby="app-title"></div>
+
+        <button class="cc-zone" id="cc-zone" aria-label="Open Control Center" aria-expanded="false"></button>
+        <div class="cc" id="cc" role="dialog" aria-label="Control Center" aria-hidden="true">
+          <div class="cc-grid">
+            <div class="mod big conn">
+              <button class="tg orange" id="cc-air" aria-pressed="false" aria-label="Airplane Mode"><svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg></button>
+              <button class="tg green" id="cc-cell" aria-pressed="true" aria-label="Cellular Data"><svg viewBox="0 0 24 24"><rect x="3" y="15" width="3.2" height="5" rx="1"/><rect x="8.3" y="11.5" width="3.2" height="8.5" rx="1"/><rect x="13.6" y="8" width="3.2" height="12" rx="1"/><rect x="18.9" y="4" width="3.2" height="16" rx="1"/></svg></button>
+              <button class="tg blue" id="cc-wifi" aria-pressed="true" aria-label="Wi-Fi"><svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.237 4.237 0 0 0-6 0zm-4-4l2 2a7.074 7.074 0 0 1 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg></button>
+              <button class="tg blue" id="cc-bt" aria-pressed="true" aria-label="Bluetooth"><svg viewBox="0 0 24 24"><path d="M17.7 7.7L12 2h-1v7.6L6.4 5 5 6.4 10.6 12 5 17.6 6.4 19l4.6-4.6V22h1l5.7-5.7-4.3-4.3zM13 5.8l1.9 1.9L13 9.6zm1.9 10.5L13 18.2v-3.8z"/></svg></button>
+            </div>
+            <div class="mod big music" id="cc-music">
+              <span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>
+              <div><span class="art"><svg viewBox="0 0 100 100"><use href="#i-recipe"/></svg></span><b data-dev="Yes, Chef (Extended Mix)" data-chef="Behind! (Live at the Pass)"></b><span>The Line Cooks</span></div>
+              <div class="ctl"><button aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg></button><button class="pp" id="cc-play" aria-label="Play"><svg class="play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg></button><button aria-label="Next"><svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6zm10-12v12h2V6z"/></svg></button></div>
+            </div>
+            <button class="cbtn wide" id="cc-chef" aria-pressed="false"><span class="gl"><svg viewBox="0 0 24 24" fill="#fff"><path d="M7 14.2a4 4 0 0 1-.6-7.95A5.2 5.2 0 0 1 12 3a5.2 5.2 0 0 1 5.6 3.25A4 4 0 0 1 17 14.2V18H7zM7 19.5h10V21H7z"/></svg></span><span>Chef Mode<small id="cc-chef-state">Off</small></span></button>
+            <button class="cbtn" id="cc-dark" aria-pressed="false" aria-label="Dark Mode"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.39 5.39 0 0 1-4.4 2.26 5.4 5.4 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg></button>
+            <button class="cbtn" id="cc-lock" aria-label="Lock iPhone"><svg viewBox="0 0 24 24"><path d="M7 10V7.5a5 5 0 0 1 10 0V10h.5A1.5 1.5 0 0 1 19 11.5v8A1.5 1.5 0 0 1 17.5 21h-11A1.5 1.5 0 0 1 5 19.5v-8A1.5 1.5 0 0 1 6.5 10zm2 0h6V7.5a3 3 0 0 0-6 0z"/></svg></button>
+            <button class="slider tall" id="cc-bright" role="slider" aria-label="Brightness" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span class="fill" style="height:100%"></span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1" stroke="#8e8e93" stroke-width="2" stroke-linecap="round"/></svg></button>
+            <button class="slider tall" id="cc-vol" role="slider" aria-label="Volume" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60"><span class="fill" style="height:60%"></span><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05A4.47 4.47 0 0 0 16.5 12zM14 3.23v2.06a7 7 0 0 1 0 13.42v2.06A9 9 0 0 0 14 3.23z"/></svg></button>
+            <button class="cbtn" id="cc-torch" aria-pressed="false" aria-label="Flashlight"><svg viewBox="0 0 24 24"><path fill-rule="evenodd" d="M7.6 1.5h8.8c.7 0 1.2.5 1.2 1.2v2.4c0 .6-.2 1.1-.6 1.6L15 9v12c0 .8-.7 1.5-1.5 1.5h-3C9.7 22.5 9 21.8 9 21V9L7 6.7c-.4-.5-.6-1-.6-1.6V2.7c0-.7.5-1.2 1.2-1.2zM8 4.6h8M12 12a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></button>
+            <button class="cbtn" id="cc-timer" aria-label="Timer"><svg viewBox="0 0 24 24"><path d="M9 1h6v2H9zm10 6.4l1.4-1.4-1.4-1.4-1.5 1.5A9 9 0 1 0 19 7.4zM12 21a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm1-12h-2v5.4l3.8 2.3 1-1.7-2.8-1.6z"/></svg></button>
+            <button class="cbtn" id="cc-calc" aria-label="Calculator: opens Cashout"><svg viewBox="0 0 24 24"><path d="M6.5 2h11A2.5 2.5 0 0 1 20 4.5v15a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2zM7 5v4h10V5zm0 7v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2zm-8 4v2h2v-2zm4 0v2h2v-2zm4 0v2h2v-2z"/></svg></button>
+            <button class="cbtn" id="cc-cam" aria-label="Camera"><svg viewBox="0 0 24 24"><path fill-rule="evenodd" d="M9.2 3.5h5.6c.6 0 1.1.3 1.4.8l1 1.7H20a2.5 2.5 0 0 1 2.5 2.5v9.5A2.5 2.5 0 0 1 20 20.5H4A2.5 2.5 0 0 1 1.5 18V8.5A2.5 2.5 0 0 1 4 6h2.8l1-1.7c.3-.5.8-.8 1.4-.8zM12 8.6a4.6 4.6 0 1 0 0 9.2 4.6 4.6 0 0 0 0-9.2zm0 2a2.6 2.6 0 1 1 0 5.2 2.6 2.6 0 0 1 0-5.2z"/></svg></button>
+          </div>
+          <div class="cc-hint">Tap anywhere to close</div>
+        </div>
+        <div class="spot" id="spot" role="dialog" aria-label="Search" aria-hidden="true">
+          <div class="spot-bar"><label class="spot-field"><svg viewBox="0 0 16 16"><circle cx="6.8" cy="6.8" r="4.8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.4 10.4L14 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input id="spot-q" type="search" placeholder="Search" autocomplete="off" spellcheck="false" aria-controls="spot-body"></label><button class="spot-cancel" id="spot-cancel">Cancel</button></div>
+          <div class="spot-body" id="spot-body" aria-live="polite"></div>
+        </div>
+        <div class="qm" id="qm" aria-hidden="true"><div class="lift" id="qm-lift"></div><div class="menu" id="qm-menu" role="menu"></div></div>
+        <div class="dim" id="dim" aria-hidden="true"></div>
+        <button class="home-zone" id="homezone" aria-label="Go to the home screen"></button>
+        <div class="home-ind" aria-hidden="true"></div>
+        <div class="shutter" id="shutter" aria-hidden="true"></div>
+        <div class="toast" id="toast" role="status"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var phone=document.getElementById('phone'),lock=document.getElementById('lock'),app=document.getElementById('app'),island=document.getElementById('island');
+  var state={chef:false,dark:false,torch:false,open:null,origin:null};
+
+  /* initial appearance follows the viewer's theme */
+  try{
+    var root=document.documentElement,t=root.getAttribute('data-theme');
+    state.dark=t?t==='dark':!!(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches);
+  }catch(e){}
+  phone.classList.toggle('ios-dark',state.dark);
+
+  /* live clock and date in the visitor's time zone; 12-hour without AM/PM like iOS, or 24-hour where the visitor's locale uses it */
+  var h12=true,clockTimer=null;
+  try{var hc=new Intl.DateTimeFormat(undefined,{hour:'numeric'}).resolvedOptions().hourCycle;h12=!hc||hc==='h11'||hc==='h12'}catch(e){}
+  function tick(){
+    var now=new Date(),h=now.getHours(),m=('0'+now.getMinutes()).slice(-2),t=h12?((h%12||12)+':'+m):(('0'+h).slice(-2)+':'+m);
+    document.querySelectorAll('[data-clock]').forEach(function(el){if(el.textContent!==t)el.textContent=t});
+    var ds=now.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'}),de=document.getElementById('date');if(de.textContent!==ds)de.textContent=ds;
+    clearTimeout(clockTimer);clockTimer=setTimeout(tick,60000-now.getSeconds()*1000-now.getMilliseconds()+50);
+  }
+  tick();
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)tick()});
+
+  function voice(){
+    document.querySelectorAll('[data-dev]').forEach(function(e){e.textContent=state.chef?e.dataset.chef:e.dataset.dev});
+    phone.classList.toggle('chef',state.chef);
+  }
+  voice();
+
+  /* unlock */
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,home=document.getElementById('home');
+  /* device px per phone px: the device is scaled to fit on desktop */
+  function scale(){return phone.getBoundingClientRect().height/phone.offsetHeight||1}
+  /* depth effect: the subject's head sits over the lower half of the clock */
+  function placeSubject(){var t=lock.querySelector('.time');phone.style.setProperty('--subject-top',(t.offsetTop+t.offsetHeight*.5)+'px')}
+  placeSubject();window.addEventListener('resize',placeSubject);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(placeSubject);
+
+  /* the padlock opens first, then the lock screen slides away, as on Face ID iPhones */
+  var unlocked=false;
+  function finishUnlock(){
+    lock.classList.remove('dragging');phone.classList.remove('dragging');
+    lock.style.transform='';lock.style.opacity='';home.style.transform='';home.style.opacity='';
+    lock.querySelector('.subject').style.transform='';
+    lock.classList.add('gone');phone.classList.remove('locked');haptic();
+    if(!unlocked){unlocked=true;setTimeout(liveActivity,1400)}
+  }
+  function unlock(){
+    if(lock.classList.contains('gone'))return;
+    if(lock.classList.contains('unlocking')){finishUnlock();return}
+    lock.classList.add('unlocking');
+    setTimeout(finishUnlock,reduce?0:260);
+  }
+  function relock(){
+    closeCC();closeSpot();if(!app.hidden)goHome();
+    lock.classList.remove('gone','unlocking');phone.classList.add('locked');
+  }
+  /* drag to unlock: the lock screen follows the finger and springs back if released early */
+  var drag=null;
+  lock.addEventListener('pointerdown',function(e){
+    if(lock.classList.contains('gone'))return;
+    drag={y:e.clientY,t:e.timeStamp,dy:0,moved:false};
+    try{lock.setPointerCapture(e.pointerId)}catch(err){}
+  });
+  lock.addEventListener('pointermove',function(e){
+    if(!drag)return;
+    var dy=Math.min(0,(e.clientY-drag.y)/scale());
+    if(!drag.moved&&dy>-6)return;
+    if(!drag.moved){drag.moved=true;lock.classList.add('unlocking','dragging');phone.classList.add('dragging')}
+    drag.dy=dy;drag.v=(e.clientY-drag.y)/Math.max(1,e.timeStamp-drag.t);
+    var h=phone.offsetHeight,p=Math.min(1,-dy/(h*.45));
+    lock.style.transform='translateY('+dy+'px)';lock.style.opacity=1-p*.6;
+    lock.querySelector('.subject').style.transform='translateY('+(-dy)+'px)';
+    home.style.opacity=p;home.style.transform='scale('+(1.12-.12*p)+')';
+  });
+  function endDrag(e){
+    if(!drag)return;
+    var d=drag;drag=null;
+    if(!d.moved)return;
+    lock.classList.remove('dragging');phone.classList.remove('dragging');
+    var fast=(e.clientY-d.y)/Math.max(1,e.timeStamp-d.t)<-0.5;
+    if(d.dy<-phone.offsetHeight*.22||(fast&&d.dy<-40)){lock._dragged=true;finishUnlock()}
+    else{lock._dragged=true;lock.style.transform='';lock.style.opacity='';lock.querySelector('.subject').style.transform='';home.style.transform='';home.style.opacity=''}
+  }
+  lock.addEventListener('pointerup',endDrag);lock.addEventListener('pointercancel',endDrag);
+  lock.addEventListener('click',function(){if(lock._dragged){lock._dragged=false;return}unlock()});
+  lock.addEventListener('keydown',function(e){if(e.target!==lock)return;if(e.key==='Enter'||e.key===' '){e.preventDefault();unlock()}});
+
+  /* haptic tick: vibrate where supported; on iOS 18+ Safari, toggling a hidden switch input gives a tap */
+  function haptic(){
+    try{if(navigator.vibrate&&navigator.vibrate(10))return}catch(e){}
+    try{var l=document.createElement('label'),i=document.createElement('input');i.type='checkbox';i.setAttribute('switch','');l.appendChild(i);l.style.display='none';document.body.appendChild(l);l.click();l.remove()}catch(e){}
+  }
+  /* lock screen quick actions: press and hold to activate, like iOS; a quick tap only nudges */
+  function hold(btn,fire){
+    var t=null,fired=false;
+    function stop(e){e.stopPropagation();clearTimeout(t);btn.classList.remove('pressing')}
+    btn.addEventListener('pointerdown',function(e){e.stopPropagation();fired=false;btn.classList.add('pressing');t=setTimeout(function(){fired=true;btn.classList.remove('pressing');haptic();fire()},reduce?0:420)});
+    btn.addEventListener('pointerup',stop);btn.addEventListener('pointerleave',stop);btn.addEventListener('pointercancel',stop);
+    btn.addEventListener('contextmenu',function(e){e.preventDefault()});
+    btn.addEventListener('keydown',function(e){e.stopPropagation()});
+    btn.addEventListener('click',function(e){
+      e.stopPropagation();
+      if(e.detail===0){fire();return}
+      if(!fired){btn.classList.remove('nudge');btn.offsetWidth;btn.classList.add('nudge')}
+    });
+  }
+  var torch=document.getElementById('qa-torch'),cam=document.getElementById('qa-camera'),shutter=document.getElementById('shutter');
+  function shoot(){shutter.classList.remove('go');shutter.offsetWidth;shutter.classList.add('go');toast('Say “Yes, Chef!”')}
+  hold(torch,function(){setTorch(torch.getAttribute('aria-pressed')!=='true')});
+  hold(cam,shoot);
+
+  /* shared state, so Settings, Control Center and the lock screen always agree */
+  function setTorch(on){
+    state.torch=on;haptic();torch.setAttribute('aria-pressed',on);document.body.classList.toggle('torch',on);
+    var c=document.getElementById('cc-torch');if(c)c.setAttribute('aria-pressed',on);
+  }
+  function setChef(on){
+    state.chef=on;voice();haptic();
+    var sc=document.getElementById('sw-chef');if(sc)sc.setAttribute('aria-checked',on);
+    var c=document.getElementById('cc-chef');c.setAttribute('aria-pressed',on);document.getElementById('cc-chef-state').textContent=on?'On':'Off';
+  }
+  function setDark(on){
+    state.dark=on;haptic();phone.classList.toggle('ios-dark',on);
+    var sd=document.getElementById('sw-dark');if(sd)sd.setAttribute('aria-checked',on);
+    document.getElementById('cc-dark').setAttribute('aria-pressed',on);
+  }
+  document.getElementById('cc-dark').setAttribute('aria-pressed',state.dark);
+
+  /* ---------- Control Center: swipe down from the top right ---------- */
+  var cc=document.getElementById('cc'),ccZone=document.getElementById('cc-zone'),ccGrid=cc.querySelector('.cc-grid'),ccLast=null;
+  function openCC(){
+    if(phone.classList.contains('cc-open'))return;
+    closeSpot();ccLast=document.activeElement;
+    cc.classList.remove('dragging');cc.style.opacity='';ccGrid.style.transform='';
+    cc.classList.add('open');cc.setAttribute('aria-hidden','false');phone.classList.add('cc-open');ccZone.setAttribute('aria-expanded','true');
+    haptic();document.getElementById('cc-air').focus({preventScroll:true});
+  }
+  function closeCC(){
+    if(!phone.classList.contains('cc-open'))return false;
+    cc.classList.remove('open');cc.setAttribute('aria-hidden','true');phone.classList.remove('cc-open');ccZone.setAttribute('aria-expanded','false');
+    if(ccLast&&ccLast.focus&&document.contains(ccLast))ccLast.focus({preventScroll:true});
+    return true;
+  }
+  var ccDrag=null;
+  ccZone.addEventListener('pointerdown',function(e){ccDrag={y:e.clientY,moved:false};try{ccZone.setPointerCapture(e.pointerId)}catch(err){}});
+  ccZone.addEventListener('pointermove',function(e){
+    if(!ccDrag)return;var dy=(e.clientY-ccDrag.y)/scale();if(dy<4&&!ccDrag.moved)return;
+    ccDrag.moved=true;var p=Math.max(0,Math.min(1,dy/180));
+    cc.classList.add('dragging');cc.style.visibility='visible';cc.style.opacity=p;ccGrid.style.transform='scale('+(.88+.12*p)+') translateY('+(-30+30*p)+'px)';
+  });
+  function ccEnd(e){
+    if(!ccDrag)return;var d=ccDrag;ccDrag=null;
+    var dy=(e.clientY-d.y)/scale();cc.style.visibility='';
+    if(!d.moved||dy>50)openCC();else{cc.classList.remove('dragging');cc.style.opacity='';ccGrid.style.transform=''}
+  }
+  ccZone.addEventListener('pointerup',ccEnd);ccZone.addEventListener('pointercancel',ccEnd);
+  ccZone.addEventListener('click',function(e){if(e.detail===0)openCC()});
+  cc.addEventListener('click',function(e){if(e.target===cc||e.target===ccGrid||e.target.classList.contains('cc-hint'))closeCC()});
+  /* swipe up inside Control Center closes it */
+  var ccUp=null;
+  cc.addEventListener('pointerdown',function(e){ccUp=e.clientY});
+  cc.addEventListener('pointerup',function(e){if(ccUp!==null&&(ccUp-e.clientY)/scale()>60)closeCC();ccUp=null});
+
+  function tg(id,fn){var b=document.getElementById(id);b.addEventListener('click',function(){haptic();var on=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',on);fn&&fn(on)})}
+  tg('cc-air',function(on){phone.classList.toggle('airplane',on);['cc-cell','cc-wifi','cc-bt'].forEach(function(id){document.getElementById(id).setAttribute('aria-pressed',!on)});toast(on?'Airplane Mode on. Still reachable by email.':'Airplane Mode off')});
+  tg('cc-cell');tg('cc-wifi');tg('cc-bt');
+  document.getElementById('cc-torch').addEventListener('click',function(){setTorch(!state.torch)});
+  document.getElementById('cc-chef').addEventListener('click',function(){setChef(!state.chef)});
+  document.getElementById('cc-dark').addEventListener('click',function(){setDark(!state.dark)});
+  document.getElementById('cc-lock').addEventListener('click',function(){relock()});
+  document.getElementById('cc-cam').addEventListener('click',function(){closeCC();shoot()});
+  document.getElementById('cc-calc').addEventListener('click',function(){closeCC();open('cash')});
+  document.getElementById('cc-timer').addEventListener('click',function(){toast('Timer set: 15 years. Done. Plating now.')});
+  var music=document.getElementById('cc-music'),play=document.getElementById('cc-play');
+  play.addEventListener('click',function(){var on=!music.classList.contains('playing');music.classList.toggle('playing',on);play.setAttribute('aria-label',on?'Pause':'Play')});
+
+  /* sliders: drag up and down, or use the arrow keys */
+  var dim=document.getElementById('dim');
+  function slider(id,fn){
+    var el=document.getElementById(id),fill=el.querySelector('.fill'),active=false;
+    function set(v){v=Math.max(0,Math.min(100,Math.round(v)));fill.style.height=v+'%';el.setAttribute('aria-valuenow',v);fn&&fn(v)}
+    function at(e){var r=el.getBoundingClientRect();set((r.bottom-e.clientY)/r.height*100)}
+    el.addEventListener('pointerdown',function(e){active=true;try{el.setPointerCapture(e.pointerId)}catch(err){}at(e)});
+    el.addEventListener('pointermove',function(e){if(active)at(e)});
+    el.addEventListener('pointerup',function(){active=false});el.addEventListener('pointercancel',function(){active=false});
+    el.addEventListener('keydown',function(e){var v=+el.getAttribute('aria-valuenow');if(e.key==='ArrowUp'||e.key==='ArrowRight'){set(v+10);e.preventDefault()}if(e.key==='ArrowDown'||e.key==='ArrowLeft'){set(v-10);e.preventDefault()}});
+  }
+  slider('cc-bright',function(v){dim.style.opacity=((100-v)/100*.65).toFixed(3)});
+  slider('cc-vol');
+
+  /* ---------- Dynamic Island live activity ---------- */
+  var diTimer=null;
+  function liveActivity(){island.classList.add('compact');phone.classList.add('di-on');island.tabIndex=0}
+  function expandIsland(){haptic();island.classList.remove('compact');island.classList.add('expanded');clearTimeout(diTimer);diTimer=setTimeout(collapseIsland,6000)}
+  function collapseIsland(){if(island.classList.contains('expanded')){island.classList.remove('expanded');island.classList.add('compact')}}
+  island.addEventListener('click',function(e){
+    e.stopPropagation();
+    if(island.classList.contains('compact'))expandIsland();
+    else if(island.classList.contains('expanded')){collapseIsland();closeCC();closeSpot();open('ace',island)}
+  });
+  island.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();island.click()}});
+  phone.addEventListener('click',function(e){if(!island.contains(e.target))collapseIsland()});
+
+  /* ---------- Spotlight ---------- */
+  var spot=document.getElementById('spot'),q=document.getElementById('spot-q'),sbody=document.getElementById('spot-body'),sel=0,spotLast=null;
+  function ico(k){return '<span class="hi"><svg viewBox="0 0 100 100"><use href="#i-'+k+'"/></svg></span>'}
+  function gly(bg,path){return '<span class="hi glyph" style="background:'+bg+'"><svg viewBox="0 0 24 24"><path d="'+path+'"/></svg></span>'}
+  var G_PERSON='M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm0 2c-4 0-8 2-8 5.5V21h16v-1.5C20 16 16 14 12 14z',G_STAR='M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7.1L12 17.3 5.8 21l1.6-7.1L2 9.2l7.1-.6z',G_HAMMER='M2 19.6L13.3 8.3l2.4 2.4L4.4 22zM14 3l7 7-2.1 2.1-1.4-1.4-1.4 1.4-4.2-4.2 1.4-1.4-1.4-1.4z';
+  var INDEX=[
+    {t:'Ace Bartender',s:'App · Specs, builds and garnishes',k:'ace bartender cocktail drinks swiftui web app bar',i:ico('ace'),go:{open:'ace'}},
+    {t:'Cashout Calculator',s:'App · Tip-out math for restaurant crews',k:'cashout calculator tips tip out money restaurant',i:ico('cash'),go:{open:'cash'}},
+    {t:'WhereWolf',s:'App · A Guess Who?-style deduction game',k:'wherewolf werewolf game geowho guess who react typescript vite tailwind zustand vitest',i:ico('wolf'),go:{open:'wolf'}},
+    {t:'The Miracle Ghost',s:'App · Website and Shopify store for AES',k:'miracle ghost aes shopify client website miami graffiti',i:ico('ghost'),go:{open:'ghost'}},
+    {t:'Notes',s:'Why a chef makes a good iOS developer',k:'notes chef kitchen story bib gourmand michelin mise en place',i:ico('notes'),go:{open:'notes'}},
+    {t:'Recipe',s:'Archie.swift',k:'recipe swift code struct archie',i:ico('recipe'),go:{open:'recipe'}},
+    {t:'Contacts',s:'Archie Vega',k:'contacts contact card phone archie vega',i:ico('contacts'),go:{open:'contact'}},
+    {t:'Settings',s:'Chef Mode, Dark Mode, About',k:'settings chef mode dark mode about',i:ico('settings'),go:{open:'settings'}},
+    {t:'Mail',s:'Email Archie',k:'mail email message hire contact reach out',i:ico('mail'),go:{open:'mail'}},
+    {t:'GitHub',s:'github.com/cholohotsauce',k:'github code repos source',i:ico('github'),go:{href:'https://github.com/cholohotsauce'}},
+    {t:'LinkedIn',s:'linkedin.com/in/arcadio-vega',k:'linkedin profile resume cv experience',i:ico('linkedin'),go:{href:'https://www.linkedin.com/in/arcadio-vega'}},
+    {t:'Archie Vega',s:'Junior iOS Developer · Former Chef',k:'archie arcadio vega about who developer ios hire available',i:gly('linear-gradient(145deg,#ffb340,#ff5a36)',G_PERSON),go:{open:'contact'}},
+    {t:'Available for hire',s:'Looking for a first iOS developer role',k:'hire hiring job role available open work junior',i:gly('#30d158',G_PERSON),go:{open:'mail'}},
+    {t:'Bib Gourmand, 2022 to 2026',s:'Michelin Bib Gourmand, won with my restaurant team',k:'michelin bib gourmand award restaurant team canada',i:gly('#ff3b30',G_STAR),go:{open:'notes'}},
+    {t:'15 years in kitchens',s:'Chef, line cook, team player',k:'chef kitchen cook years experience restaurant',i:gly('#ff9f0a',G_STAR),go:{open:'notes'}},
+    {t:'Swift, SwiftUI, Xcode',s:'iOS stack',k:'swift swiftui xcode ios iphone skills stack',i:gly('#0a84ff',G_HAMMER),go:{open:'recipe'}},
+    {t:'React, TypeScript, Vite',s:'Web stack, used in WhereWolf',k:'react typescript javascript vite tailwind zustand vitest web skills',i:gly('#5e5ce6',G_HAMMER),go:{open:'wolf'}}
+  ];
+  var SUGGEST=['ace','wolf','notes','contacts'];
+  function results(v){
+    v=v.trim().toLowerCase();if(!v)return null;
+    var words=v.split(/\s+/);
+    return INDEX.map(function(r){var hay=(r.t+' '+r.s+' '+r.k).toLowerCase(),sc=0;
+      for(var i=0;i<words.length;i++){var w=words[i];if(hay.indexOf(w)<0)return null;if(r.t.toLowerCase().indexOf(w)===0)sc+=3;else if((' '+r.t.toLowerCase()).indexOf(' '+w)>=0)sc+=2;else sc+=1}
+      return {r:r,sc:sc}}).filter(Boolean).sort(function(a,b){return b.sc-a.sc}).map(function(x){return x.r});
+  }
+  var shown=[];
+  function renderSpot(){
+    var list=results(q.value);
+    if(!list){
+      shown=[];
+      sbody.innerHTML='<div class="spot-h"><span>Siri Suggestions</span></div><div class="spot-apps">'+SUGGEST.map(function(k){var b=document.querySelector('#home [data-open] .sq use[href="#i-'+k+'"]').closest('[data-open]');return '<button class="icon" data-spot-open="'+b.dataset.open+'">'+b.innerHTML+'</button>'}).join('')+'</div>'+
+        '<div class="spot-h"><span>Try</span></div><div class="spot-list">'+['Swift','Michelin','hire','React'].map(function(w){return '<button class="hit" data-try="'+w+'">'+gly('rgba(255,255,255,.18)','M10 3a7 7 0 0 1 5.6 11.2l5.6 5.6-1.4 1.4-5.6-5.6A7 7 0 1 1 10 3zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10z')+'<div><b>'+w+'</b></div></button>'}).join('')+'</div>';
+    }else if(!list.length){shown=[];sbody.innerHTML='<div class="spot-none">No Results for “'+q.value.replace(/[<&"]/g,'')+'”</div>'}
+    else{
+      shown=list;sel=0;
+      sbody.innerHTML='<div class="spot-h"><span>Top Hit</span></div><div class="spot-list">'+hit(list[0],0)+'</div>'+(list.length>1?'<div class="spot-h"><span>Archie’s iPhone</span><span>'+(list.length-1)+'</span></div><div class="spot-list">'+list.slice(1).map(function(r,i){return hit(r,i+1)}).join('')+'</div>':'');
+    }
+    mark();
+  }
+  function hit(r,i){return '<button class="hit" data-i="'+i+'">'+r.i+'<div><b>'+r.t+'</b><span>'+r.s+'</span></div></button>'}
+  function mark(){sbody.querySelectorAll('.hit[data-i]').forEach(function(h){h.classList.toggle('sel',+h.dataset.i===sel)})}
+  function go(r){
+    if(!r)return;closeSpot();
+    if(r.go.href){window.open(r.go.href,'_blank','noopener')}else{open(r.go.open)}
+  }
+  sbody.addEventListener('click',function(e){
+    var h=e.target.closest('[data-i]'),t=e.target.closest('[data-try]'),a=e.target.closest('[data-spot-open]');
+    if(h)go(shown[+h.dataset.i]);
+    else if(t){q.value=t.dataset.try;renderSpot();q.focus()}
+    else if(a){closeSpot();open(a.dataset.spotOpen)}
+  });
+  q.addEventListener('input',renderSpot);
+  q.addEventListener('keydown',function(e){
+    if(e.key==='ArrowDown'&&shown.length){sel=Math.min(shown.length-1,sel+1);mark();e.preventDefault()}
+    if(e.key==='ArrowUp'&&shown.length){sel=Math.max(0,sel-1);mark();e.preventDefault()}
+    if(e.key==='Enter'){go(shown[sel]);e.preventDefault()}
+  });
+  function openSpot(){
+    if(phone.classList.contains('locked'))return;
+    closeCC();spotLast=document.activeElement;q.value='';renderSpot();
+    spot.classList.add('open');spot.setAttribute('aria-hidden','false');phone.classList.add('spot-open');
+    setTimeout(function(){q.focus({preventScroll:true})},reduce?0:60);
+  }
+  function closeSpot(){
+    if(!spot.classList.contains('open'))return false;
+    spot.classList.remove('open');spot.setAttribute('aria-hidden','true');phone.classList.remove('spot-open');q.blur();
+    if(spotLast&&spotLast.focus&&document.contains(spotLast))spotLast.focus({preventScroll:true});
+    return true;
+  }
+  document.getElementById('search-pill').addEventListener('click',openSpot);
+  document.getElementById('spot-cancel').addEventListener('click',closeSpot);
+  /* swipe down on the home screen also opens Spotlight, as on iOS */
+  var sd0=null;
+  home.addEventListener('pointerdown',function(e){sd0=phone.classList.contains('app-open')||e.target.closest('#cc-zone')?null:{y:e.clientY,x:e.clientX}});
+  home.addEventListener('pointerup',function(e){if(sd0&&(e.clientY-sd0.y)/scale()>70&&Math.abs(e.clientX-sd0.x)<60)openSpot();sd0=null});
+
+  /* icons */
+  var chevL='<svg viewBox="0 0 12 20"><path d="M10 2L2 10l8 8"/></svg>';
+  var chevR='<svg class="chev" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6"/></svg>';
+  function glyph(k){return document.querySelector('[data-open="'+k+'"] .sq').outerHTML}
+
+  var projects={
+    ace:{name:'Ace Bartender',sub:'Specs, builds and garnishes, fast',repo:'https://github.com/cholohotsauce/ace-bartender-app',
+      shots:[['ace-1','All Drinks list grouped A to Z with spirit filters'],['ace-2','Aviation spec with ingredients and method'],['ace-3','Search results for mezcal']],
+      info:[['Platform','Web','iPhone next'],['Made for','Bartenders','mid-shift'],['Next','SwiftUI','in progress']],
+      news:'The web version below is what bartenders use today. A native SwiftUI version is in progress.',
+      dev:'A pocket guide for bartenders. Specs, builds and garnishes, fast enough to use in the middle of a Friday rush. It started as a web app. Now I am rebuilding it natively in SwiftUI.',
+      chef:'Pairs well with a Friday night bar rush. Specs, builds and garnishes, served shaken. The web version is on the menu now. The iPhone version is still on the stove.'},
+    cash:{name:'Cashout Calculator',sub:'Tip-out math for restaurant crews',repo:'https://github.com/cholohotsauce/cashout-calculator',live:'https://cholohotsauce.github.io/cashout-calculator/',
+      shots:[['cashout-1','Tip entry and front-of-house staff selection'],['cashout-2','Cash-out results with the staff breakdown']],
+      info:[['Platform','Web','browser'],['Made for','Servers','and cooks'],['Saves','1 a.m.','napkin math']],
+      news:'Web app. A native version is on the list after Ace Bartender.',
+      dev:'End-of-night tip-out math for restaurant crews. Enter the sales and the hours, and everyone sees a fair split. No more napkin arithmetic at 1 a.m.',
+      chef:'Splits the tips fairly at the end of the night, so nobody fights over the last dollar.'},
+    wolf:{name:'WhereWolf',sub:'A Guess Who?-style deduction game',repo:'',
+      info:[['Platform','Web','installable app'],['Packs','5','266 cards'],['Modes','4','Daily, Duel and more']],
+      news:'Rebuilt from my old GeoWho game: a new engine, five content packs, Daily, Learn and Duel modes, and offline play once it is installed on your phone.',
+      dev:'A deduction game in the style of Guess Who? The wolf hides a secret card, and you narrow the board with yes/no questions until you can name it. Cards come from content packs (world capitals, countries, provinces and states, cuisines and flags), so a new topic is new data, not new code. Built with React, TypeScript, Vite, Tailwind CSS and Zustand, tested with Vitest.',
+      chef:'Like guessing the mystery ingredient in a blind tasting, but with capitals. Ask, rule out, then name it before the wolf does.',
+      shots:[['wherewolf-1','WhereWolf home screen with the Daily World Capitals card and five packs'],['wherewolf-2','A World Capitals game after one question, with 31 cards left on the map'],['wherewolf-3','The Ask the wolf sheet with yes/no questions']]},
+    ghost:{name:'The Miracle Ghost',sub:'Website and Shopify store for AES',repo:'https://github.com/cholohotsauce/the-miracle-ghost-web',
+      shots:[['ghost-1','The 3D ghost on the home page'],['ghost-2','The contact and inquiries page']],
+      info:[['Type','Client','paid work'],['Client','AES','Miami artist'],['Built','Site','+ Shopify']],
+      news:'Shipped for a real client.',
+      dev:'Paid client work for AES, a Miami graffiti artist. I designed and built the artist’s website and set up the Shopify store.',
+      chef:'A private catering job for AES, a Miami graffiti artist. Full website and Shopify store, made to order.'}
+  };
+
+  function projectView(k){
+    var p=projects[k];
+    var shots=(p.shots||[]).map(function(x){return '<img class="shot" src="shots/'+x[0]+'.webp" alt="'+x[1]+'" width="600" height="1300" loading="lazy" decoding="async">'}).join('');
+    var act=!p.live&&!p.repo?'<span class="get off">PRIVATE</span><span class="state">Source code<br>is private</span>':p.live?'<a class="get" href="'+p.live+'" target="_blank" rel="noopener">OPEN</a><a class="state" href="'+p.repo+'" target="_blank" rel="noopener">View<br>code</a>':'<a class="get" href="'+p.repo+'" target="_blank" rel="noopener">CODE</a><span class="state">Opens<br>GitHub</span>';
+    return '<div class="scroll"><div class="navbar"><button data-home>'+chevL+'<span>Home</span></button><span></span></div>'+
+      '<div class="store-top">'+glyph(k)+'<div><h2 id="app-title">'+p.name+'</h2><div class="subt">'+p.sub+'</div>'+
+      '<div class="acts">'+act+'</div></div></div>'+
+      '<div class="info">'+p.info.map(function(r){return '<div><small>'+r[0]+'</small><b>'+r[1]+'</b><span>'+r[2]+'</span></div>'}).join('')+'</div>'+
+      '<h3 class="h2">What’s New</h3><div class="whatsnew"><span>Status</span><span>2026</span></div><p class="prose">'+p.news+'</p>'+
+      '<h3 class="h2">Preview</h3><div class="shots">'+shots+'</div>'+
+      '<h3 class="h2">About</h3><p class="prose" data-dev="'+p.dev+'" data-chef="'+p.chef+'"></p></div>';
+  }
+
+  var views={
+    notes:function(){return '<div class="scroll notes"><div class="navbar"><button data-home>'+chevL+'<span>Notes</span></button><span></span></div>'+
+      '<div class="stamp">October 17, 2026 at 9:41 AM</div><div class="note">'+
+      '<h2 id="app-title" data-dev="Why a chef makes a good iOS developer" data-chef="Dev team, meet the kitchen"></h2>'+
+      '<p data-dev="I spent 15 years in professional kitchens. My restaurant team has held a Michelin Bib Gourmand every year since 2022, the guide’s first year in Canada." data-chef="Fifteen years on the line, and a Bib Gourmand on the wall every year since the guide came to Canada in 2022. Shared with the best brigade I know."></p>'+
+      '<h3>The translation</h3><ul>'+
+      '<li><div><b>Mise en place → Planning</b><span>Set up the project before the rush.</span></div></li>'+
+      '<li><div><b>Taste every sauce → Testing</b><span>Never ship what I haven’t checked.</span></div></li>'+
+      '<li><div><b>Saturday, 9 p.m. → Shipping under pressure</b><span>Launch day doesn’t scare me.</span></div></li>'+
+      '<li><div><b>“Yes, Chef.” → Code review</b><span>Take the note, fix the plate.</span></div></li>'+
+      '<li><div><b>The brigade → Teamwork</b><span>Clear calls, no egos at the pass.</span></div></li>'+
+      '</ul></div></div>'},
+
+    recipe:function(){return '<div class="scroll"><div class="navbar"><button data-home>'+chevL+'<span>Home</span></button><span></span></div>'+
+      '<h1 class="large" id="app-title">Recipe</h1><div class="section-h">Archie.swift</div>'+
+      '<div class="code"><span class="kw">struct</span> <span class="ty">Archie</span>: <span class="ty">Developer</span> {\n  <span class="kw">let</span> yearsInKitchens = <span class="st">15</span>\n  <span class="kw">let</span> bibGourmands = [<span class="st">2022</span>, <span class="st">2023</span>, <span class="st">2024</span>,\n                      <span class="st">2025</span>, <span class="st">2026</span>] <span class="cm">// as a team</span>\n  <span class="kw">let</span> stack = [<span class="ty">Swift</span>, <span class="ty">SwiftUI</span>, <span class="ty">Xcode</span>]\n  <span class="kw">var</span> jokesPerStandup = <span class="ty">Int</span>.max\n\n  <span class="kw">func</span> cook() -&gt; <span class="ty">App</span> {\n    miseEnPlace()          <span class="cm">// plan it</span>\n    <span class="kw">return</span> build()\n      .taste(every: .step) <span class="cm">// test it</span>\n      .plate(like: .apple) <span class="cm">// polish it</span>\n      .ship()              <span class="cm">// Service!</span>\n  }\n}</div>'+
+      '<div class="section-h">Yield</div><div class="group"><div class="cell"><span class="txt">Serves</span><span class="val">Your team</span></div><div class="cell"><span class="txt">Prep time</span><span class="val">15 years</span></div><div class="cell"><span class="txt">Jokes</span><span class="val">A generous handful</span></div></div></div>'},
+
+    contact:function(){return '<div class="scroll"><div class="navbar"><button data-home>'+chevL+'<span>Contacts</span></button><span></span></div>'+
+      '<div class="card-top"><div class="avatar">AV</div><b id="app-title">Archie Vega</b><span data-dev="Junior iOS Developer · Former Chef" data-chef="Chef · 15 years · now in Xcode"></span></div>'+
+      '<div class="quick"><button data-open="mail"><svg viewBox="0 0 24 24"><path d="M3 6h18v12H3z" opacity=".2"/><path d="M3 6l9 7 9-7v1.5l-9 7-9-7z"/></svg>mail</button>'+
+      '<a href="https://github.com/cholohotsauce" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M8.5 7.5L4 12l4.5 4.5 1.4-1.4L6.8 12l3.1-3.1zM15.5 7.5l-1.4 1.4 3.1 3.1-3.1 3.1 1.4 1.4L20 12z"/></svg>github</a>'+
+      '<a href="https://www.linkedin.com/in/arcadio-vega" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M5 9h3v10H5zM6.5 4a1.7 1.7 0 1 1 0 3.4 1.7 1.7 0 0 1 0-3.4zM10 9h3v1.4c.5-.9 1.6-1.6 3-1.6 3 0 3.5 2 3.5 4.5V19h-3v-5c0-1.2 0-2.6-1.6-2.6S13 12.7 13 14v5h-3z"/></svg>linkedin</a></div>'+
+      '<div class="section-h"></div><div class="group">'+
+      '<div class="cell"><div class="txt"><div style="font-size:14px;color:var(--ios-label-2)">email</div><div style="color:var(--ios-blue);user-select:all;-webkit-user-select:all">arcadiovega1@gmail.com</div></div></div>'+
+      '<a class="cell" href="https://github.com/cholohotsauce" target="_blank" rel="noopener"><div class="txt"><div style="font-size:14px;color:var(--ios-label-2)">github</div><div style="color:var(--ios-blue)">cholohotsauce</div></div></a>'+
+      '<a class="cell" href="https://www.linkedin.com/in/arcadio-vega" target="_blank" rel="noopener"><div class="txt"><div style="font-size:14px;color:var(--ios-label-2)">linkedin</div><div style="color:var(--ios-blue)">arcadio-vega</div></div></a></div>'+
+      '<div class="section-h">Notes</div><div class="group"><div class="cell"><div class="txt" data-dev="Looking for my first iOS role. Cares about the details and keeps the room laughing." data-chef="Walk-ins welcome. Will bring full-Saturday-service energy to your standup."></div></div></div></div>'},
+
+    mail:function(){return '<div class="scroll mail"><div class="navbar"><button data-home><span>Cancel</span></button>'+
+      '<a class="send" href="mailto:arcadiovega1@gmail.com?subject=Let%E2%80%99s%20talk%20about%20an%20iOS%20role" aria-label="Send"><svg viewBox="0 0 16 16"><path d="M8 13V3M3.5 7.5L8 3l4.5 4.5"/></svg></a></div>'+
+      '<h1 id="app-title">New Message</h1>'+
+      '<div class="mrow"><span>To:</span><code id="addr">arcadiovega1@gmail.com</code><button class="copy" id="copy">Copy</button></div>'+
+      '<div class="mrow"><span>Subject:</span>Let’s talk about an iOS role</div>'+
+      '<div class="mbody" data-dev="Hi Archie, we saw your portfolio and would love to chat about a junior iOS role on our team." data-chef="Chef, a table for one developer just opened up. Are you free for an interview?"></div>'+
+      '<div class="section-f">Tap the send arrow to open your mail app, or copy the address.</div></div>'},
+
+    settings:function(){return '<div class="scroll"><h1 class="large" id="app-title" style="padding-top:44px">Settings</h1>'+
+      '<div class="group" style="margin-top:6px"><button class="profile" data-open="contact" style="all:unset;cursor:pointer;display:flex;gap:14px;align-items:center;padding:12px 16px;width:100%;box-sizing:border-box"><div class="avatar">AV</div><div style="flex:1"><b style="font-size:22px;font-weight:600;display:block">Archie Vega</b><span style="font-size:14px;color:var(--ios-label-2)">iOS Developer, Former Chef</span></div>'+chevR+'</button></div>'+
+      '<div class="section-h"></div><div class="group">'+
+      '<div class="cell has-ic"><span class="ci" style="background:var(--ios-orange)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M7 3c-1.5 2.5-1.5 5 0 7.5V21h2V10.5c1.5-2.5 1.5-5 0-7.5zM15 3v18h2v-7h2V7c0-2.2-1.8-4-4-4z"/></svg></span><span class="txt" id="lbl-chef">Chef Mode</span><button class="switch" role="switch" id="sw-chef" aria-labelledby="lbl-chef" aria-checked="'+state.chef+'"></button></div>'+
+      '<div class="cell has-ic"><span class="ci" style="background:#5856d6"><svg viewBox="0 0 24 24" fill="#fff"><path d="M14 3a8 8 0 1 0 7 11.5A7 7 0 0 1 14 3z"/></svg></span><span class="txt" id="lbl-dark">Dark Mode</span><button class="switch" role="switch" id="sw-dark" aria-labelledby="lbl-dark" aria-checked="'+state.dark+'"></button></div></div>'+
+      '<div class="section-f">Chef Mode rewrites this whole iPhone in kitchen language. Same person, more garlic.</div>'+
+      '<div class="section-h">About</div><div class="group">'+
+      '<div class="cell"><span class="txt">Name</span><span class="val">Archie Vega</span></div>'+
+      '<div class="cell"><span class="txt">Model</span><span class="val">Chef → iOS Developer</span></div>'+
+      '<div class="cell"><span class="txt">Years in Kitchens</span><span class="val">15</span></div>'+
+      '<div class="cell"><span class="txt">Bib Gourmand (team)</span><span class="val">2022–2026</span></div>'+
+      '<div class="cell"><span class="txt">Stack</span><span class="val">Swift, SwiftUI, Xcode</span></div>'+
+      '<div class="cell"><span class="txt">Available for Hire</span><span class="val" style="color:var(--ios-green);font-weight:600">Yes</span></div></div>'+
+      '<div class="section-h"></div><div class="group">'+
+      '<button class="cell has-ic" data-open="mail" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:12px;min-height:44px;padding:0 16px;font-size:17px;width:100%;box-sizing:border-box"><span class="ci" style="background:var(--ios-blue)"><svg viewBox="0 0 24 24" class="g-white"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/></svg></span><span class="txt">Contact Archie</span>'+chevR+'</button></div></div>'}
+  };
+
+  function render(k){return projects[k]?projectView(k):views[k]()}
+
+  function open(k,fromEl){
+    if(phone.classList.contains('locked'))unlock();
+    var wasOpen=!app.hidden;
+    app.innerHTML=render(k);state.open=k;voice();wire();
+    if(wasOpen){app.querySelector('.scroll').scrollTop=0;return}
+    var pr=phone.getBoundingClientRect(),r=(fromEl&&fromEl.getBoundingClientRect())||{left:pr.left+pr.width/2,top:pr.top+pr.height/2,width:0,height:0};
+    var sx=(r.left+r.width/2-pr.left)/pr.width*100,sy=(r.top+r.height/2-pr.top)/pr.height*100;
+    app.style.transformOrigin=sx+'% '+sy+'%';
+    app.style.transition='none';app.style.transform='scale(.16)';app.hidden=false;app.classList.add('closed');
+    app.offsetWidth;app.style.transition='';
+    requestAnimationFrame(function(){app.classList.remove('closed');app.style.transform='scale(1)';phone.classList.add('app-open')});
+    var first=app.querySelector('[data-home],button,a');if(first)first.focus({preventScroll:true});
+    state.origin=fromEl;
+  }
+  function goHome(){
+    if(app.hidden)return;
+    phone.classList.remove('app-open');app.classList.add('closed');app.style.transform='scale(.16)';
+    setTimeout(function(){app.hidden=true;app.innerHTML='';if(state.origin&&state.origin.focus)state.origin.focus({preventScroll:true})},420);
+    state.open=null;
+  }
+  function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},1600)}
+
+  function wire(){
+    app.querySelectorAll('[data-home]').forEach(function(b){b.addEventListener('click',goHome)});
+    app.querySelectorAll('[data-open]').forEach(function(b){b.addEventListener('click',function(){open(b.dataset.open)})});
+    var sc=document.getElementById('sw-chef');
+    if(sc)sc.addEventListener('click',function(){setChef(!state.chef)});
+    var sd=document.getElementById('sw-dark');
+    if(sd)sd.addEventListener('click',function(){setDark(!state.dark)});
+    var cp=document.getElementById('copy');
+    if(cp)cp.addEventListener('click',function(){
+      var addr='arcadiovega1@gmail.com';
+      function fallback(){var s=window.getSelection(),r=document.createRange();r.selectNodeContents(document.getElementById('addr'));s.removeAllRanges();s.addRange(r);toast('Address selected')}
+      try{navigator.clipboard.writeText(addr).then(function(){toast('Copied')},fallback)}catch(e){fallback()}
+    });
+  }
+
+  document.querySelectorAll('#home [data-open]').forEach(function(b){b.addEventListener('click',function(e){if(suppress){suppress=false;e.preventDefault();return}open(b.dataset.open,b.querySelector('.sq')||b)})});
+  document.querySelectorAll('#home a.icon,#home a.widget').forEach(function(a){a.addEventListener('click',function(e){if(suppress){suppress=false;e.preventDefault()}})});
+
+  /* ---------- home pages: swipe or drag sideways; the Search pill shows page dots while paging ---------- */
+  var pages=document.getElementById('pages'),pill=document.getElementById('search-pill'),dots=pill.querySelectorAll('.pdots i'),pageIdx=0,pillT=null,suppress=false;
+  pages.addEventListener('scroll',function(){
+    var i=Math.round(pages.scrollLeft/pages.clientWidth);
+    pill.classList.add('paging');clearTimeout(pillT);pillT=setTimeout(function(){pill.classList.remove('paging')},900);
+    dots.forEach(function(d,k){d.classList.toggle('on',k===i)});
+    if(i!==pageIdx){pageIdx=i;haptic()}
+  },{passive:true});
+  var pd=null;
+  pages.addEventListener('pointerdown',function(e){if(e.pointerType!=='mouse'||e.button!==0)return;pd={x:e.clientX,y:e.clientY,l:pages.scrollLeft,moved:false}});
+  window.addEventListener('pointermove',function(e){
+    if(!pd)return;var dx=e.clientX-pd.x;
+    if(!pd.moved&&Math.abs(dx)<6)return;
+    if(!pd.moved){if(Math.abs(e.clientY-pd.y)>Math.abs(dx)){pd=null;return}pd.moved=true;pages.classList.add('grabbing')}
+    pages.scrollLeft=pd.l-dx/scale();
+  });
+  window.addEventListener('pointerup',function(e){
+    if(!pd)return;var d=pd;pd=null;if(!d.moved)return;
+    suppress=true;setTimeout(function(){suppress=false},0);
+    var w=pages.clientWidth,dx=e.clientX-d.x,i=Math.round(d.l/w)+(dx<-40?1:dx>40?-1:0);
+    pages.scrollTo({left:Math.max(0,Math.min(dots.length-1,i))*w,behavior:reduce?'auto':'smooth'});
+    /* keep snapping off until the glide ends, or the browser snaps back mid-glide */
+    setTimeout(function(){pages.classList.remove('grabbing')},reduce?0:600);
+  });
+  pages.addEventListener('keydown',function(e){
+    if(e.key==='PageDown'||(e.key==='ArrowRight'&&e.altKey)){pages.scrollTo({left:pages.clientWidth,behavior:'smooth'})}
+    if(e.key==='PageUp'||(e.key==='ArrowLeft'&&e.altKey)){pages.scrollTo({left:0,behavior:'smooth'})}
+  });
+
+  /* calendar widget follows the live date */
+  function calTick(){var n=new Date();document.getElementById('cal-dow').textContent=n.toLocaleDateString('en-US',{weekday:'long'});document.getElementById('cal-dn').textContent=n.getDate()}
+  calTick();setInterval(calTick,60000);
+
+  /* GitHub widget: Archie's most recently pushed public repos, live from the GitHub API, with a static fallback */
+  function ago(t){var s=(Date.now()-new Date(t))/1000,u=[[31536000,'y'],[2592000,'mo'],[604800,'w'],[86400,'d'],[3600,'h'],[60,'m']];for(var i=0;i<u.length;i++)if(s>=u[i][0])return Math.floor(s/u[i][0])+u[i][1]+' ago';return 'just now'}
+  function esc(x){return String(x).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  try{
+    fetch('https://api.github.com/users/cholohotsauce/repos?sort=pushed&per_page=12').then(function(r){return r.ok?r.json():null}).then(function(list){
+      /* skip forks and course lab repos (numeric student-ID names) */
+      list=(list||[]).filter(function(r){return !r.fork&&!/^\d/.test(r.name)});
+      if(!list.length)return;
+      document.getElementById('gh-list').innerHTML=list.slice(0,3).map(function(r){return '<li><b>'+esc(r.name)+'</b><span>'+ago(r.pushed_at)+'</span></li>'}).join('');
+    }).catch(function(){});
+  }catch(e){}
+
+  /* ---------- long-press an icon for Quick Actions (right-click on desktop) ---------- */
+  var qm=document.getElementById('qm'),qmLift=document.getElementById('qm-lift'),qmMenu=document.getElementById('qm-menu'),qmLast=null;
+  var I_CODE='M8.5 7.5L4 12l4.5 4.5 1.4-1.4L6.8 12l3.1-3.1zM15.5 7.5l-1.4 1.4 3.1 3.1-3.1 3.1 1.4 1.4L20 12z',I_INFO='M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2zm0-8h-2V7h2z',I_OPEN='M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14zM5 5h6v2H5v12h12v-6h2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z',I_SHARE='M12 2l4 4-1.4 1.4L13 5.8V15h-2V5.8L9.4 7.4 8 6zM5 10h3v2H6v8h12v-8h-2v-2h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V11a1 1 0 0 1 1-1z',I_MAIL='M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2.4V17h16V7.4l-8 5.6z',I_COPY='M8 3h11a2 2 0 0 1 2 2v11h-2V5H8zM5 7h10a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm0 2v11h10V9z',I_MINUS='M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm5 11H7v-2h10z',I_TOGGLE='M7 7h10a5 5 0 0 1 0 10H7A5 5 0 0 1 7 7zm10 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z';
+  function act(label,icon,fn,cls){return {label:label,icon:icon,fn:fn,cls:cls}}
+  function link(u){return function(){window.open(u,'_blank','noopener')}}
+  function actionsFor(k){
+    var p=projects[k],a=[];
+    if(p){
+      if(p.live)a.push(act('Open Web App',I_OPEN,link(p.live)));
+      if(p.repo)a.push(act('View Code',I_CODE,link(p.repo)));
+      a.push(act('App Details',I_INFO,function(){open(k)}));
+    }else if(k==='contact'){a.push(act('Email Archie',I_MAIL,function(){open('mail')}),act('Copy Email',I_COPY,function(){copyText('arcadiovega1@gmail.com')}),act('Contact Card',I_INFO,function(){open('contact')}))}
+    else if(k==='settings'){a.push(act('Chef Mode: '+(state.chef?'On':'Off'),I_TOGGLE,function(){setChef(!state.chef)}),act('Dark Mode: '+(state.dark?'On':'Off'),I_TOGGLE,function(){setDark(!state.dark)}))}
+    else if(k==='mail'){a.push(act('New Message',I_MAIL,function(){open('mail')}),act('Copy Email',I_COPY,function(){copyText('arcadiovega1@gmail.com')}))}
+    else if(k==='notes'){a.push(act('Open Note',I_INFO,function(){open('notes')}))}
+    else if(k==='recipe'){a.push(act('Open Archie.swift',I_CODE,function(){open('recipe')}))}
+    else if(k==='gh'){a.push(act('Open Profile',I_OPEN,link('https://github.com/cholohotsauce')))}
+    else if(k==='li'){a.push(act('Open Profile',I_OPEN,link('https://www.linkedin.com/in/arcadio-vega')))}
+    a.push(act('Share Portfolio',I_SHARE,sharePage,'sep'));
+    a.push(act('Remove App',I_MINUS,function(){toast('Nice try. Archie’s apps stay.')},'red'));
+    return a;
+  }
+  function copyText(t){try{navigator.clipboard.writeText(t).then(function(){toast('Copied')},function(){toast(t)})}catch(e){toast(t)}}
+  function sharePage(){var u='https://arcadiovega.com';if(navigator.share){navigator.share({title:'Archie Vega',text:'Chef for 15 years. Now I build for iPhone.',url:u}).catch(function(){})}else copyText(u)}
+  var qmAt=0;
+  function openQM(icon){
+    var k=icon.dataset.open||(icon.href&&icon.href.indexOf('github')>=0?'gh':icon.href&&icon.href.indexOf('linkedin')>=0?'li':null);
+    if(!k)return;
+    haptic();qmLast=icon;
+    var sq=icon.querySelector('.sq'),pr=phone.getBoundingClientRect(),r=sq.getBoundingClientRect(),sc=scale();
+    var x=(r.left-pr.left)/sc,y=(r.top-pr.top)/sc,w=r.width/sc,H=phone.offsetHeight,W=phone.offsetWidth;
+    qmLift.innerHTML='<span class="sq">'+sq.innerHTML+'</span>';qmLift.style.left=x+'px';qmLift.style.top=y+'px';qmLift.style.width=qmLift.style.height=w+'px';
+    var items=actionsFor(k);
+    qmMenu.innerHTML=items.map(function(it,i){return '<button role="menuitem" data-i="'+i+'" class="'+(it.cls||'')+'"><span>'+it.label+'</span><svg viewBox="0 0 24 24"><path d="'+it.icon+'"/></svg></button>'}).join('');
+    qmMenu._items=items;
+    var mh=items.length*44+16,mw=250,left=Math.max(12,Math.min(W-mw-12,x+w/2-mw/2<x?x:x+w-mw)),below=y+w+10+mh<H-30;
+    left=x+w/2<W/2?Math.max(12,x):Math.min(W-mw-12,x+w-mw);
+    qmMenu.style.left=left+'px';
+    if(below){qmMenu.style.top=(y+w+12)+'px';qmMenu.style.bottom='';qmMenu.style.transformOrigin=(x+w/2-left)+'px 0'}
+    else{qmMenu.style.top='';qmMenu.style.bottom=(H-y+12)+'px';qmMenu.style.transformOrigin=(x+w/2-left)+'px 100%'}
+    qm.classList.add('open');qm.setAttribute('aria-hidden','false');qmAt=Date.now();
+    var f=qmMenu.querySelector('button');if(f)f.focus({preventScroll:true});
+  }
+  function closeQM(){if(!qm.classList.contains('open'))return false;qm.classList.remove('open');qm.setAttribute('aria-hidden','true');if(qmLast&&qmLast.focus)qmLast.focus({preventScroll:true});return true}
+  qm.addEventListener('click',function(e){
+    /* the finger lifting after a long-press sends a click; it must not close the menu it just opened */
+    if(Date.now()-qmAt<450)return;
+    var b=e.target.closest('button[data-i]');
+    if(b){var it=qmMenu._items[+b.dataset.i];closeQM();it.fn();return}
+    if(e.target===qm||e.target.closest('.lift'))closeQM();
+  });
+  qmMenu.addEventListener('keydown',function(e){
+    var bs=[].slice.call(qmMenu.querySelectorAll('button')),i=bs.indexOf(document.activeElement);
+    if(e.key==='ArrowDown'){bs[(i+1)%bs.length].focus();e.preventDefault()}
+    if(e.key==='ArrowUp'){bs[(i-1+bs.length)%bs.length].focus();e.preventDefault()}
+  });
+  document.querySelectorAll('#home .icon').forEach(function(ic){
+    var t=null,start=null;
+    ic.addEventListener('pointerdown',function(e){if(e.button&&e.button!==0)return;start={x:e.clientX,y:e.clientY};t=setTimeout(function(){t=null;suppress=true;openQM(ic)},500)});
+    ic.addEventListener('pointermove',function(e){if(t&&start&&Math.hypot(e.clientX-start.x,e.clientY-start.y)>8){clearTimeout(t);t=null}});
+    ['pointerup','pointercancel','pointerleave'].forEach(function(ev){ic.addEventListener(ev,function(){if(t){clearTimeout(t);t=null}})});
+    ic.addEventListener('contextmenu',function(e){e.preventDefault();if(t){clearTimeout(t);t=null}if(!qm.classList.contains('open')){suppress=true;openQM(ic)}});
+    ic.addEventListener('keydown',function(e){if((e.shiftKey&&e.key==='F10')||e.key==='ContextMenu'){e.preventDefault();openQM(ic)}});
+  });
+
+  /* home indicator: click or swipe up */
+  var hz=document.getElementById('homezone'),hy=null;
+  hz.addEventListener('click',goHome);
+  hz.addEventListener('pointerdown',function(e){hy=e.clientY});
+  hz.addEventListener('pointerup',function(e){if(hy!==null&&hy-e.clientY>20)goHome();hy=null});
+  /* swipe up from the bottom edge anywhere in an app (touch) */
+  var ty=null;
+  phone.addEventListener('touchstart',function(e){var t=e.touches[0],pr=phone.getBoundingClientRect();ty=(pr.bottom-t.clientY<40)?t.clientY:null},{passive:true});
+  phone.addEventListener('touchend',function(e){if(ty!==null&&ty-e.changedTouches[0].clientY>40){if(closeCC()||closeSpot())return;if(phone.classList.contains('locked'))unlock();else goHome()}ty=null},{passive:true});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(closeQM()||closeCC()||closeSpot())return;collapseIsland();goHome()}});
+
+  /* fit the device to the window on desktop */
+  var device=document.getElementById('device'),holder=document.getElementById('holder');
+  function fit(){
+    if(window.innerWidth<=560){holder.style.width='';holder.style.height='';device.style.transform='';return}
+    var s=Math.min(1,(window.innerHeight-48)/880);
+    device.style.transform='scale('+s+')';holder.style.width=(421*s)+'px';holder.style.height=(880*s)+'px';
+  }
+  fit();window.addEventListener('resize',fit);
+})();
+</script>
+
+</body>
+</html>
