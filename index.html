@@ -19,95 +19,131 @@
 <style>
 /* Layout: a receipt printer on a counter prints one long receipt that is the whole portfolio. A tear-off coupon at the bottom is the contact. */
 :root{
-  --counter:#d9dde0; --counter2:#c9ced2; --paper:#fbfbf7; --ink:#1f1f1f; --faint:#7d7d77; --red:#c22f1d;
-  --printer:#26282b; --printer2:#3a3d41; --led:#3bd16f; --ui-fg:#2a2d31; --ui-muted:#636970;
+  --counter:#d9dde0; --counter2:#c9ced2; --paper:#fbfbf7; --ink:#1f1f1f; --faint:#5a5a54; --red:#c22f1d;
+  --printer:#26282b; --printer2:#3a3d41; --led:#3bd16f; --ui-fg:#2a2d31; --ui-muted:#4a5056;
   --till:"Space Mono","Courier New",ui-monospace,monospace;
   --ui:"Geist",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--counter:#15171a;--counter2:#1d2024;--paper:#f3f2ec;--printer:#0b0c0d;--printer2:#2a2d31;--ui-fg:#e6e8eb;--ui-muted:#9097a0;color-scheme:dark}}
-:root[data-theme="dark"]{--counter:#15171a;--counter2:#1d2024;--paper:#f3f2ec;--printer:#0b0c0d;--printer2:#2a2d31;--ui-fg:#e6e8eb;--ui-muted:#9097a0;color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--counter:#15171a;--counter2:#1d2024;--paper:#f3f2ec;--printer:#0b0c0d;--printer2:#2a2d31;--ui-fg:#e6e8eb;--ui-muted:#a9b0b8;--red:#b02818;color-scheme:dark}}
+:root[data-theme="dark"]{--counter:#15171a;--counter2:#1d2024;--paper:#f3f2ec;--printer:#0b0c0d;--printer2:#2a2d31;--ui-fg:#e6e8eb;--ui-muted:#a9b0b8;--red:#b02818;color-scheme:dark}
 [hidden]{display:none!important}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;min-height:100vh;background:radial-gradient(120% 70% at 50% 0,var(--counter),var(--counter2)) fixed;background-color:var(--counter);color:var(--ui-fg);font-family:var(--ui);-webkit-font-smoothing:antialiased;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-top:max(28px,env(safe-area-inset-top,0px));padding-bottom:max(56px,env(safe-area-inset-bottom,0px))}
-main{max-width:420px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
+main{max-width:440px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
 a{color:inherit}
+.vh{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
 /* printer */
-.printer{width:calc(100% + 24px);max-width:444px;height:62px;border-radius:16px 16px 10px 10px;background:linear-gradient(180deg,var(--printer2),var(--printer));position:relative;z-index:3;box-shadow:0 14px 24px -14px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.12);display:flex;align-items:center;justify-content:space-between;padding:0 18px 10px}
+.printer{width:calc(100% + 24px);max-width:464px;height:62px;border-radius:16px 16px 10px 10px;background:linear-gradient(180deg,var(--printer2),var(--printer));position:relative;z-index:3;box-shadow:0 14px 24px -14px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.12);display:flex;align-items:center;justify-content:space-between;padding:0 18px 10px}
 .printer::after{content:"";position:absolute;left:14px;right:14px;bottom:8px;height:6px;border-radius:3px;background:#000;box-shadow:inset 0 2px 3px rgba(0,0,0,.8)}
-.plate{font:700 11px var(--till);letter-spacing:.2em;color:rgba(255,255,255,.55)}
-.led{display:flex;align-items:center;gap:7px;font:400 10px var(--till);color:rgba(255,255,255,.55);letter-spacing:.1em}
+.plate{font:700 11px var(--till);letter-spacing:.2em;color:rgba(255,255,255,.6)}
+.led{display:flex;align-items:center;gap:7px;font:400 10px var(--till);color:rgba(255,255,255,.6);letter-spacing:.1em}
 .led i{width:7px;height:7px;border-radius:50%;background:var(--led);box-shadow:0 0 8px var(--led)}
 .printing .led i{animation:blink .25s steps(2) infinite}
 @keyframes blink{50%{opacity:.2}}
 
 /* paper */
 .slot{width:100%;overflow:hidden;margin-top:-14px;padding:0 6px 30px;position:relative;z-index:2}
-.paper{background:var(--paper);color:var(--ink);font:400 13px/1.55 var(--till);padding:34px 22px 28px;position:relative;
+.paper{background:var(--paper);color:var(--ink);font:400 13.5px/1.6 var(--till);padding:34px 22px 28px;position:relative;
   box-shadow:0 30px 40px -28px rgba(0,0,0,.5);background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
 .paper.print{animation:feed 1.8s steps(30) both}
 @keyframes feed{from{transform:translateY(-100%)}to{transform:none}}
 h1{margin:0;font:inherit}
 .c{text-align:center}
 .dh{font:700 26px/1 var(--till);letter-spacing:.06em;display:inline-block;transform:scaleY(1.45);margin:8px 0 10px}
-.small{font-size:11.5px;color:var(--faint)}
-.rule{border:0;border-top:1.5px dashed var(--faint);margin:12px 0}
+.small{font-size:12px;color:var(--faint)}
+.intro{margin:12px 0 4px;text-align:left}
+.hello{margin:4px 0 0}
+.hello a{display:inline-block;padding:10px 4px;text-underline-offset:3px}
+.rule{border:0;border-top:1.5px dashed var(--faint);margin:14px 0}
 .rule.dbl{border-top:3px double var(--ink)}
 .row{display:flex;justify-content:space-between;gap:12px}
 .row > span:last-child{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
-h2.sec{font:700 13px/1.55 var(--till);letter-spacing:.14em;margin:12px 0 4px}
+.row > span.wrap:last-child{white-space:normal}
+h2.sec{font:700 13.5px/1.6 var(--till);letter-spacing:.14em;margin:16px 0 6px}
 h2.sec::before{content:"** "}h2.sec::after{content:" **"}
+h3.nm{display:inline;margin:0;font:inherit}
+.hint{margin:10px 0 0}
 
 /* line items: native <details> so they work without JavaScript */
 details{padding:2px 0}
-summary{list-style:none;cursor:pointer;border-radius:2px}
+details + details{margin-top:4px}
+summary{list-style:none;cursor:pointer;border-radius:2px;padding:4px 0}
 summary::-webkit-details-marker{display:none}
 summary:hover .nm{text-decoration:underline;text-decoration-style:dotted}
-summary:focus-visible,.tip:focus-visible,.tearbtn:focus-visible,.det a:focus-visible{outline:2px dashed var(--red);outline-offset:2px}
+.pm{display:inline-flex;align-items:center;justify-content:center;width:1.5em;height:1.5em;margin-left:8px;border:1.5px solid var(--ink);font-weight:700;line-height:1;vertical-align:-.25em}
+.pm::before{content:"+"}
+details[open] > summary .pm::before{content:"−"}
+summary:focus-visible,.tip:has(input:focus-visible),.btn:focus-visible,.paper a:focus-visible{outline:2px dashed var(--red);outline-offset:3px}
 .q{display:inline-block;width:2.2em}
-.mods{padding-left:2.2em;color:var(--faint);font-size:12px}
-.det{margin:4px 0 8px 2.2em;padding:8px 10px;border-left:2px solid var(--ink);font-size:12px;line-height:1.55}
+.mods{padding-left:2.2em;color:var(--faint);font-size:12.5px}
+.det{margin:4px 0 10px 2.2em;padding:8px 10px;border-left:2px solid var(--ink);font-size:13px;line-height:1.6}
 .det p{margin:0}
-.det .lk{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
-.det a{color:var(--ink)}
-.shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:8px}
+.lk{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:40px;padding:8px 14px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);font:700 12.5px/1.2 var(--till);letter-spacing:.08em;text-decoration:none;cursor:pointer;text-align:center}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.solid:hover{background:transparent;color:var(--ink)}
+.shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:10px}
 .shots img{width:100%;height:auto;aspect-ratio:600/1300;object-fit:cover;object-position:top;display:block;border:1.5px solid var(--ink);filter:grayscale(1) contrast(1.1)}
-.tag{font-size:10.5px;border:1.5px solid currentColor;padding:0 4px;vertical-align:1px}
+.tag{font-size:11.5px;border:1.5px solid currentColor;padding:0 4px;vertical-align:1px}
 .tag.red{color:var(--red)}
-.sides{font-size:12px;line-height:1.7}
+.sides{font-size:12.5px;line-height:1.75}
+
+/* featured project: always open, so the work is visible without discovering the rows */
+.feature{margin:2px 0 12px}
+.feature .shots{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:10px 0 0 2.2em}
+.feature figure{margin:0}
+.feature figcaption{margin-top:4px;font-size:11.5px;color:var(--faint);text-align:center;letter-spacing:.04em}
+.feature .blurb{margin:10px 0 0 2.2em;font-size:13px}
+.feature .lk{margin-left:2.2em}
 
 /* tip, total, coupon */
-.tips{display:flex;flex-direction:column;gap:2px;margin-top:4px}
-.tip{all:unset;cursor:pointer;display:flex;gap:10px;padding:1px 0}
+.tips{border:0;margin:0;padding:0;min-width:0}
+.tips legend{padding:0;margin-bottom:2px}
+.tip{display:flex;align-items:center;gap:10px;min-height:40px;cursor:pointer;position:relative}
+.tip input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
 .tip .box{width:2.2em;flex:none}
+.tip .box::before{content:"[ ]"}
+.tip input:checked + .box::before{content:"[x]"}
+.tip input:checked ~ .lbl{font-weight:700}
+.subj{margin:6px 0 10px}
 .total{font:700 17px var(--till)}
-.stamp{display:inline-block;border:2.5px solid var(--red);color:var(--red);font:700 14px var(--till);letter-spacing:.14em;padding:4px 12px;transform:rotate(-7deg);margin:10px 0 4px;mix-blend-mode:multiply;opacity:.9}
+.stamp{display:inline-block;border:2.5px solid var(--red);color:var(--red);font:700 14px var(--till);letter-spacing:.14em;padding:4px 12px;transform:rotate(-7deg);margin:12px 0 4px;mix-blend-mode:multiply;opacity:.9}
 .stamp.pop{animation:stamp .35s cubic-bezier(.2,1.6,.4,1)}
 @keyframes stamp{from{transform:rotate(-7deg) scale(1.8);opacity:0}}
-.banner{font-weight:700;letter-spacing:.06em;text-align:center;margin:6px 0}
+.banner{font-weight:700;letter-spacing:.06em;text-align:center;margin:8px 0}
 .barcode{height:46px;margin:14px auto 4px;max-width:250px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 5px,transparent 5px 8px,var(--ink) 8px 11px,transparent 11px 12px,var(--ink) 12px 13px,transparent 13px 17px,var(--ink) 17px 18px,transparent 18px 19px)}
-.foot a{text-decoration:none}
-.foot a:hover{text-decoration:underline}
-.tear{display:flex;align-items:center;gap:8px;color:var(--faint);font-size:11px;margin:18px -22px 0;padding:0 8px}
+.foot{font-size:12.5px;line-height:1.6}
+.foot a{display:inline-block;padding:6px 2px;color:var(--ink);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.foot a:hover{text-decoration-thickness:2px}
+.tear{display:flex;align-items:center;gap:8px;color:var(--faint);font-size:12px;margin:18px -22px 0;padding:0 8px}
 .tear::before,.tear::after{content:"";flex:1;border-top:1.5px dashed var(--faint)}
-.coupon{margin:0 -22px -28px;padding:18px 22px 26px;background:var(--paper);transition:transform .6s cubic-bezier(.3,1.2,.5,1);transform-origin:20% 0;position:relative;
+.coupon{margin:0 -22px -28px;padding:18px 22px 30px;background:var(--paper);transition:transform .6s cubic-bezier(.3,1.2,.5,1);transform-origin:20% 0;position:relative;
   -webkit-mask:radial-gradient(circle 6px at 50% 100%,transparent 98%,#000) 0 0/14px 100% repeat-x;mask:radial-gradient(circle 6px at 50% 100%,transparent 98%,#000) 0 0/14px 100% repeat-x}
-.coupon.torn{transform:translate(18px,26px) rotate(4deg);box-shadow:0 18px 26px -18px rgba(0,0,0,.5)}
+.coupon.torn{transform:translate(10px,22px) rotate(3deg);box-shadow:0 18px 26px -18px rgba(0,0,0,.5)}
 .good{font:700 15px var(--till);letter-spacing:.04em}
-.mail{user-select:all;font-weight:700;word-break:break-all}
-.tearbtn{all:unset;cursor:pointer;display:inline-block;margin-top:10px;border:1.5px solid var(--ink);padding:6px 12px;font:700 12px var(--till);letter-spacing:.08em}
-.tearbtn:hover{background:var(--ink);color:var(--paper)}
+.mail{user-select:all;-webkit-user-select:all;font-weight:700;overflow-wrap:anywhere;margin-top:6px}
+.cbtns{justify-content:center;margin-top:12px}
+.copymsg{min-height:1.6em;margin:8px 0 0}
 
 /* under the receipt */
-.under{display:flex;gap:16px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:10px;font:400 13px var(--ui);color:var(--ui-muted);text-align:center}
-.under button{font:500 13px var(--ui);color:var(--ui-fg);background:transparent;border:1px solid var(--ui-muted);border-radius:999px;padding:7px 14px;cursor:pointer}
+.under{display:flex;gap:16px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:10px;font:400 14px var(--ui);color:var(--ui-muted);text-align:center}
+.under button{font:500 14px var(--ui);color:var(--ui-fg);background:transparent;border:1px solid var(--ui-muted);border-radius:999px;min-height:40px;padding:8px 16px;cursor:pointer}
 .under button:focus-visible,.under a:focus-visible{outline:2px solid var(--led);outline-offset:2px}
-.under a{color:var(--ui-muted)}
-.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,24px);opacity:0;background:var(--ui-fg);color:var(--counter);font:500 13px var(--ui);padding:9px 16px;border-radius:999px;transition:.25s;pointer-events:none;z-index:9;max-width:calc(100% - 32px);text-align:center}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.under a{color:var(--ui-muted);display:inline-block;padding:8px 0;text-underline-offset:3px}
+
+@media (max-width:360px){
+  .paper{padding-left:16px;padding-right:16px}
+  .tear,.coupon{margin-left:-16px;margin-right:-16px}
+  .coupon{padding-left:16px;padding-right:16px}
+  .dh{font-size:23px}
+  .q{width:1.8em}.mods,.feature .shots,.feature .blurb,.feature .lk{margin-left:0;padding-left:0}.det{margin-left:0}
+  .feature .shots{margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.coupon.torn{transform:none;box-shadow:none}}
 </style>
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -122,131 +158,179 @@ summary:focus-visible,.tip:focus-visible,.tearbtn:focus-visible,.det a:focus-vis
       <header class="c">
         <h1><span class="dh">ARCHIE VEGA</span><br>JUNIOR iOS DEVELOPER</h1>
         <div class="small">arcadiovega.com · Caracas → Toronto</div>
+        <p class="intro">I cooked in professional kitchens for 15 years. I started coding to fix my own crew’s end-of-night tip math, and now I build apps that make everyday work easier.</p>
+        <p class="hello"><a class="mailto" href="mailto:arcadiovega1@gmail.com?subject=Coffee%20chat%20with%20Archie">Email Archie</a></p>
       </header>
       <hr class="rule">
       <div class="row small"><span id="ord">ORDER #2026</span><span id="ts"></span></div>
       <div class="row small"><span>TABLE: RECRUITERS</span><span>SERVER: ARCHIE</span></div>
       <hr class="rule dbl">
+      <p class="small c hint">LINES MARKED [+] OPEN FOR DETAILS</p>
 
-      <section>
-        <h2 class="sec">FROM THE KITCHEN</h2>
-        <details>
-          <summary><div class="row"><span><span class="q">1</span><span class="nm">CHEF, 15 YRS</span></span><span>✓</span></div>
+      <section aria-labelledby="sec-kitchen">
+        <h2 class="sec" id="sec-kitchen">FROM THE KITCHEN</h2>
+        <details id="chef">
+          <summary><div class="row"><span><span class="q">1</span><span class="nm">CHEF, 15 YRS</span></span><span>✓<span class="pm" aria-hidden="true"></span></span></div>
             <div class="mods">+ sous chef, Toronto<br>+ hot side, every rush</div></summary>
           <div class="det"><p>Fifteen years in professional kitchens. Sous chef in Toronto since 2021. Calm when the tickets pile up.</p></div>
         </details>
-        <details>
-          <summary><div class="row"><span><span class="q">1</span><span class="nm">FERMENTATION NERD</span></span><span>∞</span></div>
+        <details id="fermentation">
+          <summary><div class="row"><span><span class="q">1</span><span class="nm">FERMENTATION NERD</span></span><span>∞<span class="pm" aria-hidden="true"></span></span></div>
             <div class="mods">+ lacto ferments<br>+ taste every day</div></summary>
           <div class="det"><p>My favourite part of the kitchen. Start something, wait, taste, adjust. Same loop I use to build software.</p></div>
         </details>
       </section>
 
-      <section>
-        <h2 class="sec">APPS</h2>
-        <details>
-          <summary><div class="row"><span><span class="q">1</span><span class="nm">CASHOUT CALCULATOR</span></span><span>LIVE</span></div>
-            <div class="mods">+ fair tip split<br>NO napkin math</div></summary>
-          <div class="det"><p>End-of-night tip-out math for restaurant crews. I built it to make my own crew’s nights easier, and it’s what made me a developer.</p>
-            <div class="shots"><img src="shots/cashout-1.webp" alt="Tip entry and front-of-house staff selection" width="600" height="1300" loading="lazy" decoding="async"><img src="shots/cashout-2.webp" alt="Cash-out results with the staff breakdown" width="600" height="1300" loading="lazy" decoding="async"></div>
-            <div class="lk"><a href="https://cholohotsauce.github.io/cashout-calculator/" target="_blank" rel="noopener">Open app ↗</a><a href="https://github.com/cholohotsauce/cashout-calculator" target="_blank" rel="noopener">Code ↗</a></div></div>
-        </details>
-        <details>
-          <summary><div class="row"><span><span class="q">1</span><span class="nm">ACE BARTENDER</span></span><span>WEB</span></div>
+      <!-- Projects: each has a stable id (deep link: /#ace-bartender opens that row). Keep receipt copy to a line or two.
+           When a case study exists, add a "Case study" .btn to the item's .lk row that links to its own page. -->
+      <section aria-labelledby="sec-apps">
+        <h2 class="sec" id="sec-apps">APPS</h2>
+        <div class="feature" id="cashout-calculator">
+          <div class="row"><span><span class="q">1</span><h3 class="nm">CASHOUT CALCULATOR</h3></span><span>LIVE</span></div>
+          <div class="mods">+ web tool for restaurant crews<br>+ chef’s pick</div>
+          <div class="shots">
+            <figure><img src="shots/cashout-1.webp" alt="Cashout Calculator: cash and card tip fields above a grid of front-of-house staff to select" width="600" height="1286" decoding="async"><figcaption>1. TIPS + CREW</figcaption></figure>
+            <figure><img src="shots/cashout-2.webp" alt="Cashout Calculator results: total tips, the kitchen’s 30% share, the front-of-house pool, and each server’s payout by hours" width="600" height="1286" decoding="async"><figcaption>2. THE SPLIT</figcaption></figure>
+          </div>
+          <p class="blurb">End-of-night tip-out for restaurant crews. Enter cash and card tips and who worked, and it takes the kitchen’s share and splits the rest by hours. I built it for my own crew, and it’s what made me a developer.</p>
+          <div class="lk"><a class="btn solid" href="https://cholohotsauce.github.io/cashout-calculator/" target="_blank" rel="noopener">OPEN APP ↗<span class="vh"> Cashout Calculator, opens in a new tab</span></a><a class="btn" href="https://github.com/cholohotsauce/cashout-calculator" target="_blank" rel="noopener">CODE ↗<span class="vh"> for Cashout Calculator on GitHub, opens in a new tab</span></a></div>
+        </div>
+        <details id="ace-bartender">
+          <summary><div class="row"><span><span class="q">1</span><span class="nm">ACE BARTENDER</span></span><span>WEB<span class="pm" aria-hidden="true"></span></span></div>
             <div class="mods">+ specs, builds, garnish<br>+ SwiftUI rebuild (FIRE)</div></summary>
           <div class="det"><p>A pocket guide for bartenders, fast enough for a Friday rush. The web version works today. A native SwiftUI version is in progress.</p>
             <div class="shots"><img src="shots/ace-1.webp" alt="All Drinks list grouped A to Z with spirit filters" width="600" height="1300" loading="lazy" decoding="async"><img src="shots/ace-2.webp" alt="Aviation spec with ingredients and method" width="600" height="1300" loading="lazy" decoding="async"><img src="shots/ace-3.webp" alt="Search results for mezcal" width="600" height="1300" loading="lazy" decoding="async"></div>
-            <div class="lk"><a href="https://github.com/cholohotsauce/ace-bartender-app" target="_blank" rel="noopener">Code ↗</a></div></div>
+            <div class="lk"><a class="btn" href="https://github.com/cholohotsauce/ace-bartender-app" target="_blank" rel="noopener">CODE ↗<span class="vh"> for Ace Bartender on GitHub, opens in a new tab</span></a></div></div>
         </details>
-        <details>
-          <summary><div class="row"><span><span class="q">1</span><span class="nm">WHEREWOLF</span></span><span>GAME</span></div>
+        <details id="wherewolf">
+          <summary><div class="row"><span><span class="q">1</span><span class="nm">WHEREWOLF</span></span><span>GAME<span class="pm" aria-hidden="true"></span></span></div>
             <div class="mods">+ 5 packs, 266 cards<br>SUB for GeoWho</div></summary>
           <div class="det"><p>A Guess Who?-style deduction game. Ask yes/no questions, rule out cards, and name the secret before the wolf does. React, TypeScript, Vite and Zustand. Installable, and it works offline. Source is private.</p>
             <div class="shots"><img src="shots/wherewolf-1.webp" alt="WhereWolf home screen with the Daily World Capitals card and five packs" width="600" height="1300" loading="lazy" decoding="async"><img src="shots/wherewolf-2.webp" alt="A World Capitals game after one question, with 31 cards left on the map" width="600" height="1300" loading="lazy" decoding="async"><img src="shots/wherewolf-3.webp" alt="The Ask the wolf sheet with yes/no questions" width="600" height="1300" loading="lazy" decoding="async"></div></div>
         </details>
-        <details>
-          <summary><div class="row"><span><span class="q">1</span><span class="nm">THE MIRACLE GHOST</span></span><span>CLIENT</span></div>
+        <details id="the-miracle-ghost">
+          <summary><div class="row"><span><span class="q">1</span><span class="nm">THE MIRACLE GHOST</span></span><span>CLIENT<span class="pm" aria-hidden="true"></span></span></div>
             <div class="mods">+ website + Shopify<br>FOR: AES, Miami</div></summary>
           <div class="det"><p>Paid client work for AES, a Miami graffiti artist. I designed and built the website and set up the Shopify store.</p>
             <div class="shots"><img src="shots/ghost-1.webp" alt="The 3D ghost on the home page" width="600" height="1300" loading="lazy" decoding="async"><img src="shots/ghost-2.webp" alt="The contact and inquiries page" width="600" height="1300" loading="lazy" decoding="async"></div>
-            <div class="lk"><a href="https://github.com/cholohotsauce/the-miracle-ghost-web" target="_blank" rel="noopener">Code ↗</a></div></div>
+            <div class="lk"><a class="btn" href="https://github.com/cholohotsauce/the-miracle-ghost-web" target="_blank" rel="noopener">CODE ↗<span class="vh"> for The Miracle Ghost on GitHub, opens in a new tab</span></a></div></div>
         </details>
       </section>
 
-      <section>
-        <h2 class="sec">SPECIALS</h2>
-        <details>
-          <summary><div class="row"><span><span class="q">1</span><span class="nm">BURP (iOS)</span></span><span class="tag red">IN THE OVEN</span></div>
+      <section aria-labelledby="sec-specials">
+        <h2 class="sec" id="sec-specials">SPECIALS</h2>
+        <details id="burp">
+          <summary><div class="row"><span><span class="q">1</span><span class="nm">BURP (iOS)</span></span><span><span class="tag red">IN THE OVEN</span><span class="pm" aria-hidden="true"></span></span></div>
             <div class="mods">+ SwiftUI + SwiftData<br>+ Live Activities</div></summary>
           <div class="det"><p>A fermentation tracker for iPhone. Jar timers, burp reminders, a brine calculator and a Dynamic Island countdown. Coming soon.</p></div>
         </details>
       </section>
 
-      <section>
-        <h2 class="sec">SIDES</h2>
+      <section aria-labelledby="sec-sides">
+        <h2 class="sec" id="sec-sides">SIDES</h2>
         <div class="sides">SWIFT · SWIFTUI · XCODE · JAVASCRIPT · REACT · TYPESCRIPT · SHOPIFY · GIT</div>
       </section>
 
       <hr class="rule">
-      <div class="row"><span>SUBTOTAL</span><span>4 APPS SHIPPED</span></div>
+      <div class="row"><span>SUBTOTAL</span><span>4 PROJECTS</span></div>
+      <div class="mods">+ 2 web tools<br>+ 1 game<br>+ 1 client site</div>
       <div class="row"><span>TAX (EGO)</span><span>0.00</span></div>
-      <div class="row"><span>ALLERGIES</span><span>NONE. LOVES FEEDBACK.</span></div>
+      <div class="row"><span>ALLERGIES</span><span class="wrap">NONE. LOVES FEEDBACK.</span></div>
       <hr class="rule">
-      <div id="tip-l">ADD A TIP:</div>
-      <div class="tips" role="radiogroup" aria-labelledby="tip-l">
-        <button class="tip" role="radio" aria-checked="false" data-tip="AN INTERVIEW"><span class="box" aria-hidden="true">[ ]</span><span>AN INTERVIEW</span></button>
-        <button class="tip" role="radio" aria-checked="true" data-tip="A COFFEE CHAT"><span class="box" aria-hidden="true">[x]</span><span>A COFFEE CHAT</span></button>
-        <button class="tip" role="radio" aria-checked="false" data-tip="A REFERRAL"><span class="box" aria-hidden="true">[ ]</span><span>A REFERRAL</span></button>
-      </div>
+      <fieldset class="tips">
+        <legend>ADD A TIP:</legend>
+        <label class="tip"><input type="radio" name="tip" value="AN INTERVIEW" data-subject="Interview with Archie"><span class="box" aria-hidden="true"></span><span class="lbl">AN INTERVIEW</span></label>
+        <label class="tip"><input type="radio" name="tip" value="A COFFEE CHAT" data-subject="Coffee chat with Archie" checked><span class="box" aria-hidden="true"></span><span class="lbl">A COFFEE CHAT</span></label>
+        <label class="tip"><input type="radio" name="tip" value="A REFERRAL" data-subject="Referral for Archie"><span class="box" aria-hidden="true"></span><span class="lbl">A REFERRAL</span></label>
+      </fieldset>
+      <p class="small subj">SUBJECT: <span class="subjtxt">Coffee chat with Archie</span></p>
+      <a class="btn solid mailto" href="mailto:arcadiovega1@gmail.com?subject=Coffee%20chat%20with%20Archie">EMAIL ARCHIE →</a>
       <hr class="rule dbl">
       <div class="row total"><span>TOTAL</span><span>1 iOS DEV</span></div>
       <div class="row small"><span>TIP</span><span id="tipline">A COFFEE CHAT</span></div>
       <div class="c"><span class="stamp" id="stamp">READY TO HIRE</span></div>
-      <div class="banner">*** WHAT’S NEW IN v2.0 ***<br>NOW BUILDS iOS APPS</div>
+      <div class="banner">*** WHAT’S NEW IN v2.0 ***<br>NOW BUILDING iOS APPS</div>
       <div class="barcode" aria-hidden="true"></div>
-      <div class="c small foot"><a href="https://github.com/cholohotsauce" target="_blank" rel="noopener">github.com/cholohotsauce</a><br><a href="https://www.linkedin.com/in/arcadio-vega" target="_blank" rel="noopener">linkedin.com/in/arcadio-vega</a><br><br>THANK YOU, COME AGAIN<br>CUSTOMER COPY</div>
+      <div class="c foot"><a href="https://github.com/cholohotsauce" target="_blank" rel="noopener">github.com/cholohotsauce</a><br><a href="https://www.linkedin.com/in/arcadio-vega" target="_blank" rel="noopener">linkedin.com/in/arcadio-vega</a><br><br><span class="small">THANK YOU, COME AGAIN<br>CUSTOMER COPY</span></div>
 
       <div class="tear" aria-hidden="true">✂ TEAR HERE</div>
-      <div class="coupon" id="coupon">
+      <section class="coupon" id="coupon" aria-labelledby="coupon-h">
         <div class="c">
           <div class="small">COUPON · NO EXPIRY</div>
-          <div class="good">GOOD FOR <span id="cptip">ONE COFFEE CHAT</span><br>WITH ARCHIE</div>
+          <h2 class="good" id="coupon-h" style="margin:0">GOOD FOR <span id="cptip">ONE COFFEE CHAT</span><br>WITH ARCHIE</h2>
           <div class="mail" id="mail">arcadiovega1@gmail.com</div>
-          <button class="tearbtn" id="tearbtn">TEAR OFF + COPY EMAIL</button>
+          <div class="lk cbtns">
+            <a class="btn solid mailto" href="mailto:arcadiovega1@gmail.com?subject=Coffee%20chat%20with%20Archie">EMAIL ARCHIE →</a>
+            <button type="button" class="btn" id="tearbtn">TEAR OFF + COPY EMAIL</button>
+          </div>
+          <p class="small copymsg" id="copymsg" role="status" aria-live="polite"></p>
         </div>
-      </div>
+      </section>
     </article>
   </div>
-  <div class="under"><button id="reprint">Reprint</button><span>Tap any line for details</span></div>
+  <div class="under"><button type="button" id="reprint">Reprint</button></div>
   <div class="under"><a href="/iphone.html">Miss the iPhone version? It’s still here.</a></div>
 </main>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 (function(){
+  var EMAIL='arcadiovega1@gmail.com';
   function pad(n){return String(n).padStart(2,'0')}
   function stampTime(){var d=new Date(),h=d.getHours(),ap=h>=12?'PM':'AM';h=h%12||12;
     document.getElementById('ts').textContent=pad(d.getMonth()+1)+'/'+pad(d.getDate())+'/'+d.getFullYear()+' '+h+':'+pad(d.getMinutes())+' '+ap;
     document.getElementById('ord').textContent='ORDER #'+(1000+(d.getHours()*60+d.getMinutes())%9000)}
   stampTime();
 
-  var toast=document.getElementById('toast');
-  function say(t){toast.textContent=t;toast.classList.add('show');clearTimeout(say.t);say.t=setTimeout(function(){toast.classList.remove('show')},1800)}
+  /* line items: mirror the open state on the summary, and open the row a deep link points at */
+  document.querySelectorAll('details').forEach(function(d){
+    var s=d.querySelector('summary');
+    function sync(){s.setAttribute('aria-expanded',d.open?'true':'false')}
+    sync();d.addEventListener('toggle',sync);
+  });
+  function openHash(){var el=location.hash&&document.getElementById(location.hash.slice(1));if(el&&el.tagName==='DETAILS')el.open=true}
+  openHash();addEventListener('hashchange',openHash);
 
-  /* tip */
+  /* tip: sets the subject of every Email Archie link. It never opens the mail app by itself. */
   var stamp=document.getElementById('stamp');
-  document.querySelectorAll('.tip').forEach(function(b){b.addEventListener('click',function(){
-    document.querySelectorAll('.tip').forEach(function(x){var on=x===b;x.setAttribute('aria-checked',on);x.querySelector('.box').textContent=on?'[x]':'[ ]'});
-    var t=b.dataset.tip;document.getElementById('tipline').textContent=t;document.getElementById('cptip').textContent=t.replace(/^AN? /,'ONE ');
-    stamp.classList.remove('pop');void stamp.offsetWidth;stamp.classList.add('pop');
-  })});
+  function setTip(input,pop){
+    var t=input.value,subj=input.dataset.subject,href='mailto:'+EMAIL+'?subject='+encodeURIComponent(subj);
+    document.getElementById('tipline').textContent=t;
+    document.getElementById('cptip').textContent=t.replace(/^AN? /,'ONE ');
+    document.querySelectorAll('.subjtxt').forEach(function(el){el.textContent=subj});
+    document.querySelectorAll('a.mailto').forEach(function(a){a.href=href});
+    if(pop){stamp.classList.remove('pop');void stamp.offsetWidth;stamp.classList.add('pop')}
+  }
+  document.querySelectorAll('.tip input').forEach(function(i){
+    i.addEventListener('change',function(){if(i.checked)setTip(i,true)});
+    if(i.checked)setTip(i,false);
+  });
 
-  /* coupon */
-  var coupon=document.getElementById('coupon'),mail=document.getElementById('mail');
-  document.getElementById('tearbtn').addEventListener('click',function(){
+  /* coupon: tear it off and copy the email, with feedback in a live region */
+  var coupon=document.getElementById('coupon'),mail=document.getElementById('mail'),btn=document.getElementById('tearbtn'),msg=document.getElementById('copymsg');
+  function legacyCopy(t){
+    var ta=document.createElement('textarea'),ok=false;
+    ta.value=t;ta.setAttribute('readonly','');ta.style.cssText='position:fixed;top:0;left:0;opacity:0';
+    document.body.appendChild(ta);ta.select();
+    try{ok=document.execCommand('copy')}catch(e){}
+    ta.remove();btn.focus();
+    return ok;
+  }
+  function copy(t){
+    if(navigator.clipboard&&window.isSecureContext){
+      return navigator.clipboard.writeText(t).catch(function(){if(!legacyCopy(t))throw new Error('copy failed')});
+    }
+    return legacyCopy(t)?Promise.resolve():Promise.reject(new Error('copy failed'));
+  }
+  function tell(t){msg.textContent='';setTimeout(function(){msg.textContent=t},50)}
+  btn.addEventListener('click',function(){
     coupon.classList.add('torn');
-    function sel(){var r=document.createRange();r.selectNodeContents(mail);var s=getSelection();s.removeAllRanges();s.addRange(r);say('Torn off. Email selected, copy it from there.')}
-    try{navigator.clipboard.writeText('arcadiovega1@gmail.com').then(function(){say('Torn off. Email copied. Heard, Chef!')},sel)}catch(e){sel()}
+    copy(EMAIL).then(function(){
+      tell('EMAIL COPIED. HEARD, CHEF!');
+      btn.textContent='COPIED ✓';clearTimeout(btn.t);btn.t=setTimeout(function(){btn.textContent='TEAR OFF + COPY EMAIL'},2500);
+    },function(){
+      var r=document.createRange();r.selectNodeContents(mail);var s=getSelection();s.removeAllRanges();s.addRange(r);
+      tell('COULDN’T COPY. THE EMAIL IS SELECTED ABOVE, OR USE EMAIL ARCHIE.');
+    });
   });
 
   /* print */
@@ -254,7 +338,7 @@ summary:focus-visible,.tip:focus-visible,.tearbtn:focus-visible,.det a:focus-vis
   function done(){setTimeout(function(){printer.classList.remove('printing')},1800)}
   done();
   document.getElementById('reprint').addEventListener('click',function(){
-    coupon.classList.remove('torn');stampTime();
+    coupon.classList.remove('torn');msg.textContent='';stampTime();
     paper.classList.remove('print');void paper.offsetWidth;paper.classList.add('print');
     printer.classList.add('printing');done();
   });
