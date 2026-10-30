@@ -3,262 +3,575 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
 <title>Archie Vega · iOS Developer</title>
-<meta name="description" content="Arcadio “Archie” Vega: 15 years in professional kitchens, now building apps. My portfolio, printed as a restaurant receipt.">
+<meta name="description" content="Arcadio “Archie” Vega: 15 years in professional kitchens, now building apps. Orders up. Problems out.">
 <meta property="og:title" content="Archie Vega · iOS Developer">
-<meta property="og:description" content="15 years in kitchens. Now I build apps. Here’s the receipt.">
+<meta property="og:description" content="I cooked for 15 years. Now I spot the problem, fix it and send it. Pull a ticket off the rail.">
 <meta property="og:url" content="https://arcadiovega.com/">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#d9dde0" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#15171a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#16181b">
 <link rel="canonical" href="https://arcadiovega.com/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M14 4h36v52l-4.5-4-4.5 4-4.5-4-4.5 4-4.5-4-4.5 4-4.5-4L14 56z' fill='%23fbfbf7' stroke='%231f1f1f' stroke-width='3'/%3E%3Cpath d='M21 16h22M21 24h22M21 32h14' stroke='%231f1f1f' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316181b'/%3E%3Cpath d='M18 10h28v44l-3.5-3-3.5 3-3.5-3-3.5 3-3.5-3-3.5 3-3.5-3-3.5 3z' fill='%23fbfaf5'/%3E%3Crect x='14' y='8' width='36' height='9' rx='1.5' fill='%238cc63f' transform='rotate(-4 32 12)'/%3E%3Cpath d='M23 26h18M23 33h18M23 40h11' stroke='%23151515' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Geist:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@600;700&family=Permanent+Marker&display=swap">
 <style>
-/* Layout: a receipt printer on a counter prints one long receipt that is the whole portfolio. A tear-off coupon at the bottom is the contact. */
-:root{
-  --counter:#d9dde0; --counter2:#c9ced2; --paper:#fbfbf7; --ink:#1f1f1f; --faint:#7d7d77; --red:#c22f1d;
-  --printer:#26282b; --printer2:#3a3d41; --led:#3bd16f; --ui-fg:#2a2d31; --ui-muted:#636970;
-  --till:"Space Mono","Courier New",ui-monospace,monospace;
-  --ui:"Geist",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--counter:#15171a;--counter2:#1d2024;--paper:#f3f2ec;--printer:#0b0c0d;--printer2:#2a2d31;--ui-fg:#e6e8eb;--ui-muted:#9097a0;color-scheme:dark}}
-:root[data-theme="dark"]{--counter:#15171a;--counter2:#1d2024;--paper:#f3f2ec;--printer:#0b0c0d;--printer2:#2a2d31;--ui-fg:#e6e8eb;--ui-muted:#9097a0;color-scheme:dark}
 [hidden]{display:none!important}
+:root{
+  color-scheme:dark;
+  --wall:#16181b; --steel:#2b2f34; --steel-hi:#6a7078; --paper:#fbfaf5; --paper-ink:#151515;
+  --text:#ecebe6; --dim:#a3a6ab; --lamp:#ff9a3c; --fire:#ff3d5e; --sent:#2fbf71; --hold:#8d9196; --mod:#c4262b; --link:#1d4ed8;
+  --f-stamp:"Archivo Black", Impact, "Arial Black", sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --f-ui:-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
+  --f-hand:"Caveat", "Marker Felt", "Comic Sans MS", cursive;
+  --f-sharpie:"Permanent Marker", "Marker Felt", "Comic Sans MS", cursive;
+  --tape:#8cc63f; --tape-hi:#a6d860; --sharpie:#141414; --chalk:#e9e8e2;
+}
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;min-height:100vh;background:radial-gradient(120% 70% at 50% 0,var(--counter),var(--counter2)) fixed;background-color:var(--counter);color:var(--ui-fg);font-family:var(--ui);-webkit-font-smoothing:antialiased;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-top:max(28px,env(safe-area-inset-top,0px));padding-bottom:max(56px,env(safe-area-inset-bottom,0px))}
-main{max-width:420px;margin:0 auto;display:flex;flex-direction:column;align-items:center}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--wall);color:var(--text);font:16px/1.6 var(--f-ui);
+  }
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:#0d0e10}
+.g{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.w{max-width:1040px;margin:0 auto}
 a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--lamp);outline-offset:3px}
 
-/* printer */
-.printer{width:calc(100% + 24px);max-width:444px;height:62px;border-radius:16px 16px 10px 10px;background:linear-gradient(180deg,var(--printer2),var(--printer));position:relative;z-index:3;box-shadow:0 14px 24px -14px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.12);display:flex;align-items:center;justify-content:space-between;padding:0 18px 10px}
-.printer::after{content:"";position:absolute;left:14px;right:14px;bottom:8px;height:6px;border-radius:3px;background:#000;box-shadow:inset 0 2px 3px rgba(0,0,0,.8)}
-.plate{font:700 11px var(--till);letter-spacing:.2em;color:rgba(255,255,255,.55)}
-.led{display:flex;align-items:center;gap:7px;font:400 10px var(--till);color:rgba(255,255,255,.55);letter-spacing:.1em}
-.led i{width:7px;height:7px;border-radius:50%;background:var(--led);box-shadow:0 0 8px var(--led)}
-.printing .led i{animation:blink .25s steps(2) infinite}
-@keyframes blink{50%{opacity:.2}}
+.kds{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:#0d0e10;border-bottom:1px solid #26292d;padding-block:8px}
+.kds .w{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12px}
+.kds .name{font:13px var(--f-stamp);letter-spacing:.06em}
+.kds .open{color:var(--sent)}
+.kds .stats{display:none;gap:14px;color:var(--dim);flex-wrap:wrap}
+.kds .stats b{color:var(--text)}
+.bell{display:flex;align-items:center;gap:6px;background:#1e2125;border:1px solid #33373c;border-radius:999px;padding:5px 10px;cursor:pointer;font-size:12px}
+.bell svg{width:16px;height:16px}
 
-/* paper */
-.slot{width:100%;overflow:hidden;margin-top:-14px;padding:0 6px 30px;position:relative;z-index:2}
-.paper{background:var(--paper);color:var(--ink);font:400 13px/1.55 var(--till);padding:34px 22px 28px;position:relative;
-  box-shadow:0 30px 40px -28px rgba(0,0,0,.5);background-image:repeating-linear-gradient(0deg,rgba(0,0,0,.012) 0 1px,transparent 1px 3px)}
-.paper.print{animation:feed 1.8s steps(30) both}
+.hero{position:relative;padding-block:56px 24px;overflow:hidden}
+.lamps{position:absolute;inset:0 0 auto;height:100%;pointer-events:none;display:flex;justify-content:space-around}
+.lamps i{width:34%;max-width:320px;height:100%;background:radial-gradient(ellipse 50% 60% at 50% 0,rgba(255,154,60,.16),transparent 70%);animation:hum 4s ease-in-out infinite alternate}
+.lamps i:nth-child(2){animation-delay:-1.5s}.lamps i:nth-child(3){animation-delay:-3s}
+@keyframes hum{from{opacity:.75}to{opacity:1}}
+.hero .w{position:relative;display:flex;flex-direction:column;gap:18px}
+.eyebrow{font:12px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--lamp)}
+h1{font:400 clamp(2.6rem,9vw,6rem)/.9 var(--f-stamp);margin:0;text-transform:uppercase;letter-spacing:-.01em}
+h1 span{color:var(--fire);display:block}
+.lede{max-width:52ch;color:#cfd0cc;margin:0;font-size:1.08rem}
+.who{font:600 15px var(--f-ui);color:var(--dim)}
+.call{font:700 clamp(1.5rem,4vw,2rem)/1.1 var(--f-hand);color:#ffd36b;margin:0;transform:rotate(-1.5deg);transform-origin:left}
+
+.sec-h{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.sec-h h2{font:400 1.6rem/1 var(--f-stamp);margin:0;letter-spacing:.02em;text-transform:uppercase}
+.sec-h p{margin:8px 0 0;color:var(--dim);font-size:14px}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--dim);flex-wrap:wrap}
+.legend b{font:400 13px var(--f-stamp)}
+.c-sent{color:var(--sent)}.c-fire{color:var(--fire)}.c-hold{color:var(--hold)}
+.railbox{position:relative;padding-top:14px;--edge:max(16px,calc((100vw - 1040px)/2));margin-left:calc(-1 * var(--edge));margin-right:calc(-1 * var(--edge))}
+.railbar{position:absolute;left:0;right:0;top:0;height:26px;border-radius:0;background:linear-gradient(#8b9198,#3a3e44 55%,#24272b);box-shadow:0 8px 14px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.35);z-index:2}
+.railbar span{position:absolute;right:max(16px,calc((100vw - 1040px)/2));top:5px;font:700 11px var(--f-mono);letter-spacing:.25em;color:#e6e8ea}
+.tickets{display:flex;gap:16px;overflow-x:auto;padding:0 24px 26px;scroll-padding-left:24px;scroll-snap-type:x proximity;position:relative;z-index:1}
+.tk{flex:none;width:214px;margin-top:6px;scroll-snap-align:start;cursor:pointer;border:0;padding:0;background:none;text-align:left;
+  transform-origin:50% 0;transform:rotate(var(--r));transition:transform .25s}
+.tk:hover{transform:rotate(0deg) translateY(3px)}
+.tk[aria-pressed="true"]{transform:translateY(16px)}
+.tk[aria-pressed="true"] .paper{box-shadow:0 0 0 3px var(--lamp),0 14px 22px rgba(0,0,0,.55)}
+.paper{background:var(--paper);color:var(--paper-ink);font:12.5px/1.45 var(--f-mono);padding:22px 13px 22px;position:relative;box-shadow:0 12px 20px rgba(0,0,0,.5);min-height:200px;
+  -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 8px) no-repeat,radial-gradient(circle 5px at 50% 100%,transparent 98%,#000) bottom/12px 9px repeat-x;
+          mask:linear-gradient(#000 0 0) top/100% calc(100% - 8px) no-repeat,radial-gradient(circle 5px at 50% 100%,transparent 98%,#000) bottom/12px 9px repeat-x}
+.paper .hd{display:flex;justify-content:space-between;font-weight:700;border-bottom:1px dashed #9a9a9a;padding-bottom:5px;margin-bottom:7px}
+.paper .ln{display:grid;grid-template-columns:2.2em 1fr;gap:2px}
+.paper .md{color:var(--mod);padding-left:2.2em}
+.paper .tm{position:absolute;left:13px;bottom:14px;font-size:11px;color:#555;font-variant-numeric:tabular-nums}
+.stamp{position:absolute;right:10px;bottom:40px;font:400 21px/1 var(--f-stamp);padding:4px 8px;border:3px solid currentColor;border-radius:4px;transform:rotate(-12deg);opacity:.88;letter-spacing:.04em}
+.new .paper{animation:print .7s ease-out}
+@keyframes print{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+
+.pass{margin-top:6px;background:linear-gradient(#3a3e44,#2a2d31);border-radius:18px;padding:18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 20px 40px rgba(0,0,0,.35);position:relative}
+.pass::before{content:"";position:absolute;inset:0;border-radius:18px;background:radial-gradient(ellipse 60% 70% at 50% 0,rgba(255,154,60,.18),transparent 70%);pointer-events:none}
+.plate{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+.plate h3{font:400 clamp(1.6rem,4vw,2.3rem)/1 var(--f-stamp);margin:0 0 6px;text-transform:uppercase}
+.plate .kind{font:12px var(--f-mono);color:var(--dim);letter-spacing:.12em;text-transform:uppercase}
+.plate dl{display:grid;grid-template-columns:5.6rem 1fr;gap:8px 12px;margin:14px 0}
+.plate dt{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);padding-top:2px}
+.plate dd{margin:0;min-width:0}
+.plate dd.one{font:700 1.25rem/1.15 var(--f-hand);color:#ffd36b;font-size:1.45rem}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.btn{font:700 12px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:var(--paper);color:var(--paper-ink);padding:9px 12px;border-radius:8px;border:0;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid #555a60}
+.pad .btn{background:var(--paper-ink);color:var(--paper)}
+.pad .btn.ghost{background:transparent;color:var(--paper-ink);border:2px solid var(--paper-ink)}
+.shots{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px}
+.shots img{height:300px;width:auto;border-radius:16px;border:1px solid #4a4f55;flex:none}
+.oven{border:2px dashed #5a5f66;border-radius:16px;min-height:220px;display:grid;place-items:center;text-align:center;padding:20px;color:var(--dim)}
+.oven b{display:block;font:400 1.4rem var(--f-stamp);color:var(--fire);margin-bottom:6px}
+
+.prep{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:24px;align-items:start}
+.clip{background:var(--paper);color:var(--paper-ink);border-radius:6px;padding:26px 22px 22px;position:relative;box-shadow:0 14px 28px rgba(0,0,0,.45);transform:rotate(-.6deg)}
+.clip::before{content:"";position:absolute;top:-12px;left:50%;width:120px;height:26px;margin-left:-60px;border-radius:6px;background:linear-gradient(#9aa0a7,#5c6168)}
+.clip h3{font:400 1.2rem var(--f-stamp);margin:0 0 10px;text-transform:uppercase}
+.clip ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.clip li{display:grid;grid-template-columns:1.6rem 1fr;gap:8px;padding:8px 0;border-bottom:1px solid #e1ddd2;font-size:13.5px}
+.clip li .bx{width:18px;height:18px;border:2px solid var(--paper-ink);border-radius:3px;display:grid;place-items:center;font:700 14px/1 var(--f-hand);margin-top:1px}
+.clip li.done .t{color:#555}
+.clip li.done .bx::after{content:"✓";color:var(--mod);font:700 20px/1 var(--f-hand)}
+.clip .note{font:700 1.3rem/1.1 var(--f-hand);color:var(--mod);margin:12px 0 0}
+.why{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.why p{margin:0;max-width:52ch;color:#d6d6d1}
+.why .big{font:400 clamp(1.4rem,3.5vw,2rem)/1.05 var(--f-stamp);text-transform:uppercase;color:var(--text);margin-bottom:4px}
+
+.pad{background:#f3efe2;color:var(--paper-ink);border-radius:8px;padding:22px;box-shadow:0 14px 28px rgba(0,0,0,.45);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;
+  background-image:repeating-linear-gradient(#f3efe2 0 31px,#cfd8e6 31px 32px)}
+.pad h3{font:400 1.4rem var(--f-stamp);margin:0;text-transform:uppercase}
+.pad form{display:flex;flex-direction:column;gap:10px}
+.pad label{font:700 11px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;display:flex;flex-direction:column;gap:4px}
+.pad input,.pad textarea{font:400 1.15rem/1.3 var(--f-sharpie);color:#1b3a8a;background:rgba(255,255,255,.55);border:0;border-bottom:2px solid #1b1b1b;padding:6px 8px;border-radius:4px 4px 0 0;width:100%}
+.pad textarea{min-height:76px;resize:vertical}
+.fire{font:400 1.1rem var(--f-stamp);background:var(--fire);color:#fff;border:0;border-radius:10px;padding:12px 16px;cursor:pointer;letter-spacing:.04em;box-shadow:0 5px 0 #8f1d30;align-self:flex-start}
+.fire:active{transform:translateY(4px);box-shadow:0 1px 0 #8f1d30}
+.out{display:flex;flex-direction:column;gap:10px;font-size:13px}
+.out .mail{font:700 15px var(--f-mono);user-select:all;word-break:break-all}
+.out pre{white-space:pre-wrap;background:rgba(255,255,255,.7);border:1px dashed #888;padding:10px;border-radius:6px;margin:0;font:12.5px/1.5 var(--f-mono)}
+.out .small{color:#555}
+footer{padding-block:40px 56px;color:var(--dim);font-size:12px}
+footer .w{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.draft{font-size:11px;color:#7d8187;text-align:center;padding-block:6px;border-bottom:1px dashed #2c2f33}
+section{padding-block:44px;scroll-margin-top:56px}
+
+.tape{display:inline-block;background:var(--tape);color:var(--sharpie);font:400 1.15em/1.1 var(--f-sharpie);padding:.28em .7em .22em;letter-spacing:.02em;text-transform:uppercase;
+  transform:rotate(-1.6deg);box-shadow:0 2px 3px rgba(0,0,0,.35);background-image:linear-gradient(180deg,rgba(255,255,255,.18),transparent 40%),repeating-linear-gradient(90deg,rgba(0,0,0,.035) 0 2px,transparent 2px 5px);
+  clip-path:polygon(0 6%,3% 0,7% 5%,12% 0,100% 0,98% 30%,100% 55%,97% 78%,100% 100%,9% 100%,5% 95%,2% 100%,0 70%,2% 45%);text-wrap:balance}
+h2 .tape{font-size:1.2rem}
+.tape.sm{font-size:.85rem;padding:.25em .6em}
+.tape.big{font-size:clamp(1.5rem,4.5vw,2.4rem);transform:rotate(-2.5deg)}
+.tape.idea{font-size:1.05rem;text-transform:none;transform:rotate(-.8deg);line-height:1.25}
+.tape.note{position:absolute;right:16px;top:-14px;font-size:.85rem;transform:rotate(3deg);z-index:3;text-transform:none}
+.tape.corner{position:absolute;top:-10px;width:86px;height:26px;padding:0;z-index:2;opacity:.92}
+.tape.corner.l{left:-14px;transform:rotate(-28deg)}.tape.corner.r{right:-14px;transform:rotate(26deg)}
+.callrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.anno{font:400 1.05rem/1.1 var(--f-sharpie);color:var(--chalk);transform:rotate(-3deg);display:inline-block}
+.arrow{width:90px;height:46px;flex:none}
+.arrow path{fill:none;stroke:var(--chalk);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:200;stroke-dashoffset:0}
+.pullme{display:flex;align-items:flex-end;gap:2px;margin:-4px 0 0 12px;position:relative;z-index:3}
+.pullme .arrow{width:56px;height:46px}
+.scr{position:absolute;right:14px;bottom:80px;font:400 15px/1 var(--f-sharpie);color:var(--mod);transform:rotate(-6deg)}
+.scrawl{font:400 1rem var(--f-sharpie);color:var(--mod)}
+.clip{position:relative}
+.scrawl.circle{position:absolute;right:14px;bottom:-18px;background:var(--paper);transform:rotate(-8deg);border:2.5px solid var(--mod);border-radius:50%;padding:6px 12px}
+.clip .note{font:400 1.05rem/1.2 var(--f-sharpie)}
+.pad{position:relative;margin-top:22px}
+.heard{position:absolute;right:24px;top:18px;font:400 2.2rem/1 var(--f-sharpie);color:var(--fire);transform:rotate(-10deg) scale(0);pointer-events:none;z-index:4}
+.heard.go{animation:heard 1.6s cubic-bezier(.2,1.6,.4,1) forwards}
+@keyframes heard{0%{transform:rotate(-10deg) scale(0)}25%{transform:rotate(-10deg) scale(1.15)}35%,85%{transform:rotate(-10deg) scale(1)}100%{transform:rotate(-10deg) scale(1);opacity:0}}
+.clock{color:var(--dim);font:500 12px var(--f-mono);margin-left:8px;font-variant-numeric:tabular-nums}
+
+.ticker{background:var(--tape);color:var(--sharpie);overflow:hidden;white-space:nowrap;border-bottom:2px solid #0d0e10}
+.ticker .run{display:inline-flex;gap:28px;padding:5px 0;font:400 13px/1.2 var(--f-sharpie);animation:run 38s linear infinite}
+.ticker span::after{content:"✕";margin-left:28px;opacity:.5}
+@keyframes run{to{transform:translateX(-50%)}}
+
+.tk{animation:swing 1.4s ease-out both}
+@keyframes swing{0%{transform:rotate(calc(var(--r) + 9deg))}30%{transform:rotate(calc(var(--r) - 5deg))}55%{transform:rotate(calc(var(--r) + 2.5deg))}78%{transform:rotate(calc(var(--r) - 1deg))}100%{transform:rotate(var(--r))}}
+.tk:hover{animation:wobble .6s ease-in-out}
+@keyframes wobble{0%,100%{transform:rotate(var(--r))}35%{transform:rotate(calc(var(--r) - 3deg))}70%{transform:rotate(calc(var(--r) + 2deg))}}
+.tk[aria-pressed="true"]{animation:none}
+.slap{animation:slap .5s cubic-bezier(.2,1.5,.4,1) .3s both}
+@keyframes slap{from{transform:rotate(-9deg) scale(1.35)}to{transform:rotate(-2.5deg) scale(1)}}
+.plate.in>div{animation:plateIn .45s cubic-bezier(.2,.9,.3,1.05)}
+@keyframes plateIn{from{transform:translateY(18px)}to{transform:none}}
+.slam{position:absolute;right:46%;top:6px;font:400 2rem/1 var(--f-stamp);border:4px solid currentColor;border-radius:6px;padding:4px 10px;transform:rotate(-14deg);opacity:0;pointer-events:none;z-index:4}
+.plate.in .slam{animation:slam 1.3s ease-out}
+@keyframes slam{0%{opacity:0;transform:rotate(-14deg) scale(2.6)}18%{opacity:.95;transform:rotate(-14deg) scale(1)}22%{transform:rotate(-14deg) scale(1.06)}70%{opacity:.9}100%{opacity:0;transform:rotate(-14deg) scale(1)}}
+.pass.shake{animation:thud .25s}
+@keyframes thud{30%{transform:translateY(3px)}}
+.steam{position:absolute;left:0;right:0;top:-40px;height:60px;pointer-events:none;display:flex;justify-content:space-around}
+.steam i{width:22px;height:60px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.22),transparent);filter:blur(5px);animation:steam 3.6s ease-in infinite}
+.steam i:nth-child(2){animation-delay:-1.2s}.steam i:nth-child(3){animation-delay:-2.4s}
+@keyframes steam{0%{transform:translateY(20px) scaleX(.6);opacity:0}30%{opacity:.9}100%{transform:translateY(-34px) scaleX(1.4);opacity:0}}
+.draw.go path{animation:draw .9s ease-out}
+@keyframes draw{from{stroke-dashoffset:200}to{stroke-dashoffset:0}}
+.fire:hover{animation:jiggle .3s}
+@keyframes jiggle{25%{transform:rotate(-2deg)}75%{transform:rotate(2deg)}}
+
+.herogrid{display:grid!important;grid-template-columns:minmax(0,1fr) 260px;gap:32px;align-items:start}
+.herotext{display:flex;flex-direction:column;gap:18px;min-width:0}
+.printer{position:relative;cursor:pointer;justify-self:end;width:260px;max-width:100%;margin-top:8px}
+.pbody{position:relative;height:74px;border-radius:14px 14px 6px 6px;background:linear-gradient(#4a4f56,#25282c);box-shadow:0 14px 24px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.25);z-index:2}
+.pbody .led{position:absolute;left:14px;top:14px;width:8px;height:8px;border-radius:50%;background:var(--sent);box-shadow:0 0 8px var(--sent);animation:led 1.2s steps(2) infinite}
+@keyframes led{50%{opacity:.35}}
+.pbody .pname{position:absolute;left:30px;top:11px;font:700 9px var(--f-mono);letter-spacing:.18em;color:#b9bdc2}
+.pbody .slot{position:absolute;left:18px;right:18px;bottom:12px;height:8px;border-radius:4px;background:#0b0c0d;box-shadow:inset 0 2px 3px #000}
+.feed{position:relative;margin:-14px 26px 0;overflow:hidden;padding-bottom:12px;z-index:1}
+.pt{background:var(--paper);color:var(--paper-ink);font:12px/1.5 var(--f-mono);padding:22px 12px 16px;box-shadow:0 10px 16px rgba(0,0,0,.45);
+  -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 8px) no-repeat,radial-gradient(circle 5px at 50% 100%,transparent 98%,#000) bottom/12px 9px repeat-x;
+          mask:linear-gradient(#000 0 0) top/100% calc(100% - 8px) no-repeat,radial-gradient(circle 5px at 50% 100%,transparent 98%,#000) bottom/12px 9px repeat-x;
+  animation:feed 2.2s steps(16,end) .5s both}
+.pt.go{animation:feed 1.4s steps(16,end) both}
 @keyframes feed{from{transform:translateY(-100%)}to{transform:none}}
-h1{margin:0;font:inherit}
-.c{text-align:center}
-.dh{font:700 26px/1 var(--till);letter-spacing:.06em;display:inline-block;transform:scaleY(1.45);margin:8px 0 10px}
-.small{font-size:11.5px;color:var(--faint)}
-.rule{border:0;border-top:1.5px dashed var(--faint);margin:12px 0}
-.rule.dbl{border-top:3px double var(--ink)}
-.row{display:flex;justify-content:space-between;gap:12px}
-.row > span:last-child{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
-h2.sec{font:700 13px/1.55 var(--till);letter-spacing:.14em;margin:12px 0 4px}
-h2.sec::before{content:"** "}h2.sec::after{content:" **"}
+.pt .hd{display:flex;justify-content:space-between;font-weight:700;border-bottom:1px dashed #999;padding-bottom:5px;margin-bottom:7px}
+.pt .ln{display:grid;grid-template-columns:2.2em 1fr;font-weight:700}
+.pt .md{color:var(--mod);padding-left:2.2em}
+.pt .allergy{margin-top:8px;font-weight:700;border:1.5px solid var(--paper-ink);padding:3px 6px;font-size:11px}
+.pt .pft{text-align:center;margin-top:10px;font-size:11px;letter-spacing:.06em}
+.ptap{position:absolute;left:30px;bottom:-26px;font-size:.9rem;transform:rotate(-8deg)}
 
-/* line items: native <details> so they work without JavaScript */
-details{padding:2px 0}
-summary{list-style:none;cursor:pointer;border-radius:2px}
-summary::-webkit-details-marker{display:none}
-summary:hover .nm{text-decoration:underline;text-decoration-style:dotted}
-summary:focus-visible,.tip:focus-visible,.tearbtn:focus-visible,.det a:focus-visible{outline:2px dashed var(--red);outline-offset:2px}
-.q{display:inline-block;width:2.2em}
-.mods{padding-left:2.2em;color:var(--faint);font-size:12px}
-.det{margin:4px 0 8px 2.2em;padding:8px 10px;border-left:2px solid var(--ink);font-size:12px;line-height:1.55}
-.det p{margin:0}
-.det .lk{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
-.det a{color:var(--ink)}
-.shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:8px}
-.shots img{width:100%;height:auto;aspect-ratio:600/1300;object-fit:cover;object-position:top;display:block;border:1.5px solid var(--ink);filter:grayscale(1) contrast(1.1)}
-.tag{font-size:10.5px;border:1.5px solid currentColor;padding:0 4px;vertical-align:1px}
-.tag.red{color:var(--red)}
-.sides{font-size:12px;line-height:1.7}
+.ln.hand span:last-child{font:400 15px/1.25 var(--f-sharpie);color:#1b3a8a}
+.new .ln.hand span:last-child{animation:write 1.6s steps(24,end) .5s both}
+@keyframes write{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.strike{position:relative}
+.strike::after{content:"";position:absolute;left:-3px;right:-3px;top:52%;height:2.5px;background:var(--mod);border-radius:2px;transform:rotate(-2deg);transform-origin:left;animation:strike .5s ease-out 1.4s both}
+@keyframes strike{from{transform:rotate(-2deg) scaleX(0)}to{transform:rotate(-2deg) scaleX(1)}}
 
-/* tip, total, coupon */
-.tips{display:flex;flex-direction:column;gap:2px;margin-top:4px}
-.tip{all:unset;cursor:pointer;display:flex;gap:10px;padding:1px 0}
-.tip .box{width:2.2em;flex:none}
-.total{font:700 17px var(--till)}
-.stamp{display:inline-block;border:2.5px solid var(--red);color:var(--red);font:700 14px var(--till);letter-spacing:.14em;padding:4px 12px;transform:rotate(-7deg);margin:10px 0 4px;mix-blend-mode:multiply;opacity:.9}
-.stamp.pop{animation:stamp .35s cubic-bezier(.2,1.6,.4,1)}
-@keyframes stamp{from{transform:rotate(-7deg) scale(1.8);opacity:0}}
-.banner{font-weight:700;letter-spacing:.06em;text-align:center;margin:6px 0}
-.barcode{height:46px;margin:14px auto 4px;max-width:250px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 5px,transparent 5px 8px,var(--ink) 8px 11px,transparent 11px 12px,var(--ink) 12px 13px,transparent 13px 17px,var(--ink) 17px 18px,transparent 18px 19px)}
-.foot a{text-decoration:none}
-.foot a:hover{text-decoration:underline}
-.tear{display:flex;align-items:center;gap:8px;color:var(--faint);font-size:11px;margin:18px -22px 0;padding:0 8px}
-.tear::before,.tear::after{content:"";flex:1;border-top:1.5px dashed var(--faint)}
-.coupon{margin:0 -22px -28px;padding:18px 22px 26px;background:var(--paper);transition:transform .6s cubic-bezier(.3,1.2,.5,1);transform-origin:20% 0;position:relative;
-  -webkit-mask:radial-gradient(circle 6px at 50% 100%,transparent 98%,#000) 0 0/14px 100% repeat-x;mask:radial-gradient(circle 6px at 50% 100%,transparent 98%,#000) 0 0/14px 100% repeat-x}
-.coupon.torn{transform:translate(18px,26px) rotate(4deg);box-shadow:0 18px 26px -18px rgba(0,0,0,.5)}
-.good{font:700 15px var(--till);letter-spacing:.04em}
-.mail{user-select:all;font-weight:700;word-break:break-all}
-.tearbtn{all:unset;cursor:pointer;display:inline-block;margin-top:10px;border:1.5px solid var(--ink);padding:6px 12px;font:700 12px var(--till);letter-spacing:.08em}
-.tearbtn:hover{background:var(--ink);color:var(--paper)}
+.appicon{display:block;width:112px;height:112px;border-radius:25px;margin:0 0 16px;box-shadow:0 18px 44px rgba(124,77,255,.5),0 0 0 1px rgba(255,255,255,.14);animation:float 4.5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-6px) rotate(1deg)}}
+.tkicon{position:absolute;left:13px;bottom:36px;width:34px;height:34px;border-radius:8px;box-shadow:0 2px 5px rgba(0,0,0,.25)}
+.walkin{padding-block:40px 40px;overflow-x:clip}
+.walkin .w{display:flex;flex-direction:column;gap:18px}
+.wtop h2{margin:0}.wsub{margin:6px 0 0;color:var(--dim);font-size:13px}
+.cooler{position:relative;border-radius:16px;padding:14px;background:linear-gradient(135deg,#8d939a,#43474d 35%,#9aa0a6 55%,#33373c);box-shadow:0 30px 50px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.45)}
+.readout{display:flex;justify-content:space-between;align-items:center;padding:0 6px 12px;font:700 11px var(--f-mono);letter-spacing:.2em;color:#16181b}
+.readout .rr{display:flex;gap:10px;align-items:center}
+.dtog{font:700 11px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;background:#1c1e21;color:#e9e8e2;border:0;border-radius:6px;padding:7px 10px;cursor:pointer}
+.readout b{font:700 18px var(--f-mono);background:#0b0c0d;color:#7cf0ff;padding:4px 10px;border-radius:6px;letter-spacing:.04em;text-shadow:0 0 8px #7cf0ff;font-variant-numeric:tabular-nums;box-shadow:inset 0 0 0 2px #2a2d31}
+.jamb{position:relative;height:440px;border-radius:8px;perspective:max(1400px,260vw);background:#06121b;box-shadow:inset 0 0 0 4px #24272b}
+.inside{position:absolute;inset:4px;border-radius:5px;overflow:hidden;background:linear-gradient(#0f3550,#081a27 70%,#0b2232)}
+.coldlight{position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 0,rgba(140,220,255,.45),transparent 70%);animation:flick 5s steps(1) infinite}
+@keyframes flick{0%,96%,100%{opacity:1}97%{opacity:.6}98%{opacity:1}99%{opacity:.75}}
+.shelves{position:absolute;inset:34px 24px 60px;display:flex;flex-direction:column;justify-content:space-around;gap:16px}
+.shelf{display:flex;gap:18px;align-items:flex-end;flex-wrap:wrap;padding:0 8px 8px;position:relative}
+.shelf::after{content:"";position:absolute;left:-10px;right:-10px;bottom:0;height:8px;border-radius:2px;background:repeating-linear-gradient(90deg,#b8c4cc 0 3px,transparent 3px 14px),linear-gradient(#d4dde3,#7b8a94);box-shadow:0 6px 10px rgba(0,0,0,.5)}
+.cambro{position:relative;display:flex;flex-direction:column;align-items:stretch;width:170px;max-width:100%;text-decoration:none;border:0;padding:0;background:none;cursor:pointer;color:var(--sharpie);transition:transform .2s}
+.cambro.wide{width:270px}
+.cambro:hover{transform:translateY(-6px)}
+.cambro .lid{height:12px;border-radius:5px 5px 2px 2px;background:var(--lid);box-shadow:inset 0 2px 0 rgba(255,255,255,.25)}
+.cambro .tub{height:84px;border-radius:2px 2px 8px 8px;background-color:rgba(236,244,249,.86);border:1px solid rgba(255,255,255,.6);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;padding:8px;
+  background-image:repeating-linear-gradient(0deg,transparent 0 16px,rgba(255,255,255,.35) 16px 17px)}
+.cambro .lbl{font-size:.95rem;text-transform:none;word-break:break-all}
+.cambro .date{font:400 .82rem var(--f-sharpie);color:#16344d;padding-left:4px}
+.jar{display:flex;flex-direction:column;align-items:center;width:84px;position:relative}
+.jar .jlid{width:62px;height:12px;border-radius:3px;background:linear-gradient(#e2c26a,#9c7a1f)}
+.jar .glass{position:relative;width:74px;height:84px;border-radius:10px 10px 14px 14px;background:linear-gradient(#b14a6a 0 0) bottom/100% 64% no-repeat,rgba(255,255,255,.25);border:2px solid rgba(255,255,255,.55);overflow:hidden}
+.jar .glass i{position:absolute;bottom:4px;width:6px;height:6px;border-radius:50%;border:1.5px solid rgba(255,255,255,.8);animation:bub 2.6s ease-in infinite}
+.jar .glass i:nth-child(1){left:14px}.jar .glass i:nth-child(2){left:34px;animation-delay:-.8s}.jar .glass i:nth-child(3){left:52px;animation-delay:-1.6s;width:4px;height:4px}.jar .glass i:nth-child(4){left:24px;animation-delay:-2.1s;width:4px;height:4px}
+@keyframes bub{from{transform:translateY(0);opacity:0}20%{opacity:1}to{transform:translateY(-50px);opacity:0}}
+.jar .lbl.sm{position:absolute;top:40px;font-size:.7rem;transform:rotate(-4deg)}
+.deli{position:relative;width:74px;height:86px;border-radius:4px 4px 8px 8px;background:linear-gradient(transparent calc(100% - var(--h)),var(--fill) 0),rgba(255,255,255,.22);border:2px solid rgba(255,255,255,.55);border-top:9px solid rgba(255,255,255,.75);display:flex;align-items:flex-start;justify-content:center;padding-top:10px}
+.tape.lbl.xs{font-size:.62rem;transform:rotate(-3deg);padding:.25em .45em}
+.strips{position:absolute;inset:0 0 auto;height:100%;display:flex;pointer-events:none;opacity:.32}
+.strips i{flex:1;margin:0 1px;background:linear-gradient(90deg,rgba(255,255,255,.35),rgba(200,230,255,.15));transform-origin:top;animation:sway 5s ease-in-out infinite}
+.strips i:nth-child(odd){animation-delay:-2s}.strips i:nth-child(3n){animation-delay:-3.4s}
+@keyframes sway{0%,100%{transform:skewX(0)}50%{transform:skewX(2.5deg)}}
+.fog{position:absolute;left:-20%;right:-20%;bottom:-20px;height:110px;pointer-events:none}
+.fog i{position:absolute;bottom:0;width:60%;height:100%;border-radius:50%;background:radial-gradient(closest-side,rgba(220,240,255,.45),transparent);filter:blur(10px);animation:drift 9s ease-in-out infinite alternate}
+.fog i:nth-child(1){left:0}.fog i:nth-child(2){left:30%;animation-delay:-3s}.fog i:nth-child(3){left:55%;animation-delay:-6s}
+@keyframes drift{from{transform:translateX(-8%)}to{transform:translateX(10%)}}
+.door{position:absolute;inset:0;transform-origin:left center;transform:rotateY(-104deg);transition:transform 1.1s cubic-bezier(.3,.9,.3,1);transform-style:preserve-3d;z-index:3;pointer-events:none}
+.cooler.closed .door{transform:rotateY(0deg);pointer-events:auto}
+.cooler.closed .lever .bar{transform:rotate(0)}
+.dface{position:absolute;inset:0;border-radius:8px;overflow:hidden;pointer-events:auto;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,transparent 1px 3px),linear-gradient(100deg,#b9bfc5,#80878e 30%,#c9ced3 52%,#767d84 75%,#a8aeb4);
+  box-shadow:inset 0 0 0 3px #5b6168,inset 0 0 30px rgba(0,0,0,.25)}
+.dplate{position:absolute;left:28px;top:24px;font:400 1.1rem var(--f-stamp);letter-spacing:.12em;color:#1c1e21;background:#e8e9e4;padding:6px 12px;border-radius:4px;box-shadow:inset 0 0 0 2px #1c1e21,0 2px 3px rgba(0,0,0,.3)}
+.porthole{position:absolute;left:50%;top:40px;width:120px;height:120px;margin-left:-60px;border-radius:50%;background:#35393e;padding:9px;box-shadow:inset 0 3px 6px rgba(0,0,0,.6),0 1px 0 rgba(255,255,255,.4)}
+.porthole span{display:block;width:100%;height:100%;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.85),rgba(190,225,245,.55) 30%,rgba(60,120,160,.75) 75%);
+  box-shadow:inset 0 0 16px rgba(255,255,255,.8)}
+.dial{position:absolute;left:28px;top:84px;width:92px;height:92px;filter:drop-shadow(0 3px 3px rgba(0,0,0,.35))}
+.dial .needle{transform-origin:50px 50px;animation:needle 4s ease-in-out infinite;transform:rotate(-12deg)}
+@keyframes needle{0%,100%{transform:rotate(-14deg)}50%{transform:rotate(-6deg)}}
+.log{position:absolute;left:28px;bottom:84px;width:168px;background:#fbfaf5;color:#151515;font:11px/1.6 var(--f-mono);padding:22px 10px 8px;transform:rotate(-2deg);box-shadow:0 4px 8px rgba(0,0,0,.35);display:flex;flex-direction:column}
+.log::before{content:"";position:absolute;top:-6px;left:50%;width:60px;height:16px;margin-left:-30px;border-radius:4px;background:linear-gradient(#9aa0a7,#5c6168)}
+.log b{font:400 .8rem var(--f-stamp);letter-spacing:.08em}
+.log span{font:400 .8rem var(--f-sharpie);color:#1b3a8a;border-bottom:1px solid #ddd}
+.dface .sign{position:absolute;left:50%;top:186px;transform:translateX(-50%) rotate(-1.5deg);font:400 1rem var(--f-sharpie);color:#c4262b;background:#fff;padding:6px 12px;box-shadow:0 2px 4px rgba(0,0,0,.25);white-space:nowrap}
+.fifo{position:absolute;right:120px;bottom:96px;font-size:1.1rem;transform:rotate(6deg)}
+.lever{position:absolute;right:26px;top:50%;width:64px;height:150px;margin-top:-75px;border:0;padding:0;background:linear-gradient(90deg,#4a4f55,#2a2d31);border-radius:10px;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 6px 12px rgba(0,0,0,.45);cursor:pointer}
+.lever .bar{position:absolute;left:50%;top:22px;width:22px;height:106px;margin-left:-11px;border-radius:11px;background:linear-gradient(90deg,#f2f4f6,#9ca3aa 55%,#dfe3e7);box-shadow:-3px 6px 8px rgba(0,0,0,.45);transform-origin:50% 12px;transform:rotate(-24deg);transition:transform .35s}
+.lever:hover .bar{transform:rotate(-18deg)}
+.lever .hint{position:absolute;left:-48px;top:50%;font:400 1rem var(--f-sharpie);color:#1c1e21;transform:rotate(-8deg)}
+.kick{position:absolute;left:0;right:0;bottom:0;height:56px;background:repeating-linear-gradient(45deg,#9aa1a8 0 2px,#c4c9ce 2px 9px),linear-gradient(#aab0b6,#7c838a);background-blend-mode:multiply;border-top:2px solid #5b6168}
+.dback{position:absolute;inset:0;border-radius:8px;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden;background:repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,transparent 1px 3px),linear-gradient(80deg,#6d747b,#a3a9af 50%,#5d646b);box-shadow:inset 0 0 0 3px #4b5157,inset -20px 0 30px rgba(0,0,0,.35)}
+.hinge{position:absolute;left:-6px;width:12px;height:56px;border-radius:4px;background:linear-gradient(90deg,#5b6168,#c9ced3,#5b6168);box-shadow:0 2px 4px rgba(0,0,0,.4)}
+.hinge.h1{top:48px}.hinge.h2{bottom:72px}
+.fine{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--dim);font-size:12px}
+@media (max-width:760px){
+  .jamb{height:520px}
+  .shelves{inset:24px 14px 56px}
+  .cambro,.cambro.wide{width:100%}
+  .deli{display:none}
+  .cambro .tub{height:62px}
+  .porthole{width:84px;height:84px;margin-left:-42px;left:auto;right:24px;top:24px}
+  .dplate{font-size:.85rem}
+  .dial{top:76px;width:76px;height:76px}
+  .dface .sign{top:auto;bottom:150px;left:20px;transform:rotate(-1.5deg);white-space:normal;max-width:70%}
+  .log{display:none}
+  .fifo{right:auto;left:24px;bottom:78px}
+  .lever{right:16px;width:52px}
+}
+@media (max-width:760px){.herogrid{grid-template-columns:1fr!important}.printer{justify-self:center}.ptap{left:30px}}
 
-/* under the receipt */
-.under{display:flex;gap:16px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:10px;font:400 13px var(--ui);color:var(--ui-muted);text-align:center}
-.under button{font:500 13px var(--ui);color:var(--ui-fg);background:transparent;border:1px solid var(--ui-muted);border-radius:999px;padding:7px 14px;cursor:pointer}
-.under button:focus-visible,.under a:focus-visible{outline:2px solid var(--led);outline-offset:2px}
-.under a{color:var(--ui-muted)}
-.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,24px);opacity:0;background:var(--ui-fg);color:var(--counter);font:500 13px var(--ui);padding:9px 16px;border-radius:999px;transition:.25s;pointer-events:none;z-index:9;max-width:calc(100% - 32px);text-align:center}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:760px){
+  .plate,.prep,.pad{grid-template-columns:1fr}
+  .shots img{height:240px}
+  .plate dl{grid-template-columns:1fr;gap:2px}
+  .plate dd{margin-bottom:8px}
+  .kds .stats{display:none}
+}
+@media (max-width:760.5px){.slam{right:12px}.anno{font-size:.95rem}}
+@media (prefers-reduced-motion:reduce){.lamps i,.new .paper,.tk,.tk:hover,.slap,.plate.in>div,.plate.in .slam,.steam i,.draw.go path,.pt,.pt.go,.pbody .led,.appicon,.coldlight,.jar .glass i,.strips i,.fog i,.dial .needle,.new .ln.hand span:last-child,.strike::after,.ticker .run,.heard.go,.fire:hover,.pass.shake{animation:none!important}.heard.go{transform:rotate(-10deg) scale(1)}.tk{transition:none}.door{transition:none}html{scroll-behavior:auto}}
 </style>
+</head>
+<body>
+
+
+<div class="kds g"><div class="w">
+  <span class="name">ARCHIE’S KITCHEN <span class="open">● OPEN</span> <span class="clock" id="clock"></span></span>
+  <span class="stats"><span>On the rail <b id="sAll">0</b></span><span class="c-sent">Sent <b id="sSent">0</b></span><span class="c-fire">Fire <b id="sFire">0</b></span><span class="c-hold">Hold <b id="sHold">0</b></span></span>
+  <button class="bell" id="bell" aria-pressed="true" title="Service bell sound"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 18h16M6 18a6 6 0 0 1 12 0M12 9V7M10 7h4"/></svg><span id="bellTxt">Bell on</span></button>
+</div></div>
+
+<header class="hero g">
+  <div class="lamps" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="w herogrid"><div class="herotext">
+    <span class="who">Arcadio “Archie” Vega</span>
+    <h1>Orders up. <span>Problems out.</span></h1>
+    <p class="lede">I cooked professionally for 15 years. One night I got tired of doing tip-outs on a napkin, so I built an app for it. Now I write software the way I ran my station: spot the problem, fix it, send it.</p>
+    <div class="callrow"><span class="tape big slap">86 napkin math</span></div>
+  </div>
+  <div class="printer" id="printer" role="button" tabindex="0" aria-label="Reprint Archie’s ticket">
+    <div class="pbody"><span class="led"></span><span class="pname">LINE PRINTER · STATION 1</span><span class="slot"></span></div>
+    <div class="feed"><div class="pt" id="pt">
+      <div class="hd"><span>ORDER #001</span><span id="ptTime">NOW</span></div>
+      <div class="ln"><span>1x</span><span>Arcadio “Archie” Vega</span></div>
+      <div class="md">+ 15 yrs on the line</div>
+      <div class="md">+ Swift, React, TypeScript</div>
+      <div class="md">+ extra hungry</div>
+      <div class="md">NO tenure</div>
+      <div class="allergy">ALLERGY: meetings with no agenda</div>
+      <div class="pft">*** FIRE WHEN READY ***</div>
+    </div></div>
+    <span class="anno ptap">tap to reprint</span>
+  </div>
+  </div>
+</header>
+
+<section class="g" id="rail"><div class="w">
+  <div class="sec-h">
+    <div><h2><span class="tape">The Rail</span></h2><p>Tap a ticket.</p></div>
+    <div class="legend"><span><b class="c-sent">SENT</b> shipped</span><span><b class="c-fire">FIRE</b> building</span><span><b class="c-hold">HOLD</b> yours</span></div>
+  </div>
+  <div class="railbox"><div class="railbar"><span>THE PASS</span></div><div class="tickets" id="tickets"></div></div>
+  <div class="pass" id="pass" aria-live="polite"><div class="steam" aria-hidden="true"><i></i><i></i><i></i></div><div class="plate" id="plate"></div></div>
+</div></section>
+
+<section class="g"><div class="w prep">
+  <div class="clip">
+    <h3>Prep list <span class="tape sm" style="vertical-align:middle">ARCHIE</span></h3>
+    <ul>
+      <li class="done"><span class="bx"></span><span class="t">Born and raised in Caracas</span></li>
+      <li class="done"><span class="bx"></span><span class="t">15 years in professional kitchens</span></li>
+      <li class="done"><span class="bx"></span><span class="t">Sous chef in Toronto</span></li>
+      <li class="done"><span class="bx"></span><span class="t">Got tired of napkin math, built Cashout</span></li>
+      <li class="done"><span class="bx"></span><span class="t">Shipped a game, a bar app, and a client store</span></li>
+      <li><span class="bx"></span><span class="t">Get Burp on TestFlight</span></li>
+      <li><span class="bx"></span><span class="t">Join a team that ships</span></li>
+    </ul>
+    <p class="note">Mise en place: done. Ready for service.</p>
+  </div>
+  <div class="why">
+    <p class="big">Still new. Still hungry.</p>
+    <p>I’m looking for my first developer job, on a team that builds apps people open every day. I learn fast, I work clean, and I don’t leave a ticket on the rail.</p>
+    <p>Off the clock: Real Madrid, Lord of the Rings, and too many jars fermenting on the counter.</p>
+  </div>
+</div></section>
+
+<section class="g" id="order"><div class="w">
+  <div class="sec-h"><div><h2><span class="tape">Fire a ticket</span></h2><p>Hiring, or just want to talk? Write it up like an order.</p></div></div>
+  <div class="pad"><span class="tape corner l" aria-hidden="true"></span><span class="tape corner r" aria-hidden="true"></span><span class="heard" id="heard" aria-hidden="true">HEARD!</span>
+    <form id="pad" novalidate>
+      <h3>Order pad</h3>
+      <label for="oCo">Table (your company)<input id="oCo" placeholder="Acme Inc." autocomplete="organization"></label>
+      <label for="oOrd">Order (the problem)<textarea id="oOrd" placeholder="Our onboarding has 11 steps"></textarea></label>
+      <label for="oMod">Mods<input id="oMod" placeholder="+ iOS, NO meetings"></label>
+      <button class="fire" type="submit">FIRE IT</button>
+    </form>
+    <div class="out" id="out">
+      <p style="margin:0">It prints on the rail, and you get an email ready to send.</p>
+      <span class="mail">arcadiovega1@gmail.com</span>
+      <div class="btns"><button class="btn" id="copyMail" type="button">Copy email</button></div>
+    </div>
+  </div>
+</div></section>
+
+<footer class="walkin g"><div class="w">
+  <div class="wtop"><h2><span class="tape">The walk-in</span></h2><p class="wsub">Links are on the shelf.</p></div>
+  <div class="cooler" id="cooler">
+    <div class="readout"><span>WALK-IN 01</span><span class="rr"><button class="dtog" id="dtog" type="button">Close door</button><b id="temp">3.0°C</b></span></div>
+    <div class="jamb">
+      <div class="inside">
+        <div class="coldlight" aria-hidden="true"></div>
+        <div class="strips" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="shelves">
+          <div class="shelf">
+            <a class="cambro" href="https://github.com/cholohotsauce" target="_blank" rel="noopener"><span class="lid" style="--lid:#2b2f34"></span><span class="tub"><span class="tape lbl">GitHub ↗</span><span class="date">all the code</span></span></a>
+            <a class="cambro" href="https://www.linkedin.com/in/arcadio-vega" target="_blank" rel="noopener"><span class="lid" style="--lid:#2a6fb0"></span><span class="tub"><span class="tape lbl">LinkedIn ↗</span><span class="date">the résumé-ish</span></span></a>
+            <span class="deli" aria-hidden="true" style="--fill:#c8321e;--h:62%"><span class="tape lbl xs">hot sauce</span></span>
+          </div>
+          <div class="shelf">
+            <button class="cambro wide" id="copyFoot" type="button"><span class="lid" style="--lid:#d23a3a"></span><span class="tub"><span class="tape lbl">arcadiovega1@gmail.com</span><span class="date" id="copyNote">tap to copy</span></span></button>
+            <div class="jar" aria-label="Burp, a fermentation tracker, still bubbling"><span class="jlid"></span><span class="glass"><i></i><i></i><i></i><i></i></span><span class="tape lbl sm">Burp · day 9</span></div>
+            
+          </div>
+        </div>
+        <div class="fog" aria-hidden="true"><i></i><i></i><i></i></div>
+      </div>
+      <div class="door" id="door">
+        <div class="dface">
+          <div class="dplate">WALK-IN COOLER</div>
+          <div class="porthole" aria-hidden="true"><span></span></div>
+          <div class="dial" aria-hidden="true"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="#f4f5f2" stroke="#1c1e21" stroke-width="5"/><g stroke="#1c1e21" stroke-width="2"><line x1="50" y1="12" x2="50" y2="20"/><line x1="22" y1="28" x2="28" y2="33"/><line x1="78" y1="28" x2="72" y2="33"/><line x1="14" y1="58" x2="22" y2="56"/><line x1="86" y1="58" x2="78" y2="56"/></g><path d="M30 26a36 36 0 0 1 40 0" stroke="#2fbf71" stroke-width="6" fill="none"/><text x="50" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#1c1e21">°C</text><g class="needle"><line x1="50" y1="50" x2="50" y2="18" stroke="#c4262b" stroke-width="3" stroke-linecap="round"/></g><circle cx="50" cy="50" r="5" fill="#1c1e21"/></svg></div>
+          <span class="sign">Close the door. We’re not cooling the street.</span>
+          
+          <button class="lever" id="lever" type="button" aria-controls="door" aria-expanded="true"><span class="bar"></span><span class="hint">pull</span></button>
+          <div class="kick" aria-hidden="true"></div>
+        </div>
+        <div class="dback" aria-hidden="true"></div><span class="hinge h1" aria-hidden="true"></span><span class="hinge h2" aria-hidden="true"></span>
+      </div>
+    </div>
+  </div>
+  <div class="fine"><span>Kitchen’s open · arcadiovega.com</span><span>Made by hand, in Toronto</span></div>
+</div></footer>
+
+<template id="img-burp"><img src="shots/burp-1.webp" alt="Burp app screen" width="600" height="1083" loading="lazy" decoding="async"><img src="shots/burp-2.webp" alt="Burp app screen" width="600" height="1304" loading="lazy" decoding="async"><img src="shots/burp-3.webp" alt="Burp app screen" width="600" height="1304" loading="lazy" decoding="async"><img src="shots/burp-4.webp" alt="Burp app screen" width="600" height="1304" loading="lazy" decoding="async"></template>
+<template id="img-burpicon"><img src="shots/burp-icon.webp" alt="Burp app icon" width="360" height="360" loading="lazy" decoding="async"></template>
+<template id="img-cashout"><img src="shots/cashout-1.webp" alt="Cashout Calculator screen" width="600" height="1286" loading="lazy" decoding="async"><img src="shots/cashout-2.webp" alt="Cashout Calculator screen" width="600" height="1286" loading="lazy" decoding="async"></template>
+<template id="img-ace"><img src="shots/ace-1.webp" alt="Ace Bartender screen" width="600" height="1301" loading="lazy" decoding="async"><img src="shots/ace-2.webp" alt="Ace Bartender screen" width="600" height="1301" loading="lazy" decoding="async"></template>
+<template id="img-wolf"><img src="shots/wherewolf-1.webp" alt="WhereWolf screen" width="600" height="1301" loading="lazy" decoding="async"><img src="shots/wherewolf-2.webp" alt="WhereWolf screen" width="600" height="1301" loading="lazy" decoding="async"></template>
+<template id="img-ghost"><img src="shots/ghost-1.webp" alt="The Miracle Ghost site" width="600" height="1301" loading="lazy" decoding="async"><img src="shots/ghost-2.webp" alt="The Miracle Ghost site" width="600" height="1301" loading="lazy" decoding="async"></template>
+
+<script>
+(function(){
+  function lastSat9(){var n=new Date(),t=new Date(n);t.setDate(n.getDate()-((n.getDay()+1)%7));t.setHours(9,0,0,0);if(t>n)t.setDate(t.getDate()-7);return t}
+  var T=[
+    {id:'cashout',tbl:'TBL 01',when:'1:04 AM',st:'sent',r:-1.4,lines:[['1x','tip split on a napkin']],mods:['+ 6 servers arguing','NO calculator'],
+      note:'the one that started it',name:'Cashout Calculator',kind:'Web app · live',noticed:'End-of-shift tip-out math was slow, and one wrong number started an argument.',idea:'Tonight’s tips in, a fair split out, in seconds.',
+      plated:'My own crew used it at close. It is the project that made me a developer.',links:[['Open app','https://cholohotsauce.github.io/cashout-calculator/'],['Code','https://github.com/cholohotsauce/cashout-calculator']],img:'cashout'},
+    {id:'widget',tbl:'TBL 02',when:'SAT',st:'fire',r:1.1,since:lastSat9(),lines:[['1x','cashout, on the home screen']],mods:['+ SwiftUI','+ WidgetKit'],
+      name:'Cashout Widget',kind:'Native iOS · weekend build #1',noticed:'At close, nobody wants to find a bookmark. They want the number.',idea:'Tonight’s split, one tap from the home screen.',
+      plated:'Cooking now. SwiftUI app plus a WidgetKit widget.',links:[]},
+    {id:'ace',tbl:'TBL 03',when:'FRI 9 PM',st:'sent',r:-.5,lines:[['1x','bartender flipping a binder']],mods:['+ 40 tickets waiting'],
+      note:'Friday-proof',name:'Ace Bartender',kind:'Web app · SwiftUI next',noticed:'Specs and garnishes live on paper, and paper is slow on a Friday.',idea:'A pocket guide fast enough for a Friday rush.',
+      plated:'Specs, builds and garnish notes. A native SwiftUI version is next.',links:[['Code','https://github.com/cholohotsauce/ace-bartender-app']],img:'ace'},
+    {id:'wolf',tbl:'TBL 04',when:'GAME NIGHT',st:'sent',r:1.6,lines:[['1x','geography quiz, but fun']],mods:['+ deduction','NO multiple choice'],
+      name:'WhereWolf',kind:'Game · PWA',noticed:'Quizzes test memory. Deduction is the fun part.',idea:'Ask yes/no questions, rule out cards, name the secret before the wolf does.',
+      plated:'5 packs, 266 cards. React, TypeScript, Vite and Zustand. Installable and works offline.',links:[],img:'wolf'},
+    {id:'ghost',tbl:'TBL 05',when:'MIAMI',st:'sent',r:-1.8,lines:[['1x','artist with no shop']],mods:['+ website','+ Shopify'],
+      note:'real client, real $',name:'The Miracle Ghost',kind:'Client work · paid',noticed:'AES, a Miami graffiti artist, needed a home online and a store.',idea:'A site that feels like the work, and a shop the artist can run alone.',
+      plated:'I designed and built the website and set up the Shopify store.',links:[['Code','https://github.com/cholohotsauce/the-miracle-ghost-web']],img:'ghost'},
+    {id:'burp',tbl:'TBL 06',when:'DAY 3?',st:'fire',r:.9,since:new Date('2026-10-21T10:00:00'),scrawl:'still bubbling',lines:[['12x','jars on masking tape']],mods:['+ which one is day 3??'],
+      name:'Burp',kind:'Native iOS · almost plated',noticed:'Jars get forgotten, and “when did I start this?” has no answer.',idea:'Every jar gets a timer and a reminder to burp it.',
+      plated:'A native iPhone app in Swift and SwiftUI. Burp reminders, a brine calculator, tasting notes and photos, widgets, Live Activities and Siri shortcuts. Everything stays on the phone.',links:[],img:'burp',icon:true},
+    {id:'open',tbl:'TBL 07',when:'??',st:'hold',r:-.7,lines:[['1x','your weirdest internal tool']],mods:['+ YOUR problem here'],
+      name:'Your ticket',kind:'Waiting on you',noticed:'Every company has a problem everyone stopped seeing.',idea:'Tell me yours. I’ll put it on the rail.',
+      plated:'Use the order pad below.',links:[['Fire a ticket','#order']]}
+  ];
+  var stampTxt={sent:'SENT',fire:'FIRE',hold:'HOLD'}, col={sent:'var(--sent)',fire:'var(--fire)',hold:'var(--hold)'};
+  var box=document.getElementById('tickets'), plate=document.getElementById('plate');
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function iconSrc(){var i=document.getElementById('img-burpicon').content.querySelector('img');return i?i.getAttribute('src'):''}
+  function ticketHTML(t){
+    return '<div class="paper"><div class="hd"><span>'+esc(t.tbl)+'</span><span>'+esc(t.when)+'</span></div>'+
+      t.lines.map(function(l){return '<div class="ln'+(t.hand?' hand':'')+'"><span>'+esc(l[0])+'</span><span>'+esc(l[1])+'</span></div>'}).join('')+
+      t.mods.map(function(m){return '<div class="md">'+esc(m)+'</div>'}).join('')+
+      (t.scrawl?'<span class="scr">'+esc(t.scrawl)+'</span>':'')+(t.since?'<span class="tm" data-since="'+t.since.getTime()+'"></span>':'')+
+      (t.icon?'<img class="tkicon" src="'+iconSrc()+'" alt="">':'')+'<span class="stamp" style="color:'+col[t.st]+'">'+stampTxt[t.st]+'</span></div>';
+  }
+  function render(){
+    box.innerHTML='';
+    T.forEach(function(t,i){var b=document.createElement('button');b.className='tk'+(t.isNew?' new':'');b.style.setProperty('--r',t.r+'deg');
+      b.setAttribute('aria-pressed','false');b.style.animationDelay=(i*90)+'ms';b.setAttribute('aria-label',t.tbl+', '+t.name+', '+stampTxt[t.st]);b.innerHTML=ticketHTML(t);
+      b.addEventListener('click',function(){pull(i,true)});box.appendChild(b);});
+    var c=function(s){return T.filter(function(t){return t.st===s}).length};
+    document.getElementById('sAll').textContent=T.length;document.getElementById('sSent').textContent=c('sent');
+    document.getElementById('sFire').textContent=c('fire');document.getElementById('sHold').textContent=c('hold');
+    tick();
+  }
+  function pull(i,ring){
+    [].forEach.call(box.children,function(b,j){b.setAttribute('aria-pressed',j===i)});
+    var t=T[i], right;
+    if(t.img){var tpl=document.getElementById('img-'+t.img);right='<div class="shots">'+tpl.innerHTML+'</div>'}
+    else right='<div class="oven"><div><b>'+(t.st==='hold'?'ON HOLD':'IN THE OVEN')+'</b>'+(t.st==='hold'?'This one’s waiting for your order.':'No photos until it plates.')+'</div></div>';
+    plate.classList.remove('in');void plate.offsetWidth;plate.classList.add('in');
+    plate.innerHTML='<span class="slam" style="color:'+col[t.st]+'">'+stampTxt[t.st]+'</span>'+(t.note?'<span class="tape note">'+esc(t.note)+'</span>':'')+'<div>'+(t.icon?'<img class="appicon" src="'+iconSrc()+'" alt="Burp app icon">':'')+'<span class="kind">'+esc(t.kind)+'</span><h3>'+esc(t.name)+'</h3>'+
+      '<dl><dt>Noticed</dt><dd>'+esc(t.noticed)+'</dd><dt>The idea</dt><dd><span class="tape idea">'+esc(t.idea)+'</span></dd><dt>Plated</dt><dd>'+esc(t.plated)+'</dd></dl>'+
+      '<div class="btns">'+t.links.map(function(l){var ext=l[1].charAt(0)!=='#';return '<a class="btn" href="'+l[1]+'"'+(ext?' target="_blank" rel="noopener"':'')+'>'+esc(l[0])+(ext?' ↗':'')+'</a>'}).join('')+'</div></div>'+right;
+    if(ring){var ps=document.getElementById('pass');ps.classList.remove('shake');void ps.offsetWidth;ps.classList.add('shake');if(t.st==='sent')ding();}
+  }
+  function fmt(ms){var s=Math.max(0,Math.floor(ms/1000)),d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60),x=s%60;
+    function p(n){return String(n).padStart(2,'0')}return (d?d+'d ':'')+p(h)+':'+p(m)+':'+p(x)}
+  function tick(){[].forEach.call(document.querySelectorAll('.tm'),function(e){e.textContent='on fire '+fmt(Date.now()-(+e.dataset.since))})}
+  var clk=document.getElementById('clock');function ctick(){clk.textContent=new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}
+  ctick();setInterval(function(){tick();ctick()},1000);
+  // replay hand-drawn arrows when they scroll into view
+  if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove('go');void e.target.getBoundingClientRect();e.target.classList.add('go')}})},{threshold:.6});
+    [].forEach.call(document.querySelectorAll('.draw'),function(el){io.observe(el)})}
+
+  // Service bell (WebAudio, only after a click)
+  var ac=null, on=true, bell=document.getElementById('bell');
+  function ding(){if(!on)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();var t0=ac.currentTime;
+    [2093,3136,4186].forEach(function(f,k){var o=ac.createOscillator(),g=ac.createGain();o.type='sine';o.frequency.value=f;
+      g.gain.setValueAtTime(.0001,t0);g.gain.exponentialRampToValueAtTime(.18/(k+1),t0+.01);g.gain.exponentialRampToValueAtTime(.0001,t0+1.4);
+      o.connect(g);g.connect(ac.destination);o.start(t0);o.stop(t0+1.5)})}catch(e){}}
+  bell.addEventListener('click',function(){on=!on;bell.setAttribute('aria-pressed',on);document.getElementById('bellTxt').textContent=on?'Bell on':'Bell off';if(on)ding()});
+
+  // Order pad
+  var pad=document.getElementById('pad'), out=document.getElementById('out');
+  function copy(text,btn,label){function ok(){btn.textContent='Copied';setTimeout(function(){btn.textContent=label},1500)}
+    try{navigator.clipboard.writeText(text).then(ok,function(){btn.textContent='Select and copy'})}catch(e){btn.textContent='Select and copy'}}
+  document.getElementById('copyMail').addEventListener('click',function(e){copy('arcadiovega1@gmail.com',e.currentTarget,'Copy email')});
+  pad.addEventListener('submit',function(e){e.preventDefault();
+    var co=document.getElementById('oCo').value.trim()||'Your company', ord=document.getElementById('oOrd').value.trim()||'A problem everyone stopped seeing', mod=document.getElementById('oMod').value.trim();
+    var n=T.length+1, now=new Date(), hh=now.toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}).toUpperCase();
+    T.push({id:'u'+n,tbl:'TBL '+String(n).padStart(2,'0'),when:hh,st:'hold',r:(Math.random()*3-1.5).toFixed(1),isNew:true,hand:true,lines:[['1x',ord.slice(0,60)]],mods:(mod?mod.split(',').map(function(s){return s.trim()}).filter(Boolean).slice(0,3):['+ for '+co]),
+      name:co,kind:'New ticket · on hold',noticed:ord,idea:'Archie reads every ticket.',plated:'Send the email to fire it for real.',links:[]});
+    render();pull(T.length-1,false);ding();var hd=document.getElementById('heard');hd.classList.remove('go');void hd.offsetWidth;hd.classList.add('go');
+    document.getElementById('rail').scrollIntoView({block:'start'});box.scrollLeft=box.scrollWidth;
+    var body='Hi Archie,\n\nTable: '+co+'\nOrder: '+ord+(mod?'\nMods: '+mod:'')+'\n\nLet’s talk.';
+    out.innerHTML='<p style="margin:0"><b>Printed.</b> Send this and I’ll pick it up.</p><span class="mail">arcadiovega1@gmail.com</span><pre id="mailBody"></pre><div class="btns"><button class="btn" id="copyAll" type="button">Copy email text</button><button class="btn ghost" id="copyAddr" type="button">Copy address</button></div>';
+    document.getElementById('mailBody').textContent='Subject: New ticket from '+co+'\n\n'+body;
+    document.getElementById('copyAll').addEventListener('click',function(ev){copy('Subject: New ticket from '+co+'\n\n'+body,ev.currentTarget,'Copy email text')});
+    document.getElementById('copyAddr').addEventListener('click',function(ev){copy('arcadiovega1@gmail.com',ev.currentTarget,'Copy address')});
+  });
+
+  // Printer
+  var pr=document.getElementById('printer'), pt=document.getElementById('pt');
+  document.getElementById('ptTime').textContent=new Date().toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}).toUpperCase();
+  function chatter(){if(!on)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();var t0=ac.currentTime;
+    for(var k=0;k<14;k++){var len=.035,buf=ac.createBuffer(1,Math.floor(ac.sampleRate*len),ac.sampleRate),d=buf.getChannelData(0);for(var j=0;j<d.length;j++)d[j]=(Math.random()*2-1)*(1-j/d.length);
+      var src=ac.createBufferSource(),g=ac.createGain(),bp=ac.createBiquadFilter();bp.type='bandpass';bp.frequency.value=2600;g.gain.value=.25;src.buffer=buf;src.connect(bp);bp.connect(g);g.connect(ac.destination);src.start(t0+k*.075)}}catch(e){}}
+  function reprint(){pt.style.animation='none';void pt.offsetWidth;pt.style.animation='feed 1.4s steps(16,end) both';chatter()}
+  pr.addEventListener('click',reprint);pr.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();reprint()}});
+  // Walk-in
+  var tmp=document.getElementById('temp');setInterval(function(){tmp.textContent=(2.8+Math.random()*.5).toFixed(1)+'°C'},2600);
+  document.getElementById('copyFoot').addEventListener('click',function(){var n=document.getElementById('copyNote');try{navigator.clipboard.writeText('arcadiovega1@gmail.com').then(function(){n.textContent='copied! talk soon'},function(){n.textContent='select the address to copy'})}catch(e){n.textContent='select the address to copy'}});
+  // Walk-in door: open at rest; if we can watch scrolling, close it and swing it open on arrival
+  var cooler=document.getElementById('cooler'), lever=document.getElementById('lever');
+  var dtog=document.getElementById('dtog');function setDoor(open){cooler.classList.toggle('closed',!open);lever.setAttribute('aria-expanded',open);dtog.textContent=open?'Close door':'Open door'}
+  dtog.addEventListener('click',function(){setDoor(cooler.classList.contains('closed'))});
+  lever.addEventListener('click',function(){setDoor(cooler.classList.contains('closed'))});
+  if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    setDoor(false);
+    var dio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){setTimeout(function(){setDoor(true)},500);dio.disconnect()}})},{threshold:.55});
+    dio.observe(cooler);
+  }
+  document.getElementById('door').addEventListener('click',function(e){if(cooler.classList.contains('closed')&&!e.target.closest('.lever'))setDoor(true)});
+  render(); pull(0,false);
+})();
+</script>
+
 <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>window.si=window.si||function(){(window.siq=window.siq||[]).push(arguments)};</script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
-</head>
-<body>
-<main>
-  <div class="printer printing" id="printer" aria-hidden="true"><span class="plate">ARCHIE-POS 2.0</span><span class="led"><i></i>READY</span></div>
-  <div class="slot">
-    <article class="paper print" id="paper">
-      <header class="c">
-        <h1><span class="dh">ARCHIE VEGA</span><br>JUNIOR iOS DEVELOPER</h1>
-        <div class="small">arcadiovega.com · Caracas → Toronto</div>
-      </header>
-      <hr class="rule">
-      <div class="row small"><span id="ord">ORDER #2026</span><span id="ts"></span></div>
-      <div class="row small"><span>TABLE: RECRUITERS</span><span>SERVER: ARCHIE</span></div>
-      <hr class="rule dbl">
-
-      <section>
-        <h2 class="sec">FROM THE KITCHEN</h2>
-        <details>
-          <summary><div class="row"><span><span class="q">1</span><span class="nm">CHEF, 15 YRS</span></span><span>✓</span></div>
-            <div class="mods">+ sous chef, Toronto<br>+ hot side, every rush</div></summary>
-          <div class="det"><p>Fifteen years in professional kitchens. Sous chef in Toronto since 2021. Calm when the tickets pile up.</p></div>
-        </details>
-        <details>
-          <summary><div class="row"><span><span class="q">1</span><span class="nm">FERMENTATION NERD</span></span><span>∞</span></div>
-            <div class="mods">+ lacto ferments<br>+ taste every day</div></summary>
-          <div class="det"><p>My favourite part of the kitchen. Start something, wait, taste, adjust. Same loop I use to build software.</p></div>
-        </details>
-      </section>
-
-      <section>
-        <h2 class="sec">APPS</h2>
-        <details>
-          <summary><div class="row"><span><span class="q">1</span><span class="nm">CASHOUT CALCULATOR</span></span><span>LIVE</span></div>
-            <div class="mods">+ fair tip split<br>NO napkin math</div></summary>
-          <div class="det"><p>End-of-night tip-out math for restaurant crews. I built it to make my own crew’s nights easier, and it’s what made me a developer.</p>
-            <div class="shots"><img src="shots/cashout-1.webp" alt="Tip entry and front-of-house staff selection" width="600" height="1300" loading="lazy" decoding="async"><img src="shots/cashout-2.webp" alt="Cash-out results with the staff breakdown" width="600" height="1300" loading="lazy" decoding="async"></div>
-            <div class="lk"><a href="https://cholohotsauce.github.io/cashout-calculator/" target="_blank" rel="noopener">Open app ↗</a><a href="https://github.com/cholohotsauce/cashout-calculator" target="_blank" rel="noopener">Code ↗</a></div></div>
-        </details>
-        <details>
-          <summary><div class="row"><span><span class="q">1</span><span class="nm">ACE BARTENDER</span></span><span>WEB</span></div>
-            <div class="mods">+ specs, builds, garnish<br>+ SwiftUI rebuild (FIRE)</div></summary>
-          <div class="det"><p>A pocket guide for bartenders, fast enough for a Friday rush. The web version works today. A native SwiftUI version is in progress.</p>
-            <div class="shots"><img src="shots/ace-1.webp" alt="All Drinks list grouped A to Z with spirit filters" width="600" height="1300" loading="lazy" decoding="async"><img src="shots/ace-2.webp" alt="Aviation spec with ingredients and method" width="600" height="1300" loading="lazy" decoding="async"><img src="shots/ace-3.webp" alt="Search results for mezcal" width="600" height="1300" loading="lazy" decoding="async"></div>
-            <div class="lk"><a href="https://github.com/cholohotsauce/ace-bartender-app" target="_blank" rel="noopener">Code ↗</a></div></div>
-        </details>
-        <details>
-          <summary><div class="row"><span><span class="q">1</span><span class="nm">WHEREWOLF</span></span><span>GAME</span></div>
-            <div class="mods">+ 5 packs, 266 cards<br>SUB for GeoWho</div></summary>
-          <div class="det"><p>A Guess Who?-style deduction game. Ask yes/no questions, rule out cards, and name the secret before the wolf does. React, TypeScript, Vite and Zustand. Installable, and it works offline. Source is private.</p>
-            <div class="shots"><img src="shots/wherewolf-1.webp" alt="WhereWolf home screen with the Daily World Capitals card and five packs" width="600" height="1300" loading="lazy" decoding="async"><img src="shots/wherewolf-2.webp" alt="A World Capitals game after one question, with 31 cards left on the map" width="600" height="1300" loading="lazy" decoding="async"><img src="shots/wherewolf-3.webp" alt="The Ask the wolf sheet with yes/no questions" width="600" height="1300" loading="lazy" decoding="async"></div></div>
-        </details>
-        <details>
-          <summary><div class="row"><span><span class="q">1</span><span class="nm">THE MIRACLE GHOST</span></span><span>CLIENT</span></div>
-            <div class="mods">+ website + Shopify<br>FOR: AES, Miami</div></summary>
-          <div class="det"><p>Paid client work for AES, a Miami graffiti artist. I designed and built the website and set up the Shopify store.</p>
-            <div class="shots"><img src="shots/ghost-1.webp" alt="The 3D ghost on the home page" width="600" height="1300" loading="lazy" decoding="async"><img src="shots/ghost-2.webp" alt="The contact and inquiries page" width="600" height="1300" loading="lazy" decoding="async"></div>
-            <div class="lk"><a href="https://github.com/cholohotsauce/the-miracle-ghost-web" target="_blank" rel="noopener">Code ↗</a></div></div>
-        </details>
-      </section>
-
-      <section>
-        <h2 class="sec">SPECIALS</h2>
-        <details>
-          <summary><div class="row"><span><span class="q">1</span><span class="nm">BURP (iOS)</span></span><span class="tag red">IN THE OVEN</span></div>
-            <div class="mods">+ SwiftUI + SwiftData<br>+ Live Activities</div></summary>
-          <div class="det"><p>A fermentation tracker for iPhone. Jar timers, burp reminders, a brine calculator and a Dynamic Island countdown. Coming soon.</p></div>
-        </details>
-      </section>
-
-      <section>
-        <h2 class="sec">SIDES</h2>
-        <div class="sides">SWIFT · SWIFTUI · XCODE · JAVASCRIPT · REACT · TYPESCRIPT · SHOPIFY · GIT</div>
-      </section>
-
-      <hr class="rule">
-      <div class="row"><span>SUBTOTAL</span><span>4 APPS SHIPPED</span></div>
-      <div class="row"><span>TAX (EGO)</span><span>0.00</span></div>
-      <div class="row"><span>ALLERGIES</span><span>NONE. LOVES FEEDBACK.</span></div>
-      <hr class="rule">
-      <div id="tip-l">ADD A TIP:</div>
-      <div class="tips" role="radiogroup" aria-labelledby="tip-l">
-        <button class="tip" role="radio" aria-checked="false" data-tip="AN INTERVIEW"><span class="box" aria-hidden="true">[ ]</span><span>AN INTERVIEW</span></button>
-        <button class="tip" role="radio" aria-checked="true" data-tip="A COFFEE CHAT"><span class="box" aria-hidden="true">[x]</span><span>A COFFEE CHAT</span></button>
-        <button class="tip" role="radio" aria-checked="false" data-tip="A REFERRAL"><span class="box" aria-hidden="true">[ ]</span><span>A REFERRAL</span></button>
-      </div>
-      <hr class="rule dbl">
-      <div class="row total"><span>TOTAL</span><span>1 iOS DEV</span></div>
-      <div class="row small"><span>TIP</span><span id="tipline">A COFFEE CHAT</span></div>
-      <div class="c"><span class="stamp" id="stamp">READY TO HIRE</span></div>
-      <div class="banner">*** WHAT’S NEW IN v2.0 ***<br>NOW BUILDS iOS APPS</div>
-      <div class="barcode" aria-hidden="true"></div>
-      <div class="c small foot"><a href="https://github.com/cholohotsauce" target="_blank" rel="noopener">github.com/cholohotsauce</a><br><a href="https://www.linkedin.com/in/arcadio-vega" target="_blank" rel="noopener">linkedin.com/in/arcadio-vega</a><br><br>THANK YOU, COME AGAIN<br>CUSTOMER COPY</div>
-
-      <div class="tear" aria-hidden="true">✂ TEAR HERE</div>
-      <div class="coupon" id="coupon">
-        <div class="c">
-          <div class="small">COUPON · NO EXPIRY</div>
-          <div class="good">GOOD FOR <span id="cptip">ONE COFFEE CHAT</span><br>WITH ARCHIE</div>
-          <div class="mail" id="mail">arcadiovega1@gmail.com</div>
-          <button class="tearbtn" id="tearbtn">TEAR OFF + COPY EMAIL</button>
-        </div>
-      </div>
-    </article>
-  </div>
-  <div class="under"><button id="reprint">Reprint</button><span>Tap any line for details</span></div>
-  <div class="under"><a href="/iphone.html">Miss the iPhone version? It’s still here.</a></div>
-</main>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-<script>
-(function(){
-  function pad(n){return String(n).padStart(2,'0')}
-  function stampTime(){var d=new Date(),h=d.getHours(),ap=h>=12?'PM':'AM';h=h%12||12;
-    document.getElementById('ts').textContent=pad(d.getMonth()+1)+'/'+pad(d.getDate())+'/'+d.getFullYear()+' '+h+':'+pad(d.getMinutes())+' '+ap;
-    document.getElementById('ord').textContent='ORDER #'+(1000+(d.getHours()*60+d.getMinutes())%9000)}
-  stampTime();
-
-  var toast=document.getElementById('toast');
-  function say(t){toast.textContent=t;toast.classList.add('show');clearTimeout(say.t);say.t=setTimeout(function(){toast.classList.remove('show')},1800)}
-
-  /* tip */
-  var stamp=document.getElementById('stamp');
-  document.querySelectorAll('.tip').forEach(function(b){b.addEventListener('click',function(){
-    document.querySelectorAll('.tip').forEach(function(x){var on=x===b;x.setAttribute('aria-checked',on);x.querySelector('.box').textContent=on?'[x]':'[ ]'});
-    var t=b.dataset.tip;document.getElementById('tipline').textContent=t;document.getElementById('cptip').textContent=t.replace(/^AN? /,'ONE ');
-    stamp.classList.remove('pop');void stamp.offsetWidth;stamp.classList.add('pop');
-  })});
-
-  /* coupon */
-  var coupon=document.getElementById('coupon'),mail=document.getElementById('mail');
-  document.getElementById('tearbtn').addEventListener('click',function(){
-    coupon.classList.add('torn');
-    function sel(){var r=document.createRange();r.selectNodeContents(mail);var s=getSelection();s.removeAllRanges();s.addRange(r);say('Torn off. Email selected, copy it from there.')}
-    try{navigator.clipboard.writeText('arcadiovega1@gmail.com').then(function(){say('Torn off. Email copied. Heard, Chef!')},sel)}catch(e){sel()}
-  });
-
-  /* print */
-  var paper=document.getElementById('paper'),printer=document.getElementById('printer');
-  function done(){setTimeout(function(){printer.classList.remove('printing')},1800)}
-  done();
-  document.getElementById('reprint').addEventListener('click',function(){
-    coupon.classList.remove('torn');stampTime();
-    paper.classList.remove('print');void paper.offsetWidth;paper.classList.add('print');
-    printer.classList.add('printing');done();
-  });
-})();
-</script>
 </body>
 </html>
