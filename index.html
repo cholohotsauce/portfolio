@@ -473,7 +473,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
     <h2 class="name"><img src="/w/i-cash.webp" alt="">Ace Cashout</h2>
     <div class="cap">
       <p class="about">Tips used to get split by hand at close, on a phone calculator. Now the closing shift enters the tips, taps who worked, and gets an exact split, even offline.</p>
-      <div class="meta"><span>Web app</span><span>Used every night at The Ace</span><a href="https://acecashout.com" target="_blank" rel="noopener">Visit acecashout.com ↗</a><button class="story-btn" type="button" id="storyOpen">Read the story →</button></div>
+      <div class="meta"><span>Web app</span><span>Used at The Ace since March 2025, about <span id="services">700</span> services so far</span><a href="https://acecashout.com" target="_blank" rel="noopener">Visit acecashout.com ↗</a><button class="story-btn" type="button" id="storyOpen">Read the story →</button></div>
     </div>
   </section>
 
@@ -669,6 +669,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
     [...dots.children].forEach((b, i) => b.classList.toggle('on', segs[i] === s));
     start(s);
     try { fit(); setTimeout(fit, 800); } catch (e) {}
+    try { if (s.id !== 'top' && !seen.has(s.id)) { seen.add(s.id); track('World', { name: s.dataset.name }); } } catch (e) {}
     const nx = segs[segs.indexOf(s) + 1]; if (nx) nx.querySelectorAll('video[data-src]').forEach(v => { if (!v.src) { v.src = v.dataset.src; v.preload = 'auto'; } });
   }
   const io = new IntersectionObserver(es => {
@@ -958,6 +959,24 @@ html.locked{overflow:hidden;scroll-snap-type:none}
     try { navigator.clipboard.writeText(mail).then(() => say('Email copied'), sel); } catch (e) { sel(); }
   }));
 
+
+  // ---- analytics: which worlds people reach and what they tap (Vercel Web Analytics custom events) ----
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  const track = (name, data) => { try { window.va('event', data ? { name, data } : { name }); } catch (e) {} };
+  const seen = new Set();
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="http"]');
+    if (a) track('Outbound link', { url: a.hostname + a.pathname.replace(/\/$/, '') });
+  });
+  document.getElementById('storyOpen').addEventListener('click', () => track('Read the story'));
+  document.querySelectorAll('#copy, #send').forEach(b => b.addEventListener('click', () => track('Copy email', { from: b.id === 'send' ? 'chat' : 'button' })));
+  document.querySelectorAll('.mini').forEach(m => m.addEventListener('click', () => track('Open site preview', { site: m.querySelector('.lbl b').textContent })));
+  document.querySelectorAll('.codebtn').forEach(b => b.addEventListener('click', () => track('Show the code', { world: b.closest('.seg').dataset.name })));
+  document.getElementById('island').addEventListener('click', () => track('Burp it'));
+  document.getElementById('mesa').addEventListener('click', e => { const b = e.target.closest('button'); if (b) track('Mesa', { mode: b.textContent }); });
+  document.getElementById('wall').addEventListener('pointerdown', () => { if (!seen.has('paint')) { seen.add('paint'); track('Paint the wall'); } }, { passive: true });
+  // services so far: about 8 a week since March 2025 (Arcadio's numbers), rounded down to the nearest 10
+  { const weeks = (Date.now() - new Date('2025-03-01T00:00:00-05:00')) / 6048e5; document.getElementById('services').textContent = (Math.floor(weeks * 8 / 10) * 10).toLocaleString('en-US'); }
 
   // ---- phone polish ----
   if (matchMedia('(pointer:coarse)').matches) { const h = document.querySelector('#wall .hint'); if (h) h.textContent = 'Drag sideways to paint'; }
