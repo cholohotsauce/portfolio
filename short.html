@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arcadio Vega · One page</title>
+<meta name="description" content="Arcadio Vega on one page: iOS and web projects, stack and contact.">
+<meta property="og:title" content="Arcadio Vega · One page">
+<meta property="og:description" content="iOS and web projects, stack and contact.">
+<meta property="og:image" content="https://arcadiovega.com/w/og.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%230a0a0a%27/%3E%3Ctext x=%2732%27 y=%2742%27 text-anchor=%27middle%27 font-family=%27Helvetica,Arial,sans-serif%27 font-weight=%27700%27 font-size=%2728%27 letter-spacing=%27-1%27 fill=%27%23ffffff%27%3EAV%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="/w/apple-touch-icon.png">
+<style>
+/* A plain one-page version for people skimming, and for tools that read text. */
+:root{--bg:#ffffff;--ink:#111111;--quiet:#666666;--line:#e6e6e6;color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root{--bg:#0d0d0d;--ink:#f2f2f2;--quiet:#9a9a9a;--line:#262626}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+main{width:min(720px,100%);margin:0 auto;padding:56px 20px 72px}
+h1{font-size:32px;line-height:1.15;letter-spacing:-.02em;margin:0 0 8px;font-weight:600}
+h2{font-size:15px;font-weight:600;margin:40px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+p{margin:0 0 10px}
+.lede{font-size:18px;color:var(--ink)}
+.quiet,small{color:var(--quiet)}
+a{color:inherit;text-underline-offset:3px;text-decoration-color:var(--quiet)}
+a:hover{text-decoration-color:currentColor}
+.p{display:grid;grid-template-columns:150px minmax(0,1fr);gap:4px 20px;padding:12px 0;border-bottom:1px solid var(--line)}
+.p:last-child{border-bottom:0}
+.p b{font-weight:600}
+.p small{display:block;margin-top:2px}
+.links{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:14px}
+.back{display:inline-block;margin-bottom:28px;font-size:14px;color:var(--quiet);text-decoration:none}
+@media (max-width:560px){.p{grid-template-columns:1fr}main{padding-top:36px}}
+</style>
+</head>
+<body>
+<main>
+  <a class="back" href="/">← Full site</a>
+  <h1>Arcadio Vega</h1>
+  <p class="lede">Fifteen years in professional kitchens, now building iPhone and web apps. From Caracas, now in Toronto. Looking for an iOS developer role.</p>
+  <div class="links"><a href="mailto:arcadiovega1@gmail.com">arcadiovega1@gmail.com</a><a href="https://github.com/cholohotsauce">GitHub</a><a href="https://www.linkedin.com/in/arcadio-vega">LinkedIn</a></div>
+
+  <h2>Projects</h2>
+  <div class="p"><div><b>Ace Cashout</b><small>Web app · in use</small></div><div><p>Splits a restaurant shift’s tips to the cent and pays them out each week. Used at The Ace since March 2025, about 8 services a week. The owner gets a payday view, a Thursday email and pay stubs.</p><small>Next.js, React, TypeScript, Postgres · <a href="https://acecashout.com">acecashout.com</a></small></div></div>
+  <div class="p"><div><b>Burp</b><small>iPhone app · in progress</small></div><div><p>A fermentation tracker: burp reminders, a brine salt calculator, tasting notes and photos, widgets, Live Activities and Siri Shortcuts. Data stays on the device.</p><small>Swift 6, SwiftUI, SwiftData, WidgetKit, ActivityKit, App Intents</small></div></div>
+  <div class="p"><div><b>La Cochina</b><small>iPhone game · in progress</small></div><div><p>Venezuelan partner dominoes. A pure Swift rules engine with seeded, replayable deals and unit tests, a SwiftUI table for iPhone and iPad, and fair bots.</p><small>Swift, SwiftUI, a Swift package for the engine</small></div></div>
+  <div class="p"><div><b>The Miracle Ghost</b><small>Client website · paid</small></div><div><p>A website and shop for AES, a Miami street artist featured in GTA VI, with an interactive 3D ghost and a wall visitors can paint.</p><small>Next.js, three.js, Shopify · <a href="https://themiracleghost.com">themiracleghost.com</a></small></div></div>
+  <div class="p"><div><b>Client sites</b><small>Websites</small></div><div><p>Sites for a restaurant (The Ace), a vet clinic (Huellas), a veterinary cardiologist (Dr. Lester Vega) and a writer (Walter Mehrer).</p><small>Next.js, HTML, JavaScript</small></div></div>
+
+  <h2>Stack</h2>
+  <p><b>iOS:</b> Swift, SwiftUI, SwiftData, WidgetKit, ActivityKit, App Intents, Swift Testing, XCTest</p>
+  <p><b>Web:</b> TypeScript, React, Next.js, Postgres, Tailwind, Vercel</p>
+
+  <h2>Before code</h2>
+  <p>Fifteen years in professional kitchens. Coding clicked when I built the tip calculator for the closing shift at The Ace.</p>
+</main>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>
