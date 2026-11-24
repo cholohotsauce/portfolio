@@ -87,6 +87,8 @@ a{color:inherit}
 .d:hover img,.d:focus-visible img{transform:translateY(-.05em) rotate(-5deg)}
 .sentence.focus .lead,.sentence.focus .d:not(:hover):not(:focus-visible){color:var(--mute)}
 .sentence.focus .d:not(:hover):not(:focus-visible) img{opacity:.45}
+.skim{justify-self:center;font-size:13px;color:var(--quiet);text-decoration:none;margin-top:-8px}
+.skim:hover{color:var(--text)}
 .cue{all:unset;cursor:pointer;justify-self:center;display:grid;justify-items:center;gap:4px;font-size:13px;color:var(--quiet)}
 .cue i{font-style:normal;animation:nudge 2s var(--ease) infinite}
 @keyframes nudge{50%{transform:translateY(4px)}}
@@ -278,7 +280,9 @@ a{color:inherit}
 @keyframes pop{from{opacity:0;transform:scale(.6) translateY(8px)}}
 .read{align-self:flex-end;font-size:11px;color:#8e8e93;margin-top:2px;flex:none}
 .compose{display:flex;gap:8px;align-items:center;margin-top:10px}
-.compose .field{flex:1;min-width:0;padding:8px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);font-size:14px;color:#c7c7cc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;user-select:all}
+.compose .field{all:unset;flex:1;min-width:0;padding:8px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);font-size:16px;color:#f2f2f4}
+.compose .field::placeholder{color:#8e8e93}
+.compose .field:focus{box-shadow:inset 0 0 0 1px #0a84ff}
 .compose .send{all:unset;cursor:pointer;flex:none;width:30px;height:30px;border-radius:50%;background:#0a84ff;color:#fff;display:grid;place-items:center;font-size:16px;font-weight:700;transition:transform .2s}
 .compose .send:hover{transform:scale(1.08)}
 .compose .send:focus-visible{outline:2px solid #fff;outline-offset:2px}
@@ -316,6 +320,10 @@ a{color:inherit}
 .st-cards p,.st-two p{font-size:15px;margin:0}
 .st-out{font-size:19px;color:#f2ece0!important}
 .st-stack{font-size:14px;color:#9e9585!important}
+.sheet[data-k=burp]{background:#1c1640;color:#fff}.sheet[data-k=coch]{background:#13261d;color:#f3ebdd}
+.st-land{max-height:none;aspect-ratio:932/430;object-fit:cover}
+.sheet code{font-family:var(--mono);font-size:.88em;color:#f2ece0}
+.meta .story-btn{justify-self:start}
 .st-go{margin-top:16px;color:#f2ece0;box-shadow:inset 0 0 0 1px rgba(242,236,224,.35)}
 html.locked{overflow:hidden;scroll-snap-type:none}
 @media (max-width:720px){.st-two,.st-cards{grid-template-columns:1fr}.st-shots{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.story-btn{justify-self:center}}
@@ -453,6 +461,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
   <section class="seg intro on" id="top" data-name="Intro" data-page="#ffffff" data-text="#0a0a0a" data-acc="#0a0a0a">
     <h1 class="sentence" id="sentence"><span class="lead">Arcadio Vega</span> <span class="w">cooked for fifteen years, then started building</span> <span class="nw"><a class="d" href="#cashout"><img src="/w/i-cash.webp" alt=""><span>Ace Cashout</span></a><span class="w">,</span></span> <span class="nw"><a class="d" href="#burp"><img src="/w/i-burp.webp" alt=""><span>Burp</span></a><span class="w">,</span></span> <a class="d" href="#cochina"><img src="/w/i-coch.webp" alt=""><span>La Cochina</span></a> <span class="w">and</span> <a class="d" href="#ghost"><img src="/w/i-ghost.webp" alt=""><span>The Miracle Ghost</span></a> <span class="w">in</span> <span class="nw"><a class="d" href="#hello"><span>Toronto</span></a><span class="w">.</span></span></h1>
     <button class="cue" type="button" data-go="cashout">scroll<i>↓</i></button>
+    <a class="skim" href="/short.html">Short on time? One page →</a>
   </section>
 
   <section class="seg" id="cashout" data-name="Ace Cashout" data-page="#15130f" data-text="#f2ece0" data-acc="#d9b46a" data-world="cash">
@@ -473,7 +482,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
     <h2 class="name"><img src="/w/i-cash.webp" alt="">Ace Cashout</h2>
     <div class="cap">
       <p class="about">Tips used to get split by hand at close, on a phone calculator. Now the closing shift enters the tips, taps who worked, and gets an exact split, even offline.</p>
-      <div class="meta"><span>Web app</span><span>Used at The Ace since March 2025, about <span id="services">700</span> services so far</span><a href="https://acecashout.com" target="_blank" rel="noopener">Visit acecashout.com ↗</a><button class="story-btn" type="button" id="storyOpen">Read the story →</button></div>
+      <div class="meta"><span>Web app</span><span>Used at The Ace since March 2025, about <span id="services">700</span> services so far</span><a href="https://acecashout.com" target="_blank" rel="noopener">Visit acecashout.com ↗</a><button class="story-btn" type="button" id="storyOpen" data-story="cash">Read the story →</button></div>
     </div>
   </section>
 
@@ -493,7 +502,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
     <h2 class="name"><img loading="lazy" decoding="async" src="/w/i-burp.webp" alt="">Burp</h2>
     <div class="cap">
       <p class="about">A native iPhone app for ferments. It reminds me which jar needs a burp, works out the salt for a brine, and keeps tasting notes and photos.</p>
-      <div class="meta"><span>iPhone app · SwiftUI</span><span>In progress</span></div>
+      <div class="meta"><span>iPhone app · SwiftUI</span><span>In progress</span><button class="story-btn" type="button" data-story="burp">Read the build notes →</button></div>
     </div>
   </section>
 
@@ -514,7 +523,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
     <h2 class="name mark" aria-label="La Cochina">La C<svg class="snout" viewBox="0 0 44 36" aria-hidden="true"><ellipse cx="22" cy="18" rx="21" ry="17" fill="#E9B9A6" stroke="#C98F7C" stroke-width="1.6"/><ellipse cx="15.5" cy="18" rx="3.6" ry="6.2" fill="#1B1713"/><ellipse cx="28.5" cy="18" rx="3.6" ry="6.2" fill="#1B1713"/></svg>china</h2>
     <div class="cap">
       <p class="about">Venezuelan dominoes for iPhone, played the Caracas way. “La cochina” is the double-six, and it also means pig. Four players in two teams, the double-six opens, first team to 100 wins.</p>
-      <div class="meta"><span>iPhone game · SwiftUI</span><span>In progress</span><span>Modo Calle: the street-table version, to 75</span></div>
+      <div class="meta"><span>iPhone game · SwiftUI</span><span>In progress</span><span>Modo Calle: the street-table version, to 75</span><button class="story-btn" type="button" data-story="coch">Read the build notes →</button></div>
     </div>
   </section>
 
@@ -551,7 +560,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
         <div class="who"><span class="av">AV</span><b>Arcadio Vega ›</b></div>
         <p class="when"><b>iMessage</b><br>Today <span id="chatTime"></span></p>
         <div class="msgs" id="msgs" aria-live="off"></div>
-        <div class="compose"><span class="field" id="field">arcadiovega1@gmail.com</span><button class="send" type="button" id="send" aria-label="Copy my email">↑</button></div>
+        <form class="compose" id="order"><input class="field" id="field" maxlength="120" autocomplete="off" enterkeyhint="send" placeholder="Leave an order for the chef…" aria-label="Leave an order for the chef"><button class="send" type="submit" aria-label="Send">↑</button></form>
       </div>
     </div>
     <h2 class="name">Say hi</h2>
@@ -566,6 +575,10 @@ html.locked{overflow:hidden;scroll-snap-type:none}
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="stTitle" hidden>
   <div class="sheet-in">
     <button class="sheet-x" type="button" id="storyClose" aria-label="Close the story">×</button>
+    <div id="stBody"></div>
+  </div>
+</div>
+<template id="st-cash">
     <p class="st-k"><img loading="lazy" decoding="async" src="/w/i-cash.webp" alt="">Ace Cashout · case study</p>
     <h2 id="stTitle">From a tip calculator to a payroll tool</h2>
     <p class="st-lede">The Ace is a restaurant where the floor staff split tips at the end of every night. This started as a one-screen calculator for that split and grew into the system the owner uses to pay tips each week.</p>
@@ -590,8 +603,54 @@ html.locked{overflow:hidden;scroll-snap-type:none}
     <p class="st-out">Paying tips went from opening every PDF and adding them up by hand to reading one email and tapping one button, and every number has a trail behind it.</p>
     <p class="st-stack">Next.js, React, TypeScript, Tailwind, Postgres, Vercel cron, Resend · tests in CI</p>
     <a class="btn st-go" href="https://acecashout.com" target="_blank" rel="noopener">Visit acecashout.com ↗</a>
-  </div>
-</div>
+</template>
+<template id="st-burp">
+    <p class="st-k"><img loading="lazy" decoding="async" src="/w/i-burp.webp" alt="">Burp · build notes</p>
+    <h2 id="stTitle">A fermentation tracker that keeps everything on the phone</h2>
+    <p class="st-lede">I built Burp to keep track of the fermentation jars in my kitchen: which jar needs a burp, how much salt to add, and tasting notes and photos as each batch develops.</p>
+    <div class="st-shots"><img loading="lazy" decoding="async" src="/w/burp-1-tall.webp" alt="Jars list with progress rings"><img loading="lazy" decoding="async" src="/shots/burp-3.webp" alt="Brine calculator"><img loading="lazy" decoding="async" src="/shots/burp-4.webp" alt="New jar sheet"></div>
+    <h3>What it does</h3>
+    <div class="st-two">
+      <div><b>Jars and reminders</b><p>Tracks Fruit, Veg, Chili, Kombucha and Honey ferments. Local reminders say when a jar needs a burp, with a “Burped it” action. Widgets, Live Activities and Siri Shortcuts can burp a jar or find the next one.</p></div>
+      <div><b>Brine, notes and photos</b><p>Works out brine salt from the total weight of ingredients and water. Each jar keeps tasting notes, photos and a timeline, and finished jars are archived with an outcome note.</p></div>
+    </div>
+    <h3>Decisions worth explaining</h3>
+    <div class="st-cards">
+      <div><b>Status comes from dates</b><p>Burp due, overdue, ready and finished are worked out from the jar’s dates. Nothing stores a second value that can go stale.</p></div>
+      <div><b>An explicit clock</b><p>The core calculations take a clock and a calendar as inputs, so boundary cases are easy to test with Swift Testing.</p></div>
+      <div><b>One burp, many places</b><p>A burp has to update storage, reminders, widgets and the Live Activity together. The app and widget share one SwiftData store, so their schemas move in step.</p></div>
+      <div><b>Accessibility is layout work</b><p>Bigger text needs room to reflow, a status needs words as well as color, and VoiceOver describes the jar instead of every decoration.</p></div>
+    </div>
+    <h3>Private by design</h3>
+    <p>No accounts, cloud sync, analytics, ads or third-party packages. The data stays on the device.</p>
+    <h3>Still cooking</h3>
+    <p class="st-out">The Log tab is a placeholder, and editing a jar’s settings isn’t built yet.</p>
+    <p class="st-stack">Swift 6, SwiftUI, SwiftData, WidgetKit, ActivityKit, App Intents, UserNotifications · Swift Testing and XCTest</p>
+</template>
+<template id="st-coch">
+    <p class="st-k"><img loading="lazy" decoding="async" src="/w/i-coch.webp" alt="">La Cochina · build notes</p>
+    <h2 id="stTitle">Venezuelan dominoes, rules first</h2>
+    <p class="st-lede">Partner dominoes the way they’re played in Venezuela: four players in two teams, the double-six (“la cochina”) opens, and the first team to 100 wins.</p>
+    <img loading="lazy" decoding="async" class="st-wide st-land" src="/w/coch-inicio.webp" alt="Home screen design with the captain card and both tables">
+    <h3>What I built</h3>
+    <div class="st-two">
+      <div><b>The engine</b><p>A pure Swift package with no UIKit, SwiftUI or GameKit imports. Seeded deals, the forced 6–6 opener, legal moves and passes, counterclockwise turns, tranca and tied redeals, and scoring, all unit-tested.</p></div>
+      <div><b>The table</b><p>A SwiftUI table for iPhone and iPad with an adaptive domino chain, crosswise doubles, animated tile placement and Paso, Repartir and Revancha. Clásico plays to 100. Modo Calle plays to 75, with the capicúa bonus and the Sube la mesa pot.</p></div>
+    </div>
+    <h3>Decisions worth explaining</h3>
+    <div class="st-cards">
+      <div><b>One source of truth for moves</b><p><code>legalMoves(for:)</code> feeds both the screen and the bots. Applying an illegal action is rejected without changing the game.</p></div>
+      <div><b>Replayable deals</b><p><code>Deal(seed:)</code> shuffles the same way every time for a given seed, so any game can be replayed and tested.</p></div>
+      <div><b>Bots play fair</b><p>Bots only get the legal actions, never see hidden hands, and take 0.6 to 2 seconds to think. The clock can be swapped in tests.</p></div>
+      <div><b>An engine a server can reuse</b><p>Keeping the rules free of UI code means a Vapor backend could share the same engine for online play later.</p></div>
+    </div>
+    <img loading="lazy" decoding="async" class="st-wide st-land" src="/w/coch-calle.webp" alt="Modo Calle guide: to 75 points, capicúa +10, sube la mesa">
+    <h3>The moments</h3>
+    <p>Big plays get their own moment: La Cochina, El Golpe, Dominó, Tranca and Zapatero, with sound, haptics and Reduce Motion support.</p>
+    <h3>What’s next</h3>
+    <p class="st-out">A TestFlight beta played on a real iPhone, then turn-based Clásico matches with Game Center.</p>
+    <p class="st-stack">Swift, SwiftUI, a Swift package for the rules engine · engine tests with swift test</p>
+</template>
 <div class="toast" id="toast" role="status"></div>
 
 <script>
@@ -859,7 +918,11 @@ html.locked{overflow:hidden;scroll-snap-type:none}
   }
 
   // Burp shelf: four jars with day rings (numbers from the app's jar list)
-  const JARS = [['Red chili mash', 26, 30, .55], ['Blueberries', 15, 30, .7], ['Sauerkraut', 10, 14, .62], ['Lemongrass mead', 1, 30, .4]];
+  // the shelf ages: each jar's day counts up from 24 Nov 2026 and starts a fresh batch after its target
+  const SHELF_DAY0 = new Date('2026-11-24T00:00:00-05:00');
+  const since = Math.max(0, Math.floor((Date.now() - SHELF_DAY0) / 864e5));
+  const JARS = [['Red chili mash', 26, 30, .55], ['Blueberries', 15, 30, .7], ['Sauerkraut', 10, 14, .62], ['Lemongrass mead', 1, 30, .4]]
+    .map(([n, d, t, f]) => [n, (d - 1 + since) % t + 1, t, f]);
   function buildShelf() {
     const shelf = document.getElementById('shelf');
     shelf.querySelectorAll('.jar').forEach(j => j.remove());
@@ -929,7 +992,10 @@ html.locked{overflow:hidden;scroll-snap-type:none}
   // case study sheet
   const sheet = document.getElementById('sheet'), sheetBg = document.getElementById('sheetBg');
   let lastFocus = null;
-  function openStory() {
+  function openStory(e) {
+    const k = (e && e.currentTarget && e.currentTarget.dataset.story) || 'cash';
+    const body = document.getElementById('stBody'); body.innerHTML = ''; body.append(document.getElementById('st-' + k).content.cloneNode(true));
+    sheet.dataset.k = k;
     lastFocus = document.activeElement; sheet.hidden = false; sheetBg.hidden = false; root.classList.add('locked');
     requestAnimationFrame(() => { sheet.classList.add('on'); sheetBg.classList.add('on'); });
     sheet.scrollTop = 0; document.getElementById('storyClose').focus({ preventScroll: true });
@@ -939,7 +1005,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
     setTimeout(() => { sheet.hidden = true; sheetBg.hidden = true; }, reduce ? 0 : 600);
     lastFocus && lastFocus.focus({ preventScroll: true });
   }
-  document.getElementById('storyOpen').addEventListener('click', openStory);
+  document.querySelectorAll('[data-story]').forEach(b => b.addEventListener('click', openStory));
   document.getElementById('storyClose').addEventListener('click', closeStory);
   sheetBg.addEventListener('click', closeStory);
   addEventListener('keydown', e => { if (e.key === 'Escape' && !sheet.hidden) closeStory(); });
@@ -952,7 +1018,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
   // copy email
   const toast = document.getElementById('toast'); let tt;
   const say = (m, ms = 1800) => { toast.textContent = m; toast.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => toast.classList.remove('show'), ms); };
-  document.querySelectorAll('#copy, #send').forEach(btn => btn.addEventListener('click', () => {
+  document.querySelectorAll('#copy').forEach(btn => btn.addEventListener('click', () => {
     const mail = 'arcadiovega1@gmail.com';
     const sel = () => { const el = document.querySelector('.mail'); const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); say('Selected. Press ⌘C to copy'); };
     if (navigator.share && matchMedia('(pointer:coarse)').matches) { navigator.share({ title: 'Arcadio Vega', text: mail }).catch(() => {}); return; }
@@ -968,8 +1034,25 @@ html.locked{overflow:hidden;scroll-snap-type:none}
     const a = e.target.closest('a[href^="http"]');
     if (a) track('Outbound link', { url: a.hostname + a.pathname.replace(/\/$/, '') });
   });
-  document.getElementById('storyOpen').addEventListener('click', () => track('Read the story'));
-  document.querySelectorAll('#copy, #send').forEach(b => b.addEventListener('click', () => track('Copy email', { from: b.id === 'send' ? 'chat' : 'button' })));
+  document.querySelectorAll('[data-story]').forEach(b => b.addEventListener('click', () => track('Read the story', { story: b.dataset.story })));
+  document.getElementById('copy').addEventListener('click', () => track('Copy email'));
+  // orders for the chef: they land in Vercel Analytics as 'Order' events, nowhere public
+  let orders = 0;
+  const REPLIES = ['Order up! 👨‍🍳 I read every one.', 'Heard, chef! 🙌', 'Coming right up. Thanks for stopping by!'];
+  document.getElementById('order').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = document.getElementById('field'), text = f.value.trim(); if (!text) return;
+    const box = document.getElementById('msgs'); f.value = '';
+    clearLater(); document.getElementById('typing')?.remove(); // the visitor takes over the chat
+    box.querySelector('.read')?.remove();
+    const add = (who, t, cls = '') => { const d = document.createElement('div'); d.className = 'bub ' + who + cls; d.textContent = t; box.append(d); return d; };
+    add('you', text, ' gap');
+    if (orders >= 3) { setTimeout(() => add('me', 'Kitchen’s full for now. Email me for anything else 😄', ' gap'), 700); return; }
+    track('Order', { text: text.slice(0, 120) });
+    const reply = REPLIES[orders++ % REPLIES.length];
+    const ty = document.createElement('div'); ty.className = 'bub typing me gap'; ty.innerHTML = '<i></i><i></i><i></i>'; box.append(ty);
+    setTimeout(() => { ty.remove(); add('me', reply, ' gap'); }, 1100);
+  });
   document.querySelectorAll('.mini').forEach(m => m.addEventListener('click', () => track('Open site preview', { site: m.querySelector('.lbl b').textContent })));
   document.querySelectorAll('.codebtn').forEach(b => b.addEventListener('click', () => track('Show the code', { world: b.closest('.seg').dataset.name })));
   document.getElementById('island').addEventListener('click', () => track('Burp it'));
