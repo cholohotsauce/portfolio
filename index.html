@@ -12,7 +12,8 @@
 <meta property="og:image" content="https://arcadiovega.com/w/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="Arcadio Vega cooked for fifteen years, then started building apps in Toronto.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23fff'/%3E%3Ccircle cx='32' cy='32' r='20' fill='%230c0d10'/%3E%3Cellipse cx='25' cy='22' rx='7' ry='3.5' fill='%23fff' opacity='.55' transform='rotate(-24 25 22)'/%3E%3C/svg%3E">
+<link rel="icon" id="favicon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%230a0a0a%27/%3E%3Ctext x=%2732%27 y=%2742%27 text-anchor=%27middle%27 font-family=%27Helvetica,Arial,sans-serif%27 font-weight=%27700%27 font-size=%2728%27 letter-spacing=%27-1%27 fill=%27%23ffffff%27%3EAV%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="/w/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
@@ -553,6 +554,14 @@ html.locked{overflow:hidden;scroll-snap-type:none}
 
   // which world is on screen
   let current = null;
+  // favicon follows the world: its page color with the AV mark in its text color (flipped on light worlds)
+  function setFavicon(s) {
+    const h = s.dataset.page.replace('#', ''), lum = (parseInt(h.slice(0, 2), 16) * .3 + parseInt(h.slice(2, 4), 16) * .59 + parseInt(h.slice(4, 6), 16) * .11) / 255;
+    const light = lum > .75; // a light world would vanish in a light tab bar, so flip it
+    const bg = light ? s.dataset.text : s.dataset.page, fg = light ? s.dataset.page : s.dataset.text;
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="${bg}"/><text x="32" y="42" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-weight="700" font-size="28" letter-spacing="-1" fill="${fg}">AV</text></svg>`;
+    const l = document.getElementById('favicon'); if (l) l.href = 'data:image/svg+xml,' + encodeURIComponent(svg);
+  }
   function activate(s) {
     if (current === s) return;
     if (current) { current.classList.remove('on'); stop(current); }
@@ -561,6 +570,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
     root.style.setProperty('--text', s.dataset.text);
     root.style.setProperty('--acc', s.dataset.acc);
     document.querySelector('meta[name=theme-color]')?.setAttribute('content', s.dataset.page);
+    setFavicon(s);
     s.classList.add('on');
     [...dots.children].forEach((b, i) => b.classList.toggle('on', segs[i] === s));
     start(s);
