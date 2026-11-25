@@ -12,11 +12,12 @@
 <meta property="og:image" content="https://arcadiovega.com/w/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="Arcadio Vega cooked for fifteen years, then started building apps in Toronto.">
-<link rel="icon" id="favicon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%230a0a0a%27/%3E%3Ctext x=%2732%27 y=%2742%27 text-anchor=%27middle%27 font-family=%27Helvetica,Arial,sans-serif%27 font-weight=%27700%27 font-size=%2728%27 letter-spacing=%27-1%27 fill=%27%23ffffff%27%3EAV%3C/text%3E%3C/svg%3E">
+<link rel="icon" id="favicon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%230a0a0a%22/%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%224.4%22%20stroke-miterlimit%3D%2210%22%3E%3Cpath%20d%3D%22M9%2045%20L19.5%2019%20L30%2045%22/%3E%3Cpath%20d%3D%22M34%2019%20L44.5%2045%20L55%2019%22/%3E%3C/g%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="/w/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300&text=%CE%9BRCDIOVEG&display=swap">
 <style>
 /* Layout: full-screen segments that snap. One sentence opens the page; each project after it is its own colored world with a small animation of the app doing its job. The page color crossfades as each world lands. */
 @property --page{syntax:"<color>";inherits:true;initial-value:#ffffff}
@@ -44,6 +45,8 @@ a{color:inherit}
 .bar{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:baseline;gap:16px;
   padding:calc(env(safe-area-inset-top,0px) + 22px) max(24px,env(safe-area-inset-right,0px)) 0 max(24px,env(safe-area-inset-left,0px));font-size:14px;pointer-events:none}
 .bar b{font-weight:500}
+.bar .wm{font-family:"Inter Tight",var(--sans);font-weight:300;font-size:13px;letter-spacing:.34em;white-space:nowrap}
+.lv{display:block;width:74%;height:auto}
 .bar .clock{font-family:var(--mono);font-size:13px;color:var(--quiet);font-variant-numeric:tabular-nums}
 .dots{position:fixed;right:max(18px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);z-index:20;display:grid;gap:10px}
 .dots button{all:unset;cursor:pointer;display:block;width:18px;height:10px;position:relative}
@@ -512,7 +515,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
 </head>
 <body>
 
-<header class="bar" id="bar"><b>Arcadio Vega</b><span class="clock" id="clock">Toronto</span><span class="where" id="where"></span></header>
+<header class="bar" id="bar"><b class="wm" aria-label="Arcadio Vega">ΛRCΛDIO VEGΛ</b><span class="clock" id="clock">Toronto</span><span class="where" id="where"></span></header>
 <div class="prog" id="prog" aria-hidden="true"></div>
 <nav class="tabbar hide" id="tabbar" aria-label="Worlds"><span class="tb-lens" aria-hidden="true"></span>
   <button type="button" data-go="cashout" aria-label="Ace Cashout"><img src="/w/i-cash.webp" alt=""></button>
@@ -546,7 +549,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
           <div class="cx-row" style="--w:61%"><span>Nat<small>4.25 h</small></span><b>$80.26</b></div>
         </div>
         <span class="cent">exact to the cent</span>
-        <button class="coin" id="coin" type="button" aria-label="Flip the coin"><span class="coin-wob"><span class="coin-3d"><i class="f" aria-hidden="true">¢</i><i class="b" aria-hidden="true">AV</i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i></span></span><span class="spark" aria-hidden="true"><i style="--a:0deg"></i><i style="--a:60deg"></i><i style="--a:120deg"></i><i style="--a:180deg"></i><i style="--a:240deg"></i><i style="--a:300deg"></i></span></button>
+        <button class="coin" id="coin" type="button" aria-label="Flip the coin"><span class="coin-wob"><span class="coin-3d"><i class="f" aria-hidden="true">¢</i><i class="b" aria-hidden="true"><svg class="lv" style="width:62%" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.4" stroke-miterlimit="10"><path d="M9 45 L19.5 19 L30 45"/><path d="M34 19 L44.5 45 L55 19"/></g></svg></i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i></span></span><span class="spark" aria-hidden="true"><i style="--a:0deg"></i><i style="--a:60deg"></i><i style="--a:120deg"></i><i style="--a:180deg"></i><i style="--a:240deg"></i><i style="--a:300deg"></i></span></button>
       </div>
     </div>
     <h2 class="name"><img src="/w/i-cash.webp" alt="">Ace Cashout</h2>
@@ -629,7 +632,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
   <section class="seg" id="hello" data-name="Say hi" data-page="#000000" data-text="#f2f2f4" data-acc="#0a84ff" data-world="hello">
     <div class="stage">
       <div class="chat" id="chat">
-        <div class="who"><span class="av">AV</span><b>Arcadio Vega ›</b></div>
+        <div class="who"><span class="av" aria-hidden="true"><svg class="lv" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.4" stroke-miterlimit="10"><path d="M9 45 L19.5 19 L30 45"/><path d="M34 19 L44.5 45 L55 19"/></g></svg></span><b>Arcadio Vega ›</b></div>
         <p class="when"><b>iMessage</b><br>Today <span id="chatTime"></span></p>
         <div class="msgs" id="msgs" aria-live="off"></div>
         <form class="compose" id="order"><input class="field" id="field" maxlength="120" autocomplete="off" enterkeyhint="send" placeholder="Leave an order for the chef…" aria-label="Leave an order for the chef"><button class="send" type="submit" aria-label="Send">↑</button></form>
@@ -776,12 +779,12 @@ html.locked{overflow:hidden;scroll-snap-type:none}
 
   // which world is on screen
   let current = null;
-  // favicon follows the world: its page color with the AV mark in its text color (flipped on light worlds)
+  // favicon follows the world: its page color with the ΛV mark in its text color (flipped on light worlds)
   function setFavicon(s) {
     const h = s.dataset.page.replace('#', ''), lum = (parseInt(h.slice(0, 2), 16) * .3 + parseInt(h.slice(2, 4), 16) * .59 + parseInt(h.slice(4, 6), 16) * .11) / 255;
     const light = lum > .75; // a light world would vanish in a light tab bar, so flip it
     const bg = light ? s.dataset.text : s.dataset.page, fg = light ? s.dataset.page : s.dataset.text;
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="${bg}"/><text x="32" y="42" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-weight="700" font-size="28" letter-spacing="-1" fill="${fg}">AV</text></svg>`;
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="${bg}"/><g fill="none" stroke="${fg}" stroke-width="4.4" stroke-miterlimit="10"><path d="M9 45 L19.5 19 L30 45"/><path d="M34 19 L44.5 45 L55 19"/></g></svg>`;
     const l = document.getElementById('favicon'); if (l) l.href = 'data:image/svg+xml,' + encodeURIComponent(svg);
   }
   function activate(s) {
@@ -1181,7 +1184,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
     ghost: (w, h) => { const im = document.querySelector('#ghostEl img').cloneNode(); im.style.cssText = `width:${w}px;height:${h}px;object-fit:contain;display:block`; return im; },
     win: el => (w, h) => { const v = el().querySelector('video,img'); const src = v.poster || v.currentSrc || v.src;
       return box(w, h, 'border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.08)', `<div style="height:${Math.max(8, h * .12)}px;background:#ecebe7"></div><img loading="lazy" decoding="async" src="${src}" alt="" style="width:100%;height:calc(100% - ${Math.max(8, h * .12)}px);object-fit:cover;display:block">`); },
-    av: (w, h) => box(w, h, 'border-radius:50%;background:linear-gradient(180deg,#a5a5ab,#6e6e73);color:#fff;font:600 16px/1 var(--sans);display:grid;place-items:center', 'AV')
+    av: (w, h) => box(w, h, 'border-radius:50%;background:linear-gradient(180deg,#a5a5ab,#6e6e73);color:#fff;font:600 16px/1 var(--sans);display:grid;place-items:center', '<svg class="lv" viewBox="0 0 64 64" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3.4" stroke-miterlimit="10"><path d="M9 45 L19.5 19 L30 45"/><path d="M34 19 L44.5 45 L55 19"/></g></svg>')
   };
   const firstWin = q('#sites .mini .win'), lastWin = q('#sites .mini:last-child .win');
   const PAIRS = {
