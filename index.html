@@ -441,7 +441,47 @@ html.locked{overflow:hidden;scroll-snap-type:none}
   .acts{justify-content:flex-start}
   .btn{padding:8px 14px;font-size:13px}
   .wall{aspect-ratio:16/9}
+  .intro .sentence{font-size:clamp(22px,6.4vh,30px)}
+  .intro{padding-bottom:12px}
 }
+
+/* ---------- Liquid Glass tab bar (phones) ---------- */
+.tabbar{display:none}
+.tabbar button{all:unset;cursor:pointer;position:relative;z-index:1;width:42px;height:42px;display:grid;place-items:center;border-radius:50%;transition:transform .25s var(--ease)}
+.tabbar button:active{transform:scale(.88)}
+.tabbar button:focus-visible{outline:2px solid var(--acc);outline-offset:1px}
+.tabbar img{width:26px;height:26px;border-radius:7px;box-shadow:0 0 0 .5px rgba(0,0,0,.2);transition:transform .35s var(--ease)}
+.tabbar svg{width:22px;height:22px;fill:var(--text);opacity:.85}
+.tabbar button.on img,.tabbar button.on svg{transform:scale(1.12)}
+.tb-lens{position:absolute;z-index:0;top:6px;left:6px;width:42px;height:42px;border-radius:50%;transform:translateX(var(--x,0px));transition:transform .5s cubic-bezier(.3,1.3,.5,1),opacity .3s;
+  background:linear-gradient(160deg,rgba(255,255,255,.55),rgba(255,255,255,.12));box-shadow:inset 0 1px 1px rgba(255,255,255,.8),inset 0 -1px 2px rgba(0,0,0,.12),0 4px 10px -4px rgba(0,0,0,.35)}
+@media (max-width:720px){
+  .tabbar{display:flex;gap:4px;padding:6px;position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 10px);translate:-50% 0;z-index:25;border-radius:999px;
+    background:color-mix(in srgb,var(--page) 45%,rgba(255,255,255,.28));-webkit-backdrop-filter:blur(18px) saturate(1.8);backdrop-filter:blur(18px) saturate(1.8);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(0,0,0,.08),0 0 0 .5px color-mix(in srgb,var(--text) 22%,transparent),0 14px 32px -12px rgba(0,0,0,.45);
+    transition:translate .5s var(--ease),opacity .4s,background-color .9s}
+  .tabbar.hide{opacity:0;translate:-50% 40px;pointer-events:none}
+  .prog{display:none}
+  .seg:not(.intro){padding-bottom:calc(env(safe-area-inset-bottom,0px) + 76px)}
+}
+
+/* ---------- play one domino ---------- */
+.hand{display:flex;gap:12px;justify-content:center;align-items:center;margin-top:12px;min-height:34px;position:relative;z-index:4}
+.hand .tile{opacity:1;cursor:grab;touch-action:none;transition:transform .45s cubic-bezier(.3,1.3,.5,1),opacity .3s;animation:deal .5s var(--ease) both}
+.hand .tile:nth-child(2){animation-delay:.08s}.hand .tile:nth-child(3){animation-delay:.16s}
+.hand .tile.drag{transition:none;cursor:grabbing;filter:drop-shadow(0 18px 14px rgba(0,0,0,.5))}
+.hand .tile.nope{animation:nope .45s var(--ease)}
+.hand .tile.dim{opacity:.35;pointer-events:none}
+@keyframes deal{from{opacity:0;transform:translateY(20px) rotate(6deg)}}
+@keyframes nope{20%,60%{translate:-6px 0}40%,80%{translate:6px 0}}
+.hand-hint{margin:6px 0 0;min-height:1.3em;text-align:center;font-size:12.5px;color:var(--quiet)}
+.chain{transition:transform .5s var(--ease);transform-origin:center}
+@media (max-width:720px){ .hand{zoom:.6;margin-top:6px} }
+@media (max-width:720px) and (max-height:800px){ .hand{zoom:.5} .hand-hint{font-size:11.5px;margin-top:2px} }
+@media (orientation:landscape) and (max-height:520px){ .hand{zoom:.5;margin-top:4px} }
+
+/* ---------- hand-off token between worlds ---------- */
+.handoff{position:fixed;z-index:30;pointer-events:none;left:0;top:0;will-change:transform,width,height;box-shadow:0 14px 30px -12px rgba(0,0,0,.45)}
 @media (prefers-reduced-motion:reduce){
   :root{transition:none}
   html{scroll-behavior:auto}
@@ -454,6 +494,15 @@ html.locked{overflow:hidden;scroll-snap-type:none}
 
 <header class="bar" id="bar"><b>Arcadio Vega</b><span class="clock" id="clock">Toronto</span><span class="where" id="where"></span></header>
 <div class="prog" id="prog" aria-hidden="true"></div>
+<nav class="tabbar hide" id="tabbar" aria-label="Worlds"><span class="tb-lens" aria-hidden="true"></span>
+  <button type="button" data-go="cashout" aria-label="Ace Cashout"><img src="/w/i-cash.webp" alt=""></button>
+  <button type="button" data-go="burp" aria-label="Burp"><img src="/w/i-burp.webp" alt=""></button>
+  <button type="button" data-go="cochina" aria-label="La Cochina"><img src="/w/i-coch.webp" alt=""></button>
+  <button type="button" data-go="ghost" aria-label="The Miracle Ghost"><img src="/w/i-ghost.webp" alt=""></button>
+  <button type="button" data-go="sites" aria-label="Client sites"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg></button>
+  <button type="button" data-go="hello" aria-label="Say hi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5c-5 0-9 3.3-9 7.4 0 2.3 1.3 4.4 3.4 5.8-.2 1.3-.9 2.6-2 3.6 2 .1 3.9-.6 5.2-1.7.8.2 1.6.3 2.4.3 5 0 9-3.3 9-7.5S17 3.5 12 3.5z"/></svg></button>
+</nav>
+
 <div class="peek" id="peek" hidden role="dialog" aria-label="Site preview"><div class="win"></div><span>Tap anywhere to close</span></div>
 <nav class="dots" id="dots" aria-label="Sections"></nav>
 
@@ -511,6 +560,8 @@ html.locked{overflow:hidden;scroll-snap-type:none}
       <div class="table">
         <div class="phone-l"><img loading="lazy" decoding="async" src="/w/coch-inicio.webp" alt="La Cochina home screen design: captain card, Clásico and Modo Calle tables"></div>
         <div class="chain" id="chain"></div>
+        <div class="hand" id="hand" aria-label="Your hand"></div>
+        <p class="hand-hint" id="handHint" aria-live="polite"></p>
         <div class="slam" id="slam">¡La cochina!</div>
       </div>
       <div class="sw">
@@ -714,6 +765,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
   }
   function activate(s) {
     if (current === s) return;
+    const current0 = current;
     if (current) { current.classList.remove('on'); stop(current); }
     current = s;
     root.style.setProperty('--page', s.dataset.page);
@@ -722,6 +774,8 @@ html.locked{overflow:hidden;scroll-snap-type:none}
     document.querySelector('meta[name=theme-color]')?.setAttribute('content', s.dataset.page);
     setFavicon(s);
     document.getElementById('bar').classList.toggle('away', s.id !== 'top');
+    try { tabbarTo(s); } catch (e) {}
+    try { if (current0 && !reduce) handoff(current0.id + '>' + s.id); } catch (e) {}
     document.getElementById('where').textContent = s.dataset.name;
     document.getElementById('prog').style.setProperty('--p', (segs.indexOf(s) / (segs.length - 1) * 100) + '%');
     s.classList.add('on');
@@ -841,8 +895,9 @@ html.locked{overflow:hidden;scroll-snap-type:none}
           wait(() => els[2].classList.add('oink'), 2100);
         }
         order.slice(1).forEach((k, n) => wait(() => els[k].classList.add('in'), (moments ? 2500 : 1100) + n * 260));
+        wait(dealHand, (moments ? 2500 : 1100) + order.length * 260 + 300);
       },
-      stop() { document.getElementById('chain').innerHTML = ''; document.getElementById('slam').classList.remove('go'); setMesa('clasico', true); }
+      stop() { const c = document.getElementById('chain'); c.innerHTML = ''; c.style.transform = ''; const sl = document.getElementById('slam'); sl.classList.remove('go'); sl.textContent = '¡La cochina!'; document.getElementById('hand').innerHTML = ''; document.getElementById('handHint').textContent = ''; setMesa('clasico', true); }
     },
     sites: {
       start() { document.querySelectorAll('#sites video').forEach(v => { if (!v.src && v.dataset.src) v.src = v.dataset.src; try { v.currentTime = 0; } catch (e) {} if (!reduce) v.play().catch(() => {}); }); },
@@ -1061,6 +1116,93 @@ html.locked{overflow:hidden;scroll-snap-type:none}
   // services so far: about 8 a week since March 2025 (Arcadio's numbers), rounded down to the nearest 10
   { const weeks = (Date.now() - new Date('2025-03-01T00:00:00-05:00')) / 6048e5; document.getElementById('services').textContent = (Math.floor(weeks * 8 / 10) * 10).toLocaleString('en-US'); }
 
+
+  // ---- Liquid Glass tab bar ----
+  const tabbar = document.getElementById('tabbar');
+  function tabbarTo(s) {
+    tabbar.classList.toggle('hide', s.id === 'top');
+    const bs = [...tabbar.querySelectorAll('button')], b = bs.find(x => x.dataset.go === s.id);
+    bs.forEach(x => { x.classList.toggle('on', x === b); x.toggleAttribute('aria-current', x === b); });
+    if (b) tabbar.style.setProperty('--x', (b.offsetLeft - 6) + 'px');
+  }
+
+  // ---- hand-off: an object from the last world travels and becomes one in the next ----
+  const lidOf = () => document.querySelectorAll('.jar .lid')[2];
+  const HAND = {
+    'cashout>burp': ['#cashout .cent', lidOf, '#d9b46a', '#ffffff', 'pill', 6],
+    'burp>cochina': [lidOf, '#cochina .mark .snout', '#ffffff', '#E9B9A6', 6, 'round'],
+    'cochina>ghost': ['#cochina .mark .snout', '#ghostEl img', '#E9B9A6', '#8d8d8d', 'round', 'round'],
+    'ghost>sites': ['#ghostEl img', '#sites .mini .win', '#8d8d8d', '#ffffff', 'round', 10],
+    'sites>hello': ['#sites .mini:last-child .win', '#hello .av', '#ffffff', '#8e8e93', 10, 'round']
+  };
+  const grab = q => typeof q === 'function' ? q() : document.querySelector(q);
+  function handoff(key) {
+    const h = HAND[key]; if (!h) return;
+    const src = grab(h[0]), dst = grab(h[1]); if (!src || !dst) return;
+    const a = src.getBoundingClientRect(); if (!a.width) return;
+    const ay = Math.min(Math.max(a.top, -a.height * .5), innerHeight - a.height * .5);
+    const tok = document.createElement('div'); tok.className = 'handoff'; document.body.append(tok);
+    const rad = (r, w, hh) => r === 'pill' || r === 'round' ? Math.min(w, hh) / 2 : r;
+    dst.style.transition = 'opacity .35s'; dst.style.opacity = '0';
+    const mix = (c1, c2, k) => { const p = c => [1, 3, 5].map(i => parseInt(c.slice(i, i + 2), 16)); const x = p(c1), y = p(c2); return `rgb(${x.map((v, i) => Math.round(v + (y[i] - v) * k)).join(',')})`; };
+    const t0 = performance.now(), D = 820;
+    const step = t => {
+      const k = Math.min(1, (t - t0) / D), e = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+      const b = dst.getBoundingClientRect();
+      const w = a.width + (b.width - a.width) * e, hh = a.height + (b.height - a.height) * e;
+      const x = a.left + (b.left - a.left) * e, y = ay + (b.top - ay) * e - Math.sin(Math.PI * e) * 60;
+      tok.style.width = w + 'px'; tok.style.height = hh + 'px';
+      tok.style.transform = `translate(${x}px,${y}px) rotate(${Math.sin(Math.PI * e) * 14}deg)`;
+      tok.style.borderRadius = (rad(h[4], a.width, a.height) + (rad(h[5], b.width, b.height) - rad(h[4], a.width, a.height)) * e) + 'px';
+      tok.style.background = mix(h[2], h[3], e);
+      if (k < 1) requestAnimationFrame(step);
+      else { dst.style.opacity = ''; tok.style.transition = 'opacity .3s'; tok.style.opacity = '0'; setTimeout(() => { tok.remove(); dst.style.transition = ''; }, 320); }
+    };
+    requestAnimationFrame(step);
+  }
+
+  // ---- play one domino: the chain's ends are 5 and 3, and only the 5|3 fits (both ends: capicúa) ----
+  const hand = document.getElementById('hand'), hint = document.getElementById('handHint');
+  function dealHand() {
+    hand.innerHTML = '';
+    [[2, 4], [5, 3], [6, 0]].forEach(([x, y]) => {
+      const t = tileEl(x, y, false); t.setAttribute('aria-hidden', 'false'); t.setAttribute('role', 'button'); t.setAttribute('tabindex', '0');
+      t.setAttribute('aria-label', `Play the ${x} ${y}`); t.dataset.a = x; t.dataset.b = y; hand.append(t); dragTile(t);
+    });
+    hint.textContent = 'Your turn: drag a tile onto the chain';
+  }
+  function play(t, endRight) {
+    const chain = document.getElementById('chain'), ok = (+t.dataset.a === 5 && +t.dataset.b === 3);
+    if (!ok) {
+      t.style.transform = ''; t.classList.remove('nope'); void t.getBoundingClientRect(); t.classList.add('nope');
+      hint.textContent = 'That one doesn’t match the 5 or the 3. Try again.'; track('Domino', { result: 'miss' }); return;
+    }
+    const n = tileEl(3, 5, false); n.classList.add('in');
+    endRight ? chain.append(n) : chain.prepend(n);
+    t.remove(); hand.querySelectorAll('.tile').forEach(x => x.classList.add('dim'));
+    const fitW = chain.parentElement.clientWidth / chain.scrollWidth; if (fitW < 1) chain.style.transform = `scale(${fitW.toFixed(3)})`;
+    const slam = document.getElementById('slam'); slam.textContent = '¡Capicúa!'; slam.classList.remove('go'); void slam.offsetWidth; slam.classList.add('go');
+    hint.textContent = '¡Capicúa! The 5|3 fits both ends. Nice play.'; track('Domino', { result: 'capicua' });
+  }
+  function dragTile(t) {
+    let sx = 0, sy = 0, down = false, moved = false;
+    t.addEventListener('pointerdown', e => { down = true; moved = false; sx = e.clientX; sy = e.clientY; t.setPointerCapture(e.pointerId); t.classList.add('drag'); });
+    t.addEventListener('pointermove', e => {
+      if (!down) return; const z = parseFloat(getComputedStyle(hand).zoom) || 1;
+      const dx = (e.clientX - sx) / z, dy = (e.clientY - sy) / z; if (Math.abs(dx) + Math.abs(dy) > 6) moved = true;
+      t.style.transform = `translate(${dx}px,${dy}px) rotate(${dx / 20}deg)`;
+    });
+    const end = e => {
+      if (!down) return; down = false; t.classList.remove('drag');
+      const c = document.getElementById('chain').getBoundingClientRect(), r = t.getBoundingClientRect();
+      const cy = r.top + r.height / 2, cx = r.left + r.width / 2;
+      const onChain = cy > c.top - 40 && cy < c.bottom + 30;
+      if (!moved || onChain) play(t, cx > c.left + c.width / 2); else t.style.transform = '';
+    };
+    t.addEventListener('pointerup', end); t.addEventListener('pointercancel', () => { down = false; t.classList.remove('drag'); t.style.transform = ''; });
+    t.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(t, true); } });
+  }
+
   // ---- phone polish ----
   if (matchMedia('(pointer:coarse)').matches) { const h = document.querySelector('#wall .hint'); if (h) h.textContent = 'Drag sideways to paint'; }
   document.querySelectorAll('.codebtn').forEach(b => b.addEventListener('click', () => {
@@ -1094,7 +1236,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
       for (let k = 0; k < 4; k++) {
         const over = st.closest('.seg').offsetHeight - vh;
         if (over <= 1) break;
-        z = Math.max(.5, z * (1 - (over + 4) / st.getBoundingClientRect().height));
+        z = Math.max(.4, z * (1 - (over + 4) / st.getBoundingClientRect().height));
         st.style.zoom = z.toFixed(3);
       }
     });
