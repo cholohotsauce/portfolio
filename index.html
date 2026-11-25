@@ -118,7 +118,25 @@ a{color:inherit}
 .cx.p3 .cx-row::before{transform:none}
 .cx.p3 .cx-row:nth-child(2){transition-delay:.1s}.cx.p3 .cx-row:nth-child(3){transition-delay:.2s}.cx.p3 .cx-row:nth-child(4){transition-delay:.3s}
 .cx-row{isolation:isolate}
-.cent{position:absolute;right:-6px;top:-12px;padding:5px 10px;border-radius:999px;background:var(--acc);color:var(--page);font-size:12px;font-weight:500;opacity:0;transform:translateY(6px) rotate(4deg);transition:.5s var(--ease)}
+.cx{position:relative}
+.coin{position:absolute;right:-16px;top:-22px;z-index:2;width:48px;height:48px;padding:0;border:0;background:none;cursor:pointer;perspective:320px;filter:drop-shadow(0 7px 9px rgba(0,0,0,.4));-webkit-tap-highlight-color:transparent}
+.coin-wob{position:absolute;inset:0;transform-style:preserve-3d;animation:coinIdle 5.5s ease-in-out infinite}
+.coin-3d{position:absolute;inset:0;transform-style:preserve-3d}
+.coin .f,.coin .b,.coin .e{position:absolute;inset:0;border-radius:50%}
+.coin .f,.coin .b{display:grid;place-items:center;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;font:600 23px/1 var(--sans);color:#6e4b14;background:radial-gradient(circle at 32% 26%,#fff6cf 0,#f3d27c 24%,#d6a64a 58%,#a3742a 100%);box-shadow:inset 0 0 0 3px #b98a3c,inset 0 0 0 4.5px #f7dd98,inset 0 -4px 7px rgba(80,50,10,.35);text-shadow:0 1px 0 rgba(255,244,210,.85),0 -1px 0 rgba(90,60,15,.45);transform:translateZ(2.5px)}
+.coin .b{transform:rotateY(180deg) translateZ(2.5px);font-size:14px;letter-spacing:-.4px}
+.coin .f::after,.coin .b::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.7) 50%,transparent 62%);background-size:260% 100%;animation:coinShine 5.5s ease-in-out infinite}
+.coin .e{background:#8f6423}
+.coin .e:nth-child(3){transform:translateZ(1.5px)}.coin .e:nth-child(4){transform:translateZ(.5px)}.coin .e:nth-child(5){transform:translateZ(-.5px)}.coin .e:nth-child(6){transform:translateZ(-1.5px)}
+@keyframes coinIdle{0%,100%{transform:translateY(0) rotateY(-28deg) rotateX(10deg)}50%{transform:translateY(-4px) rotateY(28deg) rotateX(-6deg)}}
+@keyframes coinShine{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+.coin .spark{position:absolute;left:50%;top:50%;width:0;height:0;pointer-events:none}
+.coin .spark i{position:absolute;left:-2.5px;top:-2.5px;width:5px;height:5px;border-radius:50%;background:#ffe39a;opacity:0}
+.coin.ting .spark i{animation:spark .7s var(--ease) both}
+@keyframes spark{0%{opacity:1;transform:rotate(var(--a)) translateY(-14px) scale(1)}100%{opacity:0;transform:rotate(var(--a)) translateY(-40px) scale(.3)}}
+@media (max-width:720px){.coin{right:-6px;top:-12px;width:40px;height:40px}.coin .f{font-size:20px}.coin .b{font-size:12px}}
+.coin:focus-visible{outline:2px solid var(--acc);outline-offset:4px;border-radius:50%}
+.cent{position:absolute;right:40px;top:-12px;padding:5px 10px;border-radius:999px;background:var(--acc);color:var(--page);font-size:12px;font-weight:500;opacity:0;transform:translateY(6px) rotate(4deg);transition:.5s var(--ease)}
 .cx.p4 .cent{opacity:1;transform:rotate(4deg)}
 
 /* ---------- world: Burp ---------- */
@@ -528,6 +546,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
           <div class="cx-row" style="--w:61%"><span>Nat<small>4.25 h</small></span><b>$80.26</b></div>
         </div>
         <span class="cent">exact to the cent</span>
+        <button class="coin" id="coin" type="button" aria-label="Flip the coin"><span class="coin-wob"><span class="coin-3d"><i class="f" aria-hidden="true">¢</i><i class="b" aria-hidden="true">AV</i><i class="e"></i><i class="e"></i><i class="e"></i><i class="e"></i></span></span><span class="spark" aria-hidden="true"><i style="--a:0deg"></i><i style="--a:60deg"></i><i style="--a:120deg"></i><i style="--a:180deg"></i><i style="--a:240deg"></i><i style="--a:300deg"></i></span></button>
       </div>
     </div>
     <h2 class="name"><img src="/w/i-cash.webp" alt="">Ace Cashout</h2>
@@ -844,6 +863,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
         wait(() => countUp(total, 613.75, 750), 1650);
         wait(() => cx.classList.add('p2'), 2350);
         wait(() => cx.classList.add('p3'), 2800);
+        wait(() => flipCoin(2, true), 3300);
         wait(() => cx.classList.add('p4'), 3900);
       },
       stop() {
@@ -1126,6 +1146,27 @@ html.locked{overflow:hidden;scroll-snap-type:none}
     if (b) tabbar.style.setProperty('--x', (b.offsetLeft - 6) + 'px');
   }
 
+  // ---- the Cashout coin: always on the card, flips when the split lands or when tapped ----
+  const coin = document.getElementById('coin'), coin3d = coin.querySelector('.coin-3d');
+  let coinRot = 0, coinAnim = null;
+  function flipCoin(turns = 2 + Math.round(Math.random()), heads) {
+    let to = coinRot + turns * 360 + (Math.random() < .5 ? 180 : 0);
+    if (heads) to = Math.ceil((coinRot + turns * 360) / 360) * 360; // the split always lands on the cent
+    if (reduce) { coinRot = to; coin3d.style.transform = `rotateY(${to}deg)`; return; }
+    coinAnim?.cancel();
+    coinAnim = coin3d.animate([
+      { transform: `translateY(0) rotateY(${coinRot}deg)` },
+      { transform: `translateY(-38px) rotateY(${coinRot + (to - coinRot) * .6}deg)`, offset: .45, easing: 'cubic-bezier(.4,0,.8,.6)' },
+      { transform: `translateY(0) rotateY(${to}deg)`, offset: .85 },
+      { transform: `translateY(-5px) rotateY(${to}deg)`, offset: .92 },
+      { transform: `translateY(0) rotateY(${to}deg)` }
+    ], { duration: 1000, easing: 'cubic-bezier(.3,.7,.3,1)' });
+    coinRot = to; coin3d.style.transform = `rotateY(${to}deg)`;
+    setTimeout(() => { coin.classList.remove('ting'); void coin.offsetWidth; coin.classList.add('ting'); }, 850);
+  }
+  const coinTails = () => (((coinRot % 360) + 360) % 360) === 180;
+  coin.addEventListener('click', () => { flipCoin(); track('Flip the coin'); });
+
   // ---- hand-offs, tied to the scroll ----
   // Between two worlds, the real object from the upper one lifts off, arcs and morphs into an object in the lower one.
   // Its progress is the scroll position, so it follows the finger, pauses when you pause and runs backwards when you scroll up.
@@ -1133,6 +1174,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
   const q = sel => () => document.querySelector(sel);
   const box = (w, h, css, html = '') => { const d = document.createElement('div'); d.style.cssText = `width:${w}px;height:${h}px;${css}`; d.innerHTML = html; return d; };
   const R = {
+    coin: (w, h) => { const c = box(w, h, 'position:relative;inset:auto;filter:none'); c.className = 'coin'; const f = coin.querySelector(coinTails() ? '.b' : '.f').cloneNode(true); f.style.transform = 'none'; c.append(f); return c; },
     pill: (w, h) => box(w, h, `border-radius:${h}px;background:#d9b46a;color:#15130f;font:500 ${Math.max(9, h * .45)}px/1 var(--sans);display:grid;place-items:center;white-space:nowrap`, 'exact to the cent'),
     lid: (w, h) => box(w, h, `border-radius:${h * .32}px;background:#ffffff`),
     snout: (w, h) => { const sv = document.querySelector('#cochina .mark .snout').cloneNode(true); sv.removeAttribute('class'); sv.style.cssText = `width:${w}px;height:${h}px;display:block`; return sv; },
@@ -1143,7 +1185,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
   };
   const firstWin = q('#sites .mini .win'), lastWin = q('#sites .mini:last-child .win');
   const PAIRS = {
-    cashout: [q('#cashout .cent'), lidOf, R.pill, R.lid],
+    cashout: [q('#coin'), lidOf, R.coin, R.lid],
     burp: [lidOf, q('#cochina .mark .snout'), R.lid, R.snout],
     cochina: [q('#cochina .mark .snout'), q('#ghostEl img'), R.snout, R.ghost],
     ghost: [q('#ghostEl img'), firstWin, R.ghost, R.win(firstWin)],
@@ -1175,7 +1217,9 @@ html.locked{overflow:hidden;scroll-snap-type:none}
     const a = live.src.getBoundingClientRect(), b = live.dst.getBoundingClientRect();
     const e = sstep(.08, .92, p), lift = Math.sin(Math.PI * e);
     const w = live.aw + (live.bw - live.aw) * e, h = live.ah + (live.bh - live.ah) * e;
-    const x = a.left + (b.left - a.left) * e, yy = a.top + (b.top - a.top) * e - lift * Math.min(90, vh * .12);
+    const x = a.left + (b.left - a.left) * e;
+    let yy = a.top + (b.top - a.top) * e - lift * Math.min(90, vh * .12);
+    yy += (Math.min(vh - h - 12, Math.max(72, yy)) - yy) * Math.min(1, e * 5); // keep it on screen while the page scrolls under it
     const pop = 1 + lift * .08;
     tok.style.transform = `translate(${x}px,${yy}px) rotate(${(lift * 6 * live.dir).toFixed(2)}deg) scale(${pop.toFixed(3)})`;
     tok.style.width = w + 'px'; tok.style.height = h + 'px';
