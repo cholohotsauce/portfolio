@@ -221,6 +221,7 @@ a{color:inherit}
 .add b{display:inline-block}
 .isl-tag{position:absolute;top:12px;left:calc(50% + 100px);opacity:0;transition:opacity .4s .6s}
 .seg.on .isl-tag{opacity:1}
+.seg.on .island.big ~ .isl-tag{opacity:0;transition-delay:0s}
 .tg{all:unset;cursor:pointer;width:51px;height:31px;border-radius:999px;background:color-mix(in srgb,var(--text) 22%,transparent);position:relative;transition:background .25s}
 .tg span{position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 3px 8px rgba(0,0,0,.25);transition:transform .35s cubic-bezier(.3,1.3,.5,1)}
 .tg.on{background:#34c759}.tg.on span{transform:translateX(20px)}
@@ -515,7 +516,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
 .tabbar button.on img,.tabbar button.on svg{transform:scale(1.12)}
 .tb-lens{position:absolute;z-index:0;top:6px;left:6px;width:42px;height:42px;border-radius:50%;transform:translateX(var(--x,0px));transition:transform .5s cubic-bezier(.3,1.3,.5,1),opacity .3s;
   background:linear-gradient(160deg,rgba(255,255,255,.55),rgba(255,255,255,.12));box-shadow:inset 0 1px 1px rgba(255,255,255,.8),inset 0 -1px 2px rgba(0,0,0,.12),0 4px 10px -4px rgba(0,0,0,.35)}
-@media (max-width:720px){
+@media (max-width:720px), (pointer:coarse) and (min-width:721px) and (min-height:521px){
   .tabbar{display:flex;gap:4px;padding:6px;position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 10px);translate:-50% 0;z-index:25;border-radius:999px;
     background:color-mix(in srgb,var(--page) 45%,rgba(255,255,255,.28));-webkit-backdrop-filter:blur(18px) saturate(1.8);backdrop-filter:blur(18px) saturate(1.8);
     box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(0,0,0,.08),0 0 0 .5px color-mix(in srgb,var(--text) 22%,transparent),0 14px 32px -12px rgba(0,0,0,.45);
@@ -544,6 +545,46 @@ html.locked{overflow:hidden;scroll-snap-type:none}
 .handoff{position:fixed;z-index:30;pointer-events:none;left:0;top:0;transform-origin:50% 50%;will-change:transform}
 .handoff[hidden]{display:none}
 .ho-layer{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform,opacity}
+/* ---------- iPad and other tablets ---------- */
+/* touch screens wider than a phone: the tab bar replaces the side dots, and the header names the world */
+@media (pointer:coarse) and (min-width:721px) and (min-height:521px){
+  .dots{display:none}
+  .where{display:inline}.bar.away .clock{display:none}.bar:not(.away) .where{display:none}
+  .seg{padding-right:max(32px,env(safe-area-inset-right,0px));padding-left:max(32px,env(safe-area-inset-left,0px))}
+  .tabbar{bottom:calc(env(safe-area-inset-bottom,0px) + 18px);padding:7px;gap:8px}
+  .tabbar button,.tb-lens{width:48px;height:48px}.tb-lens{top:7px;left:7px}
+  .tabbar img{width:30px;height:30px;border-radius:8px}.tabbar svg{width:26px;height:26px}
+  .seg:not(.intro){padding-bottom:calc(env(safe-area-inset-bottom,0px) + 96px)}
+}
+/* tall screens (iPad held upright): bigger sentence and bigger worlds, so the page isn't half empty */
+@media (min-width:721px) and (orientation:portrait){
+  .sentence{font-size:clamp(34px,6.4vw,72px)}
+  .stage{width:min(660px,100%)}
+  .stage.wide{width:min(860px,100%)}
+  .shelf{padding-top:110px}
+  .about{font-size:clamp(18px,2.4vw,22px)}
+  .grid4{width:min(100%,calc((100svh - 420px)*1.36))}
+  .msgs{height:clamp(260px,calc(100svh - 640px),420px)}
+}
+/* wide but short touch screens (iPad held sideways): the world on the left, its words on the right */
+@media (pointer:coarse) and (orientation:landscape) and (min-width:900px) and (max-height:920px){
+  .seg:not(.intro){grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);grid-template-rows:1fr auto auto 1fr;column-gap:clamp(36px,5vw,80px);row-gap:14px;align-items:center;
+    padding:calc(env(safe-area-inset-top,0px) + 64px) max(48px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 96px) max(48px,env(safe-area-inset-left,0px))}
+  .seg:not(.intro) .stage{grid-column:1;grid-row:1/5;width:100%;align-self:center}
+  .seg:not(.intro) .name{grid-column:2;grid-row:2;justify-self:start;font-size:clamp(34px,4vw,52px)}
+  .seg:not(.intro) .cap{grid-column:2;grid-row:3;grid-template-columns:1fr;text-align:left;justify-items:start;width:100%}
+  .cap::before{transform-origin:left}
+  .meta{justify-items:start}
+  .story-btn{justify-self:start}
+  #hello .cap{justify-items:start!important;text-align:left!important}
+  .acts{justify-content:flex-start}
+  .mail{justify-content:flex-start}
+  .cx-rows .cx-row:nth-child(n+4){display:flex}
+  .shelf{padding-top:78px}
+  .isl-tag{display:none}
+  .grid4{width:min(100%,calc((100svh - 150px)*1.45))}
+  .msgs{height:clamp(200px,calc(100svh - 360px),360px)}
+}
 @media (prefers-reduced-motion:reduce){
   :root{transition:none}
   html{scroll-behavior:auto}
@@ -1191,7 +1232,7 @@ html.locked{overflow:hidden;scroll-snap-type:none}
     tabbar.classList.toggle('hide', s.id === 'top');
     const bs = [...tabbar.querySelectorAll('button')], b = bs.find(x => x.dataset.go === s.id);
     bs.forEach(x => { x.classList.toggle('on', x === b); x.toggleAttribute('aria-current', x === b); });
-    if (b) tabbar.style.setProperty('--x', (b.offsetLeft - 6) + 'px');
+    if (b) tabbar.style.setProperty('--x', (b.offsetLeft - parseFloat(getComputedStyle(tabbar).paddingLeft)) + 'px');
   }
 
   // ---- the Cashout coin: always on the card, flips when the split lands or when tapped ----
